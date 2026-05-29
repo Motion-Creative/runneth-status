@@ -1,12 +1,10 @@
 # runneth-status
 
-![Runneth operational status generated from status.json](./status.svg)
-
 Customer-safe operational status feed for Runneth primitives.
 
 Agent Builder reads `status.json`, validates it, caches it briefly, and injects the active notices into each Runneth turn before the user's message. Runneth treats the injected block as system metadata: it checks whether the request touches one of the listed primitives, leads with the status only when relevant, avoids broken actions, and offers the listed workaround or closest useful substitute.
 
-Changes are reviewed through GitHub like normal code: edit `status.json`, run `node render-status-card.mjs`, review the customer-facing wording and visual status panel in a pull request, merge to `main`, and Agent Builder picks it up from the raw feed. CI checks that `status.svg` matches the committed feed.
+Changes are reviewed through GitHub like normal code: edit `status.json` in a pull request, review the customer-facing wording, merge to `main`, and Agent Builder picks it up from the raw feed.
 
 ## Primitives
 
