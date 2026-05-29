@@ -18,7 +18,7 @@
     },
     {
       "id": "slack-reinstall-widget-degraded",
-      "primitives": ["slack", "widgets"],
+      "primitives": ["slack", "web"],
       "surfaces": ["web", "slack"],
       "startedAt": "2026-05-29T00:00:00.000Z",
       "updatedAt": "2026-05-29T00:00:00.000Z",
