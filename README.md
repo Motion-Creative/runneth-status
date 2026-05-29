@@ -10,12 +10,11 @@ Changes are reviewed through GitHub like normal code: edit `status.json` in a pu
 
 - `routines`: scheduled, recurring, monitored, or later work.
 - `slack`: Slack reading, posting, setup, reconnect, and install flows.
-- `widgets`: web app widgets and connection/setup UI.
-- `apps`: generated Runneth apps and app build flows.
-- `motion`: Motion data access.
 - `notion`: Notion access.
-- `memory`: saved knowledge and saved preference writes.
-- `integrations`: external integrations when a more specific primitive does not fit.
+- `google_drive`: Google Drive and Google file access.
+- `web`: Runneth web app surfaces, widgets, and setup UI.
+- `data_access`: Motion data, external endpoints, and CLI-backed data access.
+- `general`: broad Runneth behavior when no narrower primitive fits.
 
 ## Feed Shape
 
