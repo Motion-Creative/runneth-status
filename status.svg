@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="761" viewBox="0 0 960 761" role="img" aria-labelledby="title desc">
+<title id="title">Runneth operational status</title>
+<desc id="desc">Active Runneth operational status notices: Reliable routine setup is temporarily paused.; Slack reinstall and web widget setup are degraded.</desc>
+<style>
+  .label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace; }
+</style>
+<rect width="960" height="761" rx="12" fill="#F8FAFC" />
+<rect x="16" y="16" width="928" height="729" rx="10" fill="#FFFFFF" stroke="#E5E7EB" />
+<text class="label" x="32" y="56" fill="#111827" font-size="28" font-weight="800">Runneth operational status</text>
+<rect x="707" y="34" width="205" height="34" rx="17" fill="#FFEDD5" />
+<circle cx="730" cy="51" r="6" fill="#C2410C" />
+<text class="label" x="744" y="56" fill="#C2410C" font-size="14" font-weight="800">2 active notices</text>
+<text class="label" x="32" y="86" fill="#4B5563" font-size="14">Generated from the latest committed status.json. Feed updated May 29, 2026, 12:00 AM UTC.</text>
+<line x1="32" y1="116" x2="928" y2="116" stroke="#E5E7EB" />
+<text class="label" x="32" y="146" fill="#111827" font-size="15" font-weight="800">Primitive coverage</text>
+<g>
+  <rect x="32" y="164" width="214" height="58" rx="8" fill="#FFF7ED" stroke="#F97316" />
+  <circle cx="52" cy="186" r="6" fill="#F97316" />
+  <text class="label" x="68" y="190" fill="#111827" font-size="15" font-weight="700">Routines</text>
+  <text class="label" x="68" y="209" fill="#C2410C" font-size="12" font-weight="600">Active guidance</text>
+</g>
+<g>
+  <rect x="258" y="164" width="214" height="58" rx="8" fill="#FFF7ED" stroke="#F97316" />
+  <circle cx="278" cy="186" r="6" fill="#F97316" />
+  <text class="label" x="294" y="190" fill="#111827" font-size="15" font-weight="700">Slack</text>
+  <text class="label" x="294" y="209" fill="#C2410C" font-size="12" font-weight="600">Active guidance</text>
+</g>
+<g>
+  <rect x="484" y="164" width="214" height="58" rx="8" fill="#F0FDF4" stroke="#22C55E" />
+  <circle cx="504" cy="186" r="6" fill="#22C55E" />
+  <text class="label" x="520" y="190" fill="#111827" font-size="15" font-weight="700">Notion</text>
+  <text class="label" x="520" y="209" fill="#15803D" font-size="12" font-weight="600">Clear</text>
+</g>
+<g>
+  <rect x="710" y="164" width="214" height="58" rx="8" fill="#F0FDF4" stroke="#22C55E" />
+  <circle cx="730" cy="186" r="6" fill="#22C55E" />
+  <text class="label" x="746" y="190" fill="#111827" font-size="15" font-weight="700">Google Drive</text>
+  <text class="label" x="746" y="209" fill="#15803D" font-size="12" font-weight="600">Clear</text>
+</g>
+<g>
+  <rect x="32" y="234" width="214" height="58" rx="8" fill="#FFF7ED" stroke="#F97316" />
+  <circle cx="52" cy="256" r="6" fill="#F97316" />
+  <text class="label" x="68" y="260" fill="#111827" font-size="15" font-weight="700">Web</text>
+  <text class="label" x="68" y="279" fill="#C2410C" font-size="12" font-weight="600">Active guidance</text>
+</g>
+<g>
+  <rect x="258" y="234" width="214" height="58" rx="8" fill="#F0FDF4" stroke="#22C55E" />
+  <circle cx="278" cy="256" r="6" fill="#22C55E" />
+  <text class="label" x="294" y="260" fill="#111827" font-size="15" font-weight="700">Data access</text>
+  <text class="label" x="294" y="279" fill="#15803D" font-size="12" font-weight="600">Clear</text>
+</g>
+<g>
+  <rect x="484" y="234" width="214" height="58" rx="8" fill="#F0FDF4" stroke="#22C55E" />
+  <circle cx="504" cy="256" r="6" fill="#22C55E" />
+  <text class="label" x="520" y="260" fill="#111827" font-size="15" font-weight="700">General</text>
+  <text class="label" x="520" y="279" fill="#15803D" font-size="12" font-weight="600">Clear</text>
+</g>
+<text class="label" x="32" y="306" fill="#111827" font-size="15" font-weight="800">Active notices</text>
+<g>
+  <rect x="32" y="332" width="896" height="184" rx="8" fill="#FFFFFF" stroke="#E5E7EB" />
+  <text class="mono" x="56" y="360" fill="#6B7280" font-size="12" font-weight="700">Routines</text>
+  <text class="label" x="56" y="388" fill="#111827" font-size="16" font-weight="700">Reliable routine setup is temporarily paused.</text>
+  <text class="label" x="56" y="424" fill="#4B5563" font-size="13" font-weight="400">Requests to create, schedule, monitor, remind, post later, or keep work updated should not</text>
+<text class="label" x="56" y="443" fill="#4B5563" font-size="13" font-weight="400">create live routines.</text>
+  <text class="label" x="56" y="490" fill="#6B7280" font-size="12">Started May 26, 2026, 12:00 AM UTC | Updated May 29, 2026, 12:00 AM UTC</text>
+</g>
+<g>
+  <rect x="32" y="528" width="896" height="165" rx="8" fill="#FFFFFF" stroke="#E5E7EB" />
+  <text class="mono" x="56" y="556" fill="#6B7280" font-size="12" font-weight="700">Slack + Web</text>
+  <text class="label" x="56" y="584" fill="#111827" font-size="16" font-weight="700">Slack reinstall and web widget setup are degraded.</text>
+  <text class="label" x="56" y="620" fill="#4B5563" font-size="13" font-weight="400">If Slack was uninstalled, reinstall may not complete and the web setup widget may not work.</text>
+  <text class="label" x="56" y="667" fill="#6B7280" font-size="12">Started May 29, 2026, 12:00 AM UTC | Updated May 29, 2026, 12:00 AM UTC</text>
+</g>
+</svg>
