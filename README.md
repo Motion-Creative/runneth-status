@@ -18,24 +18,36 @@ Changes are reviewed through GitHub like normal code: edit `status.json` in a pu
 
 ## Feed Shape
 
+Each notice has two layers:
+
+- Agent-facing fields: `impact`, `runnethInstructions`, `workaround`, and `avoid`. Agent Builder can inject these into Runneth turns when the user's request touches an affected primitive.
+- Optional dashboard metadata: `severity`, `goesAwayWhen`, and `pinned`. The visual status page can use these for sorting and context without changing what Runneth needs to say to customers.
+
+Use the existing primitive set instead of adding a new primitive for every incident. For example, broad model or chat issues should usually be `general`, while external data pulls, endpoints, CLI-backed pulls, and non-native integrations should usually be `data_access`.
+
 ```json
 {
-  "updatedAt": "2026-05-29T00:00:00.000Z",
+  "updatedAt": "2026-06-03T18:46:01.000Z",
   "active": [
     {
-      "id": "routines-live-setup-paused",
+      "id": "routines-refactor-in-progress",
       "primitives": ["routines"],
       "surfaces": ["web", "slack"],
+      "severity": "degraded",
       "startedAt": "2026-05-26T00:00:00.000Z",
-      "updatedAt": "2026-05-29T00:00:00.000Z",
-      "summary": "Reliable routine setup is temporarily paused.",
-      "impact": "Requests to create, schedule, monitor, remind, post later, or keep work updated should not create live routines.",
-      "runnethInstructions": "Do not create new live routines. Prepare the requested routine shape and offer useful one-time work now.",
-      "workaround": "Capture the routine plan with schedule, condition, delivery, and workspace or Slack target so it can be turned on later.",
-      "avoid": ["Do not say the routine is scheduled or running."]
+      "updatedAt": "2026-06-02T13:00:00.000Z",
+      "summary": "Routines setup and firing are broken while the refactor lands.",
+      "impact": "Requests to create, schedule, monitor, remind, post later, or keep work updated should not create live routines while setup and firing are broken.",
+      "runnethInstructions": "Do not create new live routines or tell the person a routine is running. Capture the plan and do useful one-time work now.",
+      "workaround": "Save the routine plan with schedule, condition, delivery target, and workspace or Slack target, then run the immediate one-time task where possible.",
+      "avoid": ["Do not say the routine is scheduled or active."],
+      "goesAwayWhen": "The routines refactor ships.",
+      "pinned": true
     }
   ]
 }
 ```
 
-Keep `summary`, `impact`, `runnethInstructions`, `workaround`, and `avoid` customer-safe. Do not include secrets, customer names, private Slack channel IDs, production traces, credentials, or internal-only incident notes.
+Keep `summary`, `impact`, `runnethInstructions`, `workaround`, and `avoid` customer-safe. Do not include secrets, customer names, private channel IDs, internal Slack threads, private ticket links, production traces, credentials, or customer-specific incident notes.
+
+If the repository is private, the dashboard can add richer metadata like owner, tickets, and Slack thread links. Do not add those fields while the repository is public.

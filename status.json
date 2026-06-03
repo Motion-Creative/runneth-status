@@ -1,35 +1,131 @@
 {
-  "updatedAt": "2026-05-29T00:00:00.000Z",
+  "updatedAt": "2026-06-03T18:46:01.000Z",
   "active": [
     {
-      "id": "routines-live-setup-paused",
-      "primitives": ["routines"],
+      "id": "anthropic-opus-overload",
+      "primitives": ["general"],
       "surfaces": ["web", "slack"],
-      "startedAt": "2026-05-26T00:00:00.000Z",
-      "updatedAt": "2026-05-29T00:00:00.000Z",
-      "summary": "Reliable routine setup is temporarily paused.",
-      "impact": "Requests to create, schedule, monitor, remind, post later, or keep work updated should not create live routines.",
-      "runnethInstructions": "Do not create new live routines. Prepare the requested routine shape and offer useful one-time work now.",
-      "workaround": "Capture the routine plan with schedule, condition, delivery, and workspace or Slack target so it can be turned on later.",
+      "severity": "degraded",
+      "startedAt": "2026-06-02T06:04:00.000Z",
+      "updatedAt": "2026-06-02T13:51:00.000Z",
+      "summary": "Anthropic is returning intermittent overload errors for Opus 4.6.",
+      "impact": "Some Runneth replies may fail with an Anthropic `overloaded_error` rather than a Runneth action failing.",
+      "runnethInstructions": "When an error includes `overloaded_error` or an Anthropic request id, explain that it is a transient provider overload and do not frame it as a Motion or Runneth bug.",
+      "workaround": "Ask the person to retry. If it keeps failing, capture the Anthropic request id so it can be sent to Anthropic.",
       "avoid": [
-        "Do not say the routine is scheduled or running.",
-        "Do not ask the person to retry routine setup repeatedly."
-      ]
+        "Do not tell the person that Motion or Runneth caused the error when the error is clearly Anthropic overload.",
+        "Do not keep retrying indefinitely without capturing the request id."
+      ],
+      "goesAwayWhen": "Anthropic resolves the incident on their status page.",
+      "pinned": false
     },
     {
-      "id": "slack-reinstall-widget-degraded",
-      "primitives": ["slack", "web"],
+      "id": "routines-refactor-in-progress",
+      "primitives": ["routines"],
       "surfaces": ["web", "slack"],
-      "startedAt": "2026-05-29T00:00:00.000Z",
-      "updatedAt": "2026-05-29T00:00:00.000Z",
-      "summary": "Slack reinstall and web widget setup are degraded.",
-      "impact": "If Slack was uninstalled, reinstall may not complete and the web setup widget may not work.",
-      "runnethInstructions": "Do not tell people to uninstall and reinstall Slack as the fix. Do not rely on the web widget when this status applies.",
-      "workaround": "Use web-only work where possible, draft Slack messages instead of posting them, and route reconnect cases to Motion support or an operator.",
+      "severity": "degraded",
+      "startedAt": "2026-05-26T00:00:00.000Z",
+      "updatedAt": "2026-06-02T13:00:00.000Z",
+      "summary": "Routines setup and firing are broken while the refactor lands.",
+      "impact": "Requests to create, schedule, monitor, remind, post later, or keep work updated should not create live routines while setup and firing are broken.",
+      "runnethInstructions": "Do not create new live routines or tell the person a routine is running. Capture the plan and do useful one-time work now.",
+      "workaround": "Save the routine plan with schedule, condition, delivery target, and workspace or Slack target, then run the immediate one-time task where possible.",
       "avoid": [
-        "Do not recommend uninstalling Slack.",
-        "Do not claim the widget can finish the reconnect flow."
-      ]
+        "Do not say the routine is scheduled or active.",
+        "Do not ask the person to retry routine setup repeatedly."
+      ],
+      "goesAwayWhen": "The routines refactor ships.",
+      "pinned": true
+    },
+    {
+      "id": "slack-reinstall-for-narrower-scope",
+      "primitives": ["slack"],
+      "surfaces": ["slack", "web"],
+      "severity": "action-required",
+      "startedAt": "2026-05-31T00:00:00.000Z",
+      "updatedAt": "2026-06-02T13:00:00.000Z",
+      "summary": "Older Slack installs still have the wider permissions until reconnect.",
+      "impact": "Existing Slack installs may still be on wider permissions; new orgs already use the narrower Slack scope.",
+      "runnethInstructions": "When someone asks about Slack permissions, explain that existing orgs should reconnect through Runneth and new orgs are already on the narrow scope.",
+      "workaround": "Have the person ask Runneth to remove the Slack integration, then start a new conversation and ask Runneth to connect to Slack.",
+      "avoid": [
+        "Do not tell a security-cautious person that the wide-scope concern still applies after reconnect.",
+        "Do not recommend uninstalling Slack from Slack itself as the reconnect path."
+      ],
+      "goesAwayWhen": "Every existing customer has reconnected.",
+      "pinned": false
+    },
+    {
+      "id": "meta-creative-insights-flaky",
+      "primitives": ["data_access"],
+      "surfaces": ["web", "slack"],
+      "severity": "degraded",
+      "startedAt": "2026-05-31T22:14:00.000Z",
+      "updatedAt": "2026-06-02T13:00:00.000Z",
+      "summary": "Meta creative insights can time out or miss transcripts in some workspaces.",
+      "impact": "Some workspaces may see timeouts, empty creative-insights responses, or missing transcripts when requesting Meta creative analysis.",
+      "runnethInstructions": "Do not promise deep Meta creative analysis with transcript coverage while this is active.",
+      "workaround": "Use smaller date ranges, skip transcript-heavy asks, and retry once if a pull fails.",
+      "avoid": [
+        "Do not tell the person their setup is wrong when empty insights or missing transcripts match this regression.",
+        "Do not keep retrying broad transcript-heavy pulls."
+      ],
+      "goesAwayWhen": "The Meta creative insights fix ships.",
+      "pinned": false
+    },
+    {
+      "id": "pipedream-integrations-broken",
+      "primitives": ["data_access"],
+      "surfaces": ["web", "slack"],
+      "severity": "degraded",
+      "startedAt": "2026-06-01T00:00:00.000Z",
+      "updatedAt": "2026-06-02T13:00:00.000Z",
+      "summary": "Pipedream-backed integrations are currently broken.",
+      "impact": "HubSpot, Airtable, Asana, Dropbox, Figma, Gmail, and other Pipedream-backed integrations are unavailable.",
+      "runnethInstructions": "Do not suggest or depend on Pipedream-backed integrations while this is active. Native Google Drive, Notion, and Slack integrations are unaffected.",
+      "workaround": "Use native Google Drive, Notion, or Slack paths for urgent work when possible.",
+      "avoid": [
+        "Do not pitch HubSpot, Airtable, Asana, Dropbox, Figma, Gmail, or other Pipedream integrations as available.",
+        "Do not present native integrations as affected by this notice."
+      ],
+      "goesAwayWhen": "The Pipedream integration fix ships.",
+      "pinned": false
+    },
+    {
+      "id": "first-chat-after-idle-can-fail",
+      "primitives": ["general", "web"],
+      "surfaces": ["web"],
+      "severity": "degraded",
+      "startedAt": "2026-05-15T00:00:00.000Z",
+      "updatedAt": "2026-06-02T13:00:00.000Z",
+      "summary": "The first chat message after sandbox idle can fail to start.",
+      "impact": "The first message after a sandbox has been idle for more than about 10 minutes can fail to start.",
+      "runnethInstructions": "If the person sees a failed-to-initiate or failed-to-start error on the first try after idle, acknowledge it and guide them to retry shortly.",
+      "workaround": "Ask them to retry in 30 to 60 seconds; the second try usually works.",
+      "avoid": [
+        "Do not present first-touch demos on an idle sandbox without warming it up.",
+        "Do not assume the conversation is permanently broken after one failed start."
+      ],
+      "goesAwayWhen": "The sandbox wake budget is below the chat init timeout.",
+      "pinned": false
+    },
+    {
+      "id": "agent-2-deprecation-in-flight",
+      "primitives": ["general"],
+      "surfaces": ["web", "slack"],
+      "severity": "watch",
+      "startedAt": "2026-05-29T00:00:00.000Z",
+      "updatedAt": "2026-06-02T13:00:00.000Z",
+      "summary": "Agent 2.0 deprecation is in flight for trial users without an approved sandbox.",
+      "impact": "Trial users without an approved sandbox can lose chat during the Agent 2.0 deprecation; paying customer history carries over.",
+      "runnethInstructions": "Do not promise trial users that chat will remain available after the cutover. Do not build new flows on Agent 2.0.",
+      "workaround": "If a trial user needs to keep chat, Motion support or an operator should approve their sandbox before the cutover.",
+      "avoid": [
+        "Do not promise trial chat continuity without approved sandbox access.",
+        "Do not start new work on Agent 2.0 flows."
+      ],
+      "goesAwayWhen": "All VMs roll out, with an early-next-week target.",
+      "pinned": false
     }
   ]
 }
