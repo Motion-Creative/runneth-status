@@ -2,72 +2,101 @@
 
 [Visual status page](https://0a7474ef-2e3f-4614-bd43-a0e22cf03d8f.app.runneth.com/runneth-status)
 
-Customer-safe operational status feed for Runneth primitives.
+Reviewed, customer-safe status and operating guidance for Runneth.
 
-This repo is primarily a prompt-injection source of truth. Agent Builder reads `status.json`, validates it, caches it briefly, and injects the active notices into each Runneth turn before the user's message. Runneth treats the injected block as system metadata: it checks whether the request touches one of the listed primitives, leads with the status only when relevant, avoids broken actions, and offers the listed workaround or closest useful substitute.
+This repo has two related jobs:
 
-Changes are reviewed through GitHub like normal code: edit `status.json` in a pull request, review the prompt wording, merge to `main`, and Agent Builder picks it up from the raw feed.
+- The visual status page shows a richer capability/status map for CSMs, product, and operators.
+- Agent Builder can inject selected notices into Runneth turns when a notice should change what Runneth says or does.
 
-## Primitives
+Do not turn the status page into a raw bug list. Add an item only when it changes customer guidance, support triage, product expectation-setting, or Runneth behavior.
 
-The canonical primitive keys live in `primitives.json`. Keep `status.json` and the visual status page on these same keys.
+## Files
 
-- `routines`: scheduled, recurring, monitored, or later work.
+- `primitives.json`: the richer status-page product map.
+- `status-page-notices.json`: status-page notices with injection modes.
+- `status.json`: the current Agent Builder prompt-injection feed.
+- `limitations.json`: reserved for durable limitations or guidance.
+- `app-agent-prompt.md`: prompt for the Runneth app agent that updates the visual status page.
+
+## Status Page Areas
+
+The visual page should keep these top-level areas:
+
+- `runneth`: broad Runneth platform/runtime behavior.
+- `chat`: Motion chat UI, live conversation startup, streaming, idle wake, and chat continuity.
+- `brain`: saved rules, files, templates, skills, and routed context.
+- `conversations`: conversation history, recall, sidebar visibility, and direct conversation access.
 - `slack`: Slack reading, posting, setup, reconnect, and install flows.
-- `notion`: Notion access.
 - `google_drive`: Google Drive and Google file access.
-- `web`: Runneth web app surfaces, widgets, and setup UI.
-- `data_access`: Motion data, external endpoints, and CLI-backed data access.
-- `general`: broad Runneth behavior when no narrower primitive fits.
+- `notion`: Notion access.
+- `integrations`: parent category for native OAuth, Data access, Pipedream/long-tail integrations, and secrets/API keys.
+- `data_access`: Motion data, external endpoints, CLI-backed data access, workspace context, brand context, workspace goal, spend threshold, Meta data, TikTok data, Organic data, Motion reports, and InSpo.
+- `apps`: openable pages, dashboards, widgets, previews, and app refreshes.
+- `routines`: scheduled, recurring, monitored, refresh, or later work.
 
-The visual status page may show friendly labels, descriptions, and aliases from `primitives.json`, but notice keys should stay on the canonical values above. Older status-page concepts map into this set: `apps` maps to `web`, `integrations` maps to the specific integration when possible or `data_access`, and `brain` or `conversations` map to `general` unless a narrower primitive applies.
+Slack, Google Drive, and Notion should stay as standalone cards because they are native OAuth integrations customers ask about directly. They can also appear under the Integrations parent category.
 
-## Feed Shape
+## Notice Modes
 
-Each notice should be written as prompt material, not just as a status-page row.
+`status-page-notices.json` separates visibility from prompt injection:
 
-Use the existing primitive set instead of adding a new primitive for every incident. For example, broad model or chat issues should usually be `general`, while external data pulls, endpoints, CLI-backed pulls, and non-native integrations should usually be `data_access`.
+- `status_page_only`: visible to CSMs/product/operators, not injected into Runneth.
+- `reactive_injection`: only surfaced when the user asks about that specific issue.
+- `active_injection`: changes Runneth behavior whenever the affected primitive is touched.
 
-Use the fields this way:
+Examples:
 
-- `primitives`: the product capability affected. Agent Builder uses this to decide whether the notice is relevant to the user's request.
-- `surfaces`: where the guidance applies, usually `web`, `slack`, or both.
+- Routines setup degraded: `active_injection`, because it changes what Runneth should do.
+- Missing conversations from the sidebar: `reactive_injection`, because CSMs should know it exists, but Runneth should only mention it when the user says conversation history is missing.
+- First chat after idle can fail: `reactive_injection`.
+- Pipedream integrations broken: `active_injection` when a user asks for an affected long-tail integration.
+
+## Prompt Injection Feed
+
+`status.json` is the current Agent Builder prompt-injection feed. Keep it small, prompt-grade, and customer-safe.
+
+Each injected notice should include:
+
 - `summary`: a short human-readable label.
 - `impact`: what is affected in plain language.
-- `runnethInstructions`: the main prompt text. This should say when the notice applies, how Runneth should frame the issue, what Runneth may do instead, and any state language that must be exact.
+- `runnethInstructions`: detailed prompt text with trigger conditions, framing, substitute action, and exact state language.
 - `workaround`: the concrete substitute or next step Runneth should offer.
 - `avoid`: hard boundaries for what Runneth should not say or do.
 
-```json
-{
-  "updatedAt": "2026-06-03T18:46:01.000Z",
-  "active": [
-    {
-      "id": "routines-refactor-in-progress",
-      "primitives": ["routines"],
-      "surfaces": ["web", "slack"],
-      "startedAt": "2026-05-26T00:00:00.000Z",
-      "updatedAt": "2026-06-02T13:00:00.000Z",
-      "summary": "Routines setup and firing are broken while the refactor lands.",
-      "impact": "Requests to create, schedule, monitor, remind, post later, or keep work updated should not create live routines while setup and firing are broken.",
-      "runnethInstructions": "Apply this when the user asks to create, set up, schedule, monitor, remind, notify, post later, repeat, run recurring work, keep something updated, or run background upkeep. Do not start by collecting setup details or implying live routine setup will work normally. Say positively that reliable routine automation is being worked on, offer to save the requested routine as a future routine plan, and offer immediate one-time help where possible.",
-      "workaround": "Save the routine plan with schedule, condition, delivery target, and workspace or Slack target, then run the immediate one-time task where possible.",
-      "avoid": ["Do not say the routine is scheduled or active."]
-    }
-  ]
-}
-```
+Until Agent Builder supports the richer status-page primitive set directly, `status.json` may keep the narrower Builder-compatible primitive values while the visual page uses `primitives.json` and `status-page-notices.json`.
 
-## Prompt Writing
+## Data Access Detail
 
-Good notices should be detailed enough that Runneth can execute them without guessing. The best pattern is:
+Data access should be specific. Do not describe it only as "Motion CLI."
 
-- Name the trigger: "Apply this when the user asks..."
-- State the first response: what Runneth should say before attempting work.
-- Define the substitute: what Runneth can safely do instead.
-- Be precise about state: do not let Runneth say something is connected, saved, scheduled, posted, or fixed unless that action has actually succeeded.
-- Include surface-specific language in `runnethInstructions` when Slack and web should behave differently.
+The status page should call out:
 
-Keep `summary`, `impact`, `runnethInstructions`, `workaround`, and `avoid` customer-safe. Do not include secrets, customer names, private channel IDs, internal Slack threads, private ticket links, production traces, credentials, or customer-specific incident notes.
+- Motion CLI.
+- Meta data.
+- TikTok data.
+- Organic data.
+- Motion reports.
+- InSpo.
+- Workspace context.
+- Brand context.
+- Whether workspace goal is being triggered.
+- Spend threshold.
 
-The visual status page can read from the same feed, but dashboard metadata should not make the feed harder to inject into Runneth prompts. If the dashboard needs owner, ticket, severity, or Slack thread details later, add that as a separate private dashboard layer or update Agent Builder to strip dashboard-only fields before prompt validation.
+Current source-of-truth notes:
+
+- Own-account Meta creative work should route through `motion meta insights`.
+- TikTok-specific performance should route through `motion tiktok insights`.
+- Saved Motion reports and report configurations should route through `motion reports`.
+- Workspace goal should trigger for broad Meta asks like best, worst, what is working, what to scale, goal/conversion setup, or attribution-window questions.
+- Spend threshold should only trigger when the user asks for significant-spend-only data, spend cutoffs, or threshold config.
+- Own-brand strategy context should route through `motion brand-context --data-query`.
+- Competitor/InSpo creative and brand context should route through `motion inspo-creatives` and `motion inspo-context`.
+- InSpo today covers competitor creatives and competitor brand context through current Motion CLI paths.
+- InSpo coming soon/currently being wired includes InSpo brands, unique creatives, boards, creators, TikTok organic posts, board contents, and board write flows.
+
+## Review Rules
+
+Keep customer-facing fields safe. Do not include secrets, customer names, private channel IDs, internal Slack thread links, private Linear links, production traces, credentials, or customer-specific incident notes while this repo is public.
+
+Changes are reviewed through GitHub like normal code: edit the JSON or prompt file in a pull request, review the wording, merge to `main`, and let the status page or Agent Builder consume the updated raw feed.

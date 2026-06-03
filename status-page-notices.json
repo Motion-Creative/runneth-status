@@ -1,0 +1,106 @@
+{
+  "updatedAt": "2026-06-03T20:02:00.000Z",
+  "noticeModes": {
+    "active_injection": "Changes what Runneth should do whenever the affected primitive is touched.",
+    "reactive_injection": "Only changes what Runneth should say when the user asks about this specific issue.",
+    "status_page_only": "Visible to CSMs, product, and operators, but not injected into Runneth by default."
+  },
+  "notices": [
+    {
+      "id": "routines-refactor-in-progress",
+      "mode": "active_injection",
+      "primitives": ["routines"],
+      "surfaces": ["web", "slack"],
+      "summary": "Routines setup and firing are broken while the refactor lands.",
+      "impact": "New scheduled, recurring, monitored, reminder, post-later, or background-upkeep work should not be presented as live reliable automation.",
+      "statusPageGuidance": "CSMs should treat new routine setup as paused. Save the routine plan and do immediate one-time work where possible.",
+      "runnethTrigger": "User asks to create, set up, schedule, monitor, remind, notify, post later, repeat, keep something updated, or run background upkeep.",
+      "runnethGuidance": "Lead with the constructive boundary, offer a future routine plan, and avoid saying anything is scheduled until creation actually succeeds.",
+      "supportGuidance": "Capture cadence, trigger, task, workspace scope, and delivery destination so the plan can be turned on later."
+    },
+    {
+      "id": "slack-reinstall-for-narrower-scope",
+      "mode": "reactive_injection",
+      "primitives": ["slack"],
+      "surfaces": ["web", "slack"],
+      "summary": "Older Slack installs still have the wider permissions until reconnect.",
+      "impact": "Existing Slack installs may still need reconnect to pick up the narrower scope; new orgs already use the narrower Slack scope.",
+      "statusPageGuidance": "Keep Slack as a standalone native OAuth card. Mention reconnect only when customers ask about Slack permissions, security review, or old installs.",
+      "runnethTrigger": "User asks about Slack permissions, Slack security review, Slack reconnect, or replacing an old Slack install with the narrower scope.",
+      "runnethGuidance": "Route through Runneth's integration removal and reconnect flow. Do not tell customers to uninstall directly from Slack as the fix.",
+      "supportGuidance": "Confirm whether the org is a new install or an older install that still needs reconnect."
+    },
+    {
+      "id": "conversation-sidebar-missing-items",
+      "mode": "status_page_only",
+      "primitives": ["chat", "conversations"],
+      "surfaces": ["web"],
+      "summary": "Some conversations may be missing from the sidebar.",
+      "impact": "Conversation history can appear missing in the UI even when the conversation still exists.",
+      "statusPageGuidance": "This belongs on the visual status page because it changes support triage, but it should not become a proactive warning in normal Runneth conversations.",
+      "runnethTrigger": "Do not inject by default. If the app later supports reactive hints, only consider surfacing this when the user explicitly says a conversation disappeared, conversation history is missing, or a prior chat is not visible in the sidebar.",
+      "runnethGuidance": "Do not proactively mention this. If the user explicitly asks, explain that it may be a sidebar display issue rather than deleted history and suggest sharing workspace, screenshot, title, or approximate date with support.",
+      "supportGuidance": "Check direct conversation links, workspace, user, screenshot, and approximate date/title before treating it as deleted data."
+    },
+    {
+      "id": "first-chat-after-idle-can-fail",
+      "mode": "reactive_injection",
+      "primitives": ["chat"],
+      "surfaces": ["web"],
+      "summary": "The first chat message after sandbox idle can fail to start.",
+      "impact": "The first message after idle can fail or feel slow while the sandbox wakes up.",
+      "statusPageGuidance": "Useful for CSMs and demos, but not something Runneth should mention unless the user hits it.",
+      "runnethTrigger": "User mentions failed-to-initiate, failed-to-start, first-message, wake-up, or idle-sandbox chat issues.",
+      "runnethGuidance": "Ask them to retry in 30 to 60 seconds and explain that the second attempt usually works.",
+      "supportGuidance": "If it repeats after retry, capture the conversation link, workspace, timestamp, and exact error."
+    },
+    {
+      "id": "meta-creative-insights-flaky",
+      "mode": "active_injection",
+      "primitives": ["data_access"],
+      "surfaces": ["web", "slack"],
+      "summary": "Meta creative insights can time out or miss transcripts in some workspaces.",
+      "impact": "Deep Meta creative analysis, especially transcript-heavy work, may be unreliable for some workspaces.",
+      "statusPageGuidance": "Show under Data access, Meta data, and InSpo-adjacent creative analysis. Clarify that own-account Meta should route through Motion CLI.",
+      "runnethTrigger": "User asks for Meta creative insights, Meta creative analysis, ad transcript analysis, or reports empty creative-insights or missing transcripts.",
+      "runnethGuidance": "Prefer smaller date ranges, skip broad transcript-heavy pulls, and retry once. Do not frame empty transcript results as proof the workspace has no data.",
+      "supportGuidance": "Check whether the request used `motion meta insights`, whether transcripts were explicitly requested, and whether the date range is too broad."
+    },
+    {
+      "id": "pipedream-integrations-broken",
+      "mode": "active_injection",
+      "primitives": ["integrations"],
+      "surfaces": ["web", "slack"],
+      "summary": "Pipedream-backed integrations are currently broken.",
+      "impact": "HubSpot, Airtable, Asana, Dropbox, Figma, Gmail, and other long-tail/Pipedream integrations are unavailable.",
+      "statusPageGuidance": "Show under Integrations, not under native OAuth. Native Slack, Google Drive, and Notion are unaffected by this notice.",
+      "runnethTrigger": "User asks to use HubSpot, Airtable, Asana, Dropbox, Figma, Gmail, or another Pipedream-backed integration.",
+      "runnethGuidance": "Do not suggest or depend on Pipedream-backed integrations. Offer native Slack, Google Drive, Notion, Motion CLI, or another supported path when possible.",
+      "supportGuidance": "Separate long-tail/Pipedream failures from native OAuth integration failures."
+    },
+    {
+      "id": "anthropic-opus-overload",
+      "mode": "reactive_injection",
+      "primitives": ["runneth", "chat"],
+      "surfaces": ["web", "slack"],
+      "summary": "Anthropic is returning intermittent overload errors for Opus 4.6.",
+      "impact": "Some Runneth replies may fail because the model provider is overloaded.",
+      "statusPageGuidance": "Show as a Runneth/Chat operating note, not as a Motion product bug.",
+      "runnethTrigger": "User mentions a failed reply, model overload, `overloaded_error`, or an Anthropic request id.",
+      "runnethGuidance": "Explain that the model provider is intermittently overloaded, ask the user to retry, and preserve the request id if it repeats.",
+      "supportGuidance": "Capture the Anthropic request id when repeated failures happen."
+    },
+    {
+      "id": "agent-2-deprecation-in-flight",
+      "mode": "reactive_injection",
+      "primitives": ["runneth", "chat"],
+      "surfaces": ["web", "slack"],
+      "summary": "Agent 2.0 deprecation is in flight for trial users without an approved sandbox.",
+      "impact": "Trial users without an approved sandbox can lose chat during the deprecation; paying customer history carries over.",
+      "statusPageGuidance": "Show as Runneth/Chat current-state context for CSMs and operators.",
+      "runnethTrigger": "User asks about Agent 2.0, trial chat access, sandbox approval, deprecation, or cutover behavior.",
+      "runnethGuidance": "Do not promise trial users chat continuity unless their sandbox is approved. For paying customers, explain that chat history carries over.",
+      "supportGuidance": "Confirm sandbox approval state before promising chat continuity for trial users."
+    }
+  ]
+}

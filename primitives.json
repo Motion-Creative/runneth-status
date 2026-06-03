@@ -1,22 +1,120 @@
 {
-  "updatedAt": "2026-06-03T19:24:00.000Z",
+  "updatedAt": "2026-06-03T20:02:00.000Z",
   "primitives": [
     {
-      "key": "routines",
-      "label": "Routines",
-      "tagline": "Scheduled, recurring, monitored, or later work.",
-      "summary": "Use this for anything that creates, schedules, monitors, reminds, posts later, repeats, keeps work updated, or otherwise runs in the future.",
-      "color": "cyan",
-      "aliases": ["routine", "scheduled work", "recurring work", "reminders", "background upkeep"],
+      "key": "runneth",
+      "label": "Runneth",
+      "tagline": "The overall agent runtime and customer-facing Runneth product.",
+      "summary": "Use this for broad Runneth behavior, platform health, migrations, provider-level model issues, runtime availability, and anything that affects Runneth as a whole rather than one narrower area.",
+      "color": "amber",
+      "aliases": ["general", "platform", "runtime", "agent 2.0", "runneth os"],
       "productFeatures": [
-        "Future, recurring, monitored, scheduled, or background work.",
-        "Routine planning and saved routine notes.",
-        "Best-effort setup only when explicitly allowed and exactly specified."
+        "Runs customer work across web, Slack, native integrations, apps, data access, and routines.",
+        "Carries workspace and organization context into each conversation.",
+        "Uses reviewed system prompts, skills, tools, and saved brain context to decide what to do."
       ],
       "userControls": [
-        "What the routine should do.",
-        "The cadence, trigger, or condition.",
-        "The destination, such as web, Slack channel, or Slack thread."
+        "Which workspace or organization the work is scoped to.",
+        "Which surface they use: web, Slack, or an app.",
+        "What context, files, integrations, and instructions they provide."
+      ],
+      "thingsToKnow": [
+        {
+          "summary": "Use Runneth for broad status.",
+          "detail": "If the issue affects many surfaces or primitives, put it here. If it affects a specific primitive, use the narrower card."
+        }
+      ]
+    },
+    {
+      "key": "chat",
+      "label": "Chat",
+      "tagline": "The Motion chat UI and live Runneth conversation experience.",
+      "summary": "Use this for the web chat UI, message sending, streaming, first-message startup, idle wake, chat continuity, and issues where the user can still work but the conversation surface behaves unexpectedly.",
+      "color": "green",
+      "aliases": ["motion chat", "motion chat ui", "web chat", "conversation startup", "first message", "streaming"],
+      "productFeatures": [
+        "Starts and continues Runneth conversations in the web UI.",
+        "Streams Runneth responses and tool progress.",
+        "Links out to generated files, apps, and artifacts from the conversation."
+      ],
+      "userControls": [
+        "Which workspace is selected.",
+        "Whether they continue an existing conversation or start a new one.",
+        "The exact message, file, or app link they provide when reporting a chat issue."
+      ],
+      "thingsToKnow": [
+        {
+          "summary": "Chat issues are not automatically data loss.",
+          "detail": "A missing sidebar item or first-message failure can be a UI/startup issue while the underlying conversation still exists."
+        },
+        {
+          "summary": "Only inject chat notices when they change the reply.",
+          "detail": "For example, a missing sidebar issue should be status-page or reactive-only, not a proactive warning on every chat request."
+        }
+      ]
+    },
+    {
+      "key": "brain",
+      "label": "Brain",
+      "tagline": "Where Runneth keeps what it knows.",
+      "summary": "Use this for saved instructions, user.md, workspace files, templates, skills, routing indexes, and other durable context that Runneth reads before answering.",
+      "color": "amber",
+      "aliases": ["memory", "user.md", "index", "saved files", "skills", "templates"],
+      "productFeatures": [
+        "Reads relevant brain context on each message.",
+        "Uses routing metadata to find useful files without scanning everything.",
+        "Keeps standing rules, saved files, templates, and skills separate."
+      ],
+      "userControls": [
+        "Standing rules saved in user.md.",
+        "Files and notes saved under the brain.",
+        "Reusable templates and skills created for repeat workflows."
+      ],
+      "boxes": [
+        {
+          "key": "user-md",
+          "label": "user.md",
+          "summary": "Standing rules, preferences, scoped behavior, and conversation defaults."
+        },
+        {
+          "key": "files",
+          "label": "Saved files",
+          "summary": "Briefs, transcripts, notes, references, and other reusable context."
+        },
+        {
+          "key": "templates",
+          "label": "Templates",
+          "summary": "Reusable formats for briefs, reports, plans, and deliverables."
+        },
+        {
+          "key": "skills",
+          "label": "Skills",
+          "summary": "Workflow recipes and scripts Runneth can follow when triggered."
+        }
+      ]
+    },
+    {
+      "key": "conversations",
+      "label": "Conversation history",
+      "tagline": "How prior web and Slack conversations are stored, recalled, and surfaced.",
+      "summary": "Use this for conversation history, sidebar visibility, recall, search, continuity between web and Slack, and whether old conversations are findable later.",
+      "color": "green",
+      "aliases": ["conversation history", "conversations", "history", "sidebar", "conversation recall"],
+      "productFeatures": [
+        "Persists web chats and Slack threads as conversation history.",
+        "Supports recall by topic, person, date, workspace, and surface when context is available.",
+        "Lets Runneth reference prior decisions and saved work."
+      ],
+      "userControls": [
+        "Which workspace the conversation belongs to.",
+        "Whether they open a direct conversation link or browse from the sidebar.",
+        "How specifically they describe the conversation they want Runneth to recall."
+      ],
+      "thingsToKnow": [
+        {
+          "summary": "Sidebar visibility is separate from stored history.",
+          "detail": "A conversation can be missing from the sidebar while still opening from a direct link or being recoverable by support."
+        }
       ]
     },
     {
@@ -27,32 +125,14 @@
       "color": "purple",
       "aliases": ["slack app", "slack install", "slack reconnect", "slack permissions"],
       "productFeatures": [
-        "Slack OAuth connection and reconnect flows.",
-        "Slack channel and thread reads when Runneth has access.",
-        "Slack posting into supported channels and threads."
+        "Native OAuth Slack connection.",
+        "Reads channels and threads where Runneth has been added.",
+        "Posts replies, reports, briefs, and plans to supported channels and threads."
       ],
       "userControls": [
         "Which Slack channels Runneth is invited to.",
-        "Whether the request targets a channel root or thread.",
+        "Whether a request targets a channel root, thread, or app thread.",
         "When to reconnect Slack through Runneth."
-      ]
-    },
-    {
-      "key": "notion",
-      "label": "Notion",
-      "tagline": "Notion access.",
-      "summary": "Use this for Notion connection, permissions, page or database access, reading, querying, and Notion-specific failures.",
-      "color": "blue",
-      "aliases": ["notion integration", "notion pages", "notion databases"],
-      "productFeatures": [
-        "Native Notion access through Runneth.",
-        "Notion page and database reads when connected and authorized.",
-        "Notion-specific query and access behavior."
-      ],
-      "userControls": [
-        "Which Notion workspace or pages are connected.",
-        "Which pages and databases Runneth can access.",
-        "When to reconnect or adjust Notion permissions."
       ]
     },
     {
@@ -63,68 +143,211 @@
       "color": "green",
       "aliases": ["google drive", "drive", "google docs", "google sheets", "google slides", "google files"],
       "productFeatures": [
-        "Native Google Drive access through Runneth.",
-        "Google file reads and writes where supported.",
-        "Docs, Sheets, Slides, and Drive file permission handling."
+        "Native OAuth Google Drive connection.",
+        "Reads selected Google files when access has been granted.",
+        "Works with supported Docs, Sheets, Slides, and Drive file flows."
       ],
       "userControls": [
-        "Which Google files are selected or shared.",
-        "Which Drive account is connected.",
-        "When to reconnect or grant access to specific files."
+        "Which files are selected or shared.",
+        "Which Google account is connected.",
+        "Whether access is granted to the exact file Runneth needs."
+      ],
+      "thingsToKnow": [
+        {
+          "summary": "Specific file access matters.",
+          "detail": "Google Drive status should clarify whether Runneth needs individual files, folders, shared drives, resource keys, or refreshed OAuth access."
+        }
       ]
     },
     {
-      "key": "web",
-      "label": "Web",
-      "tagline": "Runneth web app surfaces, widgets, and setup UI.",
-      "summary": "Use this for the Runneth web app, setup widgets, generated apps, openable pages, web chat, and web-only UI issues.",
-      "color": "pink",
-      "aliases": ["apps", "app", "widgets", "web app", "web chat", "setup ui"],
+      "key": "notion",
+      "label": "Notion",
+      "tagline": "Notion access.",
+      "summary": "Use this for Notion connection, permissions, page or database access, reading, querying, and Notion-specific failures.",
+      "color": "blue",
+      "aliases": ["notion integration", "notion pages", "notion databases"],
       "productFeatures": [
-        "Runneth web chat and web setup flows.",
-        "Widgets and generated/openable app pages.",
-        "Web-only rendering or interaction surfaces."
+        "Native OAuth Notion connection.",
+        "Reads and queries pages or databases that Notion grants access to.",
+        "Keeps Notion issues separate from long-tail integration issues."
       ],
       "userControls": [
-        "Which web page or app they are using.",
-        "Which widget or setup flow they are trying.",
-        "Whether the issue happens in web, Slack, or both."
+        "Which Notion workspace is connected.",
+        "Which pages or databases are shared with the integration.",
+        "When to reconnect or update Notion permissions."
+      ]
+    },
+    {
+      "key": "integrations",
+      "label": "Integrations",
+      "tagline": "The parent category for connected external tools, native OAuth, data access, long-tail apps, and secrets.",
+      "summary": "Use this as the parent view for native OAuth integrations, data access, Pipedream or long-tail integrations, and secrets/API keys. Slack, Google Drive, and Notion still keep their own standalone cards because they are native OAuth surfaces customers ask about directly.",
+      "color": "blue",
+      "aliases": ["external tools", "oauth", "pipedream", "long-tail integrations", "secrets", "api keys"],
+      "productFeatures": [
+        "Native OAuth for Slack, Google Drive, and Notion.",
+        "Data access through Motion CLI and platform-backed commands.",
+        "Long-tail/Pipedream integrations and stored API secrets where supported."
+      ],
+      "userControls": [
+        "Which native integrations are connected.",
+        "Which data source, account, workspace, or endpoint is relevant.",
+        "Which secrets or long-tail tools have been connected."
+      ],
+      "tiers": [
+        {
+          "key": "native",
+          "label": "Native OAuth",
+          "what": "Built directly into Runneth with Motion-owned OAuth and clearer scope control.",
+          "list": ["Slack", "Google Drive", "Notion"]
+        },
+        {
+          "key": "data_access",
+          "label": "Data access",
+          "what": "Motion data, external endpoints, and CLI-backed data access. This includes Motion CLI, Meta data, TikTok data, Organic data, Motion reports, InSpo, workspace context, brand context, workspace goal, and spend threshold."
+        },
+        {
+          "key": "pipedream",
+          "label": "Pipedream / long-tail",
+          "what": "Connected apps outside the native OAuth set. Use this for app-specific access that is not Slack, Google Drive, Notion, or Motion platform data.",
+          "categories": [
+            {
+              "label": "Productivity and CRM",
+              "list": ["HubSpot", "Airtable", "Asana", "Dropbox", "Figma", "Gmail", "other long-tail tools"]
+            }
+          ]
+        },
+        {
+          "key": "secrets",
+          "label": "Secrets / API keys",
+          "what": "Stored API keys for tools without OAuth. Secrets should be collected through secure input, never pasted in chat."
+        }
       ]
     },
     {
       "key": "data_access",
       "label": "Data access",
       "tagline": "Motion data, external endpoints, and CLI-backed data access.",
-      "summary": "Use this for Motion data pulls, external endpoints, CLI-backed reads, non-native integrations, and data-specific failures.",
+      "summary": "Use this for Motion data pulls, external endpoints, CLI-backed reads, workspace context, brand context, workspace goal, spend threshold, Meta data, TikTok data, Organic data, Motion reports, and InSpo.",
       "color": "teal",
-      "aliases": ["data-access", "data access", "integrations", "external data", "motion cli", "pipedream"],
+      "aliases": ["data-access", "data access", "motion cli", "meta data", "tiktok data", "organic data", "motion reports", "inspo", "workspace context", "brand context", "workspace goal", "spend threshold"],
       "productFeatures": [
-        "Motion CLI-backed data reads.",
-        "External endpoint and API access.",
-        "Long-tail or non-native integration data flows."
+        "Motion CLI commands for performance, workspace setup, reports, and creative context.",
+        "Workspace-scoped data access that should respect the selected workspace.",
+        "Creative and strategy context from own-account data and InSpo/competitor data."
       ],
       "userControls": [
-        "Which workspace, account, or date range to use.",
-        "Which connected data source or endpoint is relevant.",
-        "How narrow or broad the requested pull should be."
+        "Which workspace, account, platform, or date range to use.",
+        "Whether to use workspace goal, a named metric, or a saved Motion report.",
+        "Whether spend threshold should apply, instead of silently filtering by spend."
+      ],
+      "boxes": [
+        {
+          "key": "motion-cli",
+          "label": "Motion CLI",
+          "summary": "The command layer Runneth uses for Motion data. Includes `motion meta insights`, `motion tiktok insights`, `motion reports`, `motion workspace-goal`, `motion spend-threshold`, `motion brand-context`, `motion inspo-creatives`, and `motion inspo-context`."
+        },
+        {
+          "key": "workspace-context",
+          "label": "Workspace context",
+          "summary": "The selected workspace determines which accounts, reports, goals, brand context, and saved settings apply. Portfolio or all-workspace requests should explicitly pull the workspace list."
+        },
+        {
+          "key": "brand-context",
+          "label": "Brand context",
+          "summary": "`motion brand-context --data-query` is the own-brand strategy context: voice, positioning, products, audience, claims, constraints, and creative framing."
+        },
+        {
+          "key": "workspace-goal",
+          "label": "Workspace goal",
+          "summary": "`motion workspace-goal` tells Runneth the saved business KPI and attribution windows. It should trigger for broad Meta asks like best, worst, what is working, what to scale, goal/conversion setup, or attribution-window questions."
+        },
+        {
+          "key": "spend-threshold",
+          "label": "Spend threshold",
+          "summary": "`motion spend-threshold` is not a default filter. It should trigger when the user asks for significant-spend-only data, a spend cutoff, threshold config, or threshold editing."
+        },
+        {
+          "key": "meta-data",
+          "label": "Meta data",
+          "summary": "`motion meta insights` is the source for own-account Meta creative performance, Meta transcripts, creative-gallery rows, and Meta metric-grounded analysis."
+        },
+        {
+          "key": "tiktok-data",
+          "label": "TikTok data",
+          "summary": "`motion tiktok insights` is the source for TikTok performance. Do not route TikTok-specific performance through Meta commands."
+        },
+        {
+          "key": "organic-data",
+          "label": "Organic data",
+          "summary": "Organic data is emerging through InSpo v3 work, including creator profiles and TikTok organic posts. Treat it separately from paid Meta/TikTok performance."
+        },
+        {
+          "key": "motion-reports",
+          "label": "Motion reports",
+          "summary": "`motion reports` is the source of truth for saved Motion reports and available report configurations."
+        },
+        {
+          "key": "inspo",
+          "label": "InSpo",
+          "summary": "Today, Runneth has `motion inspo-creatives` and `motion inspo-context` for competitor creatives and competitor brand context. InSpo v3 work adds brands, unique creatives, boards, creators, and TikTok organic posts; board read/write through agent conversation is still tracked as coming soon."
+        }
+      ],
+      "thingsToKnow": [
+        {
+          "summary": "Meta should use Motion CLI, not raw secrets.",
+          "detail": "Own-account Meta creative questions should route through `motion meta insights`; do not tell customers an internal Meta token expired."
+        },
+        {
+          "summary": "Meta and InSpo are different sources.",
+          "detail": "Use Meta data for the customer's own account. Use InSpo for competitor/external brands, competitor creatives, boards, brands, creator profiles, and organic discovery."
+        },
+        {
+          "summary": "InSpo today versus coming soon.",
+          "detail": "Today: competitor creatives and competitor brand context via Motion CLI. Coming soon/currently being wired: InSpo brands, unique creatives, boards, creators, TikTok organic posts, board contents, and board write flows."
+        }
       ]
     },
     {
-      "key": "general",
-      "label": "General",
-      "tagline": "Broad Runneth behavior when no narrower primitive fits.",
-      "summary": "Use this for platform-wide, model-provider, conversation, migration, cutover, or broad Runneth behavior that is not specific to one primitive.",
-      "color": "amber",
-      "aliases": ["brain", "conversations", "conversation", "platform", "model", "agent 2.0"],
+      "key": "apps",
+      "label": "Apps",
+      "tagline": "Openable pages, dashboards, widgets, and previews Runneth creates.",
+      "summary": "Use this for generated apps, openable links, dashboards, status pages, widgets, data-file-backed pages, app refreshes, and app visibility or auth issues.",
+      "color": "pink",
+      "aliases": ["app", "widgets", "dashboards", "openable pages", "status page", "visual page"],
       "productFeatures": [
-        "Broad Runneth behavior across surfaces.",
-        "Conversation-level or model-provider incidents.",
-        "Cutovers, migrations, and platform-wide guidance."
+        "Creates openable pages for reports, dashboards, previews, and internal tools.",
+        "Reads app data from files Runneth writes.",
+        "Can be refreshed when Runneth reruns the underlying data or build step."
       ],
       "userControls": [
-        "Which conversation, workspace, or surface they are using.",
-        "Whether the issue is broad or tied to a narrower primitive.",
-        "Any exact error or provider request id they can share."
+        "What app Runneth should create or refresh.",
+        "Which source files or data files the app reads.",
+        "Whether the app should stay internal or be shared more broadly."
+      ]
+    },
+    {
+      "key": "routines",
+      "label": "Routines",
+      "tagline": "Scheduled, recurring, monitored, or later work.",
+      "summary": "Use this for anything that creates, schedules, monitors, reminds, posts later, repeats, keeps work updated, refreshes an app on a cadence, or otherwise runs in the future.",
+      "color": "cyan",
+      "aliases": ["routine", "scheduled work", "recurring work", "reminders", "background upkeep", "refresh routine"],
+      "productFeatures": [
+        "Future, recurring, monitored, scheduled, or background work.",
+        "Routine planning and saved routine notes.",
+        "Best-effort deterministic refresh jobs only when explicitly allowed and exactly specified."
+      ],
+      "userControls": [
+        "What the routine should do.",
+        "The cadence, trigger, or condition.",
+        "The destination or artifact to refresh, such as a Slack thread, app page, or data file."
+      ],
+      "thingsToKnow": [
+        {
+          "summary": "Status-page refresh belongs here.",
+          "detail": "The status page should have a morning refresh routine that updates the page from repo state, relevant Linear tickets, and codebase-derived current state."
+        }
       ]
     }
   ]
