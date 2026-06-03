@@ -1,5 +1,7 @@
 # runneth-status
 
+[Visual status page](https://0a7474ef-2e3f-4614-bd43-a0e22cf03d8f.app.runneth.com/runneth-status)
+
 Customer-safe operational status feed for Runneth primitives.
 
 This repo is primarily a prompt-injection source of truth. Agent Builder reads `status.json`, validates it, caches it briefly, and injects the active notices into each Runneth turn before the user's message. Runneth treats the injected block as system metadata: it checks whether the request touches one of the listed primitives, leads with the status only when relevant, avoids broken actions, and offers the listed workaround or closest useful substitute.
