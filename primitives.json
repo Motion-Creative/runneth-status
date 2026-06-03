@@ -1,0 +1,131 @@
+{
+  "updatedAt": "2026-06-03T19:24:00.000Z",
+  "primitives": [
+    {
+      "key": "routines",
+      "label": "Routines",
+      "tagline": "Scheduled, recurring, monitored, or later work.",
+      "summary": "Use this for anything that creates, schedules, monitors, reminds, posts later, repeats, keeps work updated, or otherwise runs in the future.",
+      "color": "cyan",
+      "aliases": ["routine", "scheduled work", "recurring work", "reminders", "background upkeep"],
+      "productFeatures": [
+        "Future, recurring, monitored, scheduled, or background work.",
+        "Routine planning and saved routine notes.",
+        "Best-effort setup only when explicitly allowed and exactly specified."
+      ],
+      "userControls": [
+        "What the routine should do.",
+        "The cadence, trigger, or condition.",
+        "The destination, such as web, Slack channel, or Slack thread."
+      ]
+    },
+    {
+      "key": "slack",
+      "label": "Slack",
+      "tagline": "Slack reading, posting, setup, reconnect, and install flows.",
+      "summary": "Use this for Slack channel access, posting, thread behavior, app setup, permissions, reconnects, and install or uninstall guidance.",
+      "color": "purple",
+      "aliases": ["slack app", "slack install", "slack reconnect", "slack permissions"],
+      "productFeatures": [
+        "Slack OAuth connection and reconnect flows.",
+        "Slack channel and thread reads when Runneth has access.",
+        "Slack posting into supported channels and threads."
+      ],
+      "userControls": [
+        "Which Slack channels Runneth is invited to.",
+        "Whether the request targets a channel root or thread.",
+        "When to reconnect Slack through Runneth."
+      ]
+    },
+    {
+      "key": "notion",
+      "label": "Notion",
+      "tagline": "Notion access.",
+      "summary": "Use this for Notion connection, permissions, page or database access, reading, querying, and Notion-specific failures.",
+      "color": "blue",
+      "aliases": ["notion integration", "notion pages", "notion databases"],
+      "productFeatures": [
+        "Native Notion access through Runneth.",
+        "Notion page and database reads when connected and authorized.",
+        "Notion-specific query and access behavior."
+      ],
+      "userControls": [
+        "Which Notion workspace or pages are connected.",
+        "Which pages and databases Runneth can access.",
+        "When to reconnect or adjust Notion permissions."
+      ]
+    },
+    {
+      "key": "google_drive",
+      "label": "Google Drive",
+      "tagline": "Google Drive and Google file access.",
+      "summary": "Use this for Drive connection, Google file access, Docs, Sheets, Slides, file selection, permissions, and Drive-specific read or write issues.",
+      "color": "green",
+      "aliases": ["google drive", "drive", "google docs", "google sheets", "google slides", "google files"],
+      "productFeatures": [
+        "Native Google Drive access through Runneth.",
+        "Google file reads and writes where supported.",
+        "Docs, Sheets, Slides, and Drive file permission handling."
+      ],
+      "userControls": [
+        "Which Google files are selected or shared.",
+        "Which Drive account is connected.",
+        "When to reconnect or grant access to specific files."
+      ]
+    },
+    {
+      "key": "web",
+      "label": "Web",
+      "tagline": "Runneth web app surfaces, widgets, and setup UI.",
+      "summary": "Use this for the Runneth web app, setup widgets, generated apps, openable pages, web chat, and web-only UI issues.",
+      "color": "pink",
+      "aliases": ["apps", "app", "widgets", "web app", "web chat", "setup ui"],
+      "productFeatures": [
+        "Runneth web chat and web setup flows.",
+        "Widgets and generated/openable app pages.",
+        "Web-only rendering or interaction surfaces."
+      ],
+      "userControls": [
+        "Which web page or app they are using.",
+        "Which widget or setup flow they are trying.",
+        "Whether the issue happens in web, Slack, or both."
+      ]
+    },
+    {
+      "key": "data_access",
+      "label": "Data access",
+      "tagline": "Motion data, external endpoints, and CLI-backed data access.",
+      "summary": "Use this for Motion data pulls, external endpoints, CLI-backed reads, non-native integrations, and data-specific failures.",
+      "color": "teal",
+      "aliases": ["data-access", "data access", "integrations", "external data", "motion cli", "pipedream"],
+      "productFeatures": [
+        "Motion CLI-backed data reads.",
+        "External endpoint and API access.",
+        "Long-tail or non-native integration data flows."
+      ],
+      "userControls": [
+        "Which workspace, account, or date range to use.",
+        "Which connected data source or endpoint is relevant.",
+        "How narrow or broad the requested pull should be."
+      ]
+    },
+    {
+      "key": "general",
+      "label": "General",
+      "tagline": "Broad Runneth behavior when no narrower primitive fits.",
+      "summary": "Use this for platform-wide, model-provider, conversation, migration, cutover, or broad Runneth behavior that is not specific to one primitive.",
+      "color": "amber",
+      "aliases": ["brain", "conversations", "conversation", "platform", "model", "agent 2.0"],
+      "productFeatures": [
+        "Broad Runneth behavior across surfaces.",
+        "Conversation-level or model-provider incidents.",
+        "Cutovers, migrations, and platform-wide guidance."
+      ],
+      "userControls": [
+        "Which conversation, workspace, or surface they are using.",
+        "Whether the issue is broad or tied to a narrower primitive.",
+        "Any exact error or provider request id they can share."
+      ]
+    }
+  ]
+}

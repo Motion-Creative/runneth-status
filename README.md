@@ -10,6 +10,8 @@ Changes are reviewed through GitHub like normal code: edit `status.json` in a pu
 
 ## Primitives
 
+The canonical primitive keys live in `primitives.json`. Keep `status.json` and the visual status page on these same keys.
+
 - `routines`: scheduled, recurring, monitored, or later work.
 - `slack`: Slack reading, posting, setup, reconnect, and install flows.
 - `notion`: Notion access.
@@ -17,6 +19,8 @@ Changes are reviewed through GitHub like normal code: edit `status.json` in a pu
 - `web`: Runneth web app surfaces, widgets, and setup UI.
 - `data_access`: Motion data, external endpoints, and CLI-backed data access.
 - `general`: broad Runneth behavior when no narrower primitive fits.
+
+The visual status page may show friendly labels, descriptions, and aliases from `primitives.json`, but notice keys should stay on the canonical values above. Older status-page concepts map into this set: `apps` maps to `web`, `integrations` maps to the specific integration when possible or `data_access`, and `brain` or `conversations` map to `general` unless a narrower primitive applies.
 
 ## Feed Shape
 
