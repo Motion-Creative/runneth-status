@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T21:54:25.000Z",
+  "updatedAt": "2026-06-04T21:56:27.000Z",
   "runnethUseOptions": {
     "use_when_relevant": "Use this whenever the user's request touches this area.",
     "only_when_asked": "Use this only when the user asks about or reports this issue.",
@@ -11,7 +11,7 @@
       "runnethUse": "use_when_relevant",
       "primitives": ["routines"],
       "surfaces": ["web", "slack"],
-      "summary": "Routines setup and firing are broken while the refactor lands.",
+      "summary": "Routine automation is temporarily paused during the refactor.",
       "impact": "New scheduled, recurring, monitored, reminder, post-later, or background-upkeep work should not be presented as live reliable automation.",
       "workaround": "Save the routine plan with cadence, trigger, task, workspace scope, and delivery target, then do the immediate one-time work where possible.",
       "statusPageGuidance": "CSMs should treat new routine setup as paused. Save the routine plan and do immediate one-time work where possible.",

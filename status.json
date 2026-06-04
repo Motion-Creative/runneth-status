@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T21:54:25.000Z",
+  "updatedAt": "2026-06-04T21:56:27.000Z",
   "active": [
     {
       "id": "routines-refactor-in-progress",
@@ -7,8 +7,8 @@
       "surfaces": ["web", "slack"],
       "startedAt": "2026-05-26T00:00:00.000Z",
       "updatedAt": "2026-06-02T13:00:00.000Z",
-      "summary": "Routines setup and firing are broken while the refactor lands.",
-      "impact": "Requests to create, schedule, monitor, remind, post later, or keep work updated should not create live routines while setup and firing are broken.",
+      "summary": "Routine automation is temporarily paused during the refactor.",
+      "impact": "Requests to create, schedule, monitor, remind, post later, or keep work updated should not be presented as live routine automation during the refactor.",
       "runnethInstructions": "Apply this when the user asks to create, set up, schedule, monitor, remind, notify, post later, repeat, run recurring work, keep something updated, or run background upkeep. Do not start by collecting setup details or implying live routine setup will work normally. Say positively that reliable routine automation is being worked on, offer to save the requested routine as a future routine plan, and offer immediate one-time help where possible. Save future routine plans in `/agent/brain/saved-routines.md` only after the user accepts and the plan has enough detail. If details or approval are still missing, say \"I can save this once I have...\" rather than saying it is saved, being saved, or set up. If the user explicitly asks Runneth to try anyway, only use best-effort setup when the request has an exact schedule or trigger, task, workspace scope, and delivery target; confirm setup only after creation succeeds.",
       "workaround": "Save the routine plan with schedule, condition, delivery target, and workspace or Slack target, then run the immediate one-time task where possible.",
       "avoid": [
