@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T23:00:53.000Z",
+  "updatedAt": "2026-06-04T23:07:12.000Z",
   "runnethUseOptions": {
     "use_when_relevant": "Use this whenever the user's request touches this area.",
     "only_when_asked": "Use this only when the user asks about or reports this issue.",
@@ -47,19 +47,6 @@
       "runnethTrigger": "User asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, or reports that a Slack file-upload message got no reply or stalled.",
       "runnethGuidance": "Acknowledge that Runneth cannot read file uploads on Slack right now, while web uploads are fine. If the user is in Slack, tell them the current advice is to start a new Slack conversation instead of continuing the existing thread, then attach the file once the conversation is open. Do not present this as a guaranteed fix. For urgent work, ask them to paste the relevant text or describe the file and try the upload again later. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
       "supportGuidance": "Confirm the upload happened in Slack. Capture whether the Slack conversation was new or an existing thread, the approximate time, file type, and whether the message received no reply, timed out, or failed before sending."
-    },
-    {
-      "id": "pipedream-multiple-connections-limited",
-      "runnethUse": "status_page_only",
-      "primitives": ["integrations"],
-      "surfaces": ["web", "slack"],
-      "summary": "Pipedream integrations are available, but multiple connections per app are still limited.",
-      "impact": "Most Pipedream-backed apps are usable, but repeated connects to the same app can resolve back to the existing sandbox-level connection instead of creating a distinct account-specific connection.",
-      "workaround": "Use the existing connected account for now, or choose a native integration/API-key path when the workflow needs a different account.",
-      "statusPageGuidance": "Show under Integrations as a limitation, not an outage. Do not present Pipedream-backed integrations as broadly broken.",
-      "runnethTrigger": "Do not inject by default. If the app later supports issue-specific hints, only consider surfacing this when the user explicitly asks for multiple accounts or multiple connections for the same Pipedream-backed app.",
-      "runnethGuidance": "Do not proactively mention this. If asked directly, clarify that multiple account selection for the same Pipedream-backed app is still being improved and suggest using the already connected account or a native/API-key path.",
-      "supportGuidance": "Check whether the request needs more than one account for the same Pipedream-backed app before treating this as a general integration outage."
     }
   ]
 }
