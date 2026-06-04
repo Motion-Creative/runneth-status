@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T21:58:03.000Z",
+  "updatedAt": "2026-06-04T22:01:54.000Z",
   "runnethUseOptions": {
     "use_when_relevant": "Use this whenever the user's request touches this area.",
     "only_when_asked": "Use this only when the user asks about or reports this issue.",
@@ -45,19 +45,6 @@
       "runnethTrigger": "User asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, reports that a Slack file-upload message got no reply, or reports that a new chat will not start when a file or screenshot is attached.",
       "runnethGuidance": "Acknowledge that file-upload handling is degraded right now. If the user is in Slack, do not ask them to keep retrying file attachments in the same Slack thread. Offer the web upload path or ask them to paste the relevant text/describe the file for urgent work. If they are starting a new web chat with an attachment, ask them to start the chat first without the file and attach it after the conversation is open.",
       "supportGuidance": "Capture the surface, whether the upload was in Slack or web, whether the conversation was new or already open, the approximate time, file type, and whether the message received no reply, timed out, or failed before sending."
-    },
-    {
-      "id": "meta-creative-insights-flaky",
-      "runnethUse": "use_when_relevant",
-      "primitives": ["data_access"],
-      "surfaces": ["web", "slack"],
-      "summary": "Meta creative insights native filters can time out.",
-      "impact": "Filtered Meta creative-insights pulls can hang or time out even when the same unfiltered workspace/date/sort request works.",
-      "workaround": "Run the smallest useful unfiltered Meta pull, then filter the returned rows in the analysis; if a specific ad type or ad name is needed, use a narrower date range and retry once.",
-      "statusPageGuidance": "Show under Data access and Meta data. The transcript-coverage issue has been resolved; the current active risk is native-filter timeout behavior.",
-      "runnethTrigger": "User asks for Meta creative insights with native filters, filtered Meta creative analysis, ad-type filtering, ad-name filtering, or reports that a filtered Meta insights pull hangs or times out.",
-      "runnethGuidance": "Prefer unfiltered or narrower pulls, then filter the returned rows in the analysis. Do not frame a filtered timeout as proof that the workspace has no Meta data.",
-      "supportGuidance": "Check whether the request used `motion meta insights` with native filters. Compare against the same workspace/date/sort without filters before treating it as missing data."
     },
     {
       "id": "pipedream-multiple-connections-limited",

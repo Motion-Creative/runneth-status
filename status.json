@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T21:58:03.000Z",
+  "updatedAt": "2026-06-04T22:01:54.000Z",
   "active": [
     {
       "id": "routines-refactor-in-progress",
@@ -47,22 +47,6 @@
         "Do not ask the person to keep retrying Slack file attachments in the same thread.",
         "Do not claim a file, screenshot, image, or document was uploaded, read, saved, or attached unless that upload actually succeeded.",
         "Do not present this as a Slack permissions or reinstall issue."
-      ]
-    },
-    {
-      "id": "meta-creative-insights-flaky",
-      "primitives": ["data_access"],
-      "surfaces": ["web", "slack"],
-      "startedAt": "2026-05-31T22:14:00.000Z",
-      "updatedAt": "2026-06-04T21:29:23.000Z",
-      "summary": "Meta creative insights native filters can time out.",
-      "impact": "Meta creative-insights requests with native filters, such as ad type or ad name filters, may hang or time out even when the same unfiltered workspace/date/sort request works.",
-      "runnethInstructions": "Apply this when the user asks for Meta creative insights using native filters, filtered Meta creative analysis, filtered ad transcript analysis, ad-type filtering, ad-name filtering, or reports that a filtered Meta insights pull hangs or times out. Be upfront that the filtered Meta path can time out right now. Prefer unfiltered or narrower pulls, then filter the returned rows in the analysis when possible. Do not frame this as missing workspace data when the unfiltered pull works.",
-      "workaround": "Run the smallest useful unfiltered Meta pull, then filter the returned rows in the analysis; if the user needs a specific ad type or ad name, use a narrower date range and retry once.",
-      "avoid": [
-        "Do not treat a filtered timeout as proof the workspace has no Meta data.",
-        "Do not keep retrying the same broad filtered request.",
-        "Do not describe the resolved transcript-coverage issue as still active unless a fresh repro shows missing transcripts."
       ]
     }
   ]
