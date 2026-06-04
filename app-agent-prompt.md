@@ -51,14 +51,14 @@ Add a distinction between how Runneth should use each notice:
 - `only_when_asked`: Runneth should use the guidance only when the user asks about or reports that specific issue.
 - `status_page_only`: visible to CSMs/product/operators, but not injected into Runneth by default.
 
-Every notice should show its workaround clearly. Do not bury the workaround in a paragraph; the page should have an obvious Workaround line or section on each affected notice.
+Every notice should show its workaround state clearly. Do not bury it in a paragraph; the page should have an obvious Workaround line or section on each affected notice. If there is no workaround, say "No workaround" clearly and show the safest alternate path.
 
 Support `pinned: true` on notices. Pinned notices should render before unpinned notices and should have a small visual "Pinned" treatment so the most urgent/current operational notes stay front and centre. Pinning is only for the visual page; it does not decide whether Runneth should inject or mention the notice. `runnethUse` still decides that.
 
 For example:
 - A routines outage should be `use_when_relevant` because it changes what Runneth should do whenever someone asks for scheduled, recurring, monitored, or later work.
 - A missing conversations sidebar issue probably belongs on the status page as `status_page_only` because it changes support triage, but Runneth should not proactively mention it in normal conversations.
-- A Slack file-upload outage should be `use_when_relevant` because affected upload requests need a clear workaround.
+- A Slack file-upload outage should be `use_when_relevant` because affected upload requests need clear guidance even when there is no Slack workaround.
 
 Update the app UI so cards, filters, pinned ordering, notice counts, and labels reflect this structure. The page should help someone quickly understand the current state of Runneth without reading Linear.
 

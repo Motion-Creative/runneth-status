@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T23:00:53.000Z",
+  "updatedAt": "2026-06-04T23:35:31.000Z",
   "active": [
     {
       "id": "routines-refactor-in-progress",
@@ -38,13 +38,14 @@
       "primitives": ["slack"],
       "surfaces": ["slack"],
       "startedAt": "2026-06-04T16:05:00.000Z",
-      "updatedAt": "2026-06-04T23:00:53.000Z",
+      "updatedAt": "2026-06-04T23:35:31.000Z",
       "summary": "File uploads fail on Slack",
       "impact": "Runneth cannot read file uploads on Slack. Web uploads are fine.",
-      "runnethInstructions": "Apply this when the user asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, or reports that a Slack file-upload message got no reply or stalled. Be upfront that Runneth cannot read file uploads on Slack right now, while web uploads are fine. If the user is in Slack, tell them the current advice is to start a new Slack conversation instead of continuing the existing thread, then attach the file once the conversation is open. Do not present this as a guaranteed fix. For urgent work, ask them to paste the relevant text or describe the file and try the upload again later. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release. Do not claim the file was uploaded, read, saved, or attached unless the upload actually succeeded.",
-      "workaround": "Current advice: start a new Slack conversation instead of continuing an existing thread. Start the chat first, then attach the file once the conversation is open. This is not a guaranteed fix; for anything urgent, paste the text or describe the file and try the upload again later.",
+      "runnethInstructions": "Apply this when the user asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, or reports that a Slack file-upload message got no reply or stalled. Be upfront that Runneth cannot read file uploads on Slack right now, while web uploads are fine. Do not present starting a new Slack conversation as a workaround or fix. For urgent work, ask them to use web upload, paste the relevant text, or describe the file. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release. Do not claim the file was uploaded, read, saved, or attached unless the upload actually succeeded.",
+      "workaround": "No Slack workaround right now. For urgent work, use web upload, paste the text, or describe the file.",
       "fix": "Ready - goes out with the next planned release.",
       "avoid": [
+        "Do not say there is a Slack workaround.",
         "Do not ask the person to keep retrying Slack file attachments in the same thread.",
         "Do not claim a file, screenshot, image, or document was uploaded, read, saved, or attached unless that upload actually succeeded.",
         "Do not present this as a Slack permissions or reinstall issue.",
