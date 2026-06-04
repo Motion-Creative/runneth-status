@@ -53,13 +53,15 @@ Add a distinction between how Runneth should use each notice:
 
 Every notice should show its workaround clearly. Do not bury the workaround in a paragraph; the page should have an obvious Workaround line or section on each affected notice.
 
+Support `pinned: true` on notices. Pinned notices should render before unpinned notices and should have a small visual "Pinned" treatment so the most urgent/current operational notes stay front and centre. Pinning is only for the visual page; it does not decide whether Runneth should inject or mention the notice. `runnethUse` still decides that.
+
 For example:
 - A routines outage should be `use_when_relevant` because it changes what Runneth should do whenever someone asks for scheduled, recurring, monitored, or later work.
 - A missing conversations sidebar issue probably belongs on the status page as `status_page_only` because it changes support triage, but Runneth should not proactively mention it in normal conversations.
 - First chat after idle can be `only_when_asked` because it only matters when the user reports that symptom.
 - Pipedream integrations broken should be `use_when_relevant` when the user asks for affected long-tail integrations.
 
-Update the app UI so cards, filters, notice counts, and labels reflect this structure. The page should help someone quickly understand the current state of Runneth without reading Linear.
+Update the app UI so cards, filters, pinned ordering, notice counts, and labels reflect this structure. The page should help someone quickly understand the current state of Runneth without reading Linear.
 
 Make sure the visual page still has standalone cards for Slack, Google Drive, and Notion because they are native OAuth integrations, even though they also appear under Integrations.
 
