@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T17:46:05.000Z",
+  "updatedAt": "2026-06-04T20:55:56.000Z",
   "runnethUseOptions": {
     "use_when_relevant": "Use this whenever the user's request touches this area.",
     "only_when_asked": "Use this only when the user asks about or reports this issue.",
@@ -31,6 +31,20 @@
       "runnethTrigger": "User asks about Slack permissions, Slack security review, Slack reconnect, or replacing an old Slack install with the narrower scope.",
       "runnethGuidance": "Route through Runneth's integration removal and reconnect flow. Do not tell customers to uninstall directly from Slack as the fix.",
       "supportGuidance": "Confirm whether the org is a new install or an older install that still needs reconnect."
+    },
+    {
+      "id": "slack-file-uploads-rate-limited",
+      "runnethUse": "use_when_relevant",
+      "pinned": true,
+      "primitives": ["slack", "chat"],
+      "surfaces": ["web", "slack"],
+      "summary": "File uploads can fail or stall while upload infrastructure is rate-limited.",
+      "impact": "Slack messages with file or screenshot attachments may receive no reply, and starting a new chat with an attached file or screenshot can fail while the upload path is degraded.",
+      "workaround": "Start the conversation without the attachment, then use the web chat upload path once the conversation is open; for urgent Slack work, paste the relevant text or describe the file and retry the upload later.",
+      "statusPageGuidance": "Show under Slack and Chat. This is not broad enough for a site-wide banner by default, but CSMs should know to redirect file-heavy Slack workflows to web while the upload path is rate-limited.",
+      "runnethTrigger": "User asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, reports that a Slack file-upload message got no reply, or reports that a new chat will not start when a file or screenshot is attached.",
+      "runnethGuidance": "Acknowledge that file-upload handling is degraded right now. If the user is in Slack, do not ask them to keep retrying file attachments in the same Slack thread. Offer the web upload path or ask them to paste the relevant text/describe the file for urgent work. If they are starting a new web chat with an attachment, ask them to start the chat first without the file and attach it after the conversation is open.",
+      "supportGuidance": "Capture the surface, whether the upload was in Slack or web, whether the conversation was new or already open, the approximate time, file type, and whether the message received no reply, timed out, or failed before sending."
     },
     {
       "id": "conversation-sidebar-missing-items",
