@@ -30,11 +30,11 @@ Pick the narrowest useful primitive from `primitives.json`.
 
 Choose one `runnethUse` value:
 
-- `apply_when_relevant`: Runneth should use the guidance whenever the user's request touches the affected primitive.
-- `mention_when_asked`: Runneth should use the guidance only when the user asks about or reports this exact issue.
+- `use_when_relevant`: Runneth should use the guidance whenever the user's request touches this area.
+- `only_when_asked`: Runneth should use the guidance only when the user asks about or reports this exact issue.
 - `status_page_only`: show this on the visual page for CSM/product/operator awareness, but do not inject it into Runneth by default.
 
-Use `status_page_only` for issues that affect support triage or expectation-setting but should not change normal Runneth behavior. Use `mention_when_asked` for known symptoms Runneth should explain only after the user hits them. Use `apply_when_relevant` when Runneth must avoid, redirect, or change behavior for an affected primitive.
+Use `status_page_only` for issues that affect support triage or expectation-setting but should not change normal Runneth behavior. Use `only_when_asked` for known symptoms Runneth should explain only after the user hits them. Use `use_when_relevant` when Runneth must avoid, redirect, or change behavior for an affected primitive.
 
 ## Required Notice Shape
 
@@ -56,7 +56,7 @@ Make the workaround concrete enough to show as a standalone line on the visual p
 
 ## Prompt-Injection Standard
 
-When `runnethUse` is `apply_when_relevant` or `mention_when_asked`, update `status.json` unless the current Agent Builder contract cannot support that primitive yet.
+When `runnethUse` is `use_when_relevant` or `only_when_asked`, update `status.json` unless the current Agent Builder contract cannot support that primitive yet.
 
 Injected notices must include:
 

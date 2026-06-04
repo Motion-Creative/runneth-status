@@ -47,17 +47,17 @@ Use these repo files:
 - `limitations.json`: current limitation/guidance feed, if populated later.
 
 Add a distinction between how Runneth should use each notice:
-- `apply_when_relevant`: Runneth should use the guidance whenever the user's request touches the affected primitive.
-- `mention_when_asked`: Runneth should use the guidance only when the user asks about or reports that specific issue.
+- `use_when_relevant`: Runneth should use the guidance whenever the user's request touches this area.
+- `only_when_asked`: Runneth should use the guidance only when the user asks about or reports that specific issue.
 - `status_page_only`: visible to CSMs/product/operators, but not injected into Runneth by default.
 
 Every notice should show its workaround clearly. Do not bury the workaround in a paragraph; the page should have an obvious Workaround line or section on each affected notice.
 
 For example:
-- A routines outage should be `apply_when_relevant` because it changes what Runneth should do whenever someone asks for scheduled, recurring, monitored, or later work.
+- A routines outage should be `use_when_relevant` because it changes what Runneth should do whenever someone asks for scheduled, recurring, monitored, or later work.
 - A missing conversations sidebar issue probably belongs on the status page as `status_page_only` because it changes support triage, but Runneth should not proactively mention it in normal conversations.
-- First chat after idle can be `mention_when_asked` because it only matters when the user reports that symptom.
-- Pipedream integrations broken should be `apply_when_relevant` when the user asks for affected long-tail integrations.
+- First chat after idle can be `only_when_asked` because it only matters when the user reports that symptom.
+- Pipedream integrations broken should be `use_when_relevant` when the user asks for affected long-tail integrations.
 
 Update the app UI so cards, filters, notice counts, and labels reflect this structure. The page should help someone quickly understand the current state of Runneth without reading Linear.
 

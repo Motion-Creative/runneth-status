@@ -1,14 +1,14 @@
 {
   "updatedAt": "2026-06-04T17:46:05.000Z",
   "runnethUseOptions": {
-    "apply_when_relevant": "Use this guidance whenever the user's request touches the affected primitive.",
-    "mention_when_asked": "Use this guidance only when the user asks about or reports this specific issue.",
+    "use_when_relevant": "Use this whenever the user's request touches this area.",
+    "only_when_asked": "Use this only when the user asks about or reports this issue.",
     "status_page_only": "Visible to CSMs, product, and operators, but not injected into Runneth by default."
   },
   "notices": [
     {
       "id": "routines-refactor-in-progress",
-      "runnethUse": "apply_when_relevant",
+      "runnethUse": "use_when_relevant",
       "primitives": ["routines"],
       "surfaces": ["web", "slack"],
       "summary": "Routines setup and firing are broken while the refactor lands.",
@@ -21,7 +21,7 @@
     },
     {
       "id": "slack-reinstall-for-narrower-scope",
-      "runnethUse": "mention_when_asked",
+      "runnethUse": "only_when_asked",
       "primitives": ["slack"],
       "surfaces": ["web", "slack"],
       "summary": "Older Slack installs still have the wider permissions until reconnect.",
@@ -47,7 +47,7 @@
     },
     {
       "id": "first-chat-after-idle-can-fail",
-      "runnethUse": "mention_when_asked",
+      "runnethUse": "only_when_asked",
       "primitives": ["chat"],
       "surfaces": ["web"],
       "summary": "The first chat message after sandbox idle can fail to start.",
@@ -60,7 +60,7 @@
     },
     {
       "id": "meta-creative-insights-flaky",
-      "runnethUse": "apply_when_relevant",
+      "runnethUse": "use_when_relevant",
       "primitives": ["data_access"],
       "surfaces": ["web", "slack"],
       "summary": "Meta creative insights can time out or miss transcripts in some workspaces.",
@@ -73,7 +73,7 @@
     },
     {
       "id": "pipedream-integrations-broken",
-      "runnethUse": "apply_when_relevant",
+      "runnethUse": "use_when_relevant",
       "primitives": ["integrations"],
       "surfaces": ["web", "slack"],
       "summary": "Pipedream-backed integrations are currently broken.",
@@ -86,7 +86,7 @@
     },
     {
       "id": "anthropic-opus-overload",
-      "runnethUse": "mention_when_asked",
+      "runnethUse": "only_when_asked",
       "primitives": ["runneth", "chat"],
       "surfaces": ["web", "slack"],
       "summary": "Anthropic is returning intermittent overload errors for Opus 4.6.",
@@ -99,7 +99,7 @@
     },
     {
       "id": "agent-2-deprecation-in-flight",
-      "runnethUse": "mention_when_asked",
+      "runnethUse": "only_when_asked",
       "primitives": ["runneth", "chat"],
       "surfaces": ["web", "slack"],
       "summary": "Agent 2.0 deprecation is in flight for trial users without an approved sandbox.",

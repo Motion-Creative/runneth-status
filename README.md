@@ -42,16 +42,16 @@ Slack, Google Drive, and Notion should stay as standalone cards because they are
 
 `status-page-notices.json` separates status-page visibility from what Runneth should actually do with a notice:
 
-- `apply_when_relevant`: Runneth should use the guidance whenever the user's request touches the affected primitive.
-- `mention_when_asked`: Runneth should use the guidance only when the user asks about or reports that specific issue.
+- `use_when_relevant`: Runneth should use the guidance whenever the user's request touches this area.
+- `only_when_asked`: Runneth should use the guidance only when the user asks about or reports that specific issue.
 - `status_page_only`: the notice is visible to CSMs/product/operators, but should not be injected into Runneth by default.
 
 Examples:
 
-- Routines setup degraded: `apply_when_relevant`, because any request to create later, scheduled, recurring, or monitored work needs a different response.
+- Routines setup degraded: `use_when_relevant`, because any request to create later, scheduled, recurring, or monitored work needs a different response.
 - Missing conversations from the sidebar: `status_page_only`, because CSMs should know it exists, but Runneth should not proactively mention it in normal conversations.
-- First chat after idle can fail: `mention_when_asked`, because it only matters when the user reports that symptom.
-- Pipedream integrations broken: `apply_when_relevant` when a user asks for an affected long-tail integration.
+- First chat after idle can fail: `only_when_asked`, because it only matters when the user reports that symptom.
+- Pipedream integrations broken: `use_when_relevant` when a user asks for an affected long-tail integration.
 
 Every status-page notice should also include a `workaround`. Make it concrete enough to show on the visual page and safe enough for Runneth to repeat to a customer when the notice is injected.
 
