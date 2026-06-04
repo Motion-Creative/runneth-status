@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T20:55:56.000Z",
+  "updatedAt": "2026-06-04T21:29:23.000Z",
   "runnethUseOptions": {
     "use_when_relevant": "Use this whenever the user's request touches this area.",
     "only_when_asked": "Use this only when the user asks about or reports this issue.",
@@ -47,19 +47,6 @@
       "supportGuidance": "Capture the surface, whether the upload was in Slack or web, whether the conversation was new or already open, the approximate time, file type, and whether the message received no reply, timed out, or failed before sending."
     },
     {
-      "id": "conversation-sidebar-missing-items",
-      "runnethUse": "status_page_only",
-      "primitives": ["chat", "conversations"],
-      "surfaces": ["web"],
-      "summary": "Some conversations may be missing from the sidebar.",
-      "impact": "Conversation history can appear missing in the UI even when the conversation still exists.",
-      "workaround": "Use a direct conversation link when available; otherwise capture workspace, user, screenshot, approximate date, and title so support can locate the conversation.",
-      "statusPageGuidance": "This belongs on the visual status page because it changes support triage, but it should not become a proactive warning in normal Runneth conversations.",
-      "runnethTrigger": "Do not inject by default. If the app later supports issue-specific hints, only consider surfacing this when the user explicitly says a conversation disappeared, conversation history is missing, or a prior chat is not visible in the sidebar.",
-      "runnethGuidance": "Do not proactively mention this. If the user explicitly asks, explain that it may be a sidebar display issue rather than deleted history and suggest sharing workspace, screenshot, title, or approximate date with support.",
-      "supportGuidance": "Check direct conversation links, workspace, user, screenshot, and approximate date/title before treating it as deleted data."
-    },
-    {
       "id": "first-chat-after-idle-can-fail",
       "runnethUse": "only_when_asked",
       "primitives": ["chat"],
@@ -77,39 +64,26 @@
       "runnethUse": "use_when_relevant",
       "primitives": ["data_access"],
       "surfaces": ["web", "slack"],
-      "summary": "Meta creative insights can time out or miss transcripts in some workspaces.",
-      "impact": "Deep Meta creative analysis, especially transcript-heavy work, may be unreliable for some workspaces.",
-      "workaround": "Use smaller date ranges, avoid broad transcript-heavy pulls, and retry once if the first pull fails.",
-      "statusPageGuidance": "Show under Data access, Meta data, and InSpo-adjacent creative analysis. Clarify that own-account Meta should route through Motion CLI.",
-      "runnethTrigger": "User asks for Meta creative insights, Meta creative analysis, ad transcript analysis, or reports empty creative-insights or missing transcripts.",
-      "runnethGuidance": "Prefer smaller date ranges, skip broad transcript-heavy pulls, and retry once. Do not frame empty transcript results as proof the workspace has no data.",
-      "supportGuidance": "Check whether the request used `motion meta insights`, whether transcripts were explicitly requested, and whether the date range is too broad."
+      "summary": "Meta creative insights native filters can time out.",
+      "impact": "Filtered Meta creative-insights pulls can hang or time out even when the same unfiltered workspace/date/sort request works.",
+      "workaround": "Run the smallest useful unfiltered Meta pull, then filter the returned rows in the analysis; if a specific ad type or ad name is needed, use a narrower date range and retry once.",
+      "statusPageGuidance": "Show under Data access and Meta data. The transcript-coverage issue has been resolved; the current active risk is native-filter timeout behavior.",
+      "runnethTrigger": "User asks for Meta creative insights with native filters, filtered Meta creative analysis, ad-type filtering, ad-name filtering, or reports that a filtered Meta insights pull hangs or times out.",
+      "runnethGuidance": "Prefer unfiltered or narrower pulls, then filter the returned rows in the analysis. Do not frame a filtered timeout as proof that the workspace has no Meta data.",
+      "supportGuidance": "Check whether the request used `motion meta insights` with native filters. Compare against the same workspace/date/sort without filters before treating it as missing data."
     },
     {
-      "id": "pipedream-integrations-broken",
-      "runnethUse": "use_when_relevant",
+      "id": "pipedream-multiple-connections-limited",
+      "runnethUse": "status_page_only",
       "primitives": ["integrations"],
       "surfaces": ["web", "slack"],
-      "summary": "Pipedream-backed integrations are currently broken.",
-      "impact": "HubSpot, Airtable, Asana, Dropbox, Figma, Gmail, and other long-tail/Pipedream integrations are unavailable.",
-      "workaround": "Use native Slack, Google Drive, Notion, Motion CLI, uploaded files, or another supported path for urgent work.",
-      "statusPageGuidance": "Show under Integrations, not under native OAuth. Native Slack, Google Drive, and Notion are unaffected by this notice.",
-      "runnethTrigger": "User asks to use HubSpot, Airtable, Asana, Dropbox, Figma, Gmail, or another Pipedream-backed integration.",
-      "runnethGuidance": "Do not suggest or depend on Pipedream-backed integrations. Offer native Slack, Google Drive, Notion, Motion CLI, or another supported path when possible.",
-      "supportGuidance": "Separate long-tail/Pipedream failures from native OAuth integration failures."
-    },
-    {
-      "id": "anthropic-opus-overload",
-      "runnethUse": "only_when_asked",
-      "primitives": ["runneth", "chat"],
-      "surfaces": ["web", "slack"],
-      "summary": "Anthropic is returning intermittent overload errors for Opus 4.6.",
-      "impact": "Some Runneth replies may fail because the model provider is overloaded.",
-      "workaround": "Ask the person to retry. If it keeps failing, capture the Anthropic request id so Motion can pass it to Anthropic.",
-      "statusPageGuidance": "Show as a Runneth/Chat operating note, not as a Motion product bug.",
-      "runnethTrigger": "User mentions a failed reply, model overload, `overloaded_error`, or an Anthropic request id.",
-      "runnethGuidance": "Explain that the model provider is intermittently overloaded, ask the user to retry, and preserve the request id if it repeats.",
-      "supportGuidance": "Capture the Anthropic request id when repeated failures happen."
+      "summary": "Pipedream integrations are available, but multiple connections per app are still limited.",
+      "impact": "Most Pipedream-backed apps are usable, but repeated connects to the same app can resolve back to the existing sandbox-level connection instead of creating a distinct account-specific connection.",
+      "workaround": "Use the existing connected account for now, or choose a native integration/API-key path when the workflow needs a different account.",
+      "statusPageGuidance": "Show under Integrations as a limitation, not an outage. Do not present Pipedream-backed integrations as broadly broken.",
+      "runnethTrigger": "Do not inject by default. If the app later supports issue-specific hints, only consider surfacing this when the user explicitly asks for multiple accounts or multiple connections for the same Pipedream-backed app.",
+      "runnethGuidance": "Do not proactively mention this. If asked directly, clarify that multiple account selection for the same Pipedream-backed app is still being improved and suggest using the already connected account or a native/API-key path.",
+      "supportGuidance": "Check whether the request needs more than one account for the same Pipedream-backed app before treating this as a general integration outage."
     },
     {
       "id": "agent-2-deprecation-in-flight",
