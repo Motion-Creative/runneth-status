@@ -50,7 +50,7 @@ Examples:
 
 - Routines setup degraded: `use_when_relevant`, because any request to create later, scheduled, recurring, or monitored work needs a different response.
 - Missing conversations from the sidebar: `status_page_only`, because CSMs should know it exists, but Runneth should not proactively mention it in normal conversations.
-- First chat after idle can fail: `only_when_asked`, because it only matters when the user reports that symptom.
+- Slack file uploads degraded: `use_when_relevant`, because affected upload requests need a clear workaround.
 - Pipedream integrations broken: `use_when_relevant` when a user asks for an affected long-tail integration.
 
 Every status-page notice should also include a `workaround`. Make it concrete enough to show on the visual page and safe enough for Runneth to repeat to a customer when the notice is injected.

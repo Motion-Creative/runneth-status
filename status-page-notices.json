@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T21:29:23.000Z",
+  "updatedAt": "2026-06-04T22:01:54.000Z",
   "runnethUseOptions": {
     "use_when_relevant": "Use this whenever the user's request touches this area.",
     "only_when_asked": "Use this only when the user asks about or reports this issue.",
@@ -11,7 +11,7 @@
       "runnethUse": "use_when_relevant",
       "primitives": ["routines"],
       "surfaces": ["web", "slack"],
-      "summary": "Routines setup and firing are broken while the refactor lands.",
+      "summary": "Routine automation is temporarily paused during the refactor.",
       "impact": "New scheduled, recurring, monitored, reminder, post-later, or background-upkeep work should not be presented as live reliable automation.",
       "workaround": "Save the routine plan with cadence, trigger, task, workspace scope, and delivery target, then do the immediate one-time work where possible.",
       "statusPageGuidance": "CSMs should treat new routine setup as paused. Save the routine plan and do immediate one-time work where possible.",
@@ -24,13 +24,13 @@
       "runnethUse": "only_when_asked",
       "primitives": ["slack"],
       "surfaces": ["web", "slack"],
-      "summary": "Older Slack installs still have the wider permissions until reconnect.",
-      "impact": "Existing Slack installs may still need reconnect to pick up the narrower scope; new orgs already use the narrower Slack scope.",
-      "workaround": "Have the person ask Runneth to remove the Slack integration, then start a new conversation and ask Runneth to connect to Slack.",
-      "statusPageGuidance": "Keep Slack as a standalone native OAuth card. Mention reconnect only when customers ask about Slack permissions, security review, or old installs.",
-      "runnethTrigger": "User asks about Slack permissions, Slack security review, Slack reconnect, or replacing an old Slack install with the narrower scope.",
-      "runnethGuidance": "Route through Runneth's integration removal and reconnect flow. Do not tell customers to uninstall directly from Slack as the fix.",
-      "supportGuidance": "Confirm whether the org is a new install or an older install that still needs reconnect."
+      "summary": "Older Slack installs may need reconnect to use the narrower permission scope.",
+      "impact": "Some workspaces connected Slack before Runneth's Slack app moved to the narrower permission scope. Those older installs may still show or retain the wider grant until Slack is removed and reconnected through Runneth; newly connected orgs already use the narrower scope.",
+      "workaround": "Use Runneth's own Slack removal and reconnect flow: ask Runneth to remove Slack, then start a new conversation and ask Runneth to connect Slack again. Do not uninstall the app directly from Slack.",
+      "statusPageGuidance": "Keep Slack as a standalone native OAuth card. This is permission/reconnect guidance for older installs, not a current outage for new Slack connections.",
+      "runnethTrigger": "User asks about Slack permissions, Slack security review, Slack reconnect, Slack reinstall, or replacing an older Slack install with the narrower scope.",
+      "runnethGuidance": "Explain that new Slack connections already use the narrower scope, while older workspaces may need a Runneth-managed reconnect to pick it up. Route through Runneth's integration removal and reconnect flow. Do not tell customers to uninstall directly from Slack, because that can leave the Runneth web setup widget or reinstall path unable to reconnect cleanly.",
+      "supportGuidance": "Confirm whether the org is a new install or an older Slack install. If it is older, tell the customer to remove and reconnect Slack through Runneth rather than uninstalling from Slack directly."
     },
     {
       "id": "slack-file-uploads-rate-limited",
@@ -47,32 +47,6 @@
       "supportGuidance": "Capture the surface, whether the upload was in Slack or web, whether the conversation was new or already open, the approximate time, file type, and whether the message received no reply, timed out, or failed before sending."
     },
     {
-      "id": "first-chat-after-idle-can-fail",
-      "runnethUse": "only_when_asked",
-      "primitives": ["chat"],
-      "surfaces": ["web"],
-      "summary": "The first chat message after sandbox idle can fail to start.",
-      "impact": "The first message after idle can fail or feel slow while the sandbox wakes up.",
-      "workaround": "Ask the person to retry in 30 to 60 seconds; the second attempt usually works.",
-      "statusPageGuidance": "Useful for CSMs and demos, but not something Runneth should mention unless the user hits it.",
-      "runnethTrigger": "User mentions failed-to-initiate, failed-to-start, first-message, wake-up, or idle-sandbox chat issues.",
-      "runnethGuidance": "Ask them to retry in 30 to 60 seconds and explain that the second attempt usually works.",
-      "supportGuidance": "If it repeats after retry, capture the conversation link, workspace, timestamp, and exact error."
-    },
-    {
-      "id": "meta-creative-insights-flaky",
-      "runnethUse": "use_when_relevant",
-      "primitives": ["data_access"],
-      "surfaces": ["web", "slack"],
-      "summary": "Meta creative insights native filters can time out.",
-      "impact": "Filtered Meta creative-insights pulls can hang or time out even when the same unfiltered workspace/date/sort request works.",
-      "workaround": "Run the smallest useful unfiltered Meta pull, then filter the returned rows in the analysis; if a specific ad type or ad name is needed, use a narrower date range and retry once.",
-      "statusPageGuidance": "Show under Data access and Meta data. The transcript-coverage issue has been resolved; the current active risk is native-filter timeout behavior.",
-      "runnethTrigger": "User asks for Meta creative insights with native filters, filtered Meta creative analysis, ad-type filtering, ad-name filtering, or reports that a filtered Meta insights pull hangs or times out.",
-      "runnethGuidance": "Prefer unfiltered or narrower pulls, then filter the returned rows in the analysis. Do not frame a filtered timeout as proof that the workspace has no Meta data.",
-      "supportGuidance": "Check whether the request used `motion meta insights` with native filters. Compare against the same workspace/date/sort without filters before treating it as missing data."
-    },
-    {
       "id": "pipedream-multiple-connections-limited",
       "runnethUse": "status_page_only",
       "primitives": ["integrations"],
@@ -84,19 +58,6 @@
       "runnethTrigger": "Do not inject by default. If the app later supports issue-specific hints, only consider surfacing this when the user explicitly asks for multiple accounts or multiple connections for the same Pipedream-backed app.",
       "runnethGuidance": "Do not proactively mention this. If asked directly, clarify that multiple account selection for the same Pipedream-backed app is still being improved and suggest using the already connected account or a native/API-key path.",
       "supportGuidance": "Check whether the request needs more than one account for the same Pipedream-backed app before treating this as a general integration outage."
-    },
-    {
-      "id": "agent-2-deprecation-in-flight",
-      "runnethUse": "only_when_asked",
-      "primitives": ["runneth", "chat"],
-      "surfaces": ["web", "slack"],
-      "summary": "Agent 2.0 deprecation is in flight for trial users without an approved sandbox.",
-      "impact": "Trial users without an approved sandbox can lose chat during the deprecation; paying customer history carries over.",
-      "workaround": "Have Motion support or an operator approve the trial user's sandbox before cutover if the user needs to keep chat access.",
-      "statusPageGuidance": "Show as Runneth/Chat current-state context for CSMs and operators.",
-      "runnethTrigger": "User asks about Agent 2.0, trial chat access, sandbox approval, deprecation, or cutover behavior.",
-      "runnethGuidance": "Do not promise trial users chat continuity unless their sandbox is approved. For paying customers, explain that chat history carries over.",
-      "supportGuidance": "Confirm sandbox approval state before promising chat continuity for trial users."
     }
   ]
 }

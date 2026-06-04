@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T21:29:23.000Z",
+  "updatedAt": "2026-06-04T22:01:54.000Z",
   "active": [
     {
       "id": "routines-refactor-in-progress",
@@ -7,8 +7,8 @@
       "surfaces": ["web", "slack"],
       "startedAt": "2026-05-26T00:00:00.000Z",
       "updatedAt": "2026-06-02T13:00:00.000Z",
-      "summary": "Routines setup and firing are broken while the refactor lands.",
-      "impact": "Requests to create, schedule, monitor, remind, post later, or keep work updated should not create live routines while setup and firing are broken.",
+      "summary": "Routine automation is temporarily paused during the refactor.",
+      "impact": "Requests to create, schedule, monitor, remind, post later, or keep work updated should not be presented as live routine automation during the refactor.",
       "runnethInstructions": "Apply this when the user asks to create, set up, schedule, monitor, remind, notify, post later, repeat, run recurring work, keep something updated, or run background upkeep. Do not start by collecting setup details or implying live routine setup will work normally. Say positively that reliable routine automation is being worked on, offer to save the requested routine as a future routine plan, and offer immediate one-time help where possible. Save future routine plans in `/agent/brain/saved-routines.md` only after the user accepts and the plan has enough detail. If details or approval are still missing, say \"I can save this once I have...\" rather than saying it is saved, being saved, or set up. If the user explicitly asks Runneth to try anyway, only use best-effort setup when the request has an exact schedule or trigger, task, workspace scope, and delivery target; confirm setup only after creation succeeds.",
       "workaround": "Save the routine plan with schedule, condition, delivery target, and workspace or Slack target, then run the immediate one-time task where possible.",
       "avoid": [
@@ -21,14 +21,15 @@
       "primitives": ["slack"],
       "surfaces": ["slack", "web"],
       "startedAt": "2026-05-31T00:00:00.000Z",
-      "updatedAt": "2026-06-02T13:00:00.000Z",
-      "summary": "Older Slack installs still have the wider permissions until reconnect.",
-      "impact": "Existing Slack installs may still be on wider permissions; new orgs already use the narrower Slack scope.",
-      "runnethInstructions": "Apply this when the user asks about Slack permissions, Slack security review, Slack reconnect, or replacing an old Slack install with the narrower scope. Explain that new orgs already use the narrower scope and existing orgs should reconnect through Runneth. Route the person through Runneth's integration removal and reconnect flow; do not send them to uninstall directly from Slack as the fix.",
-      "workaround": "Have the person ask Runneth to remove the Slack integration, then start a new conversation and ask Runneth to connect to Slack.",
+      "updatedAt": "2026-06-04T21:58:03.000Z",
+      "summary": "Older Slack installs may need reconnect to use the narrower permission scope.",
+      "impact": "Some workspaces connected Slack before Runneth's Slack app moved to the narrower permission scope. Those older installs may still show or retain the wider grant until Slack is removed and reconnected through Runneth; newly connected orgs already use the narrower scope.",
+      "runnethInstructions": "Apply this when the user asks about Slack permissions, Slack security review, Slack reconnect, Slack reinstall, or replacing an older Slack install with the narrower scope. Explain that new Slack connections already use the narrower scope, while older workspaces may need a Runneth-managed reconnect to pick it up. Route the person through Runneth's integration removal and reconnect flow: ask Runneth to remove the Slack integration, then start a new conversation and ask Runneth to connect Slack again. Do not tell them to uninstall directly from Slack, because that can leave the Runneth web setup widget or reinstall path unable to reconnect cleanly.",
+      "workaround": "Use Runneth's own Slack removal and reconnect flow: ask Runneth to remove Slack, then start a new conversation and ask Runneth to connect Slack again. Do not uninstall the app directly from Slack.",
       "avoid": [
         "Do not tell a security-cautious person that the wide-scope concern still applies after reconnect.",
-        "Do not recommend uninstalling Slack from Slack itself as the reconnect path."
+        "Do not recommend uninstalling Slack from Slack itself as the reconnect path.",
+        "Do not describe new Slack installs as affected by the old wider permission grant."
       ]
     },
     {
@@ -46,52 +47,6 @@
         "Do not ask the person to keep retrying Slack file attachments in the same thread.",
         "Do not claim a file, screenshot, image, or document was uploaded, read, saved, or attached unless that upload actually succeeded.",
         "Do not present this as a Slack permissions or reinstall issue."
-      ]
-    },
-    {
-      "id": "meta-creative-insights-flaky",
-      "primitives": ["data_access"],
-      "surfaces": ["web", "slack"],
-      "startedAt": "2026-05-31T22:14:00.000Z",
-      "updatedAt": "2026-06-04T21:29:23.000Z",
-      "summary": "Meta creative insights native filters can time out.",
-      "impact": "Meta creative-insights requests with native filters, such as ad type or ad name filters, may hang or time out even when the same unfiltered workspace/date/sort request works.",
-      "runnethInstructions": "Apply this when the user asks for Meta creative insights using native filters, filtered Meta creative analysis, filtered ad transcript analysis, ad-type filtering, ad-name filtering, or reports that a filtered Meta insights pull hangs or times out. Be upfront that the filtered Meta path can time out right now. Prefer unfiltered or narrower pulls, then filter the returned rows in the analysis when possible. Do not frame this as missing workspace data when the unfiltered pull works.",
-      "workaround": "Run the smallest useful unfiltered Meta pull, then filter the returned rows in the analysis; if the user needs a specific ad type or ad name, use a narrower date range and retry once.",
-      "avoid": [
-        "Do not treat a filtered timeout as proof the workspace has no Meta data.",
-        "Do not keep retrying the same broad filtered request.",
-        "Do not describe the resolved transcript-coverage issue as still active unless a fresh repro shows missing transcripts."
-      ]
-    },
-    {
-      "id": "first-chat-after-idle-can-fail",
-      "primitives": ["general", "web"],
-      "surfaces": ["web"],
-      "startedAt": "2026-05-15T00:00:00.000Z",
-      "updatedAt": "2026-06-02T13:00:00.000Z",
-      "summary": "The first chat message after sandbox idle can fail to start.",
-      "impact": "The first message after a sandbox has been idle for more than about 10 minutes can fail to start.",
-      "runnethInstructions": "Apply this when the user mentions a failed-to-initiate, failed-to-start, first-message, wake-up, or idle-sandbox chat issue. Acknowledge that the first message after idle can fail, then ask them to retry after a short wait. Treat a second successful attempt as expected rather than surprising.",
-      "workaround": "Ask them to retry in 30 to 60 seconds; the second try usually works.",
-      "avoid": [
-        "Do not present first-touch demos on an idle sandbox without warming it up.",
-        "Do not assume the conversation is permanently broken after one failed start."
-      ]
-    },
-    {
-      "id": "agent-2-deprecation-in-flight",
-      "primitives": ["general"],
-      "surfaces": ["web", "slack"],
-      "startedAt": "2026-05-29T00:00:00.000Z",
-      "updatedAt": "2026-06-02T13:00:00.000Z",
-      "summary": "Agent 2.0 deprecation is in flight for trial users without an approved sandbox.",
-      "impact": "Trial users without an approved sandbox can lose chat during the Agent 2.0 deprecation; paying customer history carries over.",
-      "runnethInstructions": "Apply this when the user asks about Agent 2.0, trial chat access, sandbox approval, deprecation, or cutover behavior. Do not promise trial users that chat will remain available unless their sandbox is approved. For paying customers, explain that chat history carries over. Do not start new work on Agent 2.0 flows.",
-      "workaround": "If a trial user needs to keep chat, Motion support or an operator should approve their sandbox before the cutover.",
-      "avoid": [
-        "Do not promise trial chat continuity without approved sandbox access.",
-        "Do not start new work on Agent 2.0 flows."
       ]
     }
   ]
