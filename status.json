@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T21:29:23.000Z",
+  "updatedAt": "2026-06-04T21:54:25.000Z",
   "active": [
     {
       "id": "routines-refactor-in-progress",
@@ -62,21 +62,6 @@
         "Do not treat a filtered timeout as proof the workspace has no Meta data.",
         "Do not keep retrying the same broad filtered request.",
         "Do not describe the resolved transcript-coverage issue as still active unless a fresh repro shows missing transcripts."
-      ]
-    },
-    {
-      "id": "first-chat-after-idle-can-fail",
-      "primitives": ["general", "web"],
-      "surfaces": ["web"],
-      "startedAt": "2026-05-15T00:00:00.000Z",
-      "updatedAt": "2026-06-02T13:00:00.000Z",
-      "summary": "The first chat message after sandbox idle can fail to start.",
-      "impact": "The first message after a sandbox has been idle for more than about 10 minutes can fail to start.",
-      "runnethInstructions": "Apply this when the user mentions a failed-to-initiate, failed-to-start, first-message, wake-up, or idle-sandbox chat issue. Acknowledge that the first message after idle can fail, then ask them to retry after a short wait. Treat a second successful attempt as expected rather than surprising.",
-      "workaround": "Ask them to retry in 30 to 60 seconds; the second try usually works.",
-      "avoid": [
-        "Do not present first-touch demos on an idle sandbox without warming it up.",
-        "Do not assume the conversation is permanently broken after one failed start."
       ]
     },
     {

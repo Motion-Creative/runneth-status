@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T21:29:23.000Z",
+  "updatedAt": "2026-06-04T21:54:25.000Z",
   "runnethUseOptions": {
     "use_when_relevant": "Use this whenever the user's request touches this area.",
     "only_when_asked": "Use this only when the user asks about or reports this issue.",
@@ -45,19 +45,6 @@
       "runnethTrigger": "User asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, reports that a Slack file-upload message got no reply, or reports that a new chat will not start when a file or screenshot is attached.",
       "runnethGuidance": "Acknowledge that file-upload handling is degraded right now. If the user is in Slack, do not ask them to keep retrying file attachments in the same Slack thread. Offer the web upload path or ask them to paste the relevant text/describe the file for urgent work. If they are starting a new web chat with an attachment, ask them to start the chat first without the file and attach it after the conversation is open.",
       "supportGuidance": "Capture the surface, whether the upload was in Slack or web, whether the conversation was new or already open, the approximate time, file type, and whether the message received no reply, timed out, or failed before sending."
-    },
-    {
-      "id": "first-chat-after-idle-can-fail",
-      "runnethUse": "only_when_asked",
-      "primitives": ["chat"],
-      "surfaces": ["web"],
-      "summary": "The first chat message after sandbox idle can fail to start.",
-      "impact": "The first message after idle can fail or feel slow while the sandbox wakes up.",
-      "workaround": "Ask the person to retry in 30 to 60 seconds; the second attempt usually works.",
-      "statusPageGuidance": "Useful for CSMs and demos, but not something Runneth should mention unless the user hits it.",
-      "runnethTrigger": "User mentions failed-to-initiate, failed-to-start, first-message, wake-up, or idle-sandbox chat issues.",
-      "runnethGuidance": "Ask them to retry in 30 to 60 seconds and explain that the second attempt usually works.",
-      "supportGuidance": "If it repeats after retry, capture the conversation link, workspace, timestamp, and exact error."
     },
     {
       "id": "meta-creative-insights-flaky",
