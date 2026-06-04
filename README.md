@@ -50,9 +50,9 @@ Examples:
 
 - Routines setup degraded: `use_when_relevant`, because any request to create later, scheduled, recurring, or monitored work needs a different response.
 - Missing conversations from the sidebar: `status_page_only`, because CSMs should know it exists, but Runneth should not proactively mention it in normal conversations.
-- Slack file uploads degraded: `use_when_relevant`, because affected upload requests need a clear workaround.
+- Slack file uploads degraded: `use_when_relevant`, because affected upload requests need clear guidance even when there is no Slack workaround.
 
-Every status-page notice should also include a `workaround`. Make it concrete enough to show on the visual page and safe enough for Runneth to repeat to a customer when the notice is injected.
+Every status-page notice should also include a `workaround`. If there is no workaround, say that clearly and provide the safest alternate path. Make it concrete enough to show on the visual page and safe enough for Runneth to repeat to a customer when the notice is injected.
 
 Use `pinned: true` when a notice should stay at the top of the visual status page. Pinning is only a display signal for the app. It does not make Runneth inject the notice, and it does not change `runnethUse`.
 
@@ -65,7 +65,7 @@ Each injected notice should include:
 - `summary`: a short human-readable label.
 - `impact`: what is affected in plain language.
 - `runnethInstructions`: detailed prompt text with trigger conditions, framing, substitute action, and exact state language.
-- `workaround`: the concrete substitute or next step Runneth should offer. This should be easy to call out visually on the status page.
+- `workaround`: the concrete substitute or next step Runneth should offer. If there is no workaround, say that directly and name the safest alternate path. This should be easy to call out visually on the status page.
 - `avoid`: hard boundaries for what Runneth should not say or do.
 - `pinned`: optional visual status-page flag. Use `true` only for notices that should be called out first in the app.
 
