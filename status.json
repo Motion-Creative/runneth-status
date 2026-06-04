@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T21:56:27.000Z",
+  "updatedAt": "2026-06-04T21:57:11.000Z",
   "active": [
     {
       "id": "routines-refactor-in-progress",
@@ -62,21 +62,6 @@
         "Do not treat a filtered timeout as proof the workspace has no Meta data.",
         "Do not keep retrying the same broad filtered request.",
         "Do not describe the resolved transcript-coverage issue as still active unless a fresh repro shows missing transcripts."
-      ]
-    },
-    {
-      "id": "agent-2-deprecation-in-flight",
-      "primitives": ["general"],
-      "surfaces": ["web", "slack"],
-      "startedAt": "2026-05-29T00:00:00.000Z",
-      "updatedAt": "2026-06-02T13:00:00.000Z",
-      "summary": "Agent 2.0 deprecation is in flight for trial users without an approved sandbox.",
-      "impact": "Trial users without an approved sandbox can lose chat during the Agent 2.0 deprecation; paying customer history carries over.",
-      "runnethInstructions": "Apply this when the user asks about Agent 2.0, trial chat access, sandbox approval, deprecation, or cutover behavior. Do not promise trial users that chat will remain available unless their sandbox is approved. For paying customers, explain that chat history carries over. Do not start new work on Agent 2.0 flows.",
-      "workaround": "If a trial user needs to keep chat, Motion support or an operator should approve their sandbox before the cutover.",
-      "avoid": [
-        "Do not promise trial chat continuity without approved sandbox access.",
-        "Do not start new work on Agent 2.0 flows."
       ]
     }
   ]

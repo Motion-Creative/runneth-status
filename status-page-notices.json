@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T21:56:27.000Z",
+  "updatedAt": "2026-06-04T21:57:11.000Z",
   "runnethUseOptions": {
     "use_when_relevant": "Use this whenever the user's request touches this area.",
     "only_when_asked": "Use this only when the user asks about or reports this issue.",
@@ -71,19 +71,6 @@
       "runnethTrigger": "Do not inject by default. If the app later supports issue-specific hints, only consider surfacing this when the user explicitly asks for multiple accounts or multiple connections for the same Pipedream-backed app.",
       "runnethGuidance": "Do not proactively mention this. If asked directly, clarify that multiple account selection for the same Pipedream-backed app is still being improved and suggest using the already connected account or a native/API-key path.",
       "supportGuidance": "Check whether the request needs more than one account for the same Pipedream-backed app before treating this as a general integration outage."
-    },
-    {
-      "id": "agent-2-deprecation-in-flight",
-      "runnethUse": "only_when_asked",
-      "primitives": ["runneth", "chat"],
-      "surfaces": ["web", "slack"],
-      "summary": "Agent 2.0 deprecation is in flight for trial users without an approved sandbox.",
-      "impact": "Trial users without an approved sandbox can lose chat during the deprecation; paying customer history carries over.",
-      "workaround": "Have Motion support or an operator approve the trial user's sandbox before cutover if the user needs to keep chat access.",
-      "statusPageGuidance": "Show as Runneth/Chat current-state context for CSMs and operators.",
-      "runnethTrigger": "User asks about Agent 2.0, trial chat access, sandbox approval, deprecation, or cutover behavior.",
-      "runnethGuidance": "Do not promise trial users chat continuity unless their sandbox is approved. For paying customers, explain that chat history carries over.",
-      "supportGuidance": "Confirm sandbox approval state before promising chat continuity for trial users."
     }
   ]
 }
