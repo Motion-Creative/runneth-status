@@ -55,6 +55,8 @@ Examples:
 
 Every status-page notice should also include a `workaround`. Make it concrete enough to show on the visual page and safe enough for Runneth to repeat to a customer when the notice is injected.
 
+Use `pinned: true` when a notice should stay at the top of the visual status page. Pinning is only a display signal for the app. It does not make Runneth inject the notice, and it does not change `runnethUse`.
+
 ## Prompt Injection Feed
 
 `status.json` is the current Agent Builder prompt-injection feed. Keep it small, prompt-grade, and customer-safe.
@@ -66,6 +68,7 @@ Each injected notice should include:
 - `runnethInstructions`: detailed prompt text with trigger conditions, framing, substitute action, and exact state language.
 - `workaround`: the concrete substitute or next step Runneth should offer. This should be easy to call out visually on the status page.
 - `avoid`: hard boundaries for what Runneth should not say or do.
+- `pinned`: optional visual status-page flag. Use `true` only for notices that should be called out first in the app.
 
 Injected notices should be written like prompt guidance, not bug summaries. The routines-down prompt work in Agent Builder PR #2051 is the model: name the trigger, state the support boundary positively, describe the safe substitute, preserve important details for later when relevant, and explicitly forbid false success language.
 

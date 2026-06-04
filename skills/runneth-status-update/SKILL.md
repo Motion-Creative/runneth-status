@@ -42,6 +42,7 @@ Every status-page notice needs:
 
 - `id`: stable kebab-case id
 - `runnethUse`
+- `pinned`: optional; use `true` only when the visual status page should keep this notice at the top
 - `primitives`
 - `surfaces`
 - `summary`
@@ -54,6 +55,8 @@ Every status-page notice needs:
 
 Make the workaround concrete enough to show as a standalone line on the visual page. Do not bury it inside `impact` or `statusPageGuidance`.
 
+Use `pinned` sparingly. It is a visual app signal, not a severity model and not an injection rule. A pinned notice still needs the correct `runnethUse` value.
+
 ## Prompt-Injection Standard
 
 When `runnethUse` is `use_when_relevant` or `only_when_asked`, update `status.json` unless the current Agent Builder contract cannot support that primitive yet.
@@ -65,6 +68,7 @@ Injected notices must include:
 - `runnethInstructions`: detailed prompt guidance
 - `workaround`: the concrete substitute or next step
 - `avoid`: hard boundaries
+- `pinned`: optional display flag when the same notice should be pinned in the visual app
 
 Write `runnethInstructions` like a system-prompt patch, not a status blurb. The routines-down pattern has these key components:
 
