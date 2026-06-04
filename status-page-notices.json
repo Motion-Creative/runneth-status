@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T22:15:54.000Z",
+  "updatedAt": "2026-06-04T22:50:48.000Z",
   "runnethUseOptions": {
     "use_when_relevant": "Use this whenever the user's request touches this area.",
     "only_when_asked": "Use this only when the user asks about or reports this issue.",
@@ -36,16 +36,16 @@
       "id": "slack-file-uploads-rate-limited",
       "runnethUse": "use_when_relevant",
       "pinned": true,
-      "primitives": ["slack", "chat"],
-      "surfaces": ["web", "slack"],
-      "updatedAt": "2026-06-04T22:15:54.000Z",
-      "summary": "File uploads can fail or stall while upload infrastructure is rate-limited.",
-      "impact": "Slack messages with file or screenshot attachments may receive no reply, and starting a new chat with an attached file or screenshot can fail while the upload path is degraded.",
-      "workaround": "For now, start a new Slack conversation instead of continuing an existing thread. Start the chat first, then attach the file once the conversation is open. For anything urgent, paste the text or describe the file and try the upload again later.",
-      "statusPageGuidance": "Show under Slack and Chat. This is not broad enough for a site-wide banner by default, but CSMs should know to start new Slack conversations for file-heavy workflows while the upload path is rate-limited.",
-      "runnethTrigger": "User asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, reports that a Slack file-upload message got no reply, or reports that a new chat will not start when a file or screenshot is attached.",
-      "runnethGuidance": "Acknowledge that file-upload handling is degraded right now. If the user is in Slack, tell them to start a new Slack conversation instead of continuing the existing thread. Ask them to start the chat first, then attach the file once the conversation is open. For urgent work, ask them to paste the relevant text or describe the file and try the upload again later.",
-      "supportGuidance": "Capture the surface, whether the upload was in Slack or web, whether the conversation was new or already open, the approximate time, file type, and whether the message received no reply, timed out, or failed before sending."
+      "primitives": ["slack"],
+      "surfaces": ["slack"],
+      "updatedAt": "2026-06-04T22:50:48.000Z",
+      "summary": "Slack file uploads can fail or stall while upload infrastructure is rate-limited.",
+      "impact": "Slack messages with file or screenshot attachments may receive no reply while this path is degraded. Web uploads are working normally.",
+      "workaround": "Current advice: start a new Slack conversation instead of continuing an existing thread. Start the chat first, then attach the file once the conversation is open. This is not a guaranteed fix; for anything urgent, paste the text or describe the file and try the upload again later.",
+      "statusPageGuidance": "Show under Slack only. This is not broad enough for a site-wide banner by default, and web uploads are working normally.",
+      "runnethTrigger": "User asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, or reports that a Slack file-upload message got no reply or stalled.",
+      "runnethGuidance": "Acknowledge that Slack file-upload handling is degraded right now, while web uploads are working normally. If the user is in Slack, tell them the current advice is to start a new Slack conversation instead of continuing the existing thread, then attach the file once the conversation is open. Do not present this as a guaranteed fix. For urgent work, ask them to paste the relevant text or describe the file and try the upload again later.",
+      "supportGuidance": "Confirm the upload happened in Slack. Capture whether the Slack conversation was new or an existing thread, the approximate time, file type, and whether the message received no reply, timed out, or failed before sending."
     },
     {
       "id": "pipedream-multiple-connections-limited",
