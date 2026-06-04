@@ -1,21 +1,6 @@
 {
-  "updatedAt": "2026-06-04T21:12:00.000Z",
+  "updatedAt": "2026-06-04T21:29:23.000Z",
   "active": [
-    {
-      "id": "anthropic-opus-overload",
-      "primitives": ["general"],
-      "surfaces": ["web", "slack"],
-      "startedAt": "2026-06-02T06:04:00.000Z",
-      "updatedAt": "2026-06-02T13:51:00.000Z",
-      "summary": "Anthropic is returning intermittent overload errors for Opus 4.6.",
-      "impact": "Some Runneth replies may fail with an Anthropic `overloaded_error` rather than a Runneth action failing.",
-      "runnethInstructions": "Apply this only when the user mentions a failed reply, model overload, `overloaded_error`, or an Anthropic request id. Explain plainly that the model provider is intermittently overloaded and that retrying is the right next step. If the same request keeps failing, ask for or preserve the Anthropic request id so Motion can pass it to Anthropic.",
-      "workaround": "Ask the person to retry. If it keeps failing, capture the Anthropic request id so it can be sent to Anthropic.",
-      "avoid": [
-        "Do not tell the person that Motion or Runneth caused the error when the error is clearly Anthropic overload.",
-        "Do not keep retrying indefinitely without capturing the request id."
-      ]
-    },
     {
       "id": "routines-refactor-in-progress",
       "primitives": ["routines"],
@@ -68,29 +53,15 @@
       "primitives": ["data_access"],
       "surfaces": ["web", "slack"],
       "startedAt": "2026-05-31T22:14:00.000Z",
-      "updatedAt": "2026-06-02T13:00:00.000Z",
-      "summary": "Meta creative insights can time out or miss transcripts in some workspaces.",
-      "impact": "Some workspaces may see timeouts, empty creative-insights responses, or missing transcripts when requesting Meta creative analysis.",
-      "runnethInstructions": "Apply this when the user asks for Meta creative insights, Meta creative analysis, ad transcript analysis, or reports empty creative-insights or missing transcripts. Be upfront that deep transcript-heavy Meta analysis may be unreliable right now. Prefer narrower pulls and avoid treating empty transcript results as proof that the workspace has no data.",
-      "workaround": "Use smaller date ranges, skip transcript-heavy asks, and retry once if a pull fails.",
+      "updatedAt": "2026-06-04T21:29:23.000Z",
+      "summary": "Meta creative insights native filters can time out.",
+      "impact": "Meta creative-insights requests with native filters, such as ad type or ad name filters, may hang or time out even when the same unfiltered workspace/date/sort request works.",
+      "runnethInstructions": "Apply this when the user asks for Meta creative insights using native filters, filtered Meta creative analysis, filtered ad transcript analysis, ad-type filtering, ad-name filtering, or reports that a filtered Meta insights pull hangs or times out. Be upfront that the filtered Meta path can time out right now. Prefer unfiltered or narrower pulls, then filter the returned rows in the analysis when possible. Do not frame this as missing workspace data when the unfiltered pull works.",
+      "workaround": "Run the smallest useful unfiltered Meta pull, then filter the returned rows in the analysis; if the user needs a specific ad type or ad name, use a narrower date range and retry once.",
       "avoid": [
-        "Do not tell the person their setup is wrong when empty insights or missing transcripts match this regression.",
-        "Do not keep retrying broad transcript-heavy pulls."
-      ]
-    },
-    {
-      "id": "pipedream-integrations-broken",
-      "primitives": ["data_access"],
-      "surfaces": ["web", "slack"],
-      "startedAt": "2026-06-01T00:00:00.000Z",
-      "updatedAt": "2026-06-02T13:00:00.000Z",
-      "summary": "Pipedream-backed integrations are currently broken.",
-      "impact": "HubSpot, Airtable, Asana, Dropbox, Figma, Gmail, and other Pipedream-backed integrations are unavailable.",
-      "runnethInstructions": "Apply this when the user asks to use HubSpot, Airtable, Asana, Dropbox, Figma, Gmail, or another Pipedream-backed integration. Do not suggest or depend on those integrations while this is active. Clearly distinguish this from native Google Drive, Notion, and Slack, which are unaffected by this notice.",
-      "workaround": "Use native Google Drive, Notion, or Slack paths for urgent work when possible.",
-      "avoid": [
-        "Do not pitch HubSpot, Airtable, Asana, Dropbox, Figma, Gmail, or other Pipedream integrations as available.",
-        "Do not present native integrations as affected by this notice."
+        "Do not treat a filtered timeout as proof the workspace has no Meta data.",
+        "Do not keep retrying the same broad filtered request.",
+        "Do not describe the resolved transcript-coverage issue as still active unless a fresh repro shows missing transcripts."
       ]
     },
     {
