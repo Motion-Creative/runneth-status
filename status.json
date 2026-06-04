@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T21:57:11.000Z",
+  "updatedAt": "2026-06-04T21:58:03.000Z",
   "active": [
     {
       "id": "routines-refactor-in-progress",
@@ -21,14 +21,15 @@
       "primitives": ["slack"],
       "surfaces": ["slack", "web"],
       "startedAt": "2026-05-31T00:00:00.000Z",
-      "updatedAt": "2026-06-02T13:00:00.000Z",
-      "summary": "Older Slack installs still have the wider permissions until reconnect.",
-      "impact": "Existing Slack installs may still be on wider permissions; new orgs already use the narrower Slack scope.",
-      "runnethInstructions": "Apply this when the user asks about Slack permissions, Slack security review, Slack reconnect, or replacing an old Slack install with the narrower scope. Explain that new orgs already use the narrower scope and existing orgs should reconnect through Runneth. Route the person through Runneth's integration removal and reconnect flow; do not send them to uninstall directly from Slack as the fix.",
-      "workaround": "Have the person ask Runneth to remove the Slack integration, then start a new conversation and ask Runneth to connect to Slack.",
+      "updatedAt": "2026-06-04T21:58:03.000Z",
+      "summary": "Older Slack installs may need reconnect to use the narrower permission scope.",
+      "impact": "Some workspaces connected Slack before Runneth's Slack app moved to the narrower permission scope. Those older installs may still show or retain the wider grant until Slack is removed and reconnected through Runneth; newly connected orgs already use the narrower scope.",
+      "runnethInstructions": "Apply this when the user asks about Slack permissions, Slack security review, Slack reconnect, Slack reinstall, or replacing an older Slack install with the narrower scope. Explain that new Slack connections already use the narrower scope, while older workspaces may need a Runneth-managed reconnect to pick it up. Route the person through Runneth's integration removal and reconnect flow: ask Runneth to remove the Slack integration, then start a new conversation and ask Runneth to connect Slack again. Do not tell them to uninstall directly from Slack, because that can leave the Runneth web setup widget or reinstall path unable to reconnect cleanly.",
+      "workaround": "Use Runneth's own Slack removal and reconnect flow: ask Runneth to remove Slack, then start a new conversation and ask Runneth to connect Slack again. Do not uninstall the app directly from Slack.",
       "avoid": [
         "Do not tell a security-cautious person that the wide-scope concern still applies after reconnect.",
-        "Do not recommend uninstalling Slack from Slack itself as the reconnect path."
+        "Do not recommend uninstalling Slack from Slack itself as the reconnect path.",
+        "Do not describe new Slack installs as affected by the old wider permission grant."
       ]
     },
     {

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T21:57:11.000Z",
+  "updatedAt": "2026-06-04T21:58:03.000Z",
   "runnethUseOptions": {
     "use_when_relevant": "Use this whenever the user's request touches this area.",
     "only_when_asked": "Use this only when the user asks about or reports this issue.",
@@ -24,13 +24,13 @@
       "runnethUse": "only_when_asked",
       "primitives": ["slack"],
       "surfaces": ["web", "slack"],
-      "summary": "Older Slack installs still have the wider permissions until reconnect.",
-      "impact": "Existing Slack installs may still need reconnect to pick up the narrower scope; new orgs already use the narrower Slack scope.",
-      "workaround": "Have the person ask Runneth to remove the Slack integration, then start a new conversation and ask Runneth to connect to Slack.",
-      "statusPageGuidance": "Keep Slack as a standalone native OAuth card. Mention reconnect only when customers ask about Slack permissions, security review, or old installs.",
-      "runnethTrigger": "User asks about Slack permissions, Slack security review, Slack reconnect, or replacing an old Slack install with the narrower scope.",
-      "runnethGuidance": "Route through Runneth's integration removal and reconnect flow. Do not tell customers to uninstall directly from Slack as the fix.",
-      "supportGuidance": "Confirm whether the org is a new install or an older install that still needs reconnect."
+      "summary": "Older Slack installs may need reconnect to use the narrower permission scope.",
+      "impact": "Some workspaces connected Slack before Runneth's Slack app moved to the narrower permission scope. Those older installs may still show or retain the wider grant until Slack is removed and reconnected through Runneth; newly connected orgs already use the narrower scope.",
+      "workaround": "Use Runneth's own Slack removal and reconnect flow: ask Runneth to remove Slack, then start a new conversation and ask Runneth to connect Slack again. Do not uninstall the app directly from Slack.",
+      "statusPageGuidance": "Keep Slack as a standalone native OAuth card. This is permission/reconnect guidance for older installs, not a current outage for new Slack connections.",
+      "runnethTrigger": "User asks about Slack permissions, Slack security review, Slack reconnect, Slack reinstall, or replacing an older Slack install with the narrower scope.",
+      "runnethGuidance": "Explain that new Slack connections already use the narrower scope, while older workspaces may need a Runneth-managed reconnect to pick it up. Route through Runneth's integration removal and reconnect flow. Do not tell customers to uninstall directly from Slack, because that can leave the Runneth web setup widget or reinstall path unable to reconnect cleanly.",
+      "supportGuidance": "Confirm whether the org is a new install or an older Slack install. If it is older, tell the customer to remove and reconnect Slack through Runneth rather than uninstalling from Slack directly."
     },
     {
       "id": "slack-file-uploads-rate-limited",
