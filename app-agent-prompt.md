@@ -42,20 +42,22 @@ For Meta, also mention InSpo. For InSpo, say what exists today, like boards, bra
 
 Use these repo files:
 - `primitives.json`: the richer product/status map for the visual page.
-- `status-page-notices.json`: the CSM/operator-visible notice layer, including which notices are active injection, reactive injection, or status-page-only.
+- `status-page-notices.json`: the CSM/operator-visible notice layer, including the `runnethUse` value and the explicit `workaround` for each notice.
 - `status.json`: the current Runneth prompt-injection feed. Keep this separate from status-page-only notices unless Agent Builder has been updated to support richer routing.
 - `limitations.json`: current limitation/guidance feed, if populated later.
 
-Add a distinction between notice types:
-- Status page only: visible to CSMs/product/operators, not injected into Runneth.
-- Reactive injection: only injected or surfaced when the user asks about that specific issue.
-- Active injection: changes Runneth behavior whenever the affected primitive is touched.
+Add a distinction between how Runneth should use each notice:
+- `apply_when_relevant`: Runneth should use the guidance whenever the user's request touches the affected primitive.
+- `mention_when_asked`: Runneth should use the guidance only when the user asks about or reports that specific issue.
+- `status_page_only`: visible to CSMs/product/operators, but not injected into Runneth by default.
+
+Every notice should show its workaround clearly. Do not bury the workaround in a paragraph; the page should have an obvious Workaround line or section on each affected notice.
 
 For example:
-- A routines outage should be injected because it changes what Runneth should do.
-- A missing conversations sidebar issue probably belongs on the status page, but should not be proactively injected unless the user says their conversation history is missing.
-- First chat after idle can be reactive injection.
-- Pipedream integrations broken should be injected only when the user asks for affected integrations.
+- A routines outage should be `apply_when_relevant` because it changes what Runneth should do whenever someone asks for scheduled, recurring, monitored, or later work.
+- A missing conversations sidebar issue probably belongs on the status page as `status_page_only` because it changes support triage, but Runneth should not proactively mention it in normal conversations.
+- First chat after idle can be `mention_when_asked` because it only matters when the user reports that symptom.
+- Pipedream integrations broken should be `apply_when_relevant` when the user asks for affected long-tail integrations.
 
 Update the app UI so cards, filters, notice counts, and labels reflect this structure. The page should help someone quickly understand the current state of Runneth without reading Linear.
 
