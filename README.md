@@ -14,10 +14,11 @@ Do not turn the status page into a raw bug list. Add an item only when it change
 ## Files
 
 - `primitives.json`: the richer status-page product map.
-- `status-page-notices.json`: status-page notices with injection modes.
+- `status-page-notices.json`: status-page notices with clear Runneth-use rules and explicit workarounds.
 - `status.json`: the current Agent Builder prompt-injection feed.
 - `limitations.json`: reserved for durable limitations or guidance.
 - `app-agent-prompt.md`: prompt for the Runneth app agent that updates the visual status page.
+- `skills/runneth-status-update/SKILL.md`: skill for rewriting rough status requests into reviewed status-page notices and prompt-injection guidance.
 
 ## Status Page Areas
 
@@ -37,20 +38,22 @@ The visual page should keep these top-level areas:
 
 Slack, Google Drive, and Notion should stay as standalone cards because they are native OAuth integrations customers ask about directly. They can also appear under the Integrations parent category.
 
-## Notice Modes
+## Runneth Use
 
-`status-page-notices.json` separates visibility from prompt injection:
+`status-page-notices.json` separates status-page visibility from what Runneth should actually do with a notice:
 
-- `status_page_only`: visible to CSMs/product/operators, not injected into Runneth.
-- `reactive_injection`: only surfaced when the user asks about that specific issue.
-- `active_injection`: changes Runneth behavior whenever the affected primitive is touched.
+- `use_when_relevant`: Runneth should use the guidance whenever the user's request touches this area.
+- `only_when_asked`: Runneth should use the guidance only when the user asks about or reports that specific issue.
+- `status_page_only`: the notice is visible to CSMs/product/operators, but should not be injected into Runneth by default.
 
 Examples:
 
-- Routines setup degraded: `active_injection`, because it changes what Runneth should do.
-- Missing conversations from the sidebar: `reactive_injection`, because CSMs should know it exists, but Runneth should only mention it when the user says conversation history is missing.
-- First chat after idle can fail: `reactive_injection`.
-- Pipedream integrations broken: `active_injection` when a user asks for an affected long-tail integration.
+- Routines setup degraded: `use_when_relevant`, because any request to create later, scheduled, recurring, or monitored work needs a different response.
+- Missing conversations from the sidebar: `status_page_only`, because CSMs should know it exists, but Runneth should not proactively mention it in normal conversations.
+- First chat after idle can fail: `only_when_asked`, because it only matters when the user reports that symptom.
+- Pipedream integrations broken: `use_when_relevant` when a user asks for an affected long-tail integration.
+
+Every status-page notice should also include a `workaround`. Make it concrete enough to show on the visual page and safe enough for Runneth to repeat to a customer when the notice is injected.
 
 ## Prompt Injection Feed
 
@@ -61,8 +64,12 @@ Each injected notice should include:
 - `summary`: a short human-readable label.
 - `impact`: what is affected in plain language.
 - `runnethInstructions`: detailed prompt text with trigger conditions, framing, substitute action, and exact state language.
-- `workaround`: the concrete substitute or next step Runneth should offer.
+- `workaround`: the concrete substitute or next step Runneth should offer. This should be easy to call out visually on the status page.
 - `avoid`: hard boundaries for what Runneth should not say or do.
+
+Injected notices should be written like prompt guidance, not bug summaries. The routines-down prompt work in Agent Builder PR #2051 is the model: name the trigger, state the support boundary positively, describe the safe substitute, preserve important details for later when relevant, and explicitly forbid false success language.
+
+When someone asks to post or update a status notice, use `skills/runneth-status-update/SKILL.md` to rewrite the request into this shape before editing the JSON.
 
 Until Agent Builder supports the richer status-page primitive set directly, `status.json` may keep the narrower Builder-compatible primitive values while the visual page uses `primitives.json` and `status-page-notices.json`.
 
