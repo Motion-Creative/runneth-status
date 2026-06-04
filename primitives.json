@@ -49,7 +49,7 @@
         },
         {
           "summary": "Only inject chat notices when they change the reply.",
-          "detail": "For example, a missing sidebar issue should be status-page or reactive-only, not a proactive warning on every chat request."
+          "detail": "For example, a missing sidebar issue should be status-page-only or mention-when-asked, not a proactive warning on every chat request."
         }
       ]
     },
