@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T20:53:19.000Z",
+  "updatedAt": "2026-06-04T20:55:56.000Z",
   "runnethUseOptions": {
     "use_when_relevant": "Use this whenever the user's request touches this area.",
     "only_when_asked": "Use this only when the user asks about or reports this issue.",
@@ -35,6 +35,7 @@
     {
       "id": "slack-file-uploads-rate-limited",
       "runnethUse": "use_when_relevant",
+      "pinned": true,
       "primitives": ["slack", "chat"],
       "surfaces": ["web", "slack"],
       "summary": "File uploads can fail or stall while upload infrastructure is rate-limited.",
