@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T22:01:54.000Z",
+  "updatedAt": "2026-06-04T22:15:54.000Z",
   "active": [
     {
       "id": "routines-refactor-in-progress",
@@ -38,11 +38,11 @@
       "primitives": ["slack", "web"],
       "surfaces": ["web", "slack"],
       "startedAt": "2026-06-04T16:05:00.000Z",
-      "updatedAt": "2026-06-04T20:53:19.000Z",
+      "updatedAt": "2026-06-04T22:15:54.000Z",
       "summary": "File uploads can fail or stall while upload infrastructure is rate-limited.",
       "impact": "Slack messages with file or screenshot attachments may receive no reply, and starting a new chat with an attached file or screenshot can fail while the upload path is degraded.",
-      "runnethInstructions": "Apply this when the user asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, reports that a Slack file-upload message got no reply, or reports that a new chat will not start when a file or screenshot is attached. Be upfront that file-upload handling is degraded right now. If the user is in Slack, do not ask them to keep retrying file attachments in the same Slack thread. Offer the web chat upload path when possible, or ask them to paste the relevant text or describe the file for urgent work. If they are starting a new web chat with an attachment, ask them to start the chat first without the file and attach it after the conversation is open. Do not claim the file was uploaded, read, saved, or attached unless the upload actually succeeded.",
-      "workaround": "Start the conversation without the attachment, then use the web chat upload path once the conversation is open; for urgent Slack work, paste the relevant text or describe the file and retry the upload later.",
+      "runnethInstructions": "Apply this when the user asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, reports that a Slack file-upload message got no reply, or reports that a new chat will not start when a file or screenshot is attached. Be upfront that file-upload handling is degraded right now. If the user is in Slack, tell them to start a new Slack conversation instead of continuing the existing thread. Ask them to start the chat first, then attach the file once the conversation is open. For urgent work, ask them to paste the relevant text or describe the file and try the upload again later. Do not claim the file was uploaded, read, saved, or attached unless the upload actually succeeded.",
+      "workaround": "For now, start a new Slack conversation instead of continuing an existing thread. Start the chat first, then attach the file once the conversation is open. For anything urgent, paste the text or describe the file and try the upload again later.",
       "avoid": [
         "Do not ask the person to keep retrying Slack file attachments in the same thread.",
         "Do not claim a file, screenshot, image, or document was uploaded, read, saved, or attached unless that upload actually succeeded.",
