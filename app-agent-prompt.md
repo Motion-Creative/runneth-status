@@ -58,7 +58,7 @@ Support `pinned: true` on notices. Pinned notices should render before unpinned 
 For example:
 - A routines outage should be `use_when_relevant` because it changes what Runneth should do whenever someone asks for scheduled, recurring, monitored, or later work.
 - A missing conversations sidebar issue probably belongs on the status page as `status_page_only` because it changes support triage, but Runneth should not proactively mention it in normal conversations.
-- A Slack file-upload outage should be `use_when_relevant` because affected upload requests need clear guidance even when there is no Slack workaround.
+- A Slack file-upload outage should be `use_when_relevant` because affected upload requests need clear guidance when Slack-side retries are unreliable.
 
 Update the app UI so cards, filters, pinned ordering, notice counts, and labels reflect this structure. The page should help someone quickly understand the current state of Runneth without reading Linear.
 
