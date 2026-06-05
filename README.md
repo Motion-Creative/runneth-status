@@ -50,7 +50,7 @@ Examples:
 
 - Routines setup degraded: `use_when_relevant`, because any request to create later, scheduled, recurring, or monitored work needs a different response.
 - Missing conversations from the sidebar: `status_page_only`, because CSMs should know it exists, but Runneth should not proactively mention it in normal conversations.
-- Slack file uploads degraded: `use_when_relevant`, because affected upload requests need clear guidance even when there is no Slack workaround.
+- Slack file uploads degraded: `use_when_relevant`, because affected upload requests need clear guidance when Slack-side retries are unreliable.
 
 Every status-page notice should also include a `workaround`. If there is no workaround, say that clearly and provide the safest alternate path. Make it concrete enough to show on the visual page and safe enough for Runneth to repeat to a customer when the notice is injected.
 
