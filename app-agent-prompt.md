@@ -42,7 +42,7 @@ For Meta, also mention InSpo. For InSpo, say what exists today, like boards, bra
 
 Use these repo files:
 - `primitives.json`: the richer product/status map for the visual page.
-- `status-page-notices.json`: the CSM/operator-visible notice layer, including the optional `releaseNote`, the `runnethUse` value, the explicit `workaround`, and whether each notice has `fixReadyForNextRelease`.
+- `status-page-notices.json`: the CSM/operator-visible notice layer, including the optional `releaseNote`, the `runnethUse` value, the explicit `workaround`, the `fix`, whether each notice has `fixReadyForNextRelease`, and any `examples`.
 - `status.json`: the current Runneth prompt-injection feed. Keep this separate from status-page-only notices unless Agent Builder has been updated to support richer routing.
 - `limitations.json`: current limitation/guidance feed, if populated later.
 
@@ -58,6 +58,13 @@ Every notice should show its workaround state clearly. Do not bury it in a parag
 Support `pinned: true` on notices. Pinned notices should render before unpinned notices and should have a small visual "Pinned" treatment so the most urgent/current operational notes stay front and centre. Pinning is only for the visual page; it does not decide whether Runneth should inject or mention the notice. `runnethUse` still decides that.
 
 Support `fixReadyForNextRelease: true` on notices. Render a small checkmark-style label such as "Fix ready - next release" on those notices. This should be a visual flag only; do not infer that every notice without the flag is broken forever or missing an owner.
+
+Support `examples` on every notice. Most notices may have `examples: []` for now. When examples exist, render a compact example area on the card with:
+- the example label as a hyperlink,
+- the specific observed response or symptom,
+- the "what to look for" explanation.
+
+For Slack examples, do not just show a bare thread link. Unfold the useful part directly on the card so someone can recognize the issue without opening Slack first. For the older Slack thread formatting notice, show that the observed response was raw response-control JSON: `{"shouldRespond":false}`.
 
 For example:
 - A routines outage should be `use_when_relevant` because it changes what Runneth should do whenever someone asks for scheduled, recurring, monitored, or later work.
