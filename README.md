@@ -32,7 +32,7 @@ The visual page should keep these top-level areas:
 - `google_drive`: Google Drive and Google file access.
 - `notion`: Notion access.
 - `integrations`: parent category for native OAuth, Data access, Pipedream/long-tail integrations, and secrets/API keys.
-- `data_access`: Motion data, external endpoints, CLI-backed data access, workspace context, brand context, workspace goal, spend threshold, Meta data, TikTok data, Organic data, Motion reports, and InSpo.
+- `data_access`: Motion data, external endpoints, CLI-backed data access, workspace context, brand context, workspace goal, spend threshold, Meta data, TikTok data, creative summaries, transcripts, reports, and Inspo.
 - `apps`: openable pages, dashboards, widgets, previews, and app refreshes.
 - `routines`: scheduled, recurring, monitored, refresh, or later work.
 
@@ -95,28 +95,24 @@ Data access should be specific. Do not describe it only as "Motion CLI."
 
 The status page should call out:
 
-- Motion CLI.
-- Meta data.
-- TikTok data.
-- Organic data.
-- Motion reports.
-- InSpo.
-- Workspace context.
-- Brand context.
-- Whether workspace goal is being triggered.
-- Spend threshold.
+- Meta data: own-account Meta performance, creative rows, metrics, creative summaries, transcripts, copy/headline/landing-page groupings, metric references, and filter references.
+- TikTok data: own-account TikTok performance, grouped metrics, associated creative details, and TikTok-specific query shape.
+- Creative summaries: generated creative understanding used for analysis and strategy.
+- Transcripts: spoken-word/script data where the CLI supports it, especially Meta video transcript pulls.
+- Data endpoints: workspace goal, spend threshold, brand context, metric references, filter references, and custom conversion metrics.
+- Reports: saved Motion reports, marked as coming soon until the reports endpoint is live.
+- Inspo: competitor and organic inspiration, marked as coming soon / next release.
 
 Current source-of-truth notes:
 
-- Own-account Meta creative work should route through `motion meta insights`.
-- TikTok-specific performance should route through `motion tiktok insights`.
-- Saved Motion reports and report configurations should route through `motion reports`.
+- Own-account Meta creative work should route through `motion meta insights`. Meta data includes performance metrics, creative rows, creative summaries, transcripts when requested, and grouping by creative/copy/headline/landing page.
+- TikTok-specific performance should route through `motion tiktok insights`. TikTok data includes TikTok performance metrics and associated creative details, but it is not the same transcript or creative-summary surface as Meta.
+- Saved Motion reports and report configurations are coming soon; do not present the reports endpoint as live until it ships.
 - Workspace goal should trigger for broad Meta asks like best, worst, what is working, what to scale, goal/conversion setup, or attribution-window questions.
 - Spend threshold should only trigger when the user asks for significant-spend-only data, spend cutoffs, or threshold config.
 - Own-brand strategy context should route through `motion brand-context --data-query`.
-- Competitor/InSpo creative and brand context should route through `motion inspo-creatives` and `motion inspo-context`.
-- InSpo today covers competitor creatives and competitor brand context through current Motion CLI paths.
-- InSpo coming soon/currently being wired includes InSpo brands, unique creatives, boards, creators, TikTok organic posts, board contents, and board write flows.
+- Inspo brands, unique creatives, boards, board items, creators, organic TikTok posts, and organic TikTok keyword steering are coming in the next release with the Runneth guidance from Agent Builder PR #2237.
+- For the next-release Inspo guidance, be clear about direct query paths versus batch inspection: competitor ads and saved board items support specific filters, known creators can be looked up by name or handle, organic TikTok can pull the current recommendation feed or an exact creator handle, and organic keywords steer future feed recommendations. Broad creator/category/engagement filtering and live organic TikTok topic search are still being expanded; if Runneth pulls a broad batch to inspect manually, it should say that is not the same as a filtered search and may take a while.
 
 ## Review Rules
 

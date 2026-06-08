@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-08T19:20:00.000Z",
+  "updatedAt": "2026-06-08T19:59:40.000Z",
   "primitives": [
     {
       "key": "runneth",
@@ -213,7 +213,7 @@
         {
           "key": "data_access",
           "label": "Data access",
-          "what": "Motion data, external endpoints, and CLI-backed data access. This includes Motion CLI, Meta data, TikTok data, Organic data, Motion reports, InSpo, workspace context, brand context, workspace goal, and spend threshold."
+          "what": "Motion data, external endpoints, and CLI-backed data access. This includes Meta data, TikTok data, creative summaries, transcripts, data endpoints, workspace context, brand context, workspace goal, spend threshold, reports coming soon, and Inspo in the next release."
         },
         {
           "key": "pipedream",
@@ -451,7 +451,7 @@
       "key": "data_access",
       "label": "Data access",
       "tagline": "Motion data and connected data sources.",
-      "summary": "Where the numbers come from: your own Meta and TikTok performance, saved reports, brand context, goals, and competitor research through InSpo. Use this for anything about data pulls.",
+      "summary": "Where Motion data comes from: Meta performance, TikTok performance, creative summaries, transcripts, workspace and brand context, metric/reference endpoints, reports coming soon, and Inspo in the next release. Use this for anything about data pulls.",
       "color": "teal",
       "aliases": [
         "data-access",
@@ -460,7 +460,11 @@
         "meta data",
         "tiktok data",
         "organic data",
+        "creative summaries",
+        "transcripts",
+        "data endpoints",
         "motion reports",
+        "reports",
         "inspo",
         "workspace context",
         "brand context",
@@ -468,9 +472,9 @@
         "spend threshold"
       ],
       "productFeatures": [
-        "Pulls your own account's Meta and TikTok performance.",
-        "Reads your saved Motion reports, goals, and brand context.",
-        "Pulls competitor and external-brand research through InSpo."
+        "Pulls own-account Meta performance, creative rows, summaries, transcripts where available, and metric/filter references.",
+        "Pulls own-account TikTok performance and associated creative details through a separate TikTok query path.",
+        "Reads workspace goals, spend thresholds, brand context, and other data endpoints; reports and the expanded Inspo surfaces are coming in the next release."
       ],
       "userControls": [
         "Which workspace, account, platform, or date range to use.",
@@ -479,14 +483,34 @@
       ],
       "boxes": [
         {
-          "key": "own-performance",
-          "label": "Your performance",
-          "summary": "Your own account's Meta and TikTok ad performance: spend, results, creative breakdowns, and trends."
+          "key": "meta",
+          "label": "Meta data",
+          "summary": "Own-account Meta performance: metrics, creative rows, creative summaries, transcripts where available, and copy/headline/landing-page groupings."
+        },
+        {
+          "key": "tiktok",
+          "label": "TikTok data",
+          "summary": "Own-account TikTok performance and associated creative details. This is a separate query path from Meta and should not be described as the same transcript or summary surface."
+        },
+        {
+          "key": "creative-summaries",
+          "label": "Creative summaries",
+          "summary": "Generated creative understanding used for analysis, strategy, galleries, and pattern reads."
+        },
+        {
+          "key": "transcripts",
+          "label": "Transcripts",
+          "summary": "Spoken-word or script data where supported, especially Meta video transcript pulls when the user asks what a video says."
+        },
+        {
+          "key": "data-endpoints",
+          "label": "Data endpoints",
+          "summary": "Workspace goal, spend threshold, brand context, metric references, filter references, and custom conversion metric lookup."
         },
         {
           "key": "reports",
-          "label": "Saved reports",
-          "summary": "The Motion reports already saved in your workspace, used as the source of truth for those views."
+          "label": "Reports (coming soon)",
+          "summary": "Saved Motion report lists and report configurations. Do not present this endpoint as live until it ships."
         },
         {
           "key": "brand-context",
@@ -500,22 +524,22 @@
         },
         {
           "key": "inspo",
-          "label": "InSpo (competitors)",
-          "summary": "Competitor and external-brand creatives and context for research. A separate source from your own-account data."
+          "label": "Inspo (next release)",
+          "summary": "Competitor and organic inspiration coming with the next release: followed brands, unique creatives, visual format options, boards, board items, brand context, creator profiles, organic TikTok posts, and organic keyword steering."
         }
       ],
       "thingsToKnow": [
         {
-          "summary": "Your Meta data comes through Motion, not a key you manage.",
-          "detail": "Own-account Meta and TikTok numbers come through Motion's own connection. There's no separate Meta token for you to set up or worry about expiring."
+          "summary": "Meta and TikTok are separate data paths.",
+          "detail": "Meta supports performance metrics, creative rows, creative summaries, transcripts where available, and copy/headline/landing-page groupings. TikTok supports TikTok performance and associated creative details through its own query shape."
         },
         {
-          "summary": "Your account and competitors are different sources.",
-          "detail": "Your own performance comes from your connected accounts. Competitor and external-brand research comes from InSpo. They don't mix."
+          "summary": "Reports and Inspo are not live yet.",
+          "detail": "Saved reports should be labelled coming soon until the reports endpoint ships. Expanded Inspo support is part of the next release with PR #2237, so do not present those routes as already live."
         },
         {
-          "summary": "More InSpo is on the way.",
-          "detail": "Today InSpo covers competitor creatives and competitor brand context. Coming soon: InSpo brands, unique creatives, boards, creators, and TikTok organic posts."
+          "summary": "Batch inspection is not the same as filtered search.",
+          "detail": "When a request cannot be expressed through the available filters, Runneth may pull a broader batch and inspect it manually. It should say that clearly, avoid presenting it as a direct filtered query, and set expectations that it may take a while."
         }
       ]
     }
