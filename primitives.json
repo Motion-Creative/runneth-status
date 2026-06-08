@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-08T19:05:00.000Z",
+  "updatedAt": "2026-06-08T19:20:00.000Z",
   "primitives": [
     {
       "key": "runneth",
@@ -299,7 +299,8 @@
           "key": "slack_connect",
           "label": "Slack Connect (external)",
           "rules": [
-            "Runneth stays out of externally shared channels, even if someone adds it."
+            "These are channels shared with an outside company. Runneth treats them like any channel it's added to.",
+            "Anyone in the external org can see its answers, so add it only where sharing your org's context outward is intended."
           ]
         }
       ],
