@@ -4,8 +4,8 @@
     "updatedAt": "2026-06-08T13:39:57.000Z",
     "summary": "Next planned release is Monday night or Tuesday night.",
     "plannedWindow": "Monday night or Tuesday night, June 8 or June 9, 2026",
-    "details": "The release is being coordinated with the big routines refactor. Until then, active issues remain, so keep the workarounds in mind.",
-    "statusPagePlacement": "Show this at the top of the status page above the issue notices."
+    "details": "Until the release ships, the active issues below remain in effect, so keep using the listed workarounds.",
+    "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
     "use_when_relevant": "Use this whenever the user's request touches this area.",
@@ -41,7 +41,7 @@
     },
     {
       "id": "slack-reinstall-for-narrower-scope",
-      "runnethUse": "only_when_asked",
+      "runnethUse": "status_page_only",
       "primitives": ["slack"],
       "surfaces": ["web", "slack"],
       "updatedAt": "2026-06-08T13:49:35.000Z",
@@ -61,7 +61,7 @@
     },
     {
       "id": "slack-file-uploads-rate-limited",
-      "runnethUse": "use_when_relevant",
+      "runnethUse": "status_page_only",
       "pinned": true,
       "primitives": ["slack"],
       "surfaces": ["slack"],
@@ -82,7 +82,7 @@
     },
     {
       "id": "older-slack-threads-messy-formatting",
-      "runnethUse": "only_when_asked",
+      "runnethUse": "status_page_only",
       "primitives": ["slack"],
       "surfaces": ["slack"],
       "updatedAt": "2026-06-08T13:49:35.000Z",
@@ -109,7 +109,7 @@
     },
     {
       "id": "oauth-gated-apps-logged-out-ui",
-      "runnethUse": "only_when_asked",
+      "runnethUse": "status_page_only",
       "primitives": ["apps"],
       "surfaces": ["web"],
       "updatedAt": "2026-06-08T13:58:11.000Z",
