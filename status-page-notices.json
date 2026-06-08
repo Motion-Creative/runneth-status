@@ -24,20 +24,20 @@
       "runnethUse": "use_when_relevant",
       "primitives": ["data_access"],
       "surfaces": ["web", "slack"],
-      "updatedAt": "2026-06-08T21:48:33.000Z",
-      "summary": "Expanded Inspo creator and organic TikTok routes are coming soon with clear query boundaries.",
-      "impact": "Expanded Inspo routes and the matching Runneth guidance are coming with the next release. When these endpoints ship, they will be useful creative-strategy inputs with specific direct paths, not open-ended creator or organic TikTok search. Direct paths include known creator lookup by name or handle, the current organic recommendation feed, an exact creator feed by handle, saved board examples, competitor ads from unique creatives, and organic keyword updates with user sign-off.",
-      "workaround": "Until the Inspo release ships, do not promise the expanded routes as live. For broad creator or organic TikTok requests, start from the strongest direct path available. If the request cannot be filtered directly, Runneth should say it can pull the closest available batch and inspect it manually. That route may take a while and is less precise than a direct filtered search.",
+      "updatedAt": "2026-06-08T22:00:01.000Z",
+      "summary": "Expanded Inspo is coming soon with a few direct query paths.",
+      "impact": "Expanded Inspo routes and matching Runneth guidance ship with the next release. Direct paths: creator lookup by name/handle, current organic TikTok feed, exact creator feed by handle, saved boards, competitor ads, and keyword changes that guide future organic recommendations.",
+      "workaround": "Missing for now: broad creator search by category/follower/platform/engagement and live TikTok search by keyword/topic/hashtag/sound/date/engagement. For those, Runneth should say it can pull a limited page from the closest available source, then filter or read those results after the pull. That can take longer and may miss results outside the pulled page.",
       "resolution": {
         "type": "confirmed_next_release",
         "label": "Coming soon",
         "note": "Expanded Inspo routes and matching Runneth guidance are planned to ship together in the next release."
       },
       "examples": [],
-      "statusPageGuidance": "Show under Data access and Inspo. Frame this as coming-soon creative discovery with clear query boundaries, not an endpoint outage. Make the status card clear about what will be directly queryable versus what requires broader batch inspection.",
+      "statusPageGuidance": "Show under Data access and Inspo. Keep the card short: direct query paths, missing broad filters, and the pull-then-filter workaround.",
       "runnethTrigger": "User asks for creator discovery, creators like a person or brand, top creators in a category, high-engagement creators, organic TikToks about a keyword or topic, organic TikTok search, organic TikTok trends, or changes to organic TikTok feed keywords.",
-      "runnethGuidance": "The Runneth guidance that ships with Inspo should say that organic TikTok and creator discovery are getting richer, but Runneth cannot live-search every TikTok by topic, filter organic TikTok posts by keyword/topic/category/engagement, or filter creators by category, follower range, platform, or engagement from these endpoints yet. Runneth should offer the strongest direct path: search a known creator profile by name or handle, inspect the current organic recommendation feed, pull an exact creator feed when the user has a handle, mine saved board examples, use Inspo unique creatives for competitor ad inspiration, or read and update organic TikTok keywords with sign-off to steer future recommendations. If the user still wants a broad creator or organic read, Runneth may pull a current feed or broad batch and inspect it manually, but it should say that this is batch inspection rather than a filtered search and that it may take a while.",
-      "supportGuidance": "Treat expanded Inspo routes and their matching Runneth guidance as coming soon until the next release. For broad creator or organic asks, collect the intended strategy angle: target brand, category, creator handle, board, competitor, or keywords. Set expectations that organic keyword changes guide future recommendations and may take time to show new posts, and that broad batch inspection is slower and less precise than direct filtering."
+      "runnethGuidance": "When the Inspo guidance ships, route direct asks to the matching source: creator name/handle, current organic feed, exact creator handle, saved board, competitor brand, or keyword update with sign-off. For broad creator or TikTok searches, say the endpoint cannot filter that directly yet; Runneth can pull a limited page from the closest source and then filter/read it, but this may take a while and is less complete than direct search.",
+      "supportGuidance": "Treat expanded Inspo and matching Runneth guidance as coming soon until the next release. Ask for the best pivot: creator name/handle, board, competitor brand, or organic keyword direction. For broad asks, set expectations that keyword changes guide future feed recommendations and pull-then-filter is slower and less precise than direct filtering."
     },
     {
       "id": "routines-refactor-in-progress",
