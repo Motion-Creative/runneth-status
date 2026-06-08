@@ -213,7 +213,7 @@
         {
           "key": "data_access",
           "label": "Data access",
-          "what": "Motion data, external endpoints, and CLI-backed data access. This includes Meta data, TikTok data, creative summaries, transcripts, data endpoints, workspace context, brand context, workspace goal, spend threshold, reports coming soon, and Inspo in the next release."
+          "what": "Motion data, external endpoints, and CLI-backed data access. This includes Meta data, TikTok data, creative summaries, transcripts, data endpoints, workspace context, brand context, workspace goal, spend threshold, reports coming soon, and Inspo coming soon."
         },
         {
           "key": "pipedream",
@@ -452,7 +452,7 @@
       "key": "data_access",
       "label": "Data access",
       "tagline": "Motion data and connected data sources.",
-      "summary": "Where Motion data comes from: Meta performance, TikTok performance, creative summaries, transcripts, workspace and brand context, metric/reference endpoints, reports coming soon, and Inspo in the next release. Use this for anything about data pulls.",
+      "summary": "Where Motion data comes from: Meta performance, TikTok performance, creative summaries, transcripts, workspace and brand context, metric/reference endpoints, reports coming soon, and Inspo coming soon. Use this for anything about data pulls.",
       "color": "teal",
       "aliases": [
         "data-access",
@@ -475,7 +475,7 @@
       "productFeatures": [
         "Pulls own-account Meta performance, creative rows, summaries, transcripts where available, and metric/filter references.",
         "Pulls own-account TikTok performance and associated creative details through a separate TikTok query path.",
-        "Reads workspace goals, spend thresholds, brand context, and other data endpoints; reports and the expanded Inspo surfaces are coming in the next release."
+        "Reads workspace goals, spend thresholds, brand context, and other data endpoints; reports and the expanded Inspo surfaces are coming soon."
       ],
       "userControls": [
         "Which workspace, account, platform, or date range to use.",
@@ -525,8 +525,8 @@
         },
         {
           "key": "inspo",
-          "label": "Inspo (next release)",
-          "summary": "Competitor and organic inspiration coming with the next release: followed brands, unique creatives, visual format options, boards, board items, brand context, creator profiles, organic TikTok posts, and organic keyword steering."
+          "label": "Inspo (coming soon)",
+          "summary": "Competitor and organic inspiration coming soon: followed brands, unique creatives, visual format options, boards, board items, brand context, creator profiles, organic TikTok posts, and organic keyword steering."
         }
       ],
       "thingsToKnow": [
@@ -536,7 +536,7 @@
         },
         {
           "summary": "Reports and Inspo are not live yet.",
-          "detail": "Saved reports should be labelled coming soon until the reports endpoint ships. Expanded Inspo support is part of the next release with PR #2237, so do not present those routes as already live."
+          "detail": "Saved reports should be labelled coming soon until the reports endpoint ships. Expanded Inspo should be labelled coming soon until those routes ship."
         },
         {
           "summary": "Batch inspection is not the same as filtered search.",
