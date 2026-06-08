@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-08T18:30:00.000Z",
+  "updatedAt": "2026-06-08T19:05:00.000Z",
   "primitives": [
     {
       "key": "runneth",
@@ -269,7 +269,7 @@
           "label": "Public channel",
           "rules": [
             "Anyone in the workspace can add Runneth, or it can add itself when asked.",
-            "It only sees messages in channels it's been added to."
+            "It only reads the public channels it's been added to."
           ]
         },
         {
@@ -277,23 +277,29 @@
           "label": "Private channel",
           "rules": [
             "Someone already in the channel has to invite it. It can't add itself.",
-            "Same rule: it only sees the private channels it's been invited to."
-          ]
-        },
-        {
-          "key": "app_thread",
-          "label": "App thread",
-          "rules": [
-            "A direct thread with Runneth inside the Slack app. Supported.",
-            "Good for one-on-one work when you don't want to pull it into a channel."
+            "It only reads the private channels it's been invited to."
           ]
         },
         {
           "key": "dm",
-          "label": "DM & group chat",
+          "label": "Direct message (Messages tab)",
           "rules": [
-            "Not supported today. Runneth can't be reached by direct message or group chat.",
-            "Tag it in a channel it's in, or start an app thread instead."
+            "Open Runneth from its Messages tab and it answers there. That thread is the supported way to work one-on-one.",
+            "It ignores plain one-line DMs sent outside a thread, and it can't start a DM with you first."
+          ]
+        },
+        {
+          "key": "group_dm",
+          "label": "Group DM",
+          "rules": [
+            "Not supported today. Slack blocks adding a bot to an existing group chat."
+          ]
+        },
+        {
+          "key": "slack_connect",
+          "label": "Slack Connect (external)",
+          "rules": [
+            "Runneth stays out of externally shared channels, even if someone adds it."
           ]
         }
       ],
