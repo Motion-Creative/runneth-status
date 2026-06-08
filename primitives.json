@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-08T19:59:40.000Z",
+  "updatedAt": "2026-06-08T21:17:23.551Z",
   "primitives": [
     {
       "key": "runneth",
@@ -256,7 +256,8 @@
       "productFeatures": [
         "Connects to Slack through a normal sign-in.",
         "Reads channels and threads once it's been added to them.",
-        "Posts replies, reports, and briefs where it has access."
+        "Posts replies, reports, and briefs where it has access.",
+        "Can create and set up a channel when you ask."
       ],
       "userControls": [
         "Which channels you invite it into.",
@@ -268,8 +269,8 @@
           "key": "public",
           "label": "Public channel",
           "rules": [
-            "Anyone in the workspace can add Runneth, or it can add itself when asked.",
-            "It only reads the public channels it's been added to."
+            "Anyone in the workspace can add Runneth, or it can add itself when asked. It can also create and set up channels when you ask.",
+            "It reads the full history only in public channels it's been added to, but it can also search public channels for context even ones it hasn't joined."
           ]
         },
         {
@@ -285,7 +286,7 @@
           "label": "Direct message (Messages tab)",
           "rules": [
             "Open Runneth from its Messages tab and it answers there. That thread is the supported way to work one-on-one.",
-            "It ignores plain one-line DMs sent outside a thread, and it can't start a DM with you first."
+            "Runneth keeps history of everything in a DM, so it deliberately ignores plain one-line DMs sent straight to it, and it can't start a DM with you first. For a private space to work with it, open a private channel and invite it in instead."
           ]
         },
         {
