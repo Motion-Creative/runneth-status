@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-08T13:49:35.000Z",
+  "updatedAt": "2026-06-08T13:58:11.000Z",
   "active": [
     {
       "id": "routines-refactor-in-progress",
@@ -86,6 +86,27 @@
         "Do not mention this for every Slack request.",
         "Do not claim older Slack thread formatting is fixed before the next planned release.",
         "Do not treat raw response-control text as a normal customer-facing Runneth reply."
+      ]
+    },
+    {
+      "id": "oauth-gated-apps-logged-out-ui",
+      "primitives": ["web"],
+      "surfaces": ["web"],
+      "startedAt": "2026-06-08T13:58:11.000Z",
+      "updatedAt": "2026-06-08T13:58:11.000Z",
+      "summary": "OAuth-gated apps can show a rough logged-out screen.",
+      "impact": "When someone opens an app that requires OAuth while logged out, the gated screen may look unfinished instead of showing a polished sign-in or access prompt.",
+      "runnethInstructions": "Apply this only when the user asks about or reports an app, app link, dashboard, widget, or generated page looking broken, ugly, unfinished, or confusing while logged out or blocked by OAuth. Explain that OAuth-gated apps can show a rough logged-out screen right now, and that the team is working on the UI. Do not imply the app's authenticated experience or underlying data is broken unless the user reports that after logging in. Ask the person to log in, open the link from an authenticated Runneth or Motion session, connect the required OAuth account if needed, and refresh the app.",
+      "workaround": "Log in to the right Motion/Runneth account, connect the required OAuth account if needed, then reopen or refresh the app link.",
+      "resolution": {
+        "type": "in_progress",
+        "label": "In progress",
+        "note": "The logged-out OAuth gate UI is being worked on, but it is not necessarily tied to the next planned release."
+      },
+      "avoid": [
+        "Do not say this is confirmed for the next planned release.",
+        "Do not describe the authenticated app experience as broken unless the user reports that after logging in.",
+        "Do not tell the user OAuth is optional when the app is gated by OAuth."
       ]
     }
   ]

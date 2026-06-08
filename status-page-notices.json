@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-08T13:49:35.000Z",
+  "updatedAt": "2026-06-08T13:58:11.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-08T13:39:57.000Z",
     "summary": "Next planned release is Monday night or Tuesday night.",
@@ -15,6 +15,7 @@
   "resolutionOptions": {
     "confirmed_next_release": "Confirmed for the next planned release.",
     "working_toward_next_release": "Working toward the next planned release, but not marked ready yet.",
+    "in_progress": "Being worked on, but not tied to the next planned release.",
     "notice_only": "Guidance or status visibility; no release fix is implied."
   },
   "notices": [
@@ -105,6 +106,26 @@
       "runnethTrigger": "User asks about or reports messy formatting in an older Slack thread, raw response-control text, or a stale Slack thread that is not rendering Runneth replies normally.",
       "runnethGuidance": "Acknowledge that older Slack threads can show messy formatting until the next planned release. Do not proactively mention this for normal Slack requests. For now, starting a new Slack conversation is the cleaner path. If the user needs continuity from the older thread, ask them to paste the relevant context or link the old thread in the new conversation. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
       "supportGuidance": "Capture the Slack thread link, whether the thread is older, what formatting appeared, and whether raw response-control text was shown."
+    },
+    {
+      "id": "oauth-gated-apps-logged-out-ui",
+      "runnethUse": "only_when_asked",
+      "primitives": ["apps"],
+      "surfaces": ["web"],
+      "updatedAt": "2026-06-08T13:58:11.000Z",
+      "summary": "OAuth-gated apps can show a rough logged-out screen.",
+      "impact": "When someone opens an app that requires OAuth while logged out, the gated screen may look unfinished instead of showing a polished sign-in or access prompt.",
+      "workaround": "Log in to the right Motion/Runneth account, connect the required OAuth account if needed, then reopen or refresh the app link.",
+      "resolution": {
+        "type": "in_progress",
+        "label": "In progress",
+        "note": "The logged-out OAuth gate UI is being worked on, but it is not necessarily tied to the next planned release."
+      },
+      "examples": [],
+      "statusPageGuidance": "Show under Apps. This is a logged-out OAuth gate UI issue, not a general app outage. Use the in_progress resolution flag and do not imply it is confirmed for the next planned release.",
+      "runnethTrigger": "User asks about or reports an app, app link, dashboard, widget, or generated page looking broken, ugly, unfinished, or confusing while logged out or blocked by OAuth.",
+      "runnethGuidance": "Acknowledge that OAuth-gated apps can show a rough logged-out screen right now, and that the team is working on the UI. Do not imply the authenticated app experience or underlying data is broken unless the user reports that after logging in. Ask the person to log in, open the link from an authenticated Runneth or Motion session, connect the required OAuth account if needed, and refresh the app.",
+      "supportGuidance": "Capture the app link, whether the person was logged out, which OAuth gate appeared, and whether the page still looks wrong after logging in and refreshing."
     }
   ]
 }

@@ -60,6 +60,7 @@ Support `pinned: true` on notices. Pinned notices should render before unpinned 
 Support `resolution` on notices as a small icon or flag on the card:
 - `confirmed_next_release`: show a small checkmark-style flag with the notice's `resolution.label`, usually "Next release". This means the fix is confirmed for the next planned release, but the notice is still active until that release ships.
 - `working_toward_next_release`: show a subtle in-progress flag with the notice's `resolution.label`, usually "In progress". This means the team is working toward the next planned release, but it is not ready or guaranteed yet.
+- `in_progress`: show a subtle in-progress flag with the notice's `resolution.label`, usually "In progress". This means the team is working on it, but it is not tied to the next planned release.
 - `notice_only`: show a neutral notice/info flag with the notice's `resolution.label`, usually "Notice only". This means the card is guidance or status visibility and does not imply a release fix.
 
 Do not show these as big badges or make them the main focus of the card. They should be small supporting flags near the notice title or status metadata.
