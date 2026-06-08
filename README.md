@@ -43,7 +43,6 @@ Slack, Google Drive, and Notion should stay as standalone cards because they are
 `status-page-notices.json` separates status-page visibility from what Runneth should actually do with a notice:
 
 - `releaseNote`: an optional top-of-page note for the current planned release window and operational context.
-
 - `use_when_relevant`: Runneth should use the guidance whenever the user's request touches this area.
 - `only_when_asked`: Runneth should use the guidance only when the user asks about or reports that specific issue.
 - `status_page_only`: the notice is visible to CSMs/product/operators, but should not be injected into Runneth by default.
@@ -60,6 +59,8 @@ Use `pinned: true` when a notice should stay at the top of the visual status pag
 
 Use `fixReadyForNextRelease: true` when a notice has a fix ready and should show a simple "fix ready, next release" visual treatment on the status page. This is only a display signal; the `fix` text is still the source of truth for wording.
 
+Use `examples` on every status-page notice. Leave it as an empty array when there is no example yet. When an example exists, include a short label, a link, the specific observed response or symptom, and what to look for so the visual page can show the evidence without forcing someone to open the thread first.
+
 ## Prompt Injection Feed
 
 `status.json` is the current Agent Builder prompt-injection feed. Keep it small, prompt-grade, and customer-safe.
@@ -70,8 +71,12 @@ Each injected notice should include:
 - `impact`: what is affected in plain language.
 - `runnethInstructions`: detailed prompt text with trigger conditions, framing, substitute action, and exact state language.
 - `workaround`: the concrete substitute or next step Runneth should offer. If there is no workaround, say that directly and name the safest alternate path. This should be easy to call out visually on the status page.
+- `fix`: current fix status or release state in plain language.
+- `fixReadyForNextRelease`: boolean display state for notices whose fix is ready but not live yet.
 - `avoid`: hard boundaries for what Runneth should not say or do.
 - `pinned`: optional visual status-page flag. Use `true` only for notices that should be called out first in the app.
+
+Keep internal examples and private links in `status-page-notices.json`, not `status.json`. The prompt-injection feed should stay customer-safe and prompt-grade.
 
 Injected notices should be written like prompt guidance, not bug summaries. The routines-down prompt work in Agent Builder PR #2051 is the model: name the trigger, state the support boundary positively, describe the safe substitute, preserve important details for later when relevant, and explicitly forbid false success language.
 
