@@ -27,18 +27,21 @@ Make Integrations a parent category for Data access.
 Clarify those different types so there should be workspace context. Clarify brand context and whether the workspace goal is being triggered and spend threshold within those, instead of just saying Motion CLI.
 
 For Data access, pull out specifically:
-- Motion CLI
 - Meta data
 - TikTok data
-- Organic data
-- Motion reports
-- InSpo
+- creative summaries
+- transcripts
+- data endpoints
+- Motion reports (coming soon)
+- Inspo (coming soon / next release)
 - workspace context
 - brand context
 - whether workspace goal is being triggered
 - spend threshold
 
-For Meta, also mention InSpo. For InSpo, say what exists today, like boards, brands, and anything else currently supported, versus what is coming soon. Pull the coming-soon details from Linear tickets and the current codebase state, not guesses.
+For Meta, separate out what is available: own-account performance metrics, creative rows, creative summaries, transcripts where available, copy/headline/landing-page groupings, metric references, filter references, and custom conversion metrics. For TikTok, keep it separate: TikTok performance metrics and associated creative details have a different query shape from Meta and should not be described as the same transcript or creative-summary surface.
+
+For reports, mark the saved reports endpoint as coming soon until it is live. For Inspo, mark the new Inspo endpoints and Runneth guidance as coming soon / next release. Say what PR #2237 will unlock: brands, unique creatives, visual format options, boards, board items, creators, organic TikTok posts, and organic TikTok keywords. Call out query boundaries in creative-strategy language: creators can be looked up by known name or handle, organic TikTok can pull the current recommendation feed or an exact creator feed, and organic keywords steer future feed recommendations. Broader creator/category/engagement filtering and live organic TikTok topic search are still being expanded. Pull any future-querying details from Linear tickets and the current codebase state, not guesses.
 
 Use these repo files:
 - `primitives.json`: the richer product/status map for the visual page.
@@ -89,18 +92,23 @@ Keep Integrations as the parent/category view that explains:
 - secrets / API keys
 
 Make Data access clear and concrete. Do not just say "Motion CLI." Show how the actual data surfaces work:
-- `motion meta insights` for own-account Meta creative performance, metrics, transcripts, and creative-gallery rows.
-- `motion tiktok insights` for TikTok performance.
-- `motion reports` for saved Motion reports and report configurations.
+- `motion meta insights` for own-account Meta creative performance, metrics, creative rows, creative summaries, transcripts where available, and copy/headline/landing-page groupings.
+- `motion tiktok insights` for TikTok performance and associated creative details.
+- creative summaries as a separate available data surface for creative understanding and strategy.
+- transcripts as a separate available data surface where supported, especially Meta video spoken-word/script pulls.
+- data endpoints such as metric references, filter references, custom conversion metrics, workspace goal, spend threshold, and brand context.
+- saved Motion reports and report configurations as coming soon until the reports endpoint is live.
 - `motion workspace-goal` for preferred KPI and attribution-window setup when the user asks for best/worst/what is working/what to scale/goal or conversion setup.
 - `motion spend-threshold` only when the user asks for significant-spend-only data, spend cutoffs, or threshold config.
 - `motion brand-context --data-query` for own-brand positioning, products, audience, claims, constraints, and creative framing.
-- `motion inspo-creatives` and `motion inspo-context` for competitor/InSpo creative and brand context.
+- Inspo as coming soon / next release for followed brands, unique creatives, visual format options, boards, board items, competitor brand context, creator profiles, organic TikTok posts, and organic TikTok keyword steering.
 
-For InSpo:
-- Today: Runneth can use competitor creatives and competitor brand context through the current Motion CLI paths.
-- Coming soon/currently being wired: InSpo brands, unique creatives, boards, creators, TikTok organic posts, board contents, and board write flows.
-- Separate paid Meta/TikTok performance from organic/InSpo/creator data.
+For Inspo:
+- Coming in the next release: followed brand lookup, unique creatives, visual format options, boards, board items, competitor brand context, creator profiles, organic TikTok posts, and organic TikTok keyword steering.
+- Direct query paths in that release: competitor ad examples through brands and unique creatives, saved inspiration through boards and board items, known creator lookup by name or handle, current organic recommendation feed reads, exact creator feeds by handle, and keyword update plans that steer future recommendations.
+- Still not direct-queryable: broad creator/category/engagement filtering, broad follower/platform filtering, live organic TikTok topic or keyword search, and immediate new results from keyword changes.
+- If Runneth pulls a broad batch and inspects it manually, say that clearly. Do not make it sound like a filtered creator search or live TikTok search, and set expectations that it may take a while.
+- Separate paid Meta/TikTok performance from organic/Inspo/creator data.
 
 Also set up or update the routine/refresh behavior so the status page refreshes every morning. It should refresh the current-state page from:
 - the `Motion-Creative/runneth-status` repo
