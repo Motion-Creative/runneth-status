@@ -42,6 +42,8 @@ Slack, Google Drive, and Notion should stay as standalone cards because they are
 
 `status-page-notices.json` separates status-page visibility from what Runneth should actually do with a notice:
 
+- `releaseNote`: an optional top-of-page note for the current planned release window and operational context.
+
 - `use_when_relevant`: Runneth should use the guidance whenever the user's request touches this area.
 - `only_when_asked`: Runneth should use the guidance only when the user asks about or reports that specific issue.
 - `status_page_only`: the notice is visible to CSMs/product/operators, but should not be injected into Runneth by default.
@@ -55,6 +57,8 @@ Examples:
 Every status-page notice should also include a `workaround`. If there is no workaround, say that clearly and provide the safest alternate path. Make it concrete enough to show on the visual page and safe enough for Runneth to repeat to a customer when the notice is injected.
 
 Use `pinned: true` when a notice should stay at the top of the visual status page. Pinning is only a display signal for the app. It does not make Runneth inject the notice, and it does not change `runnethUse`.
+
+Use `fixReadyForNextRelease: true` when a notice has a fix ready and should show a simple "fix ready, next release" visual treatment on the status page. This is only a display signal; the `fix` text is still the source of truth for wording.
 
 ## Prompt Injection Feed
 

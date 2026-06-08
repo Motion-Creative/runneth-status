@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-05T00:06:36.000Z",
+  "updatedAt": "2026-06-08T13:35:28.000Z",
   "active": [
     {
       "id": "routines-refactor-in-progress",
@@ -51,6 +51,23 @@
         "Do not present this as a Slack permissions or reinstall issue.",
         "Do not describe web uploads or new web chats as affected.",
         "Do not name a release tag or number."
+      ]
+    },
+    {
+      "id": "older-slack-threads-messy-formatting",
+      "primitives": ["slack"],
+      "surfaces": ["slack"],
+      "startedAt": "2026-06-08T12:03:13.000Z",
+      "updatedAt": "2026-06-08T13:35:28.000Z",
+      "summary": "Older Slack threads can show messy formatting.",
+      "impact": "Replies in older Slack threads may render with messy formatting or raw response-control text instead of a normal Runneth reply.",
+      "runnethInstructions": "Apply this only when the user asks about or reports messy formatting in an older Slack thread, raw response-control text, or a stale Slack thread that is not rendering Runneth replies normally. Do not proactively mention this for normal Slack requests. Explain that older Slack threads can show messy formatting until the next planned release. For now, starting a new Slack conversation is the cleaner path. If the user needs continuity from the older thread, ask them to paste the relevant context or link the old thread in the new conversation. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
+      "workaround": "Start a new Slack conversation for the same work. If context matters, paste the relevant context or link the older thread in the new conversation.",
+      "fix": "Ready - goes out with the next planned release.",
+      "avoid": [
+        "Do not mention this for every Slack request.",
+        "Do not claim older Slack thread formatting is fixed before the next planned release.",
+        "Do not treat raw response-control text as a normal customer-facing Runneth reply."
       ]
     }
   ]

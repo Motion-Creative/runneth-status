@@ -1,5 +1,12 @@
 {
-  "updatedAt": "2026-06-05T00:06:36.000Z",
+  "updatedAt": "2026-06-08T13:35:28.000Z",
+  "releaseNote": {
+    "updatedAt": "2026-06-08T13:35:28.000Z",
+    "summary": "Next planned release is Monday night or Tuesday night.",
+    "plannedWindow": "Monday night or Tuesday night, June 8 or June 9, 2026",
+    "details": "The release is being coordinated with the big routines refactor. Until then, active issues remain, so keep the workarounds in mind.",
+    "statusPagePlacement": "Show this at the top of the status page above the issue notices."
+  },
   "runnethUseOptions": {
     "use_when_relevant": "Use this whenever the user's request touches this area.",
     "only_when_asked": "Use this only when the user asks about or reports this issue.",
@@ -43,10 +50,31 @@
       "impact": "Runneth cannot read file uploads on Slack. Web uploads are fine.",
       "workaround": "Slack-side retry or new-conversation attempts are unreliable and may only work sometimes. For urgent work, use web upload, paste the text, or describe the file.",
       "fix": "Ready - goes out with the next planned release.",
+      "fixReadyForNextRelease": true,
       "statusPageGuidance": "Show under Slack only. Web uploads are fine. The fix is ready and goes out with the next planned release.",
       "runnethTrigger": "User asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, or reports that a Slack file-upload message got no reply or stalled.",
       "runnethGuidance": "Acknowledge that Runneth cannot read file uploads on Slack right now, while web uploads are fine. Starting a new Slack conversation might work sometimes, but it is not dependable and should not be presented as a reliable workaround or fix. For urgent work, ask them to use web upload, paste the relevant text, or describe the file. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
       "supportGuidance": "Confirm the upload happened in Slack. Capture whether the Slack conversation was new or an existing thread, the approximate time, file type, and whether the message received no reply, timed out, or failed before sending."
+    },
+    {
+      "id": "older-slack-threads-messy-formatting",
+      "runnethUse": "only_when_asked",
+      "primitives": ["slack"],
+      "surfaces": ["slack"],
+      "updatedAt": "2026-06-08T13:35:28.000Z",
+      "summary": "Older Slack threads can show messy formatting.",
+      "impact": "Replies in older Slack threads may render with messy formatting or raw response-control text instead of a normal Runneth reply.",
+      "workaround": "Start a new Slack conversation for the same work. If context matters, paste the relevant context or link the older thread in the new conversation.",
+      "fix": "Ready - goes out with the next planned release.",
+      "fixReadyForNextRelease": true,
+      "statusPageGuidance": "Show under Slack as an active known issue. Show the example thread link for internal context, and show a small checkmark treatment because the fix is ready for the next planned release.",
+      "example": {
+        "label": "Example older Slack thread with messy formatting",
+        "url": "https://motion-7pz5426.slack.com/archives/C08LZ0A511U/p1780924522368459?thread_ts=1780336543.272799&cid=C08LZ0A511U"
+      },
+      "runnethTrigger": "User asks about or reports messy formatting in an older Slack thread, raw response-control text, or a stale Slack thread that is not rendering Runneth replies normally.",
+      "runnethGuidance": "Acknowledge that older Slack threads can show messy formatting until the next planned release. Do not proactively mention this for normal Slack requests. For now, starting a new Slack conversation is the cleaner path. If the user needs continuity from the older thread, ask them to paste the relevant context or link the old thread in the new conversation. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
+      "supportGuidance": "Capture the Slack thread link, whether the thread is older, what formatting appeared, and whether raw response-control text was shown."
     }
   ]
 }
