@@ -111,7 +111,7 @@ Current source-of-truth notes:
 - Workspace goal should trigger for broad Meta asks like best, worst, what is working, what to scale, goal/conversion setup, or attribution-window questions.
 - Spend threshold should only trigger when the user asks for significant-spend-only data, spend cutoffs, or threshold config.
 - Own-brand strategy context should route through `motion brand-context --data-query`.
-- Inspo brands, unique creatives, boards, board items, creators, organic TikTok posts, and organic TikTok keyword steering are coming soon. Runneth guidance for these query boundaries is already injected.
+- Inspo brands, unique creatives, boards, board items, creators, organic TikTok posts, and organic TikTok keyword steering are coming soon with matching Runneth guidance in the next release.
 - For Inspo guidance, be clear about direct query paths versus batch inspection: competitor ads and saved board items support specific filters, known creators can be looked up by name or handle, organic TikTok can pull the current recommendation feed or an exact creator handle, and organic keywords steer future feed recommendations. Broad creator/category/engagement filtering and live organic TikTok topic search are still being expanded; if Runneth pulls a broad batch to inspect manually, it should say that is not the same as a filtered search and may take a while.
 
 ## Review Rules
