@@ -1,18 +1,21 @@
 {
-  "updatedAt": "2026-06-08T13:39:57.000Z",
+  "updatedAt": "2026-06-08T13:58:11.000Z",
   "active": [
     {
       "id": "routines-refactor-in-progress",
       "primitives": ["routines"],
       "surfaces": ["web", "slack"],
       "startedAt": "2026-05-26T00:00:00.000Z",
-      "updatedAt": "2026-06-08T13:39:57.000Z",
+      "updatedAt": "2026-06-08T13:49:35.000Z",
       "summary": "Routine automation is temporarily paused during the refactor.",
       "impact": "Requests to create, schedule, monitor, remind, post later, or keep work updated should not be presented as live routine automation during the refactor.",
       "runnethInstructions": "Apply this when the user asks to create, set up, schedule, monitor, remind, notify, post later, repeat, run recurring work, keep something updated, or run background upkeep. Do not start by collecting setup details or implying live routine setup will work normally. Say positively that reliable routine automation is being worked on, offer to save the requested routine as a future routine plan, and offer immediate one-time help where possible. Save future routine plans in `/agent/brain/saved-routines.md` only after the user accepts and the plan has enough detail. If details or approval are still missing, say \"I can save this once I have...\" rather than saying it is saved, being saved, or set up. If the user explicitly asks Runneth to try anyway, only use best-effort setup when the request has an exact schedule or trigger, task, workspace scope, and delivery target; confirm setup only after creation succeeds.",
       "workaround": "Save the routine plan with schedule, condition, delivery target, and workspace or Slack target, then run the immediate one-time task where possible.",
-      "fix": "In progress - coordinated with the routines refactor and planned release window.",
-      "fixReadyForNextRelease": false,
+      "resolution": {
+        "type": "working_toward_next_release",
+        "label": "In progress",
+        "note": "Working toward the next planned release as part of the routines refactor; not marked ready yet."
+      },
       "avoid": [
         "Do not say the routine is scheduled or active.",
         "Do not ask the person to retry routine setup repeatedly."
@@ -23,13 +26,16 @@
       "primitives": ["slack"],
       "surfaces": ["slack", "web"],
       "startedAt": "2026-05-31T00:00:00.000Z",
-      "updatedAt": "2026-06-08T13:39:57.000Z",
+      "updatedAt": "2026-06-08T13:49:35.000Z",
       "summary": "Older Slack installs may need reconnect to use the narrower permission scope.",
       "impact": "Some workspaces connected Slack before Runneth's Slack app moved to the narrower permission scope. Those older installs may still show or retain the wider grant until Slack is removed and reconnected through Runneth; newly connected orgs already use the narrower scope.",
       "runnethInstructions": "Apply this when the user asks about Slack permissions, Slack security review, Slack reconnect, Slack reinstall, or replacing an older Slack install with the narrower scope. Explain that new Slack connections already use the narrower scope, while older workspaces may need a Runneth-managed reconnect to pick it up. Route the person through Runneth's integration removal and reconnect flow: ask Runneth to remove the Slack integration, then start a new conversation and ask Runneth to connect Slack again. Do not tell them to uninstall directly from Slack, because that can leave the Runneth web setup widget or reinstall path unable to reconnect cleanly.",
       "workaround": "Use Runneth's own Slack removal and reconnect flow: ask Runneth to remove Slack, then start a new conversation and ask Runneth to connect Slack again. Do not uninstall the app directly from Slack.",
-      "fix": "No release fix needed; new Slack installs already use the narrower scope, and older installs can reconnect through Runneth.",
-      "fixReadyForNextRelease": false,
+      "resolution": {
+        "type": "notice_only",
+        "label": "Notice only",
+        "note": "Guidance for older installs; no release fix is implied."
+      },
       "avoid": [
         "Do not tell a security-cautious person that the wide-scope concern still applies after reconnect.",
         "Do not recommend uninstalling Slack from Slack itself as the reconnect path.",
@@ -42,13 +48,16 @@
       "primitives": ["slack"],
       "surfaces": ["slack"],
       "startedAt": "2026-06-04T16:05:00.000Z",
-      "updatedAt": "2026-06-05T00:06:36.000Z",
+      "updatedAt": "2026-06-08T13:49:35.000Z",
       "summary": "File uploads fail on Slack",
       "impact": "Runneth cannot read file uploads on Slack. Web uploads are fine.",
       "runnethInstructions": "Apply this when the user asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, or reports that a Slack file-upload message got no reply or stalled. Be upfront that Runneth cannot read file uploads on Slack right now, while web uploads are fine. Starting a new Slack conversation might work sometimes, but it is not dependable and should not be presented as a reliable workaround or fix. For urgent work, ask them to use web upload, paste the relevant text, or describe the file. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release. Do not claim the file was uploaded, read, saved, or attached unless the upload actually succeeded.",
       "workaround": "Slack-side retry or new-conversation attempts are unreliable and may only work sometimes. For urgent work, use web upload, paste the text, or describe the file.",
-      "fix": "Ready - goes out with the next planned release.",
-      "fixReadyForNextRelease": true,
+      "resolution": {
+        "type": "confirmed_next_release",
+        "label": "Next release",
+        "note": "Confirmed for the next planned release."
+      },
       "avoid": [
         "Do not present starting a new Slack conversation as a dependable workaround or fix.",
         "Do not ask the person to keep retrying Slack file attachments in the same thread.",
@@ -63,17 +72,41 @@
       "primitives": ["slack"],
       "surfaces": ["slack"],
       "startedAt": "2026-06-08T12:03:13.000Z",
-      "updatedAt": "2026-06-08T13:35:28.000Z",
+      "updatedAt": "2026-06-08T13:49:35.000Z",
       "summary": "Older Slack threads can show messy formatting.",
       "impact": "Replies in older Slack threads may render with messy formatting or raw response-control text instead of a normal Runneth reply.",
       "runnethInstructions": "Apply this only when the user asks about or reports messy formatting in an older Slack thread, raw response-control text, or a stale Slack thread that is not rendering Runneth replies normally. Do not proactively mention this for normal Slack requests. Explain that older Slack threads can show messy formatting until the next planned release. For now, starting a new Slack conversation is the cleaner path. If the user needs continuity from the older thread, ask them to paste the relevant context or link the old thread in the new conversation. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
       "workaround": "Start a new Slack conversation for the same work. If context matters, paste the relevant context or link the older thread in the new conversation.",
-      "fix": "Ready - goes out with the next planned release.",
-      "fixReadyForNextRelease": true,
+      "resolution": {
+        "type": "confirmed_next_release",
+        "label": "Next release",
+        "note": "Confirmed for the next planned release."
+      },
       "avoid": [
         "Do not mention this for every Slack request.",
         "Do not claim older Slack thread formatting is fixed before the next planned release.",
         "Do not treat raw response-control text as a normal customer-facing Runneth reply."
+      ]
+    },
+    {
+      "id": "oauth-gated-apps-logged-out-ui",
+      "primitives": ["web"],
+      "surfaces": ["web"],
+      "startedAt": "2026-06-08T13:58:11.000Z",
+      "updatedAt": "2026-06-08T13:58:11.000Z",
+      "summary": "OAuth-gated apps can show a rough logged-out screen.",
+      "impact": "When someone opens an app that requires OAuth while logged out, the gated screen may look unfinished instead of showing a polished sign-in or access prompt.",
+      "runnethInstructions": "Apply this only when the user asks about or reports an app, app link, dashboard, widget, or generated page looking broken, ugly, unfinished, or confusing while logged out or blocked by OAuth. Explain that OAuth-gated apps can show a rough logged-out screen right now, and that the team is working on the UI. Do not imply the app's authenticated experience or underlying data is broken unless the user reports that after logging in. Ask the person to log in, open the link from an authenticated Runneth or Motion session, connect the required OAuth account if needed, and refresh the app.",
+      "workaround": "Log in to the right Motion/Runneth account, connect the required OAuth account if needed, then reopen or refresh the app link.",
+      "resolution": {
+        "type": "in_progress",
+        "label": "In progress",
+        "note": "The logged-out OAuth gate UI is being worked on, but it is not necessarily tied to the next planned release."
+      },
+      "avoid": [
+        "Do not say this is confirmed for the next planned release.",
+        "Do not describe the authenticated app experience as broken unless the user reports that after logging in.",
+        "Do not tell the user OAuth is optional when the app is gated by OAuth."
       ]
     }
   ]

@@ -43,6 +43,7 @@ Slack, Google Drive, and Notion should stay as standalone cards because they are
 `status-page-notices.json` separates status-page visibility from what Runneth should actually do with a notice:
 
 - `releaseNote`: an optional top-of-page note for the current planned release window and operational context.
+- `resolutionOptions`: the supported resolution flag types for notice cards.
 - `use_when_relevant`: Runneth should use the guidance whenever the user's request touches this area.
 - `only_when_asked`: Runneth should use the guidance only when the user asks about or reports that specific issue.
 - `status_page_only`: the notice is visible to CSMs/product/operators, but should not be injected into Runneth by default.
@@ -57,7 +58,12 @@ Every status-page notice should also include a `workaround`. If there is no work
 
 Use `pinned: true` when a notice should stay at the top of the visual status page. Pinning is only a display signal for the app. It does not make Runneth inject the notice, and it does not change `runnethUse`.
 
-Use `fixReadyForNextRelease: true` when a notice has a fix ready and should show a simple "fix ready, next release" visual treatment on the status page. This is only a display signal; the `fix` text is still the source of truth for wording.
+Use `resolution` on every notice for the small visual flag on the status page:
+
+- `confirmed_next_release`: show a checkmark-style "Next release" flag. This means the fix is confirmed for the next planned release, but the notice is still active until the release ships.
+- `working_toward_next_release`: show a subtle in-progress flag. This means the team is working toward the next planned release, but it is not marked ready yet.
+- `in_progress`: show a subtle in-progress flag. This means the team is working on it, but it is not tied to the next planned release.
+- `notice_only`: show a neutral notice flag. This means the notice is guidance/status visibility and does not imply a release fix.
 
 Use `examples` on every status-page notice. Leave it as an empty array when there is no example yet. When an example exists, include a short label, a link, the specific observed response or symptom, and what to look for so the visual page can show the evidence without forcing someone to open the thread first.
 
@@ -71,8 +77,7 @@ Each injected notice should include:
 - `impact`: what is affected in plain language.
 - `runnethInstructions`: detailed prompt text with trigger conditions, framing, substitute action, and exact state language.
 - `workaround`: the concrete substitute or next step Runneth should offer. If there is no workaround, say that directly and name the safest alternate path. This should be easy to call out visually on the status page.
-- `fix`: current fix status or release state in plain language.
-- `fixReadyForNextRelease`: boolean display state for notices whose fix is ready but not live yet.
+- `resolution`: the compact release/status flag for the notice, using the same `confirmed_next_release`, `working_toward_next_release`, `in_progress`, or `notice_only` types as the status page.
 - `avoid`: hard boundaries for what Runneth should not say or do.
 - `pinned`: optional visual status-page flag. Use `true` only for notices that should be called out first in the app.
 
