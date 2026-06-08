@@ -41,7 +41,7 @@ For Data access, pull out specifically:
 
 For Meta, separate out what is available: own-account performance metrics, creative rows, creative summaries, transcripts where available, copy/headline/landing-page groupings, metric references, filter references, and custom conversion metrics. For TikTok, keep it separate: TikTok performance metrics and associated creative details have a different query shape from Meta and should not be described as the same transcript or creative-summary surface.
 
-For reports, mark the saved reports endpoint as coming soon until it is live. For Inspo, mark the new Inspo endpoints as coming soon and note that Runneth guidance for their query boundaries will ship with the Inspo release. Cover the coming-soon Inspo routes: brands, unique creatives, visual format options, boards, board items, creators, organic TikTok posts, and organic TikTok keywords. Call out query boundaries in creative-strategy language: creators can be looked up by known name or handle, organic TikTok can pull the current recommendation feed or an exact creator feed, and organic keywords steer future feed recommendations. Broader creator/category/engagement filtering and live organic TikTok topic search are still being expanded. Pull any future-querying details from Linear tickets and the current codebase state, not guesses.
+For reports, mark the saved reports endpoint as coming soon until it is live. For Inspo, mark the new Inspo endpoints as coming soon and note that Runneth guidance for their query boundaries will ship with the Inspo release. Cover the coming-soon Inspo routes: brands, unique creatives, visual format options, boards, board items, creators, organic TikTok posts, and organic TikTok keywords. Call out query boundaries in creative-strategy language: creators can be looked up by known name or handle, organic TikTok can pull the current recommendation feed or an exact creator feed, and organic keywords guide future feed recommendations. Broader creator/category/engagement filtering and live organic TikTok topic search are still being expanded. Pull any future-querying details from Linear tickets and the current codebase state, not guesses.
 
 Use these repo files:
 - `primitives.json`: the richer product/status map for the visual page.
@@ -105,9 +105,9 @@ Make Data access clear and concrete. Do not just say "Motion CLI." Show how the 
 
 For Inspo:
 - Coming soon: followed brand lookup, unique creatives, visual format options, boards, board items, competitor brand context, creator profiles, organic TikTok posts, and organic TikTok keyword steering.
-- Direct query paths when available: competitor ad examples through brands and unique creatives, saved inspiration through boards and board items, known creator lookup by name or handle, current organic recommendation feed reads, exact creator feeds by handle, and keyword update plans that steer future recommendations.
+- Direct query paths when available: competitor ad examples through brands and unique creatives, saved inspiration through boards and board items, known creator lookup by name or handle, current organic recommendation feed reads, exact creator feeds by handle, and keyword update plans that guide future recommendations.
 - Still not direct-queryable: broad creator/category/engagement filtering, broad follower/platform filtering, live organic TikTok topic or keyword search, and immediate new results from keyword changes.
-- If Runneth pulls a broad batch and inspects it manually, say that clearly. Do not make it sound like a filtered creator search or live TikTok search, and set expectations that it may take a while.
+- If Runneth pulls a limited page and filters or reads it after retrieval, say that clearly. Do not make it sound like a direct creator search or live TikTok search, and set expectations that it may take a while.
 - Separate paid Meta/TikTok performance from organic/Inspo/creator data.
 
 Also set up or update the routine/refresh behavior so the status page refreshes every morning. It should refresh the current-state page from:

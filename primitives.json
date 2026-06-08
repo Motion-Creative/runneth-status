@@ -539,8 +539,8 @@
           "detail": "Saved reports should be labelled coming soon until the reports endpoint ships. Expanded Inspo should be labelled coming soon until those routes ship."
         },
         {
-          "summary": "Batch inspection is not the same as filtered search.",
-          "detail": "When a request cannot be expressed through the available filters, Runneth may pull a broader batch and inspect it manually. It should say that clearly, avoid presenting it as a direct filtered query, and set expectations that it may take a while."
+          "summary": "Pull-then-filter is not the same as direct search.",
+          "detail": "When a request does not match available filters, Runneth may pull a limited page from the closest source and filter or read those results after retrieval. It should say that clearly and set expectations that it may take longer or miss results outside the pulled page."
         }
       ]
     }
