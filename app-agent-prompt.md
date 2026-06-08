@@ -42,7 +42,7 @@ For Meta, also mention InSpo. For InSpo, say what exists today, like boards, bra
 
 Use these repo files:
 - `primitives.json`: the richer product/status map for the visual page.
-- `status-page-notices.json`: the CSM/operator-visible notice layer, including the optional `releaseNote`, the `runnethUse` value, the explicit `workaround`, the `fix`, whether each notice has `fixReadyForNextRelease`, and any `examples`.
+- `status-page-notices.json`: the CSM/operator-visible notice layer, including the optional `releaseNote`, the `runnethUse` value, the explicit `workaround`, the compact `resolution`, and any `examples`.
 - `status.json`: the current Runneth prompt-injection feed. Keep this separate from status-page-only notices unless Agent Builder has been updated to support richer routing.
 - `limitations.json`: current limitation/guidance feed, if populated later.
 
@@ -57,7 +57,12 @@ Every notice should show its workaround state clearly. Do not bury it in a parag
 
 Support `pinned: true` on notices. Pinned notices should render before unpinned notices and should have a small visual "Pinned" treatment so the most urgent/current operational notes stay front and centre. Pinning is only for the visual page; it does not decide whether Runneth should inject or mention the notice. `runnethUse` still decides that.
 
-Support `fixReadyForNextRelease: true` on notices. Render a small checkmark-style label such as "Fix ready - next release" on those notices. This should be a visual flag only; do not infer that every notice without the flag is broken forever or missing an owner.
+Support `resolution` on notices as a small icon or flag on the card:
+- `confirmed_next_release`: show a small checkmark-style flag with the notice's `resolution.label`, usually "Next release". This means the fix is confirmed for the next planned release, but the notice is still active until that release ships.
+- `working_toward_next_release`: show a subtle in-progress flag with the notice's `resolution.label`, usually "In progress". This means the team is working toward the next planned release, but it is not ready or guaranteed yet.
+- `notice_only`: show a neutral notice/info flag with the notice's `resolution.label`, usually "Notice only". This means the card is guidance or status visibility and does not imply a release fix.
+
+Do not show these as big badges or make them the main focus of the card. They should be small supporting flags near the notice title or status metadata.
 
 Support `examples` on every notice. Most notices may have `examples: []` for now. When examples exist, render a compact example area on the card with:
 - the example label as a hyperlink,
