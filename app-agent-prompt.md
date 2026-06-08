@@ -42,9 +42,11 @@ For Meta, also mention InSpo. For InSpo, say what exists today, like boards, bra
 
 Use these repo files:
 - `primitives.json`: the richer product/status map for the visual page.
-- `status-page-notices.json`: the CSM/operator-visible notice layer, including the `runnethUse` value and the explicit `workaround` for each notice.
+- `status-page-notices.json`: the CSM/operator-visible notice layer, including the optional `releaseNote`, the `runnethUse` value, the explicit `workaround`, and whether each notice has `fixReadyForNextRelease`.
 - `status.json`: the current Runneth prompt-injection feed. Keep this separate from status-page-only notices unless Agent Builder has been updated to support richer routing.
 - `limitations.json`: current limitation/guidance feed, if populated later.
+
+If `status-page-notices.json` has a `releaseNote`, show it at the top of the page above the issue notices. For the current note, say the next planned release is Monday night or Tuesday night, June 8 or June 9, 2026, and that it is being coordinated with the big routines refactor. Keep the wording practical: until that release, active issues remain, so keep the workarounds in mind.
 
 Add a distinction between how Runneth should use each notice:
 - `use_when_relevant`: Runneth should use the guidance whenever the user's request touches this area.
@@ -55,10 +57,13 @@ Every notice should show its workaround state clearly. Do not bury it in a parag
 
 Support `pinned: true` on notices. Pinned notices should render before unpinned notices and should have a small visual "Pinned" treatment so the most urgent/current operational notes stay front and centre. Pinning is only for the visual page; it does not decide whether Runneth should inject or mention the notice. `runnethUse` still decides that.
 
+Support `fixReadyForNextRelease: true` on notices. Render a small checkmark-style label such as "Fix ready - next release" on those notices. This should be a visual flag only; do not infer that every notice without the flag is broken forever or missing an owner.
+
 For example:
 - A routines outage should be `use_when_relevant` because it changes what Runneth should do whenever someone asks for scheduled, recurring, monitored, or later work.
 - A missing conversations sidebar issue probably belongs on the status page as `status_page_only` because it changes support triage, but Runneth should not proactively mention it in normal conversations.
 - A Slack file-upload outage should be `use_when_relevant` because affected upload requests need clear guidance when Slack-side retries are unreliable.
+- Older Slack threads showing messy formatting should be `only_when_asked` because Runneth should not mention it for every Slack request, but should guide the user when they report messy formatting or raw response-control text in an older Slack thread. Show the example thread link from the notice on the visual page for internal context.
 
 Update the app UI so cards, filters, pinned ordering, notice counts, and labels reflect this structure. The page should help someone quickly understand the current state of Runneth without reading Linear.
 
