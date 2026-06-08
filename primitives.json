@@ -318,7 +318,27 @@
           "summary": "Whoever's in the channel can reach it.",
           "detail": "Once Runneth is in a channel, anyone there can tag it and it'll answer with your org's context. Add it only where that's fine."
         }
-      ]
+      ],
+      "shareMessage": {
+        "title": "Standard Slack message to share",
+        "intro": "Quick version on Runneth's Slack access:",
+        "bullets": [
+          {
+            "label": "What it unlocks",
+            "text": "a teammate inside Slack that answers your questions and delivers finished work (briefs, reports, files) right in the channel you're already working in."
+          },
+          {
+            "label": "What it has access to",
+            "text": "only the channels you invite it into, the messages in those channels, and your team directory so it can tag the right person."
+          },
+          {
+            "label": "What it doesn't have access to",
+            "text": "your DMs, any channel it hasn't been added to, anything outside your workspace, and it can't post on its own or change your Slack settings."
+          }
+        ],
+        "linkLabel": "Full permission breakdown",
+        "linkHref": "/runneth-slack-access"
+      }
     },
     {
       "key": "google_drive",
