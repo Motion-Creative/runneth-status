@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-06-10T13:32:22.000Z",
+  "updatedAt": "2026-06-10T16:26:46.000Z",
   "releaseNote": {
-    "updatedAt": "2026-06-10T13:32:22.000Z",
-    "summary": "Next planned release is tonight.",
-    "plannedWindow": "Tonight, June 10, 2026",
-    "details": "Until the release ships, the active issues below remain in effect, so keep using the listed workarounds.",
+    "updatedAt": "2026-06-10T16:26:46.000Z",
+    "summary": "Two releases this week: one tonight and a second end of day Friday.",
+    "plannedWindow": "Tonight, June 10, 2026, with a second release end of day Friday, June 12, 2026",
+    "details": "Tonight's release ships expanded Inspo and clears the Slack file upload and older-thread formatting issues. The second release, end of day Friday, restores routine automation. Until each ships, keep using the listed workarounds.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
@@ -29,45 +29,20 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-08T22:00:01.000Z",
-      "summary": "Expanded Inspo is coming soon with a few direct query paths.",
-      "impact": "Expanded Inspo routes and matching Runneth guidance ship with the next release. Direct paths: creator lookup by name/handle, current organic TikTok feed, exact creator feed by handle, saved boards, competitor ads, and keyword changes that guide future organic recommendations.",
-      "workaround": "Missing for now: broad creator search by category/follower/platform/engagement and live TikTok search by keyword/topic/hashtag/sound/date/engagement. For those, Runneth should say it can pull a limited page from the closest available source, then filter or read those results after the pull. That can take longer and may miss results outside the pulled page.",
+      "updatedAt": "2026-06-10T16:26:46.000Z",
+      "summary": "Expanded Inspo ships tonight as a new feature, with direct query for some paths but not all.",
+      "impact": "Expanded Inspo arrives with tonight's release. Direct query paths: creator lookup by name or handle, the current organic TikTok recommendation feed, an exact creator's TikTok feed by handle, saved boards, competitor ads, and viewing or updating the organic keyword seeds that shape future TikTok recommendations (keyword updates need sign-off and steer future feed refreshes rather than returning live search results).",
+      "workaround": "Not a direct query yet: broad creator search by category, follower range, platform, geography, engagement, or performance, and live TikTok search by keyword, topic, category, hashtag, sound, date, or engagement. For those, Runneth pulls a limited page from the closest available source, then filters or reads those results after the pull. That can take longer and may miss results outside the pulled page.",
       "resolution": {
         "type": "confirmed_next_release",
-        "label": "Coming soon",
-        "note": "Expanded Inspo routes and matching Runneth guidance are planned to ship together in the next release."
+        "label": "Ships tonight",
+        "note": "Expanded Inspo and its matching Runneth guidance ship together with tonight's release."
       },
       "examples": [],
       "statusPageGuidance": "Show under Data access and Inspo. Keep the card short: direct query paths, missing broad filters, and the pull-then-filter workaround.",
       "runnethTrigger": "User asks for creator discovery, creators like a person or brand, top creators in a category, high-engagement creators, organic TikToks about a keyword or topic, organic TikTok search, organic TikTok trends, or changes to organic TikTok feed keywords.",
       "runnethGuidance": "When the Inspo guidance ships, route direct asks to the matching source: creator name/handle, current organic feed, exact creator handle, saved board, competitor brand, or keyword update with sign-off. For broad creator or TikTok searches, say the endpoint cannot filter that directly yet; Runneth can pull a limited page from the closest source and then filter/read it, but this may take a while and is less complete than direct search.",
       "supportGuidance": "Treat expanded Inspo and matching Runneth guidance as coming soon until the next release. Ask for the best pivot: creator name/handle, board, competitor brand, or organic keyword direction. For broad asks, set expectations that keyword changes guide future feed recommendations and pull-then-filter is slower and less precise than direct filtering."
-    },
-    {
-      "id": "routines-refactor-in-progress",
-      "runnethUse": "use_when_relevant",
-      "primitives": [
-        "routines"
-      ],
-      "surfaces": [
-        "web",
-        "slack"
-      ],
-      "updatedAt": "2026-06-08T13:49:35.000Z",
-      "summary": "Routine automation is temporarily paused during the refactor.",
-      "impact": "New scheduled, recurring, monitored, reminder, post-later, or background-upkeep work should not be presented as live reliable automation.",
-      "workaround": "Save the routine plan with cadence, trigger, task, workspace scope, and delivery target, then do the immediate one-time work where possible.",
-      "resolution": {
-        "type": "working_toward_next_release",
-        "label": "In progress",
-        "note": "Working toward the next planned release as part of the routines refactor; not marked ready yet."
-      },
-      "examples": [],
-      "statusPageGuidance": "CSMs should treat new routine setup as paused. Save the routine plan and do immediate one-time work where possible.",
-      "runnethTrigger": "User asks to create, set up, schedule, monitor, remind, notify, post later, repeat, keep something updated, or run background upkeep.",
-      "runnethGuidance": "Lead with the constructive boundary, offer a future routine plan, and avoid saying anything is scheduled until creation actually succeeds.",
-      "supportGuidance": "Capture cadence, trigger, task, workspace scope, and delivery destination so the plan can be turned on later."
     },
     {
       "id": "slack-reinstall-for-narrower-scope",
@@ -173,6 +148,31 @@
       "runnethTrigger": "User asks about or reports an app, app link, dashboard, widget, or generated page looking broken, ugly, unfinished, or confusing while logged out or blocked by OAuth.",
       "runnethGuidance": "Acknowledge that OAuth-gated apps can show a rough logged-out screen right now, and that the team is working on the UI. Do not imply the authenticated app experience or underlying data is broken unless the user reports that after logging in. Ask the person to log in, open the link from an authenticated Runneth or Motion session, connect the required OAuth account if needed, and refresh the app.",
       "supportGuidance": "Capture the app link, whether the person was logged out, which OAuth gate appeared, and whether the page still looks wrong after logging in and refreshing."
+    },
+    {
+      "id": "routines-refactor-in-progress",
+      "runnethUse": "use_when_relevant",
+      "primitives": [
+        "routines"
+      ],
+      "surfaces": [
+        "web",
+        "slack"
+      ],
+      "updatedAt": "2026-06-10T16:26:46.000Z",
+      "summary": "Routine automation is temporarily paused during the refactor.",
+      "impact": "New scheduled, recurring, monitored, reminder, post-later, or background-upkeep work should not be presented as live reliable automation.",
+      "workaround": "Save the routine plan with cadence, trigger, task, workspace scope, and delivery target, then do the immediate one-time work where possible.",
+      "resolution": {
+        "type": "working_toward_next_release",
+        "label": "In progress",
+        "note": "Targeted for the second release this week, end of day Friday, June 12, 2026, as part of the routines refactor."
+      },
+      "examples": [],
+      "statusPageGuidance": "CSMs should treat new routine setup as paused. Save the routine plan and do immediate one-time work where possible.",
+      "runnethTrigger": "User asks to create, set up, schedule, monitor, remind, notify, post later, repeat, keep something updated, or run background upkeep.",
+      "runnethGuidance": "Lead with the constructive boundary, offer a future routine plan, and avoid saying anything is scheduled until creation actually succeeds.",
+      "supportGuidance": "Capture cadence, trigger, task, workspace scope, and delivery destination so the plan can be turned on later."
     }
   ]
 }
