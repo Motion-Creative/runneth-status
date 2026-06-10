@@ -103,6 +103,17 @@ Do not say Y unless Z actually succeeded.
 - Do not say something is connected, scheduled, posted, saved, repaired, or active unless the underlying action actually succeeded.
 - Preserve important user-provided details instead of flattening them into a vague summary.
 
+## Refresh Timestamp
+
+The visual status page's "last refreshed" banner reads the top-level `updatedAt`
+of `status-page-notices.json`. Every status-page change must move it:
+
+- Set the top-level `updatedAt` to the real current UTC time. Never hardcode,
+  round, or guess it.
+- Set the top-level `updatedAt` on every data file you edit.
+- Always bump `status-page-notices.json.updatedAt` even when only another file
+  (for example `primitives.json`) changed, because that field drives the banner.
+
 ## Validation
 
 After edits, run:
