@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-10T20:45:05.000Z",
+  "updatedAt": "2026-06-10T21:14:53.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-10T16:26:46.000Z",
     "summary": "Two releases this week: one tonight and a second end of day Friday.",
@@ -27,27 +27,26 @@
       "primitives": [
         "integrations",
         "slack",
-        "google_drive",
-        "notion"
+        "google_drive"
       ],
       "surfaces": [
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-10T20:45:05.000Z",
-      "summary": "Native integrations are degraded while a production incident is investigated.",
-      "impact": "Runneth is not receiving messages sent from Slack across orgs. Google Drive and Notion access may also be affected by the same production incident. Web conversations are still available for work that does not depend on affected integrations.",
-      "workaround": "Use Runneth on web for urgent work that does not depend on Slack, Google Drive, or Notion. Paste needed context or file text directly where possible.",
+      "updatedAt": "2026-06-10T21:14:53.000Z",
+      "summary": "Slack and Google Drive are still down while a fix rolls out to all orgs. Notion is restored.",
+      "impact": "Runneth is not receiving messages sent from Slack across orgs, and Google Drive access is also affected by the same production incident. Notion access has been restored and tested. Web conversations are still available for work that does not depend on Slack or Google Drive.",
+      "workaround": "Use Runneth on web for urgent work that does not depend on Slack or Google Drive. Paste needed context or file text directly where possible.",
       "resolution": {
         "type": "in_progress",
-        "label": "Investigating",
-        "note": "The team is investigating the production integration path. Current estimated time to a fix is about 3 hours from now. This estimate is not yet confirmed and may change."
+        "label": "Rolling out",
+        "note": "A fix is rolling out gradually to each org as its VM updates, estimated at about 3 hours for all orgs. Some orgs recover sooner within that window. Notion is already restored. This estimate is not yet confirmed and may change."
       },
       "examples": [],
       "statusPageGuidance": "Pin under Slack, Google Drive, Notion, and Integrations while the incident is active. Keep the copy focused on confirmed Slack message impact, possible Google Drive and Notion impact, and safe web/manual-context workarounds.",
       "runnethTrigger": "User asks why Runneth is not responding in Slack, tries to message Runneth from Slack, asks whether Slack is down, reports Google Drive or Notion access failing, or asks how to continue work that normally uses these native integrations.",
-      "runnethGuidance": "Say that Slack messages to Runneth are temporarily unavailable across orgs, and that Google Drive and Notion access may also be affected while the same production incident is investigated. Direct the user to continue urgent work in web when possible, and ask them to paste needed context or file text directly if the request depends on Google Drive or Notion. Do not promise a recovery time, mention a root cause, or say Slack, Google Drive, or Notion handling is fixed until the team confirms restoration.",
-      "supportGuidance": "Confirm which path the report involves: Slack messages to Runneth, Google Drive access, or Notion access. For urgent work, direct the customer to web and manual context sharing where possible. Track investigation internally and avoid sharing a root cause or ETA until confirmed."
+      "runnethGuidance": "Say that Slack messages to Runneth and Google Drive access are temporarily unavailable across orgs while a fix rolls out, and that Notion access has been restored. The fix is rolling out gradually to each org as its VM updates, estimated around 3 hours for all orgs, with some recovering sooner. Direct the user to continue urgent work on web when possible, and ask them to paste needed context or file text directly if the request depends on Google Drive. Do not promise an exact per-org recovery time, mention a root cause, or say Slack or Google Drive is fixed for a given org until the team confirms it.",
+      "supportGuidance": "Confirm which path the report involves: Slack messages to Runneth or Google Drive access. Notion is restored and working. For urgent work, direct the customer to web and manual context sharing where possible. The fix is rolling out per org over roughly 3 hours, so avoid promising an exact per-org time until confirmed."
     },
     {
       "id": "inspo-creator-organic-query-expansion",
