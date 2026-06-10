@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-06-10T21:14:53.000Z",
+  "updatedAt": "2026-06-10T21:54:32.000Z",
   "releaseNote": {
-    "updatedAt": "2026-06-10T16:26:46.000Z",
+    "updatedAt": "2026-06-10T21:54:32.000Z",
     "summary": "Two releases this week: one tonight and a second end of day Friday.",
     "plannedWindow": "Tonight, June 10, 2026, with a second release end of day Friday, June 12, 2026",
-    "details": "Tonight's release ships expanded Inspo and clears the Slack file upload and older-thread formatting issues. The second release, end of day Friday, restores routine automation. Until each ships, keep using the listed workarounds.",
+    "details": "Tonight's release ships expanded Inspo and clears the Slack file upload and older-thread formatting issues, plus an extra hotfix deploy tonight that reduces Slack permission scopes and restores favorite reports in the Motion sidebar. The second release, end of day Friday, restores routine automation. Until each ships, keep using the listed workarounds.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
@@ -83,20 +83,20 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-08T13:49:35.000Z",
-      "summary": "Older Slack installs may need reconnect to use the narrower permission scope.",
-      "impact": "Some workspaces connected Slack before Runneth's Slack app moved to the narrower permission scope. Those older installs may still show or retain the wider grant until Slack is removed and reconnected through Runneth; newly connected orgs already use the narrower scope.",
-      "workaround": "Use Runneth's own Slack removal and reconnect flow: ask Runneth to remove Slack, then start a new conversation and ask Runneth to connect Slack again. Do not uninstall the app directly from Slack.",
+      "updatedAt": "2026-06-10T21:54:32.000Z",
+      "summary": "Slack permission scope is being narrowed; a hotfix removes the extra access tonight, and older installs may still need a reconnect.",
+      "impact": "Runneth's Slack app was still requesting broader access than intended, including private channel search and related channel-history tokens, beyond the narrower permissions customers were told they could install with. A fix in tonight's hotfix limits this to only the channels the bot is in and removes private channel search. Separately, some workspaces connected Slack before the app moved to the narrower scope and may still show the wider grant until Slack is removed and reconnected through Runneth; newly connected orgs already use the narrower scope.",
+      "workaround": "No action is needed for the hotfix; the reduced scope applies automatically once it reaches each org. Older installs that want the narrower scope reflected sooner can use Runneth's remove-and-reconnect Slack flow: ask Runneth to remove Slack, then start a new conversation and ask Runneth to connect Slack again. Do not uninstall the app directly from Slack.",
       "resolution": {
-        "type": "notice_only",
-        "label": "Notice only",
-        "note": "Guidance for older installs; no release fix is implied."
+        "type": "confirmed_next_release",
+        "label": "Hotfix tonight",
+        "note": "The further scope reduction is confirmed for tonight's extra hotfix deploy. Older-install reconnect guidance still applies afterward."
       },
       "examples": [],
-      "statusPageGuidance": "Keep Slack as a standalone native OAuth card. This is permission/reconnect guidance for older installs, not a current outage for new Slack connections.",
-      "runnethTrigger": "User asks about Slack permissions, Slack security review, Slack reconnect, Slack reinstall, or replacing an older Slack install with the narrower scope.",
-      "runnethGuidance": "Explain that new Slack connections already use the narrower scope, while older workspaces may need a Runneth-managed reconnect to pick it up. Route through Runneth's integration removal and reconnect flow. Do not tell customers to uninstall directly from Slack, because that can leave the Runneth web setup widget or reinstall path unable to reconnect cleanly.",
-      "supportGuidance": "Confirm whether the org is a new install or an older Slack install. If it is older, tell the customer to remove and reconnect Slack through Runneth rather than uninstalling from Slack directly."
+      "statusPageGuidance": "Show under Slack. Covers both the pending scope-reduction hotfix tonight and the older-install reconnect guidance, which still applies after the hotfix.",
+      "runnethTrigger": "User asks about Slack permissions, Slack scopes, Slack security review, Slack reconnect, Slack reinstall, or replacing an older Slack install with the narrower scope.",
+      "runnethGuidance": "Explain that Slack permissions are being narrowed: a hotfix tonight removes extra access, including private channel search, and limits the app to channels the bot is in. New Slack connections already use the narrower scope, while older workspaces may need a Runneth-managed reconnect to pick it up. Route reconnects through Runneth's integration removal and reconnect flow. Do not tell customers to uninstall directly from Slack.",
+      "supportGuidance": "For scope questions, note the extra access is being removed in tonight's hotfix and applies per org as it rolls out. For older installs that still show the wider scope, have the customer remove and reconnect Slack through Runneth rather than uninstalling from Slack directly."
     },
     {
       "id": "slack-file-uploads-rate-limited",
@@ -202,6 +202,30 @@
       "runnethTrigger": "User asks to create, set up, schedule, monitor, remind, notify, post later, repeat, keep something updated, or run background upkeep.",
       "runnethGuidance": "Lead with the constructive boundary, offer a future routine plan, and avoid saying anything is scheduled until creation actually succeeds.",
       "supportGuidance": "Capture cadence, trigger, task, workspace scope, and delivery destination so the plan can be turned on later."
+    },
+    {
+      "id": "favorite-reports-missing-sidebar",
+      "runnethUse": "only_when_asked",
+      "primitives": [
+        "chat"
+      ],
+      "surfaces": [
+        "web"
+      ],
+      "updatedAt": "2026-06-10T21:54:32.000Z",
+      "summary": "Favorite reports are missing from the Motion sidebar.",
+      "impact": "Favorited reports are not showing in the Motion app sidebar for affected users, including customers. This is a UI regression from a recent change and does not affect the underlying reports or data.",
+      "workaround": "Open reports directly rather than from the sidebar favorites for now. The favorites list is not lost; it is a display issue.",
+      "resolution": {
+        "type": "confirmed_next_release",
+        "label": "Hotfix tonight",
+        "note": "Confirmed for tonight's extra hotfix deploy."
+      },
+      "examples": [],
+      "statusPageGuidance": "Show under Chat. UI regression in the Motion sidebar, not data loss. Confirmed fix in tonight's hotfix.",
+      "runnethTrigger": "User asks where their favorite reports or sidebar favorites went, or reports that favorited reports are missing from the Motion sidebar.",
+      "runnethGuidance": "If asked, say favorite reports are temporarily missing from the Motion sidebar due to a UI regression, that the underlying reports and data are unaffected, and that a fix is going out in tonight's hotfix. Suggest opening reports directly in the meantime. Do not raise this proactively.",
+      "supportGuidance": "Confirm the report favorites are missing from the sidebar specifically. Reassure that favorites are not lost and a fix ships in tonight's hotfix; suggest opening reports directly until then."
     }
   ]
 }
