@@ -97,6 +97,20 @@ Current source-of-truth notes:
 - Inspo brands, unique creatives, boards, board items, creators, organic TikTok posts, and organic TikTok keyword steering are coming soon with matching Runneth guidance in the next release.
 - For Inspo guidance, be clear about direct query paths versus pull-then-filter routes: competitor ads and saved board items support specific filters, known creators can be looked up by name or handle, organic TikTok can pull the current recommendation feed or an exact creator handle, and organic keywords guide future feed recommendations. Broad creator/category/engagement filtering and live organic TikTok topic search are still being expanded; if Runneth pulls a limited page and filters it after retrieval, it should say that is not the same as direct search and may take a while.
 
+## Refresh Timestamp (last-refreshed banner)
+
+The visual status page shows a "last refreshed" banner that reads the top-level
+`updatedAt` of `status-page-notices.json`.
+
+Any change to the status page must move that banner:
+
+- Set the top-level `updatedAt` to the real current UTC time. Do not hardcode,
+  round, or guess it.
+- Set the top-level `updatedAt` on every data file you edit (`primitives.json`,
+  `limitations.json`, `status-page-notices.json`).
+- Always bump `status-page-notices.json.updatedAt` even when only another file
+  (for example `primitives.json`) changed, since that field drives the banner.
+
 ## Review Rules
 
 Keep customer-facing fields safe. Do not include secrets, customer names, private channel IDs, internal Slack thread links, private Linear links, production traces, credentials, or customer-specific incident notes while this repo is public.
