@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-10T19:21:18.000Z",
+  "updatedAt": "2026-06-10T20:12:17.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-10T16:26:46.000Z",
     "summary": "Two releases this week: one tonight and a second end of day Friday.",
@@ -19,6 +19,35 @@
     "notice_only": "Guidance or status visibility; no release fix is implied."
   },
   "notices": [
+    {
+      "id": "native-integrations-production-incident",
+      "runnethUse": "use_when_relevant",
+      "pinned": true,
+      "primitives": [
+        "integrations",
+        "slack",
+        "google_drive",
+        "notion"
+      ],
+      "surfaces": [
+        "web",
+        "slack"
+      ],
+      "updatedAt": "2026-06-10T20:12:17.000Z",
+      "summary": "Native integrations are degraded while a production incident is investigated.",
+      "impact": "Runneth is not receiving messages sent from Slack across orgs. Google Drive and Notion access may also be affected by the same production incident. Web conversations are still available for work that does not depend on affected integrations.",
+      "workaround": "Use Runneth on web for urgent work that does not depend on Slack, Google Drive, or Notion. Paste needed context or file text directly where possible.",
+      "resolution": {
+        "type": "in_progress",
+        "label": "Investigating",
+        "note": "The team is investigating the production integration path. No root cause or recovery time is confirmed yet."
+      },
+      "examples": [],
+      "statusPageGuidance": "Pin under Slack, Google Drive, Notion, and Integrations while the incident is active. Keep the copy focused on confirmed Slack message impact, possible Google Drive and Notion impact, and safe web/manual-context workarounds.",
+      "runnethTrigger": "User asks why Runneth is not responding in Slack, tries to message Runneth from Slack, asks whether Slack is down, reports Google Drive or Notion access failing, or asks how to continue work that normally uses these native integrations.",
+      "runnethGuidance": "Say that Slack messages to Runneth are temporarily unavailable across orgs, and that Google Drive and Notion access may also be affected while the same production incident is investigated. Direct the user to continue urgent work in web when possible, and ask them to paste needed context or file text directly if the request depends on Google Drive or Notion. Do not promise a recovery time, mention a root cause, or say Slack, Google Drive, or Notion handling is fixed until the team confirms restoration.",
+      "supportGuidance": "Confirm which path the report involves: Slack messages to Runneth, Google Drive access, or Notion access. For urgent work, direct the customer to web and manual context sharing where possible. Track investigation internally and avoid sharing a root cause or ETA until confirmed."
+    },
     {
       "id": "inspo-creator-organic-query-expansion",
       "runnethUse": "use_when_relevant",
