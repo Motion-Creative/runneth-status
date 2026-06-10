@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-06-08T19:59:40.000Z",
+  "updatedAt": "2026-06-10T13:32:22.000Z",
   "releaseNote": {
-    "updatedAt": "2026-06-08T13:39:57.000Z",
-    "summary": "Next planned release is Tuesday or Wednesday night.",
-    "plannedWindow": "Tuesday or Wednesday night, June 9 or June 10, 2026",
+    "updatedAt": "2026-06-10T13:32:22.000Z",
+    "summary": "Next planned release is tonight.",
+    "plannedWindow": "Tonight, June 10, 2026",
     "details": "Until the release ships, the active issues below remain in effect, so keep using the listed workarounds.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
@@ -22,8 +22,13 @@
     {
       "id": "inspo-creator-organic-query-expansion",
       "runnethUse": "use_when_relevant",
-      "primitives": ["data_access"],
-      "surfaces": ["web", "slack"],
+      "primitives": [
+        "data_access"
+      ],
+      "surfaces": [
+        "web",
+        "slack"
+      ],
       "updatedAt": "2026-06-08T22:00:01.000Z",
       "summary": "Expanded Inspo is coming soon with a few direct query paths.",
       "impact": "Expanded Inspo routes and matching Runneth guidance ship with the next release. Direct paths: creator lookup by name/handle, current organic TikTok feed, exact creator feed by handle, saved boards, competitor ads, and keyword changes that guide future organic recommendations.",
@@ -42,8 +47,13 @@
     {
       "id": "routines-refactor-in-progress",
       "runnethUse": "use_when_relevant",
-      "primitives": ["routines"],
-      "surfaces": ["web", "slack"],
+      "primitives": [
+        "routines"
+      ],
+      "surfaces": [
+        "web",
+        "slack"
+      ],
       "updatedAt": "2026-06-08T13:49:35.000Z",
       "summary": "Routine automation is temporarily paused during the refactor.",
       "impact": "New scheduled, recurring, monitored, reminder, post-later, or background-upkeep work should not be presented as live reliable automation.",
@@ -62,8 +72,13 @@
     {
       "id": "slack-reinstall-for-narrower-scope",
       "runnethUse": "status_page_only",
-      "primitives": ["slack"],
-      "surfaces": ["web", "slack"],
+      "primitives": [
+        "slack"
+      ],
+      "surfaces": [
+        "web",
+        "slack"
+      ],
       "updatedAt": "2026-06-08T13:49:35.000Z",
       "summary": "Older Slack installs may need reconnect to use the narrower permission scope.",
       "impact": "Some workspaces connected Slack before Runneth's Slack app moved to the narrower permission scope. Those older installs may still show or retain the wider grant until Slack is removed and reconnected through Runneth; newly connected orgs already use the narrower scope.",
@@ -83,8 +98,12 @@
       "id": "slack-file-uploads-rate-limited",
       "runnethUse": "status_page_only",
       "pinned": true,
-      "primitives": ["slack"],
-      "surfaces": ["slack"],
+      "primitives": [
+        "slack"
+      ],
+      "surfaces": [
+        "slack"
+      ],
       "updatedAt": "2026-06-08T13:49:35.000Z",
       "summary": "File uploads fail on Slack",
       "impact": "Runneth cannot read file uploads on Slack. Web uploads are fine.",
@@ -103,8 +122,12 @@
     {
       "id": "older-slack-threads-messy-formatting",
       "runnethUse": "status_page_only",
-      "primitives": ["slack"],
-      "surfaces": ["slack"],
+      "primitives": [
+        "slack"
+      ],
+      "surfaces": [
+        "slack"
+      ],
       "updatedAt": "2026-06-08T13:49:35.000Z",
       "summary": "Older Slack threads can show messy formatting.",
       "impact": "Replies in older Slack threads may render with messy formatting or raw response-control text instead of a normal Runneth reply.",
@@ -130,8 +153,12 @@
     {
       "id": "oauth-gated-apps-logged-out-ui",
       "runnethUse": "status_page_only",
-      "primitives": ["apps"],
-      "surfaces": ["web"],
+      "primitives": [
+        "apps"
+      ],
+      "surfaces": [
+        "web"
+      ],
       "updatedAt": "2026-06-08T13:58:11.000Z",
       "summary": "OAuth-gated apps can show a rough logged-out screen.",
       "impact": "When someone opens an app that requires OAuth while logged out, the gated screen may look unfinished instead of showing a polished sign-in or access prompt.",
