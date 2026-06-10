@@ -14,11 +14,10 @@ Do not turn the status page into a raw bug list. Add an item only when it change
 ## Files
 
 - `primitives.json`: the richer status-page product map.
-- `status-page-notices.json`: status-page notices with clear Runneth-use rules and explicit workarounds.
-- `status.json`: the current Agent Builder prompt-injection feed.
+- `status-page-notices.json`: the single source of truth for the visual status page and the Morning/EOD Slack posts. Carries Runneth-use rules, explicit workarounds, resolution flags, and the optional `releaseNote`.
 - `limitations.json`: reserved for durable limitations or guidance.
 - `app-agent-prompt.md`: prompt for the Runneth app agent that updates the visual status page.
-- `skills/runneth-status-update/SKILL.md`: skill for rewriting rough status requests into reviewed status-page notices and prompt-injection guidance.
+- `skills/runneth-status-update/SKILL.md`: skill for rewriting rough status requests into reviewed status-page notices.
 
 ## Status Page Areas
 
@@ -67,27 +66,11 @@ Use `resolution` on every notice for the small visual flag on the status page:
 
 Use `examples` on every status-page notice. Leave it as an empty array when there is no example yet. When an example exists, include a short label, a link, the specific observed response or symptom, and what to look for so the visual page can show the evidence without forcing someone to open the thread first.
 
-## Prompt Injection Feed
+## Prompt Injection Feed (retired)
 
-`status.json` is the current Agent Builder prompt-injection feed. Keep it small, prompt-grade, and customer-safe.
+The standalone `status.json` prompt-injection feed has been retired. `status-page-notices.json` is now the single source of truth for the visual status page and the Morning/EOD Slack posts, and it already carries the Runneth-facing fields (`runnethTrigger`, `runnethGuidance`, `supportGuidance`, `resolution`, `pinned`, `runnethUse`). Runneth reads `status-page-notices.json` when a request touches a known issue, so there is no separate Builder-injected feed to maintain.
 
-Each injected notice should include:
-
-- `summary`: a short human-readable label.
-- `impact`: what is affected in plain language.
-- `runnethInstructions`: detailed prompt text with trigger conditions, framing, substitute action, and exact state language.
-- `workaround`: the concrete substitute or next step Runneth should offer. If there is no workaround, say that directly and name the safest alternate path. This should be easy to call out visually on the status page.
-- `resolution`: the compact release/status flag for the notice, using the same `confirmed_next_release`, `working_toward_next_release`, `in_progress`, or `notice_only` types as the status page.
-- `avoid`: hard boundaries for what Runneth should not say or do.
-- `pinned`: optional visual status-page flag. Use `true` only for notices that should be called out first in the app.
-
-Keep internal examples and private links in `status-page-notices.json`, not `status.json`. The prompt-injection feed should stay customer-safe and prompt-grade.
-
-Injected notices should be written like prompt guidance, not bug summaries. The routines-down prompt work in Agent Builder PR #2051 is the model: name the trigger, state the support boundary positively, describe the safe substitute, preserve important details for later when relevant, and explicitly forbid false success language.
-
-When someone asks to post or update a status notice, use `skills/runneth-status-update/SKILL.md` to rewrite the request into this shape before editing the JSON.
-
-Until Agent Builder supports the richer status-page primitive set directly, `status.json` may keep the narrower Builder-compatible primitive values while the visual page uses `primitives.json` and `status-page-notices.json`.
+When someone asks to post or update a status notice, use `skills/runneth-status-update/SKILL.md` to rewrite the request into the notice shape before editing the JSON.
 
 ## Data Access Detail
 
