@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-10T20:12:17.000Z",
+  "updatedAt": "2026-06-10T20:45:05.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-10T16:26:46.000Z",
     "summary": "Two releases this week: one tonight and a second end of day Friday.",
@@ -23,6 +23,7 @@
       "id": "native-integrations-production-incident",
       "runnethUse": "use_when_relevant",
       "pinned": true,
+      "customerBanner": true,
       "primitives": [
         "integrations",
         "slack",
@@ -33,14 +34,14 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-10T20:12:17.000Z",
+      "updatedAt": "2026-06-10T20:45:05.000Z",
       "summary": "Native integrations are degraded while a production incident is investigated.",
       "impact": "Runneth is not receiving messages sent from Slack across orgs. Google Drive and Notion access may also be affected by the same production incident. Web conversations are still available for work that does not depend on affected integrations.",
       "workaround": "Use Runneth on web for urgent work that does not depend on Slack, Google Drive, or Notion. Paste needed context or file text directly where possible.",
       "resolution": {
         "type": "in_progress",
         "label": "Investigating",
-        "note": "The team is investigating the production integration path. No root cause or recovery time is confirmed yet."
+        "note": "The team is investigating the production integration path. Current estimated time to a fix is about 3 hours from now. This estimate is not yet confirmed and may change."
       },
       "examples": [],
       "statusPageGuidance": "Pin under Slack, Google Drive, Notion, and Integrations while the incident is active. Keep the copy focused on confirmed Slack message impact, possible Google Drive and Notion impact, and safe web/manual-context workarounds.",
