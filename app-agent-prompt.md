@@ -46,7 +46,6 @@ For reports, mark the saved reports endpoint as coming soon until it is live. Fo
 Use these repo files:
 - `primitives.json`: the richer product/status map for the visual page.
 - `status-page-notices.json`: the CSM/operator-visible notice layer, including the optional `releaseNote`, the `runnethUse` value, the explicit `workaround`, the compact `resolution`, and any `examples`.
-- `status.json`: the current Runneth prompt-injection feed. Keep this separate from status-page-only notices unless Agent Builder has been updated to support richer routing.
 - `limitations.json`: current limitation/guidance feed, if populated later.
 
 If `status-page-notices.json` has a `releaseNote`, show it at the top of the page above the issue notices. For the current note, say the next planned release is Monday night or Tuesday night, June 8 or June 9, 2026, and that it is being coordinated with the big routines refactor. Keep the wording practical: until that release, active issues remain, so keep the workarounds in mind.
