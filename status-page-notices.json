@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-10T19:21:18.000Z",
+  "updatedAt": "2026-06-10T20:10:10.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-10T16:26:46.000Z",
     "summary": "Two releases this week: one tonight and a second end of day Friday.",
@@ -19,6 +19,32 @@
     "notice_only": "Guidance or status visibility; no release fix is implied."
   },
   "notices": [
+    {
+      "id": "slack-message-ingress-outage",
+      "runnethUse": "use_when_relevant",
+      "pinned": true,
+      "primitives": [
+        "slack"
+      ],
+      "surfaces": [
+        "web",
+        "slack"
+      ],
+      "updatedAt": "2026-06-10T20:10:10.000Z",
+      "summary": "Slack messages to Runneth are currently unavailable.",
+      "impact": "Runneth is not receiving messages sent from Slack across orgs. Web conversations are still available.",
+      "workaround": "Use Runneth on web for urgent work until Slack message handling is restored.",
+      "resolution": {
+        "type": "in_progress",
+        "label": "Investigating",
+        "note": "The team is investigating the production Slack path. No root cause or recovery time is confirmed yet."
+      },
+      "examples": [],
+      "statusPageGuidance": "Pin under Slack while the incident is active. Keep the copy focused on Slack message handling and the web workaround.",
+      "runnethTrigger": "User asks why Runneth is not responding in Slack, tries to message Runneth from Slack, asks whether Slack is down, or asks how to continue work normally handled in Slack.",
+      "runnethGuidance": "Say that Slack messages to Runneth are temporarily unavailable across orgs, while Runneth remains available on web. Direct the user to continue urgent work in web. Do not promise a recovery time, mention a root cause, or say Slack message handling is fixed until the team confirms restoration.",
+      "supportGuidance": "Confirm whether the report is about sending a message to Runneth from Slack. For urgent work, direct the customer to web. Track investigation internally and avoid sharing a root cause or ETA until confirmed."
+    },
     {
       "id": "inspo-creator-organic-query-expansion",
       "runnethUse": "use_when_relevant",
