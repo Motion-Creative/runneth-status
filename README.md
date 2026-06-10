@@ -57,6 +57,8 @@ Every status-page notice should also include a `workaround`. If there is no work
 
 Use `pinned: true` when a notice should stay at the top of the visual status page. Pinning is only a display signal for the app. It does not make Runneth inject the notice, and it does not change `runnethUse`.
 
+Use `customerBanner: true` when an in-product banner is live for all customers on this issue (an urgent, customer-affecting bug). The status page renders a distinct `Customer banner live` flag on the card. This is a display signal only: it does not change `runnethUse` and does not decide whether Runneth injects the notice. "Banner" here means the banner customers see in the Motion product UI, not the status page's own refresh banner.
+
 Use `resolution` on every notice for the small visual flag on the status page:
 
 - `confirmed_next_release`: show a checkmark-style "Next release" flag. This means the fix is confirmed for the next planned release, but the notice is still active until the release ships.
