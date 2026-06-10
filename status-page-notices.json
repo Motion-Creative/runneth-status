@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-10T21:54:32.000Z",
+  "updatedAt": "2026-06-10T22:17:44.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-10T21:54:32.000Z",
     "summary": "Two releases this week: one tonight and a second end of day Friday.",
@@ -47,31 +47,6 @@
       "runnethTrigger": "User asks why Runneth is not responding in Slack, tries to message Runneth from Slack, asks whether Slack is down, reports Google Drive or Notion access failing, or asks how to continue work that normally uses these native integrations.",
       "runnethGuidance": "Say that Slack messages to Runneth and Google Drive access are temporarily unavailable across orgs while a fix rolls out, and that Notion access has been restored. The fix is rolling out gradually to each org as its VM updates, estimated around 3 hours for all orgs, with some recovering sooner. Direct the user to continue urgent work on web when possible, and ask them to paste needed context or file text directly if the request depends on Google Drive. Do not promise an exact per-org recovery time, mention a root cause, or say Slack or Google Drive is fixed for a given org until the team confirms it.",
       "supportGuidance": "Confirm which path the report involves: Slack messages to Runneth or Google Drive access. Notion is restored and working. For urgent work, direct the customer to web and manual context sharing where possible. The fix is rolling out per org over roughly 3 hours, so avoid promising an exact per-org time until confirmed."
-    },
-    {
-      "id": "inspo-creator-organic-query-expansion",
-      "runnethUse": "use_when_relevant",
-      "primitives": [
-        "data_access"
-      ],
-      "surfaces": [
-        "web",
-        "slack"
-      ],
-      "updatedAt": "2026-06-10T16:26:46.000Z",
-      "summary": "Expanded Inspo ships tonight as a new feature, with direct query for some paths but not all.",
-      "impact": "Expanded Inspo arrives with tonight's release. Direct query paths: creator lookup by name or handle, the current organic TikTok recommendation feed, an exact creator's TikTok feed by handle, saved boards, competitor ads, and viewing or updating the organic keyword seeds that shape future TikTok recommendations (keyword updates need sign-off and steer future feed refreshes rather than returning live search results).",
-      "workaround": "Not a direct query yet: broad creator search by category, follower range, platform, geography, engagement, or performance, and live TikTok search by keyword, topic, category, hashtag, sound, date, or engagement. For those, Runneth pulls a limited page from the closest available source, then filters or reads those results after the pull. That can take longer and may miss results outside the pulled page.",
-      "resolution": {
-        "type": "confirmed_next_release",
-        "label": "Ships tonight",
-        "note": "Expanded Inspo and its matching Runneth guidance ship together with tonight's release."
-      },
-      "examples": [],
-      "statusPageGuidance": "Show under Data access and Inspo. Keep the card short: direct query paths, missing broad filters, and the pull-then-filter workaround.",
-      "runnethTrigger": "User asks for creator discovery, creators like a person or brand, top creators in a category, high-engagement creators, organic TikToks about a keyword or topic, organic TikTok search, organic TikTok trends, or changes to organic TikTok feed keywords.",
-      "runnethGuidance": "When the Inspo guidance ships, route direct asks to the matching source: creator name/handle, current organic feed, exact creator handle, saved board, competitor brand, or keyword update with sign-off. For broad creator or TikTok searches, say the endpoint cannot filter that directly yet; Runneth can pull a limited page from the closest source and then filter/read it, but this may take a while and is less complete than direct search.",
-      "supportGuidance": "Treat expanded Inspo and matching Runneth guidance as coming soon until the next release. Ask for the best pivot: creator name/handle, board, competitor brand, or organic keyword direction. For broad asks, set expectations that keyword changes guide future feed recommendations and pull-then-filter is slower and less precise than direct filtering."
     },
     {
       "id": "slack-reinstall-for-narrower-scope",
@@ -122,37 +97,6 @@
       "runnethTrigger": "User asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, or reports that a Slack file-upload message got no reply or stalled.",
       "runnethGuidance": "Acknowledge that Runneth cannot read file uploads on Slack right now, while web uploads are fine. Starting a new Slack conversation might work sometimes, but it is not dependable and should not be presented as a reliable workaround or fix. For urgent work, ask them to use web upload, paste the relevant text, or describe the file. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
       "supportGuidance": "Confirm the upload happened in Slack. Capture whether the Slack conversation was new or an existing thread, the approximate time, file type, and whether the message received no reply, timed out, or failed before sending."
-    },
-    {
-      "id": "older-slack-threads-messy-formatting",
-      "runnethUse": "status_page_only",
-      "primitives": [
-        "slack"
-      ],
-      "surfaces": [
-        "slack"
-      ],
-      "updatedAt": "2026-06-08T13:49:35.000Z",
-      "summary": "Older Slack threads can show messy formatting.",
-      "impact": "Replies in older Slack threads may render with messy formatting or raw response-control text instead of a normal Runneth reply.",
-      "workaround": "Start a new Slack conversation for the same work. If context matters, paste the relevant context or link the older thread in the new conversation.",
-      "resolution": {
-        "type": "confirmed_next_release",
-        "label": "Next release",
-        "note": "Confirmed for the next planned release."
-      },
-      "statusPageGuidance": "Show under Slack as an active known issue. Show the example thread link for internal context, and use the confirmed_next_release resolution flag, but keep the notice active until the release ships.",
-      "examples": [
-        {
-          "label": "Example older Slack thread with messy formatting",
-          "url": "https://motion-7pz5426.slack.com/archives/C08LZ0A511U/p1780924522368459?thread_ts=1780336543.272799&cid=C08LZ0A511U",
-          "observedResponse": "{\"shouldRespond\":false}",
-          "whatToLookFor": "Runneth posts raw response-control JSON in the Slack thread instead of staying silent or sending a normal reply."
-        }
-      ],
-      "runnethTrigger": "User asks about or reports messy formatting in an older Slack thread, raw response-control text, or a stale Slack thread that is not rendering Runneth replies normally.",
-      "runnethGuidance": "Acknowledge that older Slack threads can show messy formatting until the next planned release. Do not proactively mention this for normal Slack requests. For now, starting a new Slack conversation is the cleaner path. If the user needs continuity from the older thread, ask them to paste the relevant context or link the old thread in the new conversation. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
-      "supportGuidance": "Capture the Slack thread link, whether the thread is older, what formatting appeared, and whether raw response-control text was shown."
     },
     {
       "id": "oauth-gated-apps-logged-out-ui",
