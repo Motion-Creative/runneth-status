@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-06-11T13:18:52.000Z",
+  "updatedAt": "2026-06-11T13:29:15.000Z",
   "releaseNote": {
-    "updatedAt": "2026-06-11T13:18:52.000Z",
-    "summary": "Yesterday's release shipped. A hotfix tonight (Thursday) and routine automation Friday night.",
-    "plannedWindow": "Hotfix tonight, Thursday June 11, 2026; routine automation Friday night, June 12, 2026",
-    "details": "Yesterday's release (June 10, 2026) shipped expanded Inspo and fixed the older Slack thread formatting issue. A hotfix tonight, Thursday June 11, reduces Slack permission scopes. Routine automation returns in Friday night's release, June 12. The Slack file upload fix is also targeted this week. Until each ships, keep using the listed workarounds.",
+    "updatedAt": "2026-06-11T13:29:15.000Z",
+    "summary": "Yesterday's release shipped. A one-off deploy tonight for the Slack permission updates, and routine automation Friday night.",
+    "plannedWindow": "A one-off deploy for the Slack permission updates tonight, Thursday June 11, 2026; routine automation Friday night, June 12, 2026",
+    "details": "Yesterday's release (June 10, 2026) shipped expanded Inspo and fixed the older Slack thread formatting issue. A one-off deploy tonight, Thursday June 11, ships the Slack permission scope updates. Routine automation returns in Friday night's release, June 12. The Slack file upload fix is also targeted this week. Until each ships, keep using the listed workarounds.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
@@ -69,6 +69,35 @@
       "runnethTrigger": "User asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, or reports that a Slack file-upload message got no reply or stalled.",
       "runnethGuidance": "Acknowledge that Runneth cannot read file uploads on Slack right now, while web uploads are fine. Starting a new Slack conversation might work sometimes, but it is not dependable and should not be presented as a reliable workaround or fix. For urgent work, ask them to use web upload, paste the relevant text, or describe the file. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
       "supportGuidance": "Confirm the upload happened in Slack. Capture whether the Slack conversation was new or an existing thread, the approximate time, file type, and whether the message received no reply, timed out, or failed before sending."
+    },
+    {
+      "id": "slack-internal-formatting-response-on-decline",
+      "runnethUse": "status_page_only",
+      "primitives": [
+        "slack"
+      ],
+      "surfaces": [
+        "slack"
+      ],
+      "updatedAt": "2026-06-11T13:29:15.000Z",
+      "summary": "Slack can show an 'internal formatting response' error when Runneth decides not to reply.",
+      "impact": "When Runneth starts to respond in a Slack thread and then shouldn't (for example someone tells it to stop), it can post an 'I hit an internal formatting response' line instead of staying quiet.",
+      "workaround": "Ignore the error line; it is harmless and nothing else is affected. If you told Runneth to stop, it has already stopped.",
+      "resolution": {
+        "type": "in_progress",
+        "label": "In progress",
+        "note": "A fix is in progress."
+      },
+      "statusPageGuidance": "Show under Slack as an active known issue. Keep it short: what triggers it and that it is harmless.",
+      "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
+      "runnethGuidance": "Acknowledge that Slack can show an 'internal formatting response' error when Runneth decides not to reply after it had started to. It is harmless and a fix is in progress. Do not proactively mention this for normal Slack requests.",
+      "supportGuidance": "Capture the Slack thread link and whether Runneth had started responding before the error appeared.",
+      "examples": [
+        {
+          "label": "Reported thread",
+          "url": "https://motion-7pz5426.slack.com/archives/C08LZ0A511U/p1781141803087129?thread_ts=1781141803.087129&cid=C08LZ0A511U"
+        }
+      ]
     },
     {
       "id": "oauth-gated-apps-logged-out-ui",
