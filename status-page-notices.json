@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-06-10T21:54:32.000Z",
+  "updatedAt": "2026-06-11T13:29:15.000Z",
   "releaseNote": {
-    "updatedAt": "2026-06-10T21:54:32.000Z",
-    "summary": "Two releases this week: one tonight and a second end of day Friday.",
-    "plannedWindow": "Tonight, June 10, 2026, with a second release end of day Friday, June 12, 2026",
-    "details": "Tonight's release ships expanded Inspo and clears the Slack file upload and older-thread formatting issues, plus an extra hotfix deploy tonight that reduces Slack permission scopes and restores favorite reports in the Motion sidebar. The second release, end of day Friday, restores routine automation. Until each ships, keep using the listed workarounds.",
+    "updatedAt": "2026-06-11T13:29:15.000Z",
+    "summary": "Yesterday's release shipped. A one-off deploy tonight for the Slack permission updates, and routine automation Friday night.",
+    "plannedWindow": "A one-off deploy for the Slack permission updates tonight, Thursday June 11, 2026; routine automation Friday night, June 12, 2026",
+    "details": "Yesterday's release (June 10, 2026) shipped expanded Inspo and fixed the older Slack thread formatting issue. A one-off deploy tonight, Thursday June 11, ships the Slack permission scope updates. Routine automation returns in Friday night's release, June 12. The Slack file upload fix is also targeted this week. Until each ships, keep using the listed workarounds.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
@@ -16,63 +16,10 @@
     "confirmed_next_release": "Confirmed for the next planned release.",
     "working_toward_next_release": "Working toward the next planned release, but not marked ready yet.",
     "in_progress": "Being worked on, but not tied to the next planned release.",
-    "notice_only": "Guidance or status visibility; no release fix is implied."
+    "notice_only": "Guidance or status visibility; no release fix is implied.",
+    "resolved": "Fixed and shipped. Stays at the bottom of the board for about a day (through removeAfter) so it is visible and gets pulled into the next summary, then drops off."
   },
   "notices": [
-    {
-      "id": "native-integrations-production-incident",
-      "runnethUse": "use_when_relevant",
-      "pinned": true,
-      "customerBanner": true,
-      "primitives": [
-        "integrations",
-        "slack",
-        "google_drive"
-      ],
-      "surfaces": [
-        "web",
-        "slack"
-      ],
-      "updatedAt": "2026-06-10T21:14:53.000Z",
-      "summary": "Slack and Google Drive are still down while a fix rolls out to all orgs. Notion is restored.",
-      "impact": "Runneth is not receiving messages sent from Slack across orgs, and Google Drive access is also affected by the same production incident. Notion access has been restored and tested. Web conversations are still available for work that does not depend on Slack or Google Drive.",
-      "workaround": "Use Runneth on web for urgent work that does not depend on Slack or Google Drive. Paste needed context or file text directly where possible.",
-      "resolution": {
-        "type": "in_progress",
-        "label": "Rolling out",
-        "note": "A fix is rolling out gradually to each org as its VM updates, estimated at about 3 hours for all orgs. Some orgs recover sooner within that window. Notion is already restored. This estimate is not yet confirmed and may change."
-      },
-      "examples": [],
-      "statusPageGuidance": "Pin under Slack, Google Drive, Notion, and Integrations while the incident is active. Keep the copy focused on confirmed Slack message impact, possible Google Drive and Notion impact, and safe web/manual-context workarounds.",
-      "runnethTrigger": "User asks why Runneth is not responding in Slack, tries to message Runneth from Slack, asks whether Slack is down, reports Google Drive or Notion access failing, or asks how to continue work that normally uses these native integrations.",
-      "runnethGuidance": "Say that Slack messages to Runneth and Google Drive access are temporarily unavailable across orgs while a fix rolls out, and that Notion access has been restored. The fix is rolling out gradually to each org as its VM updates, estimated around 3 hours for all orgs, with some recovering sooner. Direct the user to continue urgent work on web when possible, and ask them to paste needed context or file text directly if the request depends on Google Drive. Do not promise an exact per-org recovery time, mention a root cause, or say Slack or Google Drive is fixed for a given org until the team confirms it.",
-      "supportGuidance": "Confirm which path the report involves: Slack messages to Runneth or Google Drive access. Notion is restored and working. For urgent work, direct the customer to web and manual context sharing where possible. The fix is rolling out per org over roughly 3 hours, so avoid promising an exact per-org time until confirmed."
-    },
-    {
-      "id": "inspo-creator-organic-query-expansion",
-      "runnethUse": "use_when_relevant",
-      "primitives": [
-        "data_access"
-      ],
-      "surfaces": [
-        "web",
-        "slack"
-      ],
-      "updatedAt": "2026-06-10T16:26:46.000Z",
-      "summary": "Expanded Inspo ships tonight as a new feature, with direct query for some paths but not all.",
-      "impact": "Expanded Inspo arrives with tonight's release. Direct query paths: creator lookup by name or handle, the current organic TikTok recommendation feed, an exact creator's TikTok feed by handle, saved boards, competitor ads, and viewing or updating the organic keyword seeds that shape future TikTok recommendations (keyword updates need sign-off and steer future feed refreshes rather than returning live search results).",
-      "workaround": "Not a direct query yet: broad creator search by category, follower range, platform, geography, engagement, or performance, and live TikTok search by keyword, topic, category, hashtag, sound, date, or engagement. For those, Runneth pulls a limited page from the closest available source, then filters or reads those results after the pull. That can take longer and may miss results outside the pulled page.",
-      "resolution": {
-        "type": "confirmed_next_release",
-        "label": "Ships tonight",
-        "note": "Expanded Inspo and its matching Runneth guidance ship together with tonight's release."
-      },
-      "examples": [],
-      "statusPageGuidance": "Show under Data access and Inspo. Keep the card short: direct query paths, missing broad filters, and the pull-then-filter workaround.",
-      "runnethTrigger": "User asks for creator discovery, creators like a person or brand, top creators in a category, high-engagement creators, organic TikToks about a keyword or topic, organic TikTok search, organic TikTok trends, or changes to organic TikTok feed keywords.",
-      "runnethGuidance": "When the Inspo guidance ships, route direct asks to the matching source: creator name/handle, current organic feed, exact creator handle, saved board, competitor brand, or keyword update with sign-off. For broad creator or TikTok searches, say the endpoint cannot filter that directly yet; Runneth can pull a limited page from the closest source and then filter/read it, but this may take a while and is less complete than direct search.",
-      "supportGuidance": "Treat expanded Inspo and matching Runneth guidance as coming soon until the next release. Ask for the best pivot: creator name/handle, board, competitor brand, or organic keyword direction. For broad asks, set expectations that keyword changes guide future feed recommendations and pull-then-filter is slower and less precise than direct filtering."
-    },
     {
       "id": "slack-reinstall-for-narrower-scope",
       "runnethUse": "status_page_only",
@@ -124,7 +71,7 @@
       "supportGuidance": "Confirm the upload happened in Slack. Capture whether the Slack conversation was new or an existing thread, the approximate time, file type, and whether the message received no reply, timed out, or failed before sending."
     },
     {
-      "id": "older-slack-threads-messy-formatting",
+      "id": "slack-internal-formatting-response-on-decline",
       "runnethUse": "status_page_only",
       "primitives": [
         "slack"
@@ -132,27 +79,25 @@
       "surfaces": [
         "slack"
       ],
-      "updatedAt": "2026-06-08T13:49:35.000Z",
-      "summary": "Older Slack threads can show messy formatting.",
-      "impact": "Replies in older Slack threads may render with messy formatting or raw response-control text instead of a normal Runneth reply.",
-      "workaround": "Start a new Slack conversation for the same work. If context matters, paste the relevant context or link the older thread in the new conversation.",
+      "updatedAt": "2026-06-11T13:29:15.000Z",
+      "summary": "Slack can show an 'internal formatting response' error when Runneth decides not to reply.",
+      "impact": "When Runneth starts to respond in a Slack thread and then shouldn't (for example someone tells it to stop), it can post an 'I hit an internal formatting response' line instead of staying quiet.",
+      "workaround": "Ignore the error line; it is harmless and nothing else is affected. If you told Runneth to stop, it has already stopped.",
       "resolution": {
-        "type": "confirmed_next_release",
-        "label": "Next release",
-        "note": "Confirmed for the next planned release."
+        "type": "in_progress",
+        "label": "In progress",
+        "note": "A fix is in progress."
       },
-      "statusPageGuidance": "Show under Slack as an active known issue. Show the example thread link for internal context, and use the confirmed_next_release resolution flag, but keep the notice active until the release ships.",
+      "statusPageGuidance": "Show under Slack as an active known issue. Keep it short: what triggers it and that it is harmless.",
+      "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
+      "runnethGuidance": "Acknowledge that Slack can show an 'internal formatting response' error when Runneth decides not to reply after it had started to. It is harmless and a fix is in progress. Do not proactively mention this for normal Slack requests.",
+      "supportGuidance": "Capture the Slack thread link and whether Runneth had started responding before the error appeared.",
       "examples": [
         {
-          "label": "Example older Slack thread with messy formatting",
-          "url": "https://motion-7pz5426.slack.com/archives/C08LZ0A511U/p1780924522368459?thread_ts=1780336543.272799&cid=C08LZ0A511U",
-          "observedResponse": "{\"shouldRespond\":false}",
-          "whatToLookFor": "Runneth posts raw response-control JSON in the Slack thread instead of staying silent or sending a normal reply."
+          "label": "Reported thread",
+          "url": "https://motion-7pz5426.slack.com/archives/C08LZ0A511U/p1781141803087129?thread_ts=1781141803.087129&cid=C08LZ0A511U"
         }
-      ],
-      "runnethTrigger": "User asks about or reports messy formatting in an older Slack thread, raw response-control text, or a stale Slack thread that is not rendering Runneth replies normally.",
-      "runnethGuidance": "Acknowledge that older Slack threads can show messy formatting until the next planned release. Do not proactively mention this for normal Slack requests. For now, starting a new Slack conversation is the cleaner path. If the user needs continuity from the older thread, ask them to paste the relevant context or link the old thread in the new conversation. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
-      "supportGuidance": "Capture the Slack thread link, whether the thread is older, what formatting appeared, and whether raw response-control text was shown."
+      ]
     },
     {
       "id": "oauth-gated-apps-logged-out-ui",
@@ -204,28 +149,121 @@
       "supportGuidance": "Capture cadence, trigger, task, workspace scope, and delivery destination so the plan can be turned on later."
     },
     {
+      "id": "inspo-creator-organic-query-expansion",
+      "runnethUse": "status_page_only",
+      "primitives": [
+        "data_access"
+      ],
+      "surfaces": [
+        "web",
+        "slack"
+      ],
+      "updatedAt": "2026-06-11T13:18:52.000Z",
+      "summary": "Expanded Inspo ships tonight as a new feature, with direct query for some paths but not all.",
+      "impact": "Expanded Inspo arrives with tonight's release. Direct query paths: creator lookup by name or handle, the current organic TikTok recommendation feed, an exact creator's TikTok feed by handle, saved boards, competitor ads, and viewing or updating the organic keyword seeds that shape future TikTok recommendations (keyword updates need sign-off and steer future feed refreshes rather than returning live search results).",
+      "workaround": "Not a direct query yet: broad creator search by category, follower range, platform, geography, engagement, or performance, and live TikTok search by keyword, topic, category, hashtag, sound, date, or engagement. For those, Runneth pulls a limited page from the closest available source, then filters or reads those results after the pull. That can take longer and may miss results outside the pulled page.",
+      "resolution": {
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Expanded Inspo (the Inspo v3 endpoints) shipped in yesterday's release, June 10, 2026."
+      },
+      "examples": [],
+      "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under a Resolved section, and include it in the morning and evening summaries (TL;DR count + bottom bullet). Drops off after 2026-06-12.",
+      "runnethTrigger": "User asks for creator discovery, creators like a person or brand, top creators in a category, high-engagement creators, organic TikToks about a keyword or topic, organic TikTok search, organic TikTok trends, or changes to organic TikTok feed keywords.",
+      "runnethGuidance": "When the Inspo guidance ships, route direct asks to the matching source: creator name/handle, current organic feed, exact creator handle, saved board, competitor brand, or keyword update with sign-off. For broad creator or TikTok searches, say the endpoint cannot filter that directly yet; Runneth can pull a limited page from the closest source and then filter/read it, but this may take a while and is less complete than direct search.",
+      "supportGuidance": "Treat expanded Inspo and matching Runneth guidance as coming soon until the next release. Ask for the best pivot: creator name/handle, board, competitor brand, or organic keyword direction. For broad asks, set expectations that keyword changes guide future feed recommendations and pull-then-filter is slower and less precise than direct filtering.",
+      "resolvedAt": "2026-06-11T13:18:52.000Z",
+      "removeAfter": "2026-06-12"
+    },
+    {
+      "id": "older-slack-threads-messy-formatting",
+      "runnethUse": "status_page_only",
+      "primitives": [
+        "slack"
+      ],
+      "surfaces": [
+        "slack"
+      ],
+      "updatedAt": "2026-06-11T13:18:52.000Z",
+      "summary": "Older Slack threads can show messy formatting.",
+      "impact": "Replies in older Slack threads may render with messy formatting or raw response-control text instead of a normal Runneth reply.",
+      "workaround": "Start a new Slack conversation for the same work. If context matters, paste the relevant context or link the older thread in the new conversation.",
+      "resolution": {
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Fixed in yesterday's release, June 10, 2026: no more raw or half-finished reply text in older Slack threads."
+      },
+      "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under a Resolved section, and include it in the morning and evening summaries (TL;DR count + bottom bullet). Drops off after 2026-06-12.",
+      "examples": [
+        {
+          "label": "Example older Slack thread with messy formatting",
+          "url": "https://motion-7pz5426.slack.com/archives/C08LZ0A511U/p1780924522368459?thread_ts=1780336543.272799&cid=C08LZ0A511U",
+          "observedResponse": "{\"shouldRespond\":false}",
+          "whatToLookFor": "Runneth posts raw response-control JSON in the Slack thread instead of staying silent or sending a normal reply."
+        }
+      ],
+      "runnethTrigger": "User asks about or reports messy formatting in an older Slack thread, raw response-control text, or a stale Slack thread that is not rendering Runneth replies normally.",
+      "runnethGuidance": "Acknowledge that older Slack threads can show messy formatting until the next planned release. Do not proactively mention this for normal Slack requests. For now, starting a new Slack conversation is the cleaner path. If the user needs continuity from the older thread, ask them to paste the relevant context or link the old thread in the new conversation. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
+      "supportGuidance": "Capture the Slack thread link, whether the thread is older, what formatting appeared, and whether raw response-control text was shown.",
+      "resolvedAt": "2026-06-11T13:18:52.000Z",
+      "removeAfter": "2026-06-12"
+    },
+    {
       "id": "favorite-reports-missing-sidebar",
-      "runnethUse": "only_when_asked",
+      "runnethUse": "status_page_only",
       "primitives": [
         "chat"
       ],
       "surfaces": [
         "web"
       ],
-      "updatedAt": "2026-06-10T21:54:32.000Z",
+      "updatedAt": "2026-06-11T13:18:52.000Z",
       "summary": "Favorite reports are missing from the Motion sidebar.",
       "impact": "Favorited reports are not showing in the Motion app sidebar for affected users, including customers. This is a UI regression from a recent change and does not affect the underlying reports or data.",
       "workaround": "Open reports directly rather than from the sidebar favorites for now. The favorites list is not lost; it is a display issue.",
       "resolution": {
-        "type": "confirmed_next_release",
-        "label": "Hotfix tonight",
-        "note": "Confirmed for tonight's extra hotfix deploy."
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Favorite reports are back in the Motion sidebar."
       },
       "examples": [],
-      "statusPageGuidance": "Show under Chat. UI regression in the Motion sidebar, not data loss. Confirmed fix in tonight's hotfix.",
+      "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under a Resolved section, and include it in the morning and evening summaries (TL;DR count + bottom bullet). Drops off after 2026-06-12.",
       "runnethTrigger": "User asks where their favorite reports or sidebar favorites went, or reports that favorited reports are missing from the Motion sidebar.",
       "runnethGuidance": "If asked, say favorite reports are temporarily missing from the Motion sidebar due to a UI regression, that the underlying reports and data are unaffected, and that a fix is going out in tonight's hotfix. Suggest opening reports directly in the meantime. Do not raise this proactively.",
-      "supportGuidance": "Confirm the report favorites are missing from the sidebar specifically. Reassure that favorites are not lost and a fix ships in tonight's hotfix; suggest opening reports directly until then."
+      "supportGuidance": "Confirm the report favorites are missing from the sidebar specifically. Reassure that favorites are not lost and a fix ships in tonight's hotfix; suggest opening reports directly until then.",
+      "resolvedAt": "2026-06-11T13:18:52.000Z",
+      "removeAfter": "2026-06-12"
+    },
+    {
+      "id": "native-integrations-production-incident",
+      "runnethUse": "status_page_only",
+      "pinned": true,
+      "customerBanner": true,
+      "primitives": [
+        "integrations",
+        "slack",
+        "google_drive"
+      ],
+      "surfaces": [
+        "web",
+        "slack"
+      ],
+      "updatedAt": "2026-06-11T13:18:52.000Z",
+      "summary": "Slack and Google Drive are still down while a fix rolls out to all orgs. Notion is restored.",
+      "impact": "Runneth is not receiving messages sent from Slack across orgs, and Google Drive access is also affected by the same production incident. Notion access has been restored and tested. Web conversations are still available for work that does not depend on Slack or Google Drive.",
+      "workaround": "Use Runneth on web for urgent work that does not depend on Slack or Google Drive. Paste needed context or file text directly where possible.",
+      "resolution": {
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Slack messages and Google Drive are restored."
+      },
+      "examples": [],
+      "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under a Resolved section, and include it in the morning and evening summaries (TL;DR count + bottom bullet). Drops off after 2026-06-12.",
+      "runnethTrigger": "User asks why Runneth is not responding in Slack, tries to message Runneth from Slack, asks whether Slack is down, reports Google Drive or Notion access failing, or asks how to continue work that normally uses these native integrations.",
+      "runnethGuidance": "Say that Slack messages to Runneth and Google Drive access are temporarily unavailable across orgs while a fix rolls out, and that Notion access has been restored. The fix is rolling out gradually to each org as its VM updates, estimated around 3 hours for all orgs, with some recovering sooner. Direct the user to continue urgent work on web when possible, and ask them to paste needed context or file text directly if the request depends on Google Drive. Do not promise an exact per-org recovery time, mention a root cause, or say Slack or Google Drive is fixed for a given org until the team confirms it.",
+      "supportGuidance": "Confirm which path the report involves: Slack messages to Runneth or Google Drive access. Notion is restored and working. For urgent work, direct the customer to web and manual context sharing where possible. The fix is rolling out per org over roughly 3 hours, so avoid promising an exact per-org time until confirmed.",
+      "resolvedAt": "2026-06-11T13:18:52.000Z",
+      "removeAfter": "2026-06-12"
     }
   ]
 }
