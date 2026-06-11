@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-11T17:39:19.000Z",
+  "updatedAt": "2026-06-11T17:46:15.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-11T13:29:15.000Z",
     "summary": "Yesterday's release shipped. A one-off deploy tonight for the Slack permission updates, and routine automation Friday night.",
@@ -22,28 +22,30 @@
   "notices": [
     {
       "id": "web-file-uploads-failing",
-      "runnethUse": "use_when_relevant",
+      "runnethUse": "status_page_only",
       "primitives": [
         "chat"
       ],
       "surfaces": [
         "web"
       ],
-      "updatedAt": "2026-06-11T17:39:19.000Z",
-      "summary": "File uploads failing on Web",
-      "impact": "Uploading a file, screenshot, image, or document in Motion chat on the web can stall or fail, so Runneth may not receive the attachment to read or analyze. The upload-prepare step is the one getting stuck.",
-      "workaround": "Retry the upload after a short wait, or paste the relevant text or describe the file so Runneth can still help. Slack file uploads are a separate path and may also be affected, so confirm before relying on them.",
+      "updatedAt": "2026-06-11T17:46:15.000Z",
+      "summary": "File uploads on Web recovered",
+      "impact": "Earlier today, uploading a file, screenshot, image, or document in Motion web chat could stall or fail; the upload-prepare step was getting stuck. Uploads are working again.",
+      "workaround": "No action needed now. If an upload stalls, retry, or paste the text or describe the file so Runneth can still help.",
       "resolution": {
-        "type": "in_progress",
-        "label": "In progress",
-        "note": "Reported on Slack on June 11, 2026. The upload-prepare call was stalling; a prior occurrence was traced to rate limiting while spinning up new VMs. VM creation has been paused as a temporary mitigation while the team investigates. Not tied to a planned release yet."
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Mitigated by pausing mass VM creation, which was rate limiting the upload-prepare step. Uploads confirmed back on June 11, 2026; mass creation stays paused for now while the team monitors."
       },
       "examples": [],
-      "statusPageGuidance": "Active issue under mitigation. Show near the top among current problems. Reported June 11, 2026.",
+      "statusPageGuidance": "Resolved within the last 24h via mitigation. Show at the bottom under Resolved; drops off after 2026-06-12.",
       "runnethTrigger": "User asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Motion web chat, or reports that a web upload failed, stalled, or got no reply.",
-      "runnethGuidance": "Acknowledge that web file uploads can stall or fail right now and that it is a known issue being actively worked on. Ask them to retry after a short wait, or to paste the text or describe the file so you can still help. Do not claim a fix or a release date that has not been confirmed.",
+      "runnethGuidance": "Web file uploads are working again as of June 11. If a user hits a stall, suggest a retry. Mass VM creation is paused as a mitigation; do not present a permanent fix as shipped.",
       "supportGuidance": "Confirm the upload was attempted in Motion web chat. Capture the approximate time, file type and size, and the browser, and whether it failed before sending, stalled, or got no reply. The known failure point is the uploads/prepare step; a prior occurrence was rate limiting from spinning up new VMs, and VM creation has been paused as a temporary mitigation. Note whether Slack uploads are also affected.",
-      "startedAt": "2026-06-11T17:35:30.000Z"
+      "startedAt": "2026-06-11T17:35:30.000Z",
+      "resolvedAt": "2026-06-11T17:46:15.000Z",
+      "removeAfter": "2026-06-12"
     },
     {
       "id": "slack-reinstall-for-narrower-scope",
