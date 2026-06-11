@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-11T14:18:41.000Z",
+  "updatedAt": "2026-06-11T14:25:47.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-11T13:29:15.000Z",
     "summary": "Yesterday's release shipped. A one-off deploy tonight for the Slack permission updates, and routine automation Friday night.",
@@ -109,19 +109,19 @@
       "surfaces": [
         "web"
       ],
-      "updatedAt": "2026-06-08T13:58:11.000Z",
+      "updatedAt": "2026-06-11T14:25:47.000Z",
       "summary": "OAuth-gated apps can show a rough logged-out screen.",
       "impact": "When someone opens an app that requires OAuth while logged out, the gated screen may look unfinished instead of showing a polished sign-in or access prompt.",
       "workaround": "Log in to the right Motion/Runneth account, connect the required OAuth account if needed, then reopen or refresh the app link.",
       "resolution": {
-        "type": "in_progress",
-        "label": "In progress",
-        "note": "The logged-out OAuth gate UI is being worked on, but it is not necessarily tied to the next planned release."
+        "type": "working_toward_next_release",
+        "label": "Fix in review",
+        "note": "A fix for the logged-out screen (an access-denied page) is in review and targeted for the next release."
       },
       "examples": [],
       "statusPageGuidance": "Show under Apps. This is a logged-out OAuth gate UI issue, not a general app outage. Use the in_progress resolution flag and do not imply it is confirmed for the next planned release.",
       "runnethTrigger": "User asks about or reports an app, app link, dashboard, widget, or generated page looking broken, ugly, unfinished, or confusing while logged out or blocked by OAuth.",
-      "runnethGuidance": "Acknowledge that OAuth-gated apps can show a rough logged-out screen right now, and that the team is working on the UI. Do not imply the authenticated app experience or underlying data is broken unless the user reports that after logging in. Ask the person to log in, open the link from an authenticated Runneth or Motion session, connect the required OAuth account if needed, and refresh the app.",
+      "runnethGuidance": "Acknowledge that OAuth-gated apps can show a rough logged-out screen, that the underlying data is fine, and that a fix (an access-denied page) is in review and targeted for the next release. Do not proactively mention this for normal requests.",
       "supportGuidance": "Capture the app link, whether the person was logged out, which OAuth gate appeared, and whether the page still looks wrong after logging in and refreshing."
     },
     {
