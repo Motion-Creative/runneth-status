@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-11T13:29:15.000Z",
+  "updatedAt": "2026-06-11T14:25:47.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-11T13:29:15.000Z",
     "summary": "Yesterday's release shipped. A one-off deploy tonight for the Slack permission updates, and routine automation Friday night.",
@@ -79,25 +79,26 @@
       "surfaces": [
         "slack"
       ],
-      "updatedAt": "2026-06-11T13:29:15.000Z",
+      "updatedAt": "2026-06-11T14:18:41.000Z",
       "summary": "Slack can show an 'internal formatting response' error when Runneth decides not to reply.",
-      "impact": "When Runneth starts to respond in a Slack thread and then shouldn't (for example someone tells it to stop), it can post an 'I hit an internal formatting response' line instead of staying quiet.",
+      "impact": "When Runneth starts to respond in a Slack thread and then should not (for example someone tells it to stop), it can post this error instead of staying quiet: \"I hit an internal formatting error while preparing this Slack response. Please try again.\"",
       "workaround": "Ignore the error line; it is harmless and nothing else is affected. If you told Runneth to stop, it has already stopped.",
       "resolution": {
-        "type": "in_progress",
-        "label": "In progress",
-        "note": "A fix is in progress."
+        "type": "working_toward_next_release",
+        "label": "One-off deploy tonight",
+        "note": "The fix is ready and the team is aiming to include it in tonight's one-off deploy, alongside the Slack permission update."
       },
       "statusPageGuidance": "Show under Slack as an active known issue. Keep it short: what triggers it and that it is harmless.",
       "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
-      "runnethGuidance": "Acknowledge that Slack can show an 'internal formatting response' error when Runneth decides not to reply after it had started to. It is harmless and a fix is in progress. Do not proactively mention this for normal Slack requests.",
+      "runnethGuidance": "Acknowledge that Slack can show an internal formatting error when Runneth decides not to reply after it had started to. It is harmless, the fix is ready, and the team is aiming to ship it in tonight's one-off deploy. Do not proactively mention this for normal Slack requests.",
       "supportGuidance": "Capture the Slack thread link and whether Runneth had started responding before the error appeared.",
       "examples": [
         {
           "label": "Reported thread",
           "url": "https://motion-7pz5426.slack.com/archives/C08LZ0A511U/p1781141803087129?thread_ts=1781141803.087129&cid=C08LZ0A511U"
         }
-      ]
+      ],
+      "errorQuote": "I hit an internal formatting error while preparing this Slack response. Please try again."
     },
     {
       "id": "oauth-gated-apps-logged-out-ui",
@@ -108,19 +109,19 @@
       "surfaces": [
         "web"
       ],
-      "updatedAt": "2026-06-08T13:58:11.000Z",
+      "updatedAt": "2026-06-11T14:25:47.000Z",
       "summary": "OAuth-gated apps can show a rough logged-out screen.",
       "impact": "When someone opens an app that requires OAuth while logged out, the gated screen may look unfinished instead of showing a polished sign-in or access prompt.",
       "workaround": "Log in to the right Motion/Runneth account, connect the required OAuth account if needed, then reopen or refresh the app link.",
       "resolution": {
-        "type": "in_progress",
-        "label": "In progress",
-        "note": "The logged-out OAuth gate UI is being worked on, but it is not necessarily tied to the next planned release."
+        "type": "working_toward_next_release",
+        "label": "Fix in review",
+        "note": "A fix for the logged-out screen (an access-denied page) is in review and targeted for the next release."
       },
       "examples": [],
       "statusPageGuidance": "Show under Apps. This is a logged-out OAuth gate UI issue, not a general app outage. Use the in_progress resolution flag and do not imply it is confirmed for the next planned release.",
       "runnethTrigger": "User asks about or reports an app, app link, dashboard, widget, or generated page looking broken, ugly, unfinished, or confusing while logged out or blocked by OAuth.",
-      "runnethGuidance": "Acknowledge that OAuth-gated apps can show a rough logged-out screen right now, and that the team is working on the UI. Do not imply the authenticated app experience or underlying data is broken unless the user reports that after logging in. Ask the person to log in, open the link from an authenticated Runneth or Motion session, connect the required OAuth account if needed, and refresh the app.",
+      "runnethGuidance": "Acknowledge that OAuth-gated apps can show a rough logged-out screen, that the underlying data is fine, and that a fix (an access-denied page) is in review and targeted for the next release. Do not proactively mention this for normal requests.",
       "supportGuidance": "Capture the app link, whether the person was logged out, which OAuth gate appeared, and whether the page still looks wrong after logging in and refreshing."
     },
     {
@@ -173,7 +174,8 @@
       "runnethGuidance": "When the Inspo guidance ships, route direct asks to the matching source: creator name/handle, current organic feed, exact creator handle, saved board, competitor brand, or keyword update with sign-off. For broad creator or TikTok searches, say the endpoint cannot filter that directly yet; Runneth can pull a limited page from the closest source and then filter/read it, but this may take a while and is less complete than direct search.",
       "supportGuidance": "Treat expanded Inspo and matching Runneth guidance as coming soon until the next release. Ask for the best pivot: creator name/handle, board, competitor brand, or organic keyword direction. For broad asks, set expectations that keyword changes guide future feed recommendations and pull-then-filter is slower and less precise than direct filtering.",
       "resolvedAt": "2026-06-11T13:18:52.000Z",
-      "removeAfter": "2026-06-12"
+      "removeAfter": "2026-06-12",
+      "startedAt": "2026-06-10T16:26:46.000Z"
     },
     {
       "id": "older-slack-threads-messy-formatting",
@@ -206,7 +208,8 @@
       "runnethGuidance": "Acknowledge that older Slack threads can show messy formatting until the next planned release. Do not proactively mention this for normal Slack requests. For now, starting a new Slack conversation is the cleaner path. If the user needs continuity from the older thread, ask them to paste the relevant context or link the old thread in the new conversation. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
       "supportGuidance": "Capture the Slack thread link, whether the thread is older, what formatting appeared, and whether raw response-control text was shown.",
       "resolvedAt": "2026-06-11T13:18:52.000Z",
-      "removeAfter": "2026-06-12"
+      "removeAfter": "2026-06-12",
+      "startedAt": "2026-06-08T13:49:35.000Z"
     },
     {
       "id": "favorite-reports-missing-sidebar",
@@ -232,13 +235,14 @@
       "runnethGuidance": "If asked, say favorite reports are temporarily missing from the Motion sidebar due to a UI regression, that the underlying reports and data are unaffected, and that a fix is going out in tonight's hotfix. Suggest opening reports directly in the meantime. Do not raise this proactively.",
       "supportGuidance": "Confirm the report favorites are missing from the sidebar specifically. Reassure that favorites are not lost and a fix ships in tonight's hotfix; suggest opening reports directly until then.",
       "resolvedAt": "2026-06-11T13:18:52.000Z",
-      "removeAfter": "2026-06-12"
+      "removeAfter": "2026-06-12",
+      "startedAt": "2026-06-10T21:54:32.000Z"
     },
     {
       "id": "native-integrations-production-incident",
       "runnethUse": "status_page_only",
       "pinned": true,
-      "customerBanner": true,
+      "customerBanner": false,
       "primitives": [
         "integrations",
         "slack",
@@ -263,7 +267,8 @@
       "runnethGuidance": "Say that Slack messages to Runneth and Google Drive access are temporarily unavailable across orgs while a fix rolls out, and that Notion access has been restored. The fix is rolling out gradually to each org as its VM updates, estimated around 3 hours for all orgs, with some recovering sooner. Direct the user to continue urgent work on web when possible, and ask them to paste needed context or file text directly if the request depends on Google Drive. Do not promise an exact per-org recovery time, mention a root cause, or say Slack or Google Drive is fixed for a given org until the team confirms it.",
       "supportGuidance": "Confirm which path the report involves: Slack messages to Runneth or Google Drive access. Notion is restored and working. For urgent work, direct the customer to web and manual context sharing where possible. The fix is rolling out per org over roughly 3 hours, so avoid promising an exact per-org time until confirmed.",
       "resolvedAt": "2026-06-11T13:18:52.000Z",
-      "removeAfter": "2026-06-12"
+      "removeAfter": "2026-06-12",
+      "startedAt": "2026-06-10T21:14:53.000Z"
     }
   ]
 }
