@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-11T17:46:15.000Z",
+  "updatedAt": "2026-06-11T18:05:06.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-11T13:29:15.000Z",
     "summary": "Yesterday's release shipped. A one-off deploy tonight for the Slack permission updates, and routine automation Friday night.",
@@ -29,22 +29,22 @@
       "surfaces": [
         "web"
       ],
-      "updatedAt": "2026-06-11T17:46:15.000Z",
-      "summary": "File uploads on Web recovered",
-      "impact": "Earlier today, uploading a file, screenshot, image, or document in Motion web chat could stall or fail; the upload-prepare step was getting stuck. Uploads are working again.",
+      "updatedAt": "2026-06-11T18:05:06.000Z",
+      "summary": "File uploads on Web recovered (Azure rate limiting)",
+      "impact": "Earlier today, uploading a file, screenshot, image, or document in Motion web chat could stall or fail at the upload-prepare step. Per the team's current read, the root cause was Azure rate limiting, which can affect uploads across customers, not just this VM. Uploads are working again.",
       "workaround": "No action needed now. If an upload stalls, retry, or paste the text or describe the file so Runneth can still help.",
       "resolution": {
         "type": "resolved",
         "label": "Resolved",
-        "note": "Mitigated by pausing mass VM creation, which was rate limiting the upload-prepare step. Uploads confirmed back on June 11, 2026; mass creation stays paused for now while the team monitors."
+        "note": "Root cause was Azure rate limiting on the upload-prepare path, understood to affect uploads broadly rather than a single VM. Mass VM creation was adding load and has been paused as a mitigation. Uploads confirmed back on June 11, 2026; scope is still being confirmed by the team."
       },
       "examples": [],
-      "statusPageGuidance": "Resolved within the last 24h via mitigation. Show at the bottom under Resolved; drops off after 2026-06-12.",
+      "statusPageGuidance": "Resolved within the last 24h via mitigation. Cause was Azure rate limiting (broad impact, per current understanding). Show at the bottom under Resolved; drops off after 2026-06-12.",
       "runnethTrigger": "User asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Motion web chat, or reports that a web upload failed, stalled, or got no reply.",
-      "runnethGuidance": "Web file uploads are working again as of June 11. If a user hits a stall, suggest a retry. Mass VM creation is paused as a mitigation; do not present a permanent fix as shipped.",
-      "supportGuidance": "Confirm the upload was attempted in Motion web chat. Capture the approximate time, file type and size, and the browser, and whether it failed before sending, stalled, or got no reply. The known failure point is the uploads/prepare step; a prior occurrence was rate limiting from spinning up new VMs, and VM creation has been paused as a temporary mitigation. Note whether Slack uploads are also affected.",
+      "runnethGuidance": "Web file uploads are working again as of June 11. The root cause was Azure rate limiting that could affect uploads across customers, not just this VM; mass VM creation was paused as a mitigation. If a user hits a stall, suggest a retry. Do not present a permanent fix as shipped, and do not claim it was isolated to one VM.",
+      "supportGuidance": "Confirm the upload was attempted in Motion web chat. Capture the approximate time, file type and size, and the browser, and whether it failed before sending, stalled, or got no reply. Known failure point is the uploads/prepare step; current understanding is Azure rate limiting with broad impact, with mass VM creation paused as a mitigation. Scope across customers is still being confirmed.",
       "startedAt": "2026-06-11T17:35:30.000Z",
-      "resolvedAt": "2026-06-11T17:46:15.000Z",
+      "resolvedAt": "2026-06-11T18:05:06.000Z",
       "removeAfter": "2026-06-12"
     },
     {
