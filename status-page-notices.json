@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-11T14:03:27.000Z",
+  "updatedAt": "2026-06-11T14:12:15.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-11T13:29:15.000Z",
     "summary": "Yesterday's release shipped. A one-off deploy tonight for the Slack permission updates, and routine automation Friday night.",
@@ -79,18 +79,18 @@
       "surfaces": [
         "slack"
       ],
-      "updatedAt": "2026-06-11T13:29:15.000Z",
+      "updatedAt": "2026-06-11T14:12:15.000Z",
       "summary": "Slack can show an 'internal formatting response' error when Runneth decides not to reply.",
       "impact": "When Runneth starts to respond in a Slack thread and then shouldn't (for example someone tells it to stop), it can post an 'I hit an internal formatting response' line instead of staying quiet.",
       "workaround": "Ignore the error line; it is harmless and nothing else is affected. If you told Runneth to stop, it has already stopped.",
       "resolution": {
-        "type": "in_progress",
-        "label": "In progress",
-        "note": "A fix is in progress."
+        "type": "confirmed_next_release",
+        "label": "Next release",
+        "note": "The fix is ready and ships with the next planned release (not tonight's one-off Slack permissions deploy)."
       },
       "statusPageGuidance": "Show under Slack as an active known issue. Keep it short: what triggers it and that it is harmless.",
       "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
-      "runnethGuidance": "Acknowledge that Slack can show an 'internal formatting response' error when Runneth decides not to reply after it had started to. It is harmless and a fix is in progress. Do not proactively mention this for normal Slack requests.",
+      "runnethGuidance": "Acknowledge that Slack can show an 'internal formatting response' error when Runneth decides not to reply after it had started to. It is harmless, the fix is ready, and it ships with the next planned release. Do not proactively mention this for normal Slack requests.",
       "supportGuidance": "Capture the Slack thread link and whether Runneth had started responding before the error appeared.",
       "examples": [
         {
