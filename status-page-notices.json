@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-11T14:12:15.000Z",
+  "updatedAt": "2026-06-11T14:13:36.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-11T13:29:15.000Z",
     "summary": "Yesterday's release shipped. A one-off deploy tonight for the Slack permission updates, and routine automation Friday night.",
@@ -79,9 +79,9 @@
       "surfaces": [
         "slack"
       ],
-      "updatedAt": "2026-06-11T14:12:15.000Z",
+      "updatedAt": "2026-06-11T14:13:36.000Z",
       "summary": "Slack can show an 'internal formatting response' error when Runneth decides not to reply.",
-      "impact": "When Runneth starts to respond in a Slack thread and then shouldn't (for example someone tells it to stop), it can post an 'I hit an internal formatting response' line instead of staying quiet.",
+      "impact": "When Runneth starts to respond in a Slack thread and then should not (for example someone tells it to stop), it can post this error instead of staying quiet: \"I hit an internal formatting error while preparing this Slack response. Please try again.\"",
       "workaround": "Ignore the error line; it is harmless and nothing else is affected. If you told Runneth to stop, it has already stopped.",
       "resolution": {
         "type": "confirmed_next_release",
@@ -97,7 +97,8 @@
           "label": "Reported thread",
           "url": "https://motion-7pz5426.slack.com/archives/C08LZ0A511U/p1781141803087129?thread_ts=1781141803.087129&cid=C08LZ0A511U"
         }
-      ]
+      ],
+      "errorQuote": "I hit an internal formatting error while preparing this Slack response. Please try again."
     },
     {
       "id": "oauth-gated-apps-logged-out-ui",
