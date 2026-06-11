@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-11T13:29:15.000Z",
+  "updatedAt": "2026-06-11T14:03:27.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-11T13:29:15.000Z",
     "summary": "Yesterday's release shipped. A one-off deploy tonight for the Slack permission updates, and routine automation Friday night.",
@@ -173,7 +173,8 @@
       "runnethGuidance": "When the Inspo guidance ships, route direct asks to the matching source: creator name/handle, current organic feed, exact creator handle, saved board, competitor brand, or keyword update with sign-off. For broad creator or TikTok searches, say the endpoint cannot filter that directly yet; Runneth can pull a limited page from the closest source and then filter/read it, but this may take a while and is less complete than direct search.",
       "supportGuidance": "Treat expanded Inspo and matching Runneth guidance as coming soon until the next release. Ask for the best pivot: creator name/handle, board, competitor brand, or organic keyword direction. For broad asks, set expectations that keyword changes guide future feed recommendations and pull-then-filter is slower and less precise than direct filtering.",
       "resolvedAt": "2026-06-11T13:18:52.000Z",
-      "removeAfter": "2026-06-12"
+      "removeAfter": "2026-06-12",
+      "startedAt": "2026-06-10T16:26:46.000Z"
     },
     {
       "id": "older-slack-threads-messy-formatting",
@@ -206,7 +207,8 @@
       "runnethGuidance": "Acknowledge that older Slack threads can show messy formatting until the next planned release. Do not proactively mention this for normal Slack requests. For now, starting a new Slack conversation is the cleaner path. If the user needs continuity from the older thread, ask them to paste the relevant context or link the old thread in the new conversation. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
       "supportGuidance": "Capture the Slack thread link, whether the thread is older, what formatting appeared, and whether raw response-control text was shown.",
       "resolvedAt": "2026-06-11T13:18:52.000Z",
-      "removeAfter": "2026-06-12"
+      "removeAfter": "2026-06-12",
+      "startedAt": "2026-06-08T13:49:35.000Z"
     },
     {
       "id": "favorite-reports-missing-sidebar",
@@ -232,13 +234,14 @@
       "runnethGuidance": "If asked, say favorite reports are temporarily missing from the Motion sidebar due to a UI regression, that the underlying reports and data are unaffected, and that a fix is going out in tonight's hotfix. Suggest opening reports directly in the meantime. Do not raise this proactively.",
       "supportGuidance": "Confirm the report favorites are missing from the sidebar specifically. Reassure that favorites are not lost and a fix ships in tonight's hotfix; suggest opening reports directly until then.",
       "resolvedAt": "2026-06-11T13:18:52.000Z",
-      "removeAfter": "2026-06-12"
+      "removeAfter": "2026-06-12",
+      "startedAt": "2026-06-10T21:54:32.000Z"
     },
     {
       "id": "native-integrations-production-incident",
       "runnethUse": "status_page_only",
       "pinned": true,
-      "customerBanner": true,
+      "customerBanner": false,
       "primitives": [
         "integrations",
         "slack",
@@ -263,7 +266,8 @@
       "runnethGuidance": "Say that Slack messages to Runneth and Google Drive access are temporarily unavailable across orgs while a fix rolls out, and that Notion access has been restored. The fix is rolling out gradually to each org as its VM updates, estimated around 3 hours for all orgs, with some recovering sooner. Direct the user to continue urgent work on web when possible, and ask them to paste needed context or file text directly if the request depends on Google Drive. Do not promise an exact per-org recovery time, mention a root cause, or say Slack or Google Drive is fixed for a given org until the team confirms it.",
       "supportGuidance": "Confirm which path the report involves: Slack messages to Runneth or Google Drive access. Notion is restored and working. For urgent work, direct the customer to web and manual context sharing where possible. The fix is rolling out per org over roughly 3 hours, so avoid promising an exact per-org time until confirmed.",
       "resolvedAt": "2026-06-11T13:18:52.000Z",
-      "removeAfter": "2026-06-12"
+      "removeAfter": "2026-06-12",
+      "startedAt": "2026-06-10T21:14:53.000Z"
     }
   ]
 }
