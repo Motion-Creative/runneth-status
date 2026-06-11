@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-11T14:38:59.000Z",
+  "updatedAt": "2026-06-11T17:40:11.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-11T13:29:15.000Z",
     "summary": "Yesterday's release shipped. A one-off deploy tonight for the Slack permission updates, and routine automation Friday night.",
@@ -47,21 +47,21 @@
     },
     {
       "id": "slack-internal-formatting-response-on-decline",
-      "runnethUse": "status_page_only",
+      "runnethUse": "use_when_relevant",
       "primitives": [
         "slack"
       ],
       "surfaces": [
         "slack"
       ],
-      "updatedAt": "2026-06-11T14:18:41.000Z",
+      "updatedAt": "2026-06-11T17:40:11.000Z",
       "summary": "Slack can show an 'internal formatting response' error when Runneth decides not to reply.",
-      "impact": "When Runneth starts to respond in a Slack thread and then should not (for example someone tells it to stop), it can post this error instead of staying quiet: \"I hit an internal formatting error while preparing this Slack response. Please try again.\"",
+      "impact": "When more than one person steers the same Slack message (for example someone replies or tells Runneth to stop while it is mid-response), Runneth can post this error across any org instead of staying quiet: \"I hit an internal formatting error while preparing this Slack response. Please try again.\". Confirmed on all orgs.",
       "workaround": "Ignore the error line; it is harmless and nothing else is affected. If you told Runneth to stop, it has already stopped.",
       "resolution": {
         "type": "working_toward_next_release",
-        "label": "One-off deploy tonight",
-        "note": "The fix is ready and the team is aiming to include it in tonight's one-off deploy, alongside the Slack permission update."
+        "label": "Deploy tonight",
+        "note": "The fix is in. The team is prioritizing tonight one-off deploy for it. A customer banner is live for 1.0 users until it deploys."
       },
       "statusPageGuidance": "Show under Slack as an active known issue. Keep it short: what triggers it and that it is harmless.",
       "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
@@ -73,7 +73,9 @@
           "url": "https://motion-7pz5426.slack.com/archives/C08LZ0A511U/p1781141803087129?thread_ts=1781141803.087129&cid=C08LZ0A511U"
         }
       ],
-      "errorQuote": "I hit an internal formatting error while preparing this Slack response. Please try again."
+      "errorQuote": "I hit an internal formatting error while preparing this Slack response. Please try again.",
+      "customerBanner": true,
+      "pinned": true
     },
     {
       "id": "oauth-gated-apps-logged-out-ui",
