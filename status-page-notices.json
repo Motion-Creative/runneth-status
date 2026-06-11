@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-11T14:25:47.000Z",
+  "updatedAt": "2026-06-11T14:38:59.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-11T13:29:15.000Z",
     "summary": "Yesterday's release shipped. A one-off deploy tonight for the Slack permission updates, and routine automation Friday night.",
@@ -44,31 +44,6 @@
       "runnethTrigger": "User asks about Slack permissions, Slack scopes, Slack security review, Slack reconnect, Slack reinstall, or replacing an older Slack install with the narrower scope.",
       "runnethGuidance": "Explain that Slack permissions are being narrowed: a hotfix tonight removes extra access, including private channel search, and limits the app to channels the bot is in. New Slack connections already use the narrower scope, while older workspaces may need a Runneth-managed reconnect to pick it up. Route reconnects through Runneth's integration removal and reconnect flow. Do not tell customers to uninstall directly from Slack.",
       "supportGuidance": "For scope questions, note the extra access is being removed in tonight's hotfix and applies per org as it rolls out. For older installs that still show the wider scope, have the customer remove and reconnect Slack through Runneth rather than uninstalling from Slack directly."
-    },
-    {
-      "id": "slack-file-uploads-rate-limited",
-      "runnethUse": "status_page_only",
-      "pinned": true,
-      "primitives": [
-        "slack"
-      ],
-      "surfaces": [
-        "slack"
-      ],
-      "updatedAt": "2026-06-08T13:49:35.000Z",
-      "summary": "File uploads fail on Slack",
-      "impact": "Runneth cannot read file uploads on Slack. Web uploads are fine.",
-      "workaround": "Slack-side retry or new-conversation attempts are unreliable and may only work sometimes. For urgent work, use web upload, paste the text, or describe the file.",
-      "resolution": {
-        "type": "confirmed_next_release",
-        "label": "Next release",
-        "note": "Confirmed for the next planned release."
-      },
-      "examples": [],
-      "statusPageGuidance": "Show under Slack only. Web uploads are fine. Use the confirmed_next_release resolution flag, but keep the notice active until the release ships.",
-      "runnethTrigger": "User asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, or reports that a Slack file-upload message got no reply or stalled.",
-      "runnethGuidance": "Acknowledge that Runneth cannot read file uploads on Slack right now, while web uploads are fine. Starting a new Slack conversation might work sometimes, but it is not dependable and should not be presented as a reliable workaround or fix. For urgent work, ask them to use web upload, paste the relevant text, or describe the file. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
-      "supportGuidance": "Confirm the upload happened in Slack. Capture whether the Slack conversation was new or an existing thread, the approximate time, file type, and whether the message received no reply, timed out, or failed before sending."
     },
     {
       "id": "slack-internal-formatting-response-on-decline",
@@ -148,6 +123,34 @@
       "runnethTrigger": "User asks to create, set up, schedule, monitor, remind, notify, post later, repeat, keep something updated, or run background upkeep.",
       "runnethGuidance": "Lead with the constructive boundary, offer a future routine plan, and avoid saying anything is scheduled until creation actually succeeds.",
       "supportGuidance": "Capture cadence, trigger, task, workspace scope, and delivery destination so the plan can be turned on later."
+    },
+    {
+      "id": "slack-file-uploads-rate-limited",
+      "runnethUse": "status_page_only",
+      "pinned": false,
+      "primitives": [
+        "slack"
+      ],
+      "surfaces": [
+        "slack"
+      ],
+      "updatedAt": "2026-06-11T14:38:59.000Z",
+      "summary": "File uploads fail on Slack",
+      "impact": "Runneth cannot read file uploads on Slack. Web uploads are fine.",
+      "workaround": "Slack-side retry or new-conversation attempts are unreliable and may only work sometimes. For urgent work, use web upload, paste the text, or describe the file.",
+      "resolution": {
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Slack file uploads work: Runneth reads files attached in Slack. The fix (staging inbound Slack files before the runtime turn) has been live since the May 31 release."
+      },
+      "examples": [],
+      "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under Resolved, include in the morning and evening summaries, drops off after 2026-06-12.",
+      "runnethTrigger": "User asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, or reports that a Slack file-upload message got no reply or stalled.",
+      "runnethGuidance": "Acknowledge that Runneth cannot read file uploads on Slack right now, while web uploads are fine. Starting a new Slack conversation might work sometimes, but it is not dependable and should not be presented as a reliable workaround or fix. For urgent work, ask them to use web upload, paste the relevant text, or describe the file. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
+      "supportGuidance": "Confirm the upload happened in Slack. Capture whether the Slack conversation was new or an existing thread, the approximate time, file type, and whether the message received no reply, timed out, or failed before sending.",
+      "startedAt": "2026-06-08T13:49:35.000Z",
+      "resolvedAt": "2026-06-11T14:38:59.000Z",
+      "removeAfter": "2026-06-12"
     },
     {
       "id": "inspo-creator-organic-query-expansion",
