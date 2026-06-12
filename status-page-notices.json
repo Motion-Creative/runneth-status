@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-12T12:05:38.000Z",
+  "updatedAt": "2026-06-12T12:22:42.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-12T12:05:38.000Z",
     "summary": "Routine automation returns Friday night. Yesterday one-off deploy shipped the Slack scope cleanup and the internal formatting fix.",
@@ -30,14 +30,14 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-12T12:05:38.000Z",
+      "updatedAt": "2026-06-12T12:22:42.000Z",
       "summary": "Slack permission scope is being narrowed, and older installs may need a reconnect.",
       "impact": "Runneth's Slack app was still requesting broader access than intended, including private channel search and related channel-history tokens, beyond the narrower permissions customers were told they could install with. A fix in tonight's hotfix limits this to only the channels the bot is in and removes private channel search. Separately, some workspaces connected Slack before the app moved to the narrower scope and may still show the wider grant until Slack is removed and reconnected through Runneth; newly connected orgs already use the narrower scope.",
       "workaround": "No action is needed for the hotfix; the reduced scope applies automatically once it reaches each org. Older installs that want the narrower scope reflected sooner can use Runneth's remove-and-reconnect Slack flow: ask Runneth to remove Slack, then start a new conversation and ask Runneth to connect Slack again. Do not uninstall the app directly from Slack.",
       "resolution": {
-        "type": "working_toward_next_release",
-        "label": "Partly shipped",
-        "note": "Part of the scope reduction (removing the private channel-search scope) shipped in the June 11 deploy. A further reduction is still pending. Older installs may need a remove-and-reconnect."
+        "type": "confirmed_next_release",
+        "label": "Ships next release",
+        "note": "The private channel-search scope was removed in the June 11 deploy. The rest of the scope reduction is now merged and ships with the next release. Older installs may need a remove-and-reconnect."
       },
       "examples": [],
       "statusPageGuidance": "Show under Slack. Covers both the pending scope-reduction hotfix tonight and the older-install reconnect guidance, which still applies after the hotfix.",
