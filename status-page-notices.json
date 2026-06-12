@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-12T13:09:15.000Z",
+  "updatedAt": "2026-06-12T13:27:44.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-12T12:05:38.000Z",
     "summary": "Routine automation returns Friday night. Yesterday one-off deploy shipped the Slack scope cleanup and the internal formatting fix.",
@@ -30,20 +30,22 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-12T13:09:15.000Z",
-      "summary": "Slack permission scope is being narrowed to what Runneth actually needs.",
-      "impact": "Runneth's Slack install was requesting broader access than it uses. The private-channel content search permission (search:read.private) was removed in the latest deploy, so Runneth no longer searches private channel content and only reads private channels it has been invited to. A redundant installer file-download permission (files:read) is dropping next, since file downloads now run on the bot token.",
-      "workaround": "Nothing to do. Private channel names still appear in search by name; only private content search was removed.",
+      "updatedAt": "2026-06-12T13:27:44.000Z",
+      "summary": "Slack permission scope is narrowed.",
+      "impact": "Runneth's Slack install previously requested broader access than it uses. The private-channel content search permission (search:read.private) was removed in the June 11 deploy, so Runneth no longer searches private channel content and only reads private channels it has been invited to. The scope is now narrowed to what Runneth actually needs. No further scope reduction is planned; future Slack scope changes will be additions, not trims.",
+      "workaround": "Nothing to do. Private channel names still appear in search by name; only private content search was removed. Older installs that want the narrower scope reflected can remove and reconnect Slack through Runneth.",
       "resolution": {
-        "type": "confirmed_next_release",
-        "label": "Ships next release",
-        "note": "The private-channel content search scope (search:read.private) was removed in the June 11 deploy. The redundant installer file-download scope (files:read) is merged and ships with the next release."
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Slack permission scope is narrowed. The private-channel content search scope (search:read.private) was removed in the June 11 deploy. No further scope reduction is planned; future Slack scope changes will be additions, not trims. Older installs may need a remove-and-reconnect through Runneth."
       },
       "examples": [],
-      "statusPageGuidance": "Show under Slack. Covers both the pending scope-reduction hotfix tonight and the older-install reconnect guidance, which still applies after the hotfix.",
+      "statusPageGuidance": "Show under Slack. The scope is narrowed and shipped; the older-install reconnect guidance still applies.",
       "runnethTrigger": "User asks about Slack permissions, Slack scopes, Slack security review, Slack reconnect, Slack reinstall, or replacing an older Slack install with the narrower scope.",
-      "runnethGuidance": "Explain that Slack permissions are being narrowed: a hotfix tonight removes extra access, including private channel search, and limits the app to channels the bot is in. New Slack connections already use the narrower scope, while older workspaces may need a Runneth-managed reconnect to pick it up. Route reconnects through Runneth's integration removal and reconnect flow. Do not tell customers to uninstall directly from Slack.",
-      "supportGuidance": "For scope questions, note the extra access is being removed in tonight's hotfix and applies per org as it rolls out. For older installs that still show the wider scope, have the customer remove and reconnect Slack through Runneth rather than uninstalling from Slack directly."
+      "runnethGuidance": "Explain that Slack permissions are narrowed: the private-channel content search scope was removed in the June 11 deploy and Runneth only reads private channels it has been invited to. No further scope reduction is planned; future scope changes are additions. Older workspaces may need a Runneth-managed reconnect to pick up the narrower scope; route reconnects through Runneth's integration removal and reconnect flow. Do not tell customers to uninstall directly from Slack.",
+      "supportGuidance": "For scope questions, note the extra private-content search access was removed in the June 11 deploy and the scope is narrowed. For older installs that still show the wider scope, have the customer remove and reconnect Slack through Runneth rather than uninstalling from Slack directly.",
+      "resolvedAt": "2026-06-12T13:27:44.000Z",
+      "removeAfter": "2026-06-19T13:27:44.000Z"
     },
     {
       "id": "oauth-gated-apps-logged-out-ui",
