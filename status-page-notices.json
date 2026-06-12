@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-06-12T13:27:44.000Z",
+  "updatedAt": "2026-06-12T14:14:05.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-12T12:05:38.000Z",
-    "summary": "Routine automation returns Friday night. Yesterday one-off deploy shipped the Slack scope cleanup and the internal formatting fix.",
-    "plannedWindow": "Routine automation Friday night, June 12, 2026",
-    "details": "The June 11 one-off deploy shipped part of the Slack permission scope cleanup and fixed the internal formatting error. Routine automation returns in Friday night release, June 12. Until it ships, keep using the listed workarounds.",
+    "summary": "Routines return early next week. Yesterday's one-off deploy shipped the Slack scope cleanup and the internal formatting fix.",
+    "plannedWindow": "Tuesday night, June 16, 2026, including the routines release",
+    "details": "The June 11 one-off deploy shipped part of the Slack permission scope cleanup and fixed the internal formatting error. Routines now return in the next release, Tuesday night (June 16, 2026). Until it ships, keep using the listed workarounds.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
@@ -81,14 +81,14 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-10T16:26:46.000Z",
-      "summary": "Routine automation is temporarily paused during the refactor.",
+      "updatedAt": "2026-06-12T14:14:05.000Z",
+      "summary": "Routines are temporarily paused during the refactor.",
       "impact": "New scheduled, recurring, monitored, reminder, post-later, or background-upkeep work should not be presented as live reliable automation.",
       "workaround": "Save the routine plan with cadence, trigger, task, workspace scope, and delivery target, then do the immediate one-time work where possible.",
       "resolution": {
         "type": "working_toward_next_release",
         "label": "In progress",
-        "note": "Targeted for the second release this week, end of day Friday, June 12, 2026, as part of the routines refactor."
+        "note": "Targeted for the next release, Tuesday night (June 16, 2026), as part of the routines refactor."
       },
       "examples": [],
       "statusPageGuidance": "CSMs should treat new routine setup as paused. Save the routine plan and do immediate one-time work where possible.",
