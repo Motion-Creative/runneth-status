@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-06-11T17:40:11.000Z",
+  "updatedAt": "2026-06-12T12:05:38.000Z",
   "releaseNote": {
-    "updatedAt": "2026-06-11T13:29:15.000Z",
-    "summary": "Yesterday's release shipped. A one-off deploy tonight for the Slack permission updates, and routine automation Friday night.",
-    "plannedWindow": "A one-off deploy for the Slack permission updates tonight, Thursday June 11, 2026; routine automation Friday night, June 12, 2026",
-    "details": "Yesterday's release (June 10, 2026) shipped expanded Inspo and fixed the older Slack thread formatting issue. A one-off deploy tonight, Thursday June 11, ships the Slack permission scope updates. Routine automation returns in Friday night's release, June 12. The Slack file upload fix is also targeted this week. Until each ships, keep using the listed workarounds.",
+    "updatedAt": "2026-06-12T12:05:38.000Z",
+    "summary": "Routine automation returns Friday night. Yesterday one-off deploy shipped the Slack scope cleanup and the internal formatting fix.",
+    "plannedWindow": "Routine automation Friday night, June 12, 2026",
+    "details": "The June 11 one-off deploy shipped part of the Slack permission scope cleanup and fixed the internal formatting error. Routine automation returns in Friday night release, June 12. Until it ships, keep using the listed workarounds.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
@@ -30,52 +30,20 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-10T21:54:32.000Z",
-      "summary": "Slack permission scope is being narrowed; a hotfix removes the extra access tonight, and older installs may still need a reconnect.",
+      "updatedAt": "2026-06-12T12:05:38.000Z",
+      "summary": "Slack permission scope is being narrowed, and older installs may need a reconnect.",
       "impact": "Runneth's Slack app was still requesting broader access than intended, including private channel search and related channel-history tokens, beyond the narrower permissions customers were told they could install with. A fix in tonight's hotfix limits this to only the channels the bot is in and removes private channel search. Separately, some workspaces connected Slack before the app moved to the narrower scope and may still show the wider grant until Slack is removed and reconnected through Runneth; newly connected orgs already use the narrower scope.",
       "workaround": "No action is needed for the hotfix; the reduced scope applies automatically once it reaches each org. Older installs that want the narrower scope reflected sooner can use Runneth's remove-and-reconnect Slack flow: ask Runneth to remove Slack, then start a new conversation and ask Runneth to connect Slack again. Do not uninstall the app directly from Slack.",
       "resolution": {
-        "type": "confirmed_next_release",
-        "label": "Hotfix tonight",
-        "note": "The further scope reduction is confirmed for tonight's extra hotfix deploy. Older-install reconnect guidance still applies afterward."
+        "type": "working_toward_next_release",
+        "label": "Partly shipped",
+        "note": "Part of the scope reduction (removing the private channel-search scope) shipped in the June 11 deploy. A further reduction is still pending. Older installs may need a remove-and-reconnect."
       },
       "examples": [],
       "statusPageGuidance": "Show under Slack. Covers both the pending scope-reduction hotfix tonight and the older-install reconnect guidance, which still applies after the hotfix.",
       "runnethTrigger": "User asks about Slack permissions, Slack scopes, Slack security review, Slack reconnect, Slack reinstall, or replacing an older Slack install with the narrower scope.",
       "runnethGuidance": "Explain that Slack permissions are being narrowed: a hotfix tonight removes extra access, including private channel search, and limits the app to channels the bot is in. New Slack connections already use the narrower scope, while older workspaces may need a Runneth-managed reconnect to pick it up. Route reconnects through Runneth's integration removal and reconnect flow. Do not tell customers to uninstall directly from Slack.",
       "supportGuidance": "For scope questions, note the extra access is being removed in tonight's hotfix and applies per org as it rolls out. For older installs that still show the wider scope, have the customer remove and reconnect Slack through Runneth rather than uninstalling from Slack directly."
-    },
-    {
-      "id": "slack-internal-formatting-response-on-decline",
-      "runnethUse": "use_when_relevant",
-      "primitives": [
-        "slack"
-      ],
-      "surfaces": [
-        "slack"
-      ],
-      "updatedAt": "2026-06-11T17:40:11.000Z",
-      "summary": "Slack can show an 'internal formatting response' error when Runneth decides not to reply.",
-      "impact": "When more than one person steers the same Slack message (for example someone replies or tells Runneth to stop while it is mid-response), Runneth can post this error across any org instead of staying quiet: \"I hit an internal formatting error while preparing this Slack response. Please try again.\". Confirmed on all orgs.",
-      "workaround": "Ignore the error line; it is harmless and nothing else is affected. If you told Runneth to stop, it has already stopped.",
-      "resolution": {
-        "type": "working_toward_next_release",
-        "label": "Deploy tonight",
-        "note": "The fix is in. The team is prioritizing tonight one-off deploy for it. A customer banner is live for 1.0 users until it deploys."
-      },
-      "statusPageGuidance": "Show under Slack as an active known issue. Keep it short: what triggers it and that it is harmless.",
-      "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
-      "runnethGuidance": "Acknowledge that Slack can show an internal formatting error when Runneth decides not to reply after it had started to. It is harmless, the fix is ready, and the team is aiming to ship it in tonight's one-off deploy. Do not proactively mention this for normal Slack requests.",
-      "supportGuidance": "Capture the Slack thread link and whether Runneth had started responding before the error appeared.",
-      "examples": [
-        {
-          "label": "Reported thread",
-          "url": "https://motion-7pz5426.slack.com/archives/C08LZ0A511U/p1781141803087129?thread_ts=1781141803.087129&cid=C08LZ0A511U"
-        }
-      ],
-      "errorQuote": "I hit an internal formatting error while preparing this Slack response. Please try again.",
-      "customerBanner": true,
-      "pinned": true
     },
     {
       "id": "oauth-gated-apps-logged-out-ui",
@@ -125,6 +93,41 @@
       "runnethTrigger": "User asks to create, set up, schedule, monitor, remind, notify, post later, repeat, keep something updated, or run background upkeep.",
       "runnethGuidance": "Lead with the constructive boundary, offer a future routine plan, and avoid saying anything is scheduled until creation actually succeeds.",
       "supportGuidance": "Capture cadence, trigger, task, workspace scope, and delivery destination so the plan can be turned on later."
+    },
+    {
+      "id": "slack-internal-formatting-response-on-decline",
+      "runnethUse": "status_page_only",
+      "primitives": [
+        "slack"
+      ],
+      "surfaces": [
+        "slack"
+      ],
+      "updatedAt": "2026-06-12T12:05:38.000Z",
+      "summary": "Slack can show an 'internal formatting response' error when Runneth decides not to reply.",
+      "impact": "When more than one person steers the same Slack message (for example someone replies or tells Runneth to stop while it is mid-response), Runneth can post this error across any org instead of staying quiet: \"I hit an internal formatting error while preparing this Slack response. Please try again.\". Confirmed on all orgs.",
+      "workaround": "Ignore the error line; it is harmless and nothing else is affected. If you told Runneth to stop, it has already stopped.",
+      "resolution": {
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "The internal formatting error is fixed. The fix shipped in the June 11 deploy and has rolled out."
+      },
+      "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under Resolved; include in summaries; drops off after 2026-06-13.",
+      "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
+      "runnethGuidance": "Acknowledge that Slack can show an internal formatting error when Runneth decides not to reply after it had started to. It is harmless, the fix is ready, and the team is aiming to ship it in tonight's one-off deploy. Do not proactively mention this for normal Slack requests.",
+      "supportGuidance": "Capture the Slack thread link and whether Runneth had started responding before the error appeared.",
+      "examples": [
+        {
+          "label": "Reported thread",
+          "url": "https://motion-7pz5426.slack.com/archives/C08LZ0A511U/p1781141803087129?thread_ts=1781141803.087129&cid=C08LZ0A511U"
+        }
+      ],
+      "errorQuote": "I hit an internal formatting error while preparing this Slack response. Please try again.",
+      "customerBanner": false,
+      "pinned": false,
+      "startedAt": "2026-06-11T13:18:00.000Z",
+      "resolvedAt": "2026-06-12T12:05:38.000Z",
+      "removeAfter": "2026-06-13"
     },
     {
       "id": "slack-file-uploads-rate-limited",
