@@ -1,10 +1,10 @@
 {
- "updatedAt": "2026-06-15T16:36:25.000Z",
+ "updatedAt": "2026-06-16T02:15:24.000Z",
  "releaseNote": {
-  "updatedAt": "2026-06-12T12:05:38.000Z",
-  "summary": "Routines return early next week. Yesterday's one-off deploy shipped the Slack scope cleanup and the internal formatting fix.",
-  "plannedWindow": "Tuesday night, June 16, 2026, including the routines release",
-  "details": "The June 11 one-off deploy shipped part of the Slack permission scope cleanup and fixed the internal formatting error. Routines now return in the next release, Tuesday night (June 16, 2026). Until it ships, keep using the listed workarounds.",
+  "updatedAt": "2026-06-16T02:15:24.000Z",
+  "summary": "This week ships in two parts. The first shipped tonight (June 15): the deployment and VM-spawning stability work, with Friday's never-posted r39 folded in. Routines and the migration come next, Tuesday night.",
+  "plannedWindow": "Tuesday night, June 16, 2026 (routines and the migration). Tonight's stability release already shipped.",
+  "details": "Tonight's release (June 15) shipped the critical-path stability work: more reliable Slack replies, faster rollouts, and conversations that no longer get stuck. It also folds in Friday's never-posted r39 (the Free Trial VM access approval queue and more upload types). Next in the plan: routines come back and the database migration ships Tuesday night (June 16), merging to staging Tuesday morning and deploying Tuesday night. Until then, keep using the listed workarounds.",
   "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
  },
  "runnethUseOptions": {
