@@ -1,310 +1,278 @@
 {
- "updatedAt": "2026-06-16T15:27:44.000Z",
- "releaseNote": {
-  "updatedAt": "2026-06-16T15:19:29.000Z",
-  "summary": "This week ships in two parts. The first already shipped (June 15): the deployment and VM-spawning stability work, with Friday's never-posted r39 folded in. Routines and the database migration come next, now planned for tomorrow night (Wednesday, June 17). It is the larger, higher-risk part of the release, so the timing moved out a day. Routines testing happens during the day tomorrow.",
-  "plannedWindow": "Wednesday night, June 17, 2026 (routines and the database migration). The June 15 stability release already shipped.",
-  "details": "The June 15 release shipped the critical-path stability work: more reliable Slack replies, faster rollouts, and conversations that no longer get stuck. It also folds in Friday's never-posted r39 (the Free Trial VM access approval queue and more upload types). Next in the plan: routines come back and the database migration ship Wednesday night (June 17). This is a big, higher-risk release, so it moved out a day from the original Tuesday-night target. Routines testing happens during the day Wednesday (June 17) ahead of the night deploy. Until then, keep using the listed workarounds.",
-  "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
- },
- "runnethUseOptions": {
-  "use_when_relevant": "Use this whenever the user's request touches this area.",
-  "only_when_asked": "Use this only when the user asks about or reports this issue.",
-  "status_page_only": "Visible to CSMs, product, and operators, but not injected into Runneth by default."
- },
- "resolutionOptions": {
-  "confirmed_next_release": "Confirmed for the next planned release.",
-  "working_toward_next_release": "Working toward the next planned release, but not marked ready yet.",
-  "in_progress": "Being worked on, but not tied to the next planned release.",
-  "notice_only": "Guidance or status visibility; no release fix is implied.",
-  "resolved": "Fixed and shipped. Stays at the bottom of the board for about a day (through removeAfter) so it is visible and gets pulled into the next summary, then drops off."
- },
- "notices": [
-  {
-   "id": "neon-db-disconnected",
-   "runnethUse": "use_when_relevant",
-   "pinned": false,
-   "customerBanner": false,
-   "primitives": [],
-   "surfaces": [
-    "web",
-    "slack"
-   ],
-   "updatedAt": "2026-06-16T15:27:44.000Z",
-   "summary": "The Neon production database connection is disconnected for now, and affected installs are being cleaned up.",
-   "impact": "The Neon database URL was being used inside VMs for identity resolution (looking up the Motion web user by email against the prod agent_conversation table) and for deriving a workspace's projects.motionapp.com URL (organization and workspace IDs) from a conversation ID. It gave a VM the ability to query the production database directly, which is a security risk, so the connection has been turned off while a safer identity-resolution path is worked out. Two things are affected while it is off: Motion-web identity resolution that depended on the Neon email lookup, and deriving the full Motion app workspace URL from a Builder conversation ID. Update: access has been cut at the IP level as a precaution (because it was not certain where the Neon URL had been added), and the add-roles-permissions package that was injecting the Neon URL into VMs is being scanned across every org that ever installed it (dozens found) and removed. That package is being reworked so it no longer needs the production database. Update (June 16): the VM-side path stays off (do not re-add the Neon URL into any VM). Separately, Motion's internal team read-only access to prod data, used to investigate prod conversations and traces, has been restored through a secured path: a read-only prod replica with rotated keys and IP allow-listing, instead of the broad Neon URL. The add-roles-permissions cleanup across affected orgs is still in progress.",
-   "workaround": "For identity, rely on conversation-level context (the conversation's userEmail) plus the workspace map and per-conversation overrides instead of a live Neon lookup. To build a projects.motionapp.com workspace link, ask for the organization and workspace IDs or the full URL rather than deriving them from a Builder conversation ID. Do not add the Neon database URL back into any VM as a secret.",
-   "resolution": {
-    "type": "notice_only",
-    "label": "Notice",
-    "note": "Intentional disconnect for security; the VM-side direct prod-DB path stays off and the Neon URL must not be re-added to any VM. Update (June 16): Motion's internal team read-only prod access (for investigating conversations and traces) is restored via a secured read-only replica with rotated keys and IP allow-listing. Remaining remediation: finish removing the add-roles-permissions package's Neon URL across affected orgs and rework it to not need the prod database. A safer in-VM identity-resolution path is still being worked out."
-   },
-   "examples": [],
-   "statusPageGuidance": "Show as an active notice. This is an intentional security disconnect, not an outage to be fixed in a release.",
-   "runnethTrigger": "A request depends on Neon-backed identity resolution (resolving a Motion web user by email), on deriving a projects.motionapp.com workspace URL from a Builder conversation ID, or anyone asks about the Neon database, neon_db_url in a VM, or why identity resolution is falling back.",
-   "runnethGuidance": "Explain that the Neon production database connection is disconnected for now as a security measure, because a VM holding the Neon URL could query the prod database directly. While it is off, resolve identity from conversation-level context (userEmail), the workspace map, and per-conversation overrides rather than a live Neon lookup, and when a full Motion app workspace URL is needed, ask for the organization and workspace IDs or the full URL instead of deriving them from a Builder conversation ID. Never re-add the Neon database URL into a VM as a secret.",
-   "supportGuidance": "If identity resolution or workspace-URL derivation is behaving differently, the cause is the intentional Neon disconnect. It is a security measure, not an outage. Remediation is underway (access cut at the IP level, the add-roles-permissions package being cleaned up across affected orgs and reworked to not need the prod database), and a safer identity path is being worked out.",
-   "startedAt": "2026-06-15T16:36:25.000Z"
+  "updatedAt": "2026-06-16T16:30:43.000Z",
+  "releaseNote": {
+    "updatedAt": "2026-06-16T15:19:29.000Z",
+    "summary": "This week ships in two parts. The first already shipped (June 15): the deployment and VM-spawning stability work, with Friday's never-posted r39 folded in. Routines and the database migration come next, now planned for tomorrow night (Wednesday, June 17). It is the larger, higher-risk part of the release, so the timing moved out a day. Routines testing happens during the day tomorrow.",
+    "plannedWindow": "Wednesday night, June 17, 2026 (routines and the database migration). The June 15 stability release already shipped.",
+    "details": "The June 15 release shipped the critical-path stability work: more reliable Slack replies, faster rollouts, and conversations that no longer get stuck. It also folds in Friday's never-posted r39 (the Free Trial VM access approval queue and more upload types). Next in the plan: routines come back and the database migration ship Wednesday night (June 17). This is a big, higher-risk release, so it moved out a day from the original Tuesday-night target. Routines testing happens during the day Wednesday (June 17) ahead of the night deploy. Until then, keep using the listed workarounds.",
+    "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
-  {
-   "id": "slack-reinstall-for-narrower-scope",
-   "runnethUse": "status_page_only",
-   "primitives": [
-    "slack"
-   ],
-   "surfaces": [
-    "web",
-    "slack"
-   ],
-   "updatedAt": "2026-06-12T13:27:44.000Z",
-   "summary": "Slack permission scope is narrowed.",
-   "impact": "Runneth's Slack install previously requested broader access than it uses. The private-channel content search permission (search:read.private) was removed in the June 11 deploy, so Runneth no longer searches private channel content and only reads private channels it has been invited to. The scope is now narrowed to what Runneth actually needs. No further scope reduction is planned; future Slack scope changes will be additions, not trims.",
-   "workaround": "Nothing to do. Private channel names still appear in search by name; only private content search was removed. Older installs that want the narrower scope reflected can remove and reconnect Slack through Runneth.",
-   "resolution": {
-    "type": "resolved",
-    "label": "Resolved",
-    "note": "Slack permission scope is narrowed. The private-channel content search scope (search:read.private) was removed in the June 11 deploy. No further scope reduction is planned; future Slack scope changes will be additions, not trims. Older installs may need a remove-and-reconnect through Runneth."
-   },
-   "examples": [],
-   "statusPageGuidance": "Show under Slack. The scope is narrowed and shipped; the older-install reconnect guidance still applies.",
-   "runnethTrigger": "User asks about Slack permissions, Slack scopes, Slack security review, Slack reconnect, Slack reinstall, or replacing an older Slack install with the narrower scope.",
-   "runnethGuidance": "Explain that Slack permissions are narrowed: the private-channel content search scope was removed in the June 11 deploy and Runneth only reads private channels it has been invited to. No further scope reduction is planned; future scope changes are additions. Older workspaces may need a Runneth-managed reconnect to pick up the narrower scope; route reconnects through Runneth's integration removal and reconnect flow. Do not tell customers to uninstall directly from Slack.",
-   "supportGuidance": "For scope questions, note the extra private-content search access was removed in the June 11 deploy and the scope is narrowed. For older installs that still show the wider scope, have the customer remove and reconnect Slack through Runneth rather than uninstalling from Slack directly.",
-   "resolvedAt": "2026-06-12T13:27:44.000Z",
-   "removeAfter": "2026-06-19T13:27:44.000Z"
+  "runnethUseOptions": {
+    "use_when_relevant": "Use this whenever the user's request touches this area.",
+    "only_when_asked": "Use this only when the user asks about or reports this issue.",
+    "status_page_only": "Visible to CSMs, product, and operators, but not injected into Runneth by default."
   },
-  {
-   "id": "oauth-gated-apps-logged-out-ui",
-   "runnethUse": "status_page_only",
-   "primitives": [
-    "apps"
-   ],
-   "surfaces": [
-    "web"
-   ],
-   "updatedAt": "2026-06-11T14:25:47.000Z",
-   "summary": "OAuth-gated apps can show a rough logged-out screen.",
-   "impact": "When someone opens an app that requires OAuth while logged out, the gated screen may look unfinished instead of showing a polished sign-in or access prompt.",
-   "workaround": "Log in to the right Motion/Runneth account, connect the required OAuth account if needed, then reopen or refresh the app link.",
-   "resolution": {
-    "type": "working_toward_next_release",
-    "label": "Fix in review",
-    "note": "A fix for the logged-out screen (an access-denied page) is in review and targeted for the next release."
-   },
-   "examples": [],
-   "statusPageGuidance": "Show under Apps. This is a logged-out OAuth gate UI issue, not a general app outage. Use the in_progress resolution flag and do not imply it is confirmed for the next planned release.",
-   "runnethTrigger": "User asks about or reports an app, app link, dashboard, widget, or generated page looking broken, ugly, unfinished, or confusing while logged out or blocked by OAuth.",
-   "runnethGuidance": "Acknowledge that OAuth-gated apps can show a rough logged-out screen, that the underlying data is fine, and that a fix (an access-denied page) is in review and targeted for the next release. Do not proactively mention this for normal requests.",
-   "supportGuidance": "Capture the app link, whether the person was logged out, which OAuth gate appeared, and whether the page still looks wrong after logging in and refreshing."
+  "resolutionOptions": {
+    "confirmed_next_release": "Confirmed for the next planned release.",
+    "working_toward_next_release": "Working toward the next planned release, but not marked ready yet.",
+    "in_progress": "Being worked on, but not tied to the next planned release.",
+    "notice_only": "Guidance or status visibility; no release fix is implied.",
+    "resolved": "Fixed and shipped. Stays at the bottom of the board for about a day (through removeAfter) so it is visible and gets pulled into the next summary, then drops off."
   },
-  {
-   "id": "routines-refactor-in-progress",
-   "runnethUse": "use_when_relevant",
-   "primitives": [
-    "routines"
-   ],
-   "surfaces": [
-    "web",
-    "slack"
-   ],
-   "updatedAt": "2026-06-16T15:27:44.000Z",
-   "summary": "Routines are temporarily paused during the refactor.",
-   "impact": "New scheduled, recurring, monitored, reminder, post-later, or background-upkeep work should not be presented as live reliable automation.",
-   "workaround": "Save the routine plan with cadence, trigger, task, workspace scope, and delivery target, then do the immediate one-time work where possible.",
-   "resolution": {
-    "type": "working_toward_next_release",
-    "label": "In progress",
-    "note": "Targeted for the next release, tomorrow night (Wednesday, June 17, 2026), as part of the routines refactor and database migration. It moved out a day from the original Tuesday-night target because it is a larger, higher-risk release. The plan: prep test VMs and run routines testing during the day Wednesday (validating that existing routines migrate cleanly to the new system), then deploy Wednesday night. Existing routines are migrated as part of the release, and saved/planned routines can be turned on once it ships."
-   },
-   "examples": [],
-   "statusPageGuidance": "CSMs should treat new routine setup as paused. Save the routine plan and do immediate one-time work where possible.",
-   "runnethTrigger": "User asks to create, set up, schedule, monitor, remind, notify, post later, repeat, keep something updated, or run background upkeep.",
-   "runnethGuidance": "Lead with the constructive boundary, offer a future routine plan, and avoid saying anything is scheduled until creation actually succeeds.",
-   "supportGuidance": "Capture cadence, trigger, task, workspace scope, and delivery destination so the plan can be turned on later."
-  },
-  {
-   "id": "slack-internal-formatting-response-on-decline",
-   "runnethUse": "status_page_only",
-   "primitives": [
-    "slack"
-   ],
-   "surfaces": [
-    "slack"
-   ],
-   "updatedAt": "2026-06-12T12:05:38.000Z",
-   "summary": "Slack can show an 'internal formatting response' error when Runneth decides not to reply.",
-   "impact": "When more than one person steers the same Slack message (for example someone replies or tells Runneth to stop while it is mid-response), Runneth can post this error across any org instead of staying quiet: \"I hit an internal formatting error while preparing this Slack response. Please try again.\". Confirmed on all orgs.",
-   "workaround": "Ignore the error line; it is harmless and nothing else is affected. If you told Runneth to stop, it has already stopped.",
-   "resolution": {
-    "type": "resolved",
-    "label": "Resolved",
-    "note": "The internal formatting error is fixed. The fix shipped in the June 11 deploy and has rolled out."
-   },
-   "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under Resolved; include in summaries; drops off after 2026-06-13.",
-   "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
-   "runnethGuidance": "Acknowledge that Slack can show an internal formatting error when Runneth decides not to reply after it had started to. It is harmless, the fix is ready, and the team is aiming to ship it in tonight's one-off deploy. Do not proactively mention this for normal Slack requests.",
-   "supportGuidance": "Capture the Slack thread link and whether Runneth had started responding before the error appeared.",
-   "examples": [
+  "notices": [
     {
-     "label": "Reported thread",
-     "url": "https://motion-7pz5426.slack.com/archives/C08LZ0A511U/p1781141803087129?thread_ts=1781141803.087129&cid=C08LZ0A511U"
-    }
-   ],
-   "errorQuote": "I hit an internal formatting error while preparing this Slack response. Please try again.",
-   "customerBanner": false,
-   "pinned": false,
-   "startedAt": "2026-06-11T13:18:00.000Z",
-   "resolvedAt": "2026-06-12T12:05:38.000Z",
-   "removeAfter": "2026-06-13"
-  },
-  {
-   "id": "slack-file-uploads-rate-limited",
-   "runnethUse": "status_page_only",
-   "pinned": false,
-   "primitives": [
-    "slack"
-   ],
-   "surfaces": [
-    "slack"
-   ],
-   "updatedAt": "2026-06-11T14:38:59.000Z",
-   "summary": "File uploads fail on Slack",
-   "impact": "Runneth cannot read file uploads on Slack. Web uploads are fine.",
-   "workaround": "Slack-side retry or new-conversation attempts are unreliable and may only work sometimes. For urgent work, use web upload, paste the text, or describe the file.",
-   "resolution": {
-    "type": "resolved",
-    "label": "Resolved",
-    "note": "Slack file uploads work: Runneth reads files attached in Slack. The fix (staging inbound Slack files before the runtime turn) has been live since the May 31 release."
-   },
-   "examples": [],
-   "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under Resolved, include in the morning and evening summaries, drops off after 2026-06-12.",
-   "runnethTrigger": "User asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, or reports that a Slack file-upload message got no reply or stalled.",
-   "runnethGuidance": "Acknowledge that Runneth cannot read file uploads on Slack right now, while web uploads are fine. Starting a new Slack conversation might work sometimes, but it is not dependable and should not be presented as a reliable workaround or fix. For urgent work, ask them to use web upload, paste the relevant text, or describe the file. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
-   "supportGuidance": "Confirm the upload happened in Slack. Capture whether the Slack conversation was new or an existing thread, the approximate time, file type, and whether the message received no reply, timed out, or failed before sending.",
-   "startedAt": "2026-06-08T13:49:35.000Z",
-   "resolvedAt": "2026-06-11T14:38:59.000Z",
-   "removeAfter": "2026-06-12"
-  },
-  {
-   "id": "inspo-creator-organic-query-expansion",
-   "runnethUse": "status_page_only",
-   "primitives": [
-    "data_access"
-   ],
-   "surfaces": [
-    "web",
-    "slack"
-   ],
-   "updatedAt": "2026-06-11T13:18:52.000Z",
-   "summary": "Expanded Inspo ships tonight as a new feature, with direct query for some paths but not all.",
-   "impact": "Expanded Inspo arrives with tonight's release. Direct query paths: creator lookup by name or handle, the current organic TikTok recommendation feed, an exact creator's TikTok feed by handle, saved boards, competitor ads, and viewing or updating the organic keyword seeds that shape future TikTok recommendations (keyword updates need sign-off and steer future feed refreshes rather than returning live search results).",
-   "workaround": "Not a direct query yet: broad creator search by category, follower range, platform, geography, engagement, or performance, and live TikTok search by keyword, topic, category, hashtag, sound, date, or engagement. For those, Runneth pulls a limited page from the closest available source, then filters or reads those results after the pull. That can take longer and may miss results outside the pulled page.",
-   "resolution": {
-    "type": "resolved",
-    "label": "Resolved",
-    "note": "Expanded Inspo (the Inspo v3 endpoints) shipped in yesterday's release, June 10, 2026."
-   },
-   "examples": [],
-   "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under a Resolved section, and include it in the morning and evening summaries (TL;DR count + bottom bullet). Drops off after 2026-06-12.",
-   "runnethTrigger": "User asks for creator discovery, creators like a person or brand, top creators in a category, high-engagement creators, organic TikToks about a keyword or topic, organic TikTok search, organic TikTok trends, or changes to organic TikTok feed keywords.",
-   "runnethGuidance": "When the Inspo guidance ships, route direct asks to the matching source: creator name/handle, current organic feed, exact creator handle, saved board, competitor brand, or keyword update with sign-off. For broad creator or TikTok searches, say the endpoint cannot filter that directly yet; Runneth can pull a limited page from the closest source and then filter/read it, but this may take a while and is less complete than direct search.",
-   "supportGuidance": "Treat expanded Inspo and matching Runneth guidance as coming soon until the next release. Ask for the best pivot: creator name/handle, board, competitor brand, or organic keyword direction. For broad asks, set expectations that keyword changes guide future feed recommendations and pull-then-filter is slower and less precise than direct filtering.",
-   "resolvedAt": "2026-06-11T13:18:52.000Z",
-   "removeAfter": "2026-06-12",
-   "startedAt": "2026-06-10T16:26:46.000Z"
-  },
-  {
-   "id": "older-slack-threads-messy-formatting",
-   "runnethUse": "status_page_only",
-   "primitives": [
-    "slack"
-   ],
-   "surfaces": [
-    "slack"
-   ],
-   "updatedAt": "2026-06-11T13:18:52.000Z",
-   "summary": "Older Slack threads can show messy formatting.",
-   "impact": "Replies in older Slack threads may render with messy formatting or raw response-control text instead of a normal Runneth reply.",
-   "workaround": "Start a new Slack conversation for the same work. If context matters, paste the relevant context or link the older thread in the new conversation.",
-   "resolution": {
-    "type": "resolved",
-    "label": "Resolved",
-    "note": "Fixed in yesterday's release, June 10, 2026: no more raw or half-finished reply text in older Slack threads."
-   },
-   "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under a Resolved section, and include it in the morning and evening summaries (TL;DR count + bottom bullet). Drops off after 2026-06-12.",
-   "examples": [
+      "id": "neon-db-disconnected",
+      "runnethUse": "use_when_relevant",
+      "pinned": false,
+      "customerBanner": false,
+      "primitives": [],
+      "surfaces": [
+        "web",
+        "slack"
+      ],
+      "updatedAt": "2026-06-16T15:27:44.000Z",
+      "summary": "The Neon production database connection is disconnected for now, and affected installs are being cleaned up.",
+      "impact": "The Neon database URL was being used inside VMs for identity resolution (looking up the Motion web user by email against the prod agent_conversation table) and for deriving a workspace's projects.motionapp.com URL (organization and workspace IDs) from a conversation ID. It gave a VM the ability to query the production database directly, which is a security risk, so the connection has been turned off while a safer identity-resolution path is worked out. Two things are affected while it is off: Motion-web identity resolution that depended on the Neon email lookup, and deriving the full Motion app workspace URL from a Builder conversation ID. Update: access has been cut at the IP level as a precaution (because it was not certain where the Neon URL had been added), and the add-roles-permissions package that was injecting the Neon URL into VMs is being scanned across every org that ever installed it (dozens found) and removed. That package is being reworked so it no longer needs the production database. Update (June 16): the VM-side path stays off (do not re-add the Neon URL into any VM). Separately, Motion's internal team read-only access to prod data, used to investigate prod conversations and traces, has been restored through a secured path: a read-only prod replica with rotated keys and IP allow-listing, instead of the broad Neon URL. The add-roles-permissions cleanup across affected orgs is still in progress.",
+      "workaround": "For identity, rely on conversation-level context (the conversation's userEmail) plus the workspace map and per-conversation overrides instead of a live Neon lookup. To build a projects.motionapp.com workspace link, ask for the organization and workspace IDs or the full URL rather than deriving them from a Builder conversation ID. Do not add the Neon database URL back into any VM as a secret.",
+      "resolution": {
+        "type": "notice_only",
+        "label": "Notice",
+        "note": "Intentional disconnect for security; the VM-side direct prod-DB path stays off and the Neon URL must not be re-added to any VM. Update (June 16): Motion's internal team read-only prod access (for investigating conversations and traces) is restored via a secured read-only replica with rotated keys and IP allow-listing. Remaining remediation: finish removing the add-roles-permissions package's Neon URL across affected orgs and rework it to not need the prod database. A safer in-VM identity-resolution path is still being worked out."
+      },
+      "examples": [],
+      "statusPageGuidance": "Show as an active notice. This is an intentional security disconnect, not an outage to be fixed in a release.",
+      "runnethTrigger": "A request depends on Neon-backed identity resolution (resolving a Motion web user by email), on deriving a projects.motionapp.com workspace URL from a Builder conversation ID, or anyone asks about the Neon database, neon_db_url in a VM, or why identity resolution is falling back.",
+      "runnethGuidance": "Explain that the Neon production database connection is disconnected for now as a security measure, because a VM holding the Neon URL could query the prod database directly. While it is off, resolve identity from conversation-level context (userEmail), the workspace map, and per-conversation overrides rather than a live Neon lookup, and when a full Motion app workspace URL is needed, ask for the organization and workspace IDs or the full URL instead of deriving them from a Builder conversation ID. Never re-add the Neon database URL into a VM as a secret.",
+      "supportGuidance": "If identity resolution or workspace-URL derivation is behaving differently, the cause is the intentional Neon disconnect. It is a security measure, not an outage. Remediation is underway (access cut at the IP level, the add-roles-permissions package being cleaned up across affected orgs and reworked to not need the prod database), and a safer identity path is being worked out.",
+      "startedAt": "2026-06-15T16:36:25.000Z"
+    },
     {
-     "label": "Example older Slack thread with messy formatting",
-     "url": "https://motion-7pz5426.slack.com/archives/C08LZ0A511U/p1780924522368459?thread_ts=1780336543.272799&cid=C08LZ0A511U",
-     "observedResponse": "{\"shouldRespond\":false}",
-     "whatToLookFor": "Runneth posts raw response-control JSON in the Slack thread instead of staying silent or sending a normal reply."
+      "id": "slack-reinstall-for-narrower-scope",
+      "runnethUse": "status_page_only",
+      "primitives": [
+        "slack"
+      ],
+      "surfaces": [
+        "web",
+        "slack"
+      ],
+      "updatedAt": "2026-06-12T13:27:44.000Z",
+      "summary": "Slack permission scope is narrowed.",
+      "impact": "Runneth's Slack install previously requested broader access than it uses. The private-channel content search permission (search:read.private) was removed in the June 11 deploy, so Runneth no longer searches private channel content and only reads private channels it has been invited to. The scope is now narrowed to what Runneth actually needs. No further scope reduction is planned; future Slack scope changes will be additions, not trims.",
+      "workaround": "Nothing to do. Private channel names still appear in search by name; only private content search was removed. Older installs that want the narrower scope reflected can remove and reconnect Slack through Runneth.",
+      "resolution": {
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Slack permission scope is narrowed. The private-channel content search scope (search:read.private) was removed in the June 11 deploy. No further scope reduction is planned; future Slack scope changes will be additions, not trims. Older installs may need a remove-and-reconnect through Runneth."
+      },
+      "examples": [],
+      "statusPageGuidance": "Show under Slack. The scope is narrowed and shipped; the older-install reconnect guidance still applies.",
+      "runnethTrigger": "User asks about Slack permissions, Slack scopes, Slack security review, Slack reconnect, Slack reinstall, or replacing an older Slack install with the narrower scope.",
+      "runnethGuidance": "Explain that Slack permissions are narrowed: the private-channel content search scope was removed in the June 11 deploy and Runneth only reads private channels it has been invited to. No further scope reduction is planned; future scope changes are additions. Older workspaces may need a Runneth-managed reconnect to pick up the narrower scope; route reconnects through Runneth's integration removal and reconnect flow. Do not tell customers to uninstall directly from Slack.",
+      "supportGuidance": "For scope questions, note the extra private-content search access was removed in the June 11 deploy and the scope is narrowed. For older installs that still show the wider scope, have the customer remove and reconnect Slack through Runneth rather than uninstalling from Slack directly.",
+      "resolvedAt": "2026-06-12T13:27:44.000Z",
+      "removeAfter": "2026-06-19T13:27:44.000Z"
+    },
+    {
+      "id": "oauth-gated-apps-logged-out-ui",
+      "runnethUse": "status_page_only",
+      "primitives": [
+        "apps"
+      ],
+      "surfaces": [
+        "web"
+      ],
+      "updatedAt": "2026-06-11T14:25:47.000Z",
+      "summary": "OAuth-gated apps can show a rough logged-out screen.",
+      "impact": "When someone opens an app that requires OAuth while logged out, the gated screen may look unfinished instead of showing a polished sign-in or access prompt.",
+      "workaround": "Log in to the right Motion/Runneth account, connect the required OAuth account if needed, then reopen or refresh the app link.",
+      "resolution": {
+        "type": "working_toward_next_release",
+        "label": "Fix in review",
+        "note": "A fix for the logged-out screen (an access-denied page) is in review and targeted for the next release."
+      },
+      "examples": [],
+      "statusPageGuidance": "Show under Apps. This is a logged-out OAuth gate UI issue, not a general app outage. Use the in_progress resolution flag and do not imply it is confirmed for the next planned release.",
+      "runnethTrigger": "User asks about or reports an app, app link, dashboard, widget, or generated page looking broken, ugly, unfinished, or confusing while logged out or blocked by OAuth.",
+      "runnethGuidance": "Acknowledge that OAuth-gated apps can show a rough logged-out screen, that the underlying data is fine, and that a fix (an access-denied page) is in review and targeted for the next release. Do not proactively mention this for normal requests.",
+      "supportGuidance": "Capture the app link, whether the person was logged out, which OAuth gate appeared, and whether the page still looks wrong after logging in and refreshing."
+    },
+    {
+      "id": "routines-refactor-in-progress",
+      "runnethUse": "use_when_relevant",
+      "primitives": [
+        "routines"
+      ],
+      "surfaces": [
+        "web",
+        "slack"
+      ],
+      "updatedAt": "2026-06-16T15:27:44.000Z",
+      "summary": "Routines are temporarily paused during the refactor.",
+      "impact": "New scheduled, recurring, monitored, reminder, post-later, or background-upkeep work should not be presented as live reliable automation.",
+      "workaround": "Save the routine plan with cadence, trigger, task, workspace scope, and delivery target, then do the immediate one-time work where possible.",
+      "resolution": {
+        "type": "working_toward_next_release",
+        "label": "In progress",
+        "note": "Targeted for the next release, tomorrow night (Wednesday, June 17, 2026), as part of the routines refactor and database migration. It moved out a day from the original Tuesday-night target because it is a larger, higher-risk release. The plan: prep test VMs and run routines testing during the day Wednesday (validating that existing routines migrate cleanly to the new system), then deploy Wednesday night. Existing routines are migrated as part of the release, and saved/planned routines can be turned on once it ships."
+      },
+      "examples": [],
+      "statusPageGuidance": "CSMs should treat new routine setup as paused. Save the routine plan and do immediate one-time work where possible.",
+      "runnethTrigger": "User asks to create, set up, schedule, monitor, remind, notify, post later, repeat, keep something updated, or run background upkeep.",
+      "runnethGuidance": "Lead with the constructive boundary, offer a future routine plan, and avoid saying anything is scheduled until creation actually succeeds.",
+      "supportGuidance": "Capture cadence, trigger, task, workspace scope, and delivery destination so the plan can be turned on later."
+    },
+    {
+      "id": "slack-internal-formatting-response-on-decline",
+      "runnethUse": "status_page_only",
+      "primitives": [
+        "slack"
+      ],
+      "surfaces": [
+        "slack"
+      ],
+      "updatedAt": "2026-06-12T12:05:38.000Z",
+      "summary": "Slack can show an 'internal formatting response' error when Runneth decides not to reply.",
+      "impact": "When more than one person steers the same Slack message (for example someone replies or tells Runneth to stop while it is mid-response), Runneth can post this error across any org instead of staying quiet: \"I hit an internal formatting error while preparing this Slack response. Please try again.\". Confirmed on all orgs.",
+      "workaround": "Ignore the error line; it is harmless and nothing else is affected. If you told Runneth to stop, it has already stopped.",
+      "resolution": {
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "The internal formatting error is fixed. The fix shipped in the June 11 deploy and has rolled out."
+      },
+      "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under Resolved; include in summaries; drops off after 2026-06-13.",
+      "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
+      "runnethGuidance": "Acknowledge that Slack can show an internal formatting error when Runneth decides not to reply after it had started to. It is harmless, the fix is ready, and the team is aiming to ship it in tonight's one-off deploy. Do not proactively mention this for normal Slack requests.",
+      "supportGuidance": "Capture the Slack thread link and whether Runneth had started responding before the error appeared.",
+      "examples": [
+        {
+          "label": "Reported thread",
+          "url": "https://motion-7pz5426.slack.com/archives/C08LZ0A511U/p1781141803087129?thread_ts=1781141803.087129&cid=C08LZ0A511U"
+        }
+      ],
+      "errorQuote": "I hit an internal formatting error while preparing this Slack response. Please try again.",
+      "customerBanner": false,
+      "pinned": false,
+      "startedAt": "2026-06-11T13:18:00.000Z",
+      "resolvedAt": "2026-06-12T12:05:38.000Z",
+      "removeAfter": "2026-06-13"
+    },
+    {
+      "id": "slack-file-uploads-rate-limited",
+      "runnethUse": "status_page_only",
+      "pinned": false,
+      "primitives": [
+        "slack"
+      ],
+      "surfaces": [
+        "slack"
+      ],
+      "updatedAt": "2026-06-11T14:38:59.000Z",
+      "summary": "File uploads fail on Slack",
+      "impact": "Runneth cannot read file uploads on Slack. Web uploads are fine.",
+      "workaround": "Slack-side retry or new-conversation attempts are unreliable and may only work sometimes. For urgent work, use web upload, paste the text, or describe the file.",
+      "resolution": {
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Slack file uploads work: Runneth reads files attached in Slack. The fix (staging inbound Slack files before the runtime turn) has been live since the May 31 release."
+      },
+      "examples": [],
+      "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under Resolved, include in the morning and evening summaries, drops off after 2026-06-12.",
+      "runnethTrigger": "User asks to upload, attach, send, read, or analyze a file, screenshot, image, or document in Slack, or reports that a Slack file-upload message got no reply or stalled.",
+      "runnethGuidance": "Acknowledge that Runneth cannot read file uploads on Slack right now, while web uploads are fine. Starting a new Slack conversation might work sometimes, but it is not dependable and should not be presented as a reliable workaround or fix. For urgent work, ask them to use web upload, paste the relevant text, or describe the file. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
+      "supportGuidance": "Confirm the upload happened in Slack. Capture whether the Slack conversation was new or an existing thread, the approximate time, file type, and whether the message received no reply, timed out, or failed before sending.",
+      "startedAt": "2026-06-08T13:49:35.000Z",
+      "resolvedAt": "2026-06-11T14:38:59.000Z",
+      "removeAfter": "2026-06-12"
+    },
+    {
+      "id": "inspo-creator-organic-query-expansion",
+      "runnethUse": "status_page_only",
+      "primitives": [
+        "data_access"
+      ],
+      "surfaces": [
+        "web",
+        "slack"
+      ],
+      "updatedAt": "2026-06-11T13:18:52.000Z",
+      "summary": "Expanded Inspo ships tonight as a new feature, with direct query for some paths but not all.",
+      "impact": "Expanded Inspo arrives with tonight's release. Direct query paths: creator lookup by name or handle, the current organic TikTok recommendation feed, an exact creator's TikTok feed by handle, saved boards, competitor ads, and viewing or updating the organic keyword seeds that shape future TikTok recommendations (keyword updates need sign-off and steer future feed refreshes rather than returning live search results).",
+      "workaround": "Not a direct query yet: broad creator search by category, follower range, platform, geography, engagement, or performance, and live TikTok search by keyword, topic, category, hashtag, sound, date, or engagement. For those, Runneth pulls a limited page from the closest available source, then filters or reads those results after the pull. That can take longer and may miss results outside the pulled page.",
+      "resolution": {
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Expanded Inspo (the Inspo v3 endpoints) shipped in yesterday's release, June 10, 2026."
+      },
+      "examples": [],
+      "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under a Resolved section, and include it in the morning and evening summaries (TL;DR count + bottom bullet). Drops off after 2026-06-12.",
+      "runnethTrigger": "User asks for creator discovery, creators like a person or brand, top creators in a category, high-engagement creators, organic TikToks about a keyword or topic, organic TikTok search, organic TikTok trends, or changes to organic TikTok feed keywords.",
+      "runnethGuidance": "When the Inspo guidance ships, route direct asks to the matching source: creator name/handle, current organic feed, exact creator handle, saved board, competitor brand, or keyword update with sign-off. For broad creator or TikTok searches, say the endpoint cannot filter that directly yet; Runneth can pull a limited page from the closest source and then filter/read it, but this may take a while and is less complete than direct search.",
+      "supportGuidance": "Treat expanded Inspo and matching Runneth guidance as coming soon until the next release. Ask for the best pivot: creator name/handle, board, competitor brand, or organic keyword direction. For broad asks, set expectations that keyword changes guide future feed recommendations and pull-then-filter is slower and less precise than direct filtering.",
+      "resolvedAt": "2026-06-11T13:18:52.000Z",
+      "removeAfter": "2026-06-12",
+      "startedAt": "2026-06-10T16:26:46.000Z"
+    },
+    {
+      "id": "older-slack-threads-messy-formatting",
+      "runnethUse": "status_page_only",
+      "primitives": [
+        "slack"
+      ],
+      "surfaces": [
+        "slack"
+      ],
+      "updatedAt": "2026-06-11T13:18:52.000Z",
+      "summary": "Older Slack threads can show messy formatting.",
+      "impact": "Replies in older Slack threads may render with messy formatting or raw response-control text instead of a normal Runneth reply.",
+      "workaround": "Start a new Slack conversation for the same work. If context matters, paste the relevant context or link the older thread in the new conversation.",
+      "resolution": {
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Fixed in yesterday's release, June 10, 2026: no more raw or half-finished reply text in older Slack threads."
+      },
+      "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under a Resolved section, and include it in the morning and evening summaries (TL;DR count + bottom bullet). Drops off after 2026-06-12.",
+      "examples": [
+        {
+          "label": "Example older Slack thread with messy formatting",
+          "url": "https://motion-7pz5426.slack.com/archives/C08LZ0A511U/p1780924522368459?thread_ts=1780336543.272799&cid=C08LZ0A511U",
+          "observedResponse": "{\"shouldRespond\":false}",
+          "whatToLookFor": "Runneth posts raw response-control JSON in the Slack thread instead of staying silent or sending a normal reply."
+        }
+      ],
+      "runnethTrigger": "User asks about or reports messy formatting in an older Slack thread, raw response-control text, or a stale Slack thread that is not rendering Runneth replies normally.",
+      "runnethGuidance": "Acknowledge that older Slack threads can show messy formatting until the next planned release. Do not proactively mention this for normal Slack requests. For now, starting a new Slack conversation is the cleaner path. If the user needs continuity from the older thread, ask them to paste the relevant context or link the old thread in the new conversation. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
+      "supportGuidance": "Capture the Slack thread link, whether the thread is older, what formatting appeared, and whether raw response-control text was shown.",
+      "resolvedAt": "2026-06-11T13:18:52.000Z",
+      "removeAfter": "2026-06-12",
+      "startedAt": "2026-06-08T13:49:35.000Z"
+    },
+    {
+      "id": "favorite-reports-missing-sidebar",
+      "runnethUse": "status_page_only",
+      "primitives": [
+        "chat"
+      ],
+      "surfaces": [
+        "web"
+      ],
+      "updatedAt": "2026-06-11T13:18:52.000Z",
+      "summary": "Favorite reports are missing from the Motion sidebar.",
+      "impact": "Favorited reports are not showing in the Motion app sidebar for affected users, including customers. This is a UI regression from a recent change and does not affect the underlying reports or data.",
+      "workaround": "Open reports directly rather than from the sidebar favorites for now. The favorites list is not lost; it is a display issue.",
+      "resolution": {
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Favorite reports are back in the Motion sidebar."
+      },
+      "examples": [],
+      "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under a Resolved section, and include it in the morning and evening summaries (TL;DR count + bottom bullet). Drops off after 2026-06-12.",
+      "runnethTrigger": "User asks where their favorite reports or sidebar favorites went, or reports that favorited reports are missing from the Motion sidebar.",
+      "runnethGuidance": "If asked, say favorite reports are temporarily missing from the Motion sidebar due to a UI regression, that the underlying reports and data are unaffected, and that a fix is going out in tonight's hotfix. Suggest opening reports directly in the meantime. Do not raise this proactively.",
+      "supportGuidance": "Confirm the report favorites are missing from the sidebar specifically. Reassure that favorites are not lost and a fix ships in tonight's hotfix; suggest opening reports directly until then.",
+      "resolvedAt": "2026-06-11T13:18:52.000Z",
+      "removeAfter": "2026-06-12",
+      "startedAt": "2026-06-10T21:54:32.000Z"
     }
-   ],
-   "runnethTrigger": "User asks about or reports messy formatting in an older Slack thread, raw response-control text, or a stale Slack thread that is not rendering Runneth replies normally.",
-   "runnethGuidance": "Acknowledge that older Slack threads can show messy formatting until the next planned release. Do not proactively mention this for normal Slack requests. For now, starting a new Slack conversation is the cleaner path. If the user needs continuity from the older thread, ask them to paste the relevant context or link the old thread in the new conversation. If the user asks when this is fixed, say the fix is ready and goes out with the next planned release.",
-   "supportGuidance": "Capture the Slack thread link, whether the thread is older, what formatting appeared, and whether raw response-control text was shown.",
-   "resolvedAt": "2026-06-11T13:18:52.000Z",
-   "removeAfter": "2026-06-12",
-   "startedAt": "2026-06-08T13:49:35.000Z"
-  },
-  {
-   "id": "favorite-reports-missing-sidebar",
-   "runnethUse": "status_page_only",
-   "primitives": [
-    "chat"
-   ],
-   "surfaces": [
-    "web"
-   ],
-   "updatedAt": "2026-06-11T13:18:52.000Z",
-   "summary": "Favorite reports are missing from the Motion sidebar.",
-   "impact": "Favorited reports are not showing in the Motion app sidebar for affected users, including customers. This is a UI regression from a recent change and does not affect the underlying reports or data.",
-   "workaround": "Open reports directly rather than from the sidebar favorites for now. The favorites list is not lost; it is a display issue.",
-   "resolution": {
-    "type": "resolved",
-    "label": "Resolved",
-    "note": "Favorite reports are back in the Motion sidebar."
-   },
-   "examples": [],
-   "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under a Resolved section, and include it in the morning and evening summaries (TL;DR count + bottom bullet). Drops off after 2026-06-12.",
-   "runnethTrigger": "User asks where their favorite reports or sidebar favorites went, or reports that favorited reports are missing from the Motion sidebar.",
-   "runnethGuidance": "If asked, say favorite reports are temporarily missing from the Motion sidebar due to a UI regression, that the underlying reports and data are unaffected, and that a fix is going out in tonight's hotfix. Suggest opening reports directly in the meantime. Do not raise this proactively.",
-   "supportGuidance": "Confirm the report favorites are missing from the sidebar specifically. Reassure that favorites are not lost and a fix ships in tonight's hotfix; suggest opening reports directly until then.",
-   "resolvedAt": "2026-06-11T13:18:52.000Z",
-   "removeAfter": "2026-06-12",
-   "startedAt": "2026-06-10T21:54:32.000Z"
-  },
-  {
-   "id": "native-integrations-production-incident",
-   "runnethUse": "status_page_only",
-   "pinned": true,
-   "customerBanner": false,
-   "primitives": [
-    "integrations",
-    "slack",
-    "google_drive"
-   ],
-   "surfaces": [
-    "web",
-    "slack"
-   ],
-   "updatedAt": "2026-06-11T13:18:52.000Z",
-   "summary": "Slack and Google Drive are still down while a fix rolls out to all orgs. Notion is restored.",
-   "impact": "Runneth is not receiving messages sent from Slack across orgs, and Google Drive access is also affected by the same production incident. Notion access has been restored and tested. Web conversations are still available for work that does not depend on Slack or Google Drive.",
-   "workaround": "Use Runneth on web for urgent work that does not depend on Slack or Google Drive. Paste needed context or file text directly where possible.",
-   "resolution": {
-    "type": "resolved",
-    "label": "Resolved",
-    "note": "Slack messages and Google Drive are restored."
-   },
-   "examples": [],
-   "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under a Resolved section, and include it in the morning and evening summaries (TL;DR count + bottom bullet). Drops off after 2026-06-12.",
-   "runnethTrigger": "User asks why Runneth is not responding in Slack, tries to message Runneth from Slack, asks whether Slack is down, reports Google Drive or Notion access failing, or asks how to continue work that normally uses these native integrations.",
-   "runnethGuidance": "Say that Slack messages to Runneth and Google Drive access are temporarily unavailable across orgs while a fix rolls out, and that Notion access has been restored. The fix is rolling out gradually to each org as its VM updates, estimated around 3 hours for all orgs, with some recovering sooner. Direct the user to continue urgent work on web when possible, and ask them to paste needed context or file text directly if the request depends on Google Drive. Do not promise an exact per-org recovery time, mention a root cause, or say Slack or Google Drive is fixed for a given org until the team confirms it.",
-   "supportGuidance": "Confirm which path the report involves: Slack messages to Runneth or Google Drive access. Notion is restored and working. For urgent work, direct the customer to web and manual context sharing where possible. The fix is rolling out per org over roughly 3 hours, so avoid promising an exact per-org time until confirmed.",
-   "resolvedAt": "2026-06-11T13:18:52.000Z",
-   "removeAfter": "2026-06-12",
-   "startedAt": "2026-06-10T21:14:53.000Z"
-  }
- ]
+  ]
 }
