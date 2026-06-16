@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-06-16T15:19:29.000Z",
+ "updatedAt": "2026-06-16T15:27:44.000Z",
  "releaseNote": {
   "updatedAt": "2026-06-16T15:19:29.000Z",
   "summary": "This week ships in two parts. The first already shipped (June 15): the deployment and VM-spawning stability work, with Friday's never-posted r39 folded in. Routines and the database migration come next, now planned for tomorrow night (Wednesday, June 17). It is the larger, higher-risk part of the release, so the timing moved out a day. Routines testing happens during the day tomorrow.",
@@ -30,14 +30,14 @@
     "web",
     "slack"
    ],
-   "updatedAt": "2026-06-16T02:47:07.000Z",
+   "updatedAt": "2026-06-16T15:27:44.000Z",
    "summary": "The Neon production database connection is disconnected for now, and affected installs are being cleaned up.",
-   "impact": "The Neon database URL was being used inside VMs for identity resolution (looking up the Motion web user by email against the prod agent_conversation table) and for deriving a workspace's projects.motionapp.com URL (organization and workspace IDs) from a conversation ID. It gave a VM the ability to query the production database directly, which is a security risk, so the connection has been turned off while a safer identity-resolution path is worked out. Two things are affected while it is off: Motion-web identity resolution that depended on the Neon email lookup, and deriving the full Motion app workspace URL from a Builder conversation ID. Update: access has been cut at the IP level as a precaution (because it was not certain where the Neon URL had been added), and the add-roles-permissions package that was injecting the Neon URL into VMs is being scanned across every org that ever installed it (dozens found) and removed. That package is being reworked so it no longer needs the production database.",
+   "impact": "The Neon database URL was being used inside VMs for identity resolution (looking up the Motion web user by email against the prod agent_conversation table) and for deriving a workspace's projects.motionapp.com URL (organization and workspace IDs) from a conversation ID. It gave a VM the ability to query the production database directly, which is a security risk, so the connection has been turned off while a safer identity-resolution path is worked out. Two things are affected while it is off: Motion-web identity resolution that depended on the Neon email lookup, and deriving the full Motion app workspace URL from a Builder conversation ID. Update: access has been cut at the IP level as a precaution (because it was not certain where the Neon URL had been added), and the add-roles-permissions package that was injecting the Neon URL into VMs is being scanned across every org that ever installed it (dozens found) and removed. That package is being reworked so it no longer needs the production database. Update (June 16): the VM-side path stays off (do not re-add the Neon URL into any VM). Separately, Motion's internal team read-only access to prod data, used to investigate prod conversations and traces, has been restored through a secured path: a read-only prod replica with rotated keys and IP allow-listing, instead of the broad Neon URL. The add-roles-permissions cleanup across affected orgs is still in progress.",
    "workaround": "For identity, rely on conversation-level context (the conversation's userEmail) plus the workspace map and per-conversation overrides instead of a live Neon lookup. To build a projects.motionapp.com workspace link, ask for the organization and workspace IDs or the full URL rather than deriving them from a Builder conversation ID. Do not add the Neon database URL back into any VM as a secret.",
    "resolution": {
     "type": "notice_only",
     "label": "Notice",
-    "note": "Intentional disconnect for security. Remediation underway: access cut at the IP level, the add-roles-permissions package's Neon URL is being removed from all affected orgs, and the package is being reworked to not need the prod database. A safer identity-resolution path is being worked out separately."
+    "note": "Intentional disconnect for security; the VM-side direct prod-DB path stays off and the Neon URL must not be re-added to any VM. Update (June 16): Motion's internal team read-only prod access (for investigating conversations and traces) is restored via a secured read-only replica with rotated keys and IP allow-listing. Remaining remediation: finish removing the add-roles-permissions package's Neon URL across affected orgs and rework it to not need the prod database. A safer in-VM identity-resolution path is still being worked out."
    },
    "examples": [],
    "statusPageGuidance": "Show as an active notice. This is an intentional security disconnect, not an outage to be fixed in a release.",
@@ -107,14 +107,14 @@
     "web",
     "slack"
    ],
-   "updatedAt": "2026-06-16T15:19:29.000Z",
+   "updatedAt": "2026-06-16T15:27:44.000Z",
    "summary": "Routines are temporarily paused during the refactor.",
    "impact": "New scheduled, recurring, monitored, reminder, post-later, or background-upkeep work should not be presented as live reliable automation.",
    "workaround": "Save the routine plan with cadence, trigger, task, workspace scope, and delivery target, then do the immediate one-time work where possible.",
    "resolution": {
     "type": "working_toward_next_release",
     "label": "In progress",
-    "note": "Targeted for the next release, now Wednesday night (June 17, 2026), as part of the routines refactor and database migration. The release moved out a day from the original Tuesday-night target because it is a larger, higher-risk change. Routines testing happens during the day Wednesday ahead of the deploy."
+    "note": "Targeted for the next release, tomorrow night (Wednesday, June 17, 2026), as part of the routines refactor and database migration. It moved out a day from the original Tuesday-night target because it is a larger, higher-risk release. The plan: prep test VMs and run routines testing during the day Wednesday (validating that existing routines migrate cleanly to the new system), then deploy Wednesday night. Existing routines are migrated as part of the release, and saved/planned routines can be turned on once it ships."
    },
    "examples": [],
    "statusPageGuidance": "CSMs should treat new routine setup as paused. Save the routine plan and do immediate one-time work where possible.",
