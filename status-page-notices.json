@@ -125,25 +125,25 @@
     },
     {
       "id": "slack-internal-formatting-response-on-decline",
-      "runnethUse": "status_page_only",
+      "runnethUse": "use_when_relevant",
       "primitives": [
         "slack"
       ],
       "surfaces": [
         "slack"
       ],
-      "updatedAt": "2026-06-17T14:53:21.000Z",
-      "summary": "Slack can still show an 'internal formatting response' error when Runneth decides not to reply, in a case the June 11 fix did not fully cover.",
-      "impact": "When more than one person steers the same Slack message (for example someone replies or tells Runneth to stop while it is mid-response), Runneth can post this error across any org instead of staying quiet: \"I hit an internal formatting error while preparing this Slack response. Please try again.\". Confirmed on all orgs.",
-      "workaround": "Ignore the error line; it is harmless and nothing else is affected. If you told Runneth to stop, it has already stopped.",
+      "updatedAt": "2026-06-18T19:40:09.000Z",
+      "summary": "Slack can show an 'internal formatting error' line instead of a real reply, and it is recurring after the June 11 fix.",
+      "impact": "The June 11 fix (PDEC-8088) knocked down a large spike but did not fully kill this. It came back: June 15 saw 5 errors, and June 16 saw 14 errors across 2 orgs, mostly landing in Motion's internal org plus one external customer org once. In these recurrences the error line is delivered as the Slack message in place of a real reply, which is worse than a harmless skipped reply.",
+      "workaround": "If you get the error line instead of a reply, re-send your message. If you told Runneth to stop, it has already stopped.",
       "resolution": {
         "type": "working_toward_next_release",
         "label": "Fix in review",
-        "note": "The June 11 fix resolved most cases, but a residual 'internal formatting response' error remains (PDEC-8168). A follow-up fix (PR #2313) is in review and is a must-have targeted for tonight's release (Wednesday, June 17, 2026)."
+        "note": "A follow-up fix (PDEC-8168, PR #2313) is in review and is a must-have targeted for tonight's release (Thursday, June 18, 2026, around 7pm ET). Timing can still move, and it has not been fully confirmed as riding in that deploy."
       },
-      "statusPageGuidance": "Resolved within the last 24h. Show at the very bottom under Resolved; include in summaries; drops off after 2026-06-13.",
+      "statusPageGuidance": "Active recurrence of a previously-resolved issue. Show under active notices, not Resolved.",
       "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
-      "runnethGuidance": "Acknowledge that Slack can show an internal formatting error when Runneth decides not to reply after it had started to. It is harmless, the fix is ready, and the team is aiming to ship it in tonight's one-off deploy. Do not proactively mention this for normal Slack requests.",
+      "runnethGuidance": "If someone reports an 'internal formatting error' in Slack, acknowledge it is a known recurring issue: the June 11 fix reduced it but it is still firing, and it can land as the delivered message instead of a real reply. A follow-up fix is in review and on the plan for the June 17 release, though not yet confirmed for that deploy. Suggest re-sending the message. Do not proactively mention this for normal Slack requests.",
       "supportGuidance": "Capture the Slack thread link and whether Runneth had started responding before the error appeared.",
       "examples": [
         {
