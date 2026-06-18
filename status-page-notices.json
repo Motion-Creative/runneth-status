@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-18T15:29:38.000Z",
+  "updatedAt": "2026-06-18T19:40:09.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-18T15:29:38.000Z",
     "summary": "This week ships in two parts. The first already shipped (June 15): the deployment and VM-spawning stability work, with Friday's never-posted r39 folded in. The second part was planned for Wednesday night but slipped, and is now pushed to tonight (Thursday, June 18, around 7pm ET): the routines refactor and database migration, plus a batch of customer-urgent fixes. It is the larger, higher-risk part of the release, so timing can still move. The routines PR is still pending merge and in testing ahead of the deploy.",
@@ -30,8 +30,8 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-16T15:27:44.000Z",
-      "summary": "The Neon production database connection is disconnected for now, and affected installs are being cleaned up.",
+      "updatedAt": "2026-06-18T19:40:09.000Z",
+      "summary": "Internal read-only access to the production database is restored via a secured read-only replica (rotated keys, IP allow-listing). The direct VM-side production-database path stays off, and the Neon URL must not be re-added to any VM. Remaining add-roles-permissions cleanup across affected orgs is in progress.",
       "impact": "The Neon database URL was being used inside VMs for identity resolution (looking up the Motion web user by email against the prod agent_conversation table) and for deriving a workspace's projects.motionapp.com URL (organization and workspace IDs) from a conversation ID. It gave a VM the ability to query the production database directly, which is a security risk, so the connection has been turned off while a safer identity-resolution path is worked out. Two things are affected while it is off: Motion-web identity resolution that depended on the Neon email lookup, and deriving the full Motion app workspace URL from a Builder conversation ID. Update: access has been cut at the IP level as a precaution (because it was not certain where the Neon URL had been added), and the add-roles-permissions package that was injecting the Neon URL into VMs is being scanned across every org that ever installed it (dozens found) and removed. That package is being reworked so it no longer needs the production database. Update (June 16): the VM-side path stays off (do not re-add the Neon URL into any VM). Separately, Motion's internal team read-only access to prod data, used to investigate prod conversations and traces, has been restored through a secured path: a read-only prod replica with rotated keys and IP allow-listing, instead of the broad Neon URL. The add-roles-permissions cleanup across affected orgs is still in progress.",
       "workaround": "For identity, rely on conversation-level context (the conversation's userEmail) plus the workspace map and per-conversation overrides instead of a live Neon lookup. To build a projects.motionapp.com workspace link, ask for the organization and workspace IDs or the full URL rather than deriving them from a Builder conversation ID. Do not add the Neon database URL back into any VM as a secret.",
       "resolution": {
