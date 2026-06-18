@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-06-17T14:53:21.000Z",
+  "updatedAt": "2026-06-18T15:29:38.000Z",
   "releaseNote": {
-    "updatedAt": "2026-06-17T14:53:21.000Z",
-    "summary": "This week ships in two parts. The first already shipped (June 15): the deployment and VM-spawning stability work, with Friday's never-posted r39 folded in. The second part is planned for tonight (Wednesday, June 17): the routines refactor and database migration, plus a batch of customer-urgent fixes. It is the larger, higher-risk part of the release, so timing can still move. Routines testing runs during the day today ahead of the night deploy.",
-    "plannedWindow": "Tonight, Wednesday, June 17, 2026 (routines refactor, database migration, and the customer-urgent must-haves). The June 15 stability release already shipped.",
-    "details": "The June 15 release shipped the critical-path stability work: more reliable Slack replies, faster rollouts, and conversations that no longer get stuck. It also folds in Friday's never-posted r39 (the Free Trial VM access approval queue and more upload types). Tonight's release (Wednesday, June 17) is the bigger, higher-risk part: routines come back and the database migration ships, alongside a set of customer-urgent must-haves currently in review: v3 endpoint bug fixes, a Slack formatting follow-up fix, the Meta CLI underscore custom-conversion fix, and a Slack file-staging fix. It is a risky deploy, so the timing can still move. Routines testing runs during the day today ahead of the night deploy. Until it ships, keep using the listed workarounds.",
+    "updatedAt": "2026-06-18T15:29:38.000Z",
+    "summary": "This week ships in two parts. The first already shipped (June 15): the deployment and VM-spawning stability work, with Friday's never-posted r39 folded in. The second part was planned for Wednesday night but slipped, and is now pushed to tonight (Thursday, June 18, around 7pm ET): the routines refactor and database migration, plus a batch of customer-urgent fixes. It is the larger, higher-risk part of the release, so timing can still move. The routines PR is still pending merge and in testing ahead of the deploy.",
+    "plannedWindow": "Tonight, Thursday, June 18, 2026, around 7pm ET (routines refactor, database migration, and the customer-urgent must-haves). The June 15 stability release already shipped.",
+    "details": "The June 15 release shipped the critical-path stability work: more reliable Slack replies, faster rollouts, and conversations that no longer get stuck. It also folds in Friday's never-posted r39 (the Free Trial VM access approval queue and more upload types). Tonight's release (Thursday, June 18, around 7pm ET) is the bigger, higher-risk part: routines come back and the database migration ships, alongside a set of customer-urgent must-haves in review: v3 endpoint bug fixes, a Slack formatting follow-up fix, the Meta CLI underscore custom-conversion fix, and a Slack file-staging fix. The routines PR is still pending merge and v3 is still in testing. It is a risky deploy, so the timing can still move. Until it ships, keep using the listed workarounds.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
@@ -107,14 +107,14 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-17T14:53:21.000Z",
+      "updatedAt": "2026-06-18T15:29:38.000Z",
       "summary": "Routines are temporarily paused during the refactor.",
       "impact": "New scheduled, recurring, monitored, reminder, post-later, or background-upkeep work should not be presented as live reliable automation.",
       "workaround": "Save the routine plan with cadence, trigger, task, workspace scope, and delivery target, then do the immediate one-time work where possible.",
       "resolution": {
         "type": "working_toward_next_release",
         "label": "In progress",
-        "note": "Targeted for tonight's release (Wednesday, June 17, 2026) as part of the routines refactor and database migration. Routines are ready for testing and the routines PR is a top must-have for tonight, pending review and merge. The plan: run routines testing during the day today (validating that existing routines migrate cleanly to the new system), then deploy tonight. Existing routines are migrated as part of the release, and saved/planned routines can be turned on once it ships. Because it is a higher-risk deploy, timing can still move."
+        "note": "Targeted for tonight's release (Thursday, June 18, 2026, around 7pm ET) as part of the routines refactor and database migration. The routines PR is a top must-have but is still pending merge and in testing. Existing routines are migrated as part of the release, and saved/planned routines can be turned on once it ships. Because it is a higher-risk deploy, timing can still move. (Originally planned for Wednesday, June 17; it did not ship that night and was pushed to tonight.)"
       },
       "examples": [],
       "statusPageGuidance": "CSMs should treat new routine setup as paused. Save the routine plan and do immediate one-time work where possible.",
