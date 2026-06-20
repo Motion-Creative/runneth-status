@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-18T19:40:09.000Z",
+  "updatedAt": "2026-06-20T14:54:14.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-18T15:29:38.000Z",
     "summary": "This week ships in two parts. The first already shipped (June 15): the deployment and VM-spawning stability work, with Friday's never-posted r39 folded in. The second part was planned for Wednesday night but slipped, and is now pushed to tonight (Thursday, June 18, around 7pm ET): the routines refactor and database migration, plus a batch of customer-urgent fixes. It is the larger, higher-risk part of the release, so timing can still move. The routines PR is still pending merge and in testing ahead of the deploy.",
@@ -108,17 +108,17 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-18T15:29:38.000Z",
-      "summary": "Routines are temporarily paused during the refactor.",
+      "updatedAt": "2026-06-20T14:54:14.000Z",
+      "summary": "Routines are live again after the refactor.",
       "impact": "New scheduled, recurring, monitored, reminder, post-later, or background-upkeep work should not be presented as live reliable automation.",
       "workaround": "Save the routine plan with cadence, trigger, task, workspace scope, and delivery target, then do the immediate one-time work where possible.",
       "resolution": {
-        "type": "working_toward_next_release",
-        "label": "In progress",
-        "note": "Targeted for tonight's release (Thursday, June 18, 2026, around 7pm ET) as part of the routines refactor and database migration. The routines PR is a top must-have but is still pending merge and in testing. Existing routines are migrated as part of the release, and saved/planned routines can be turned on once it ships. Because it is a higher-risk deploy, timing can still move. (Originally planned for Wednesday, June 17; it did not ship that night and was pushed to tonight.)"
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Resolved. Routines shipped live in r41 (June 19, 2026). They run on the rebuilt foundation and now keep their own timezone. Existing reminders were migrated automatically as part of the release; a few may need to be recreated by hand."
       },
       "examples": [],
-      "statusPageGuidance": "CSMs should treat new routine setup as paused. Save the routine plan and do immediate one-time work where possible.",
+      "statusPageGuidance": "Resolved: routines are live again after the rebuild. Most reminders migrated automatically; some may need recreating by hand.",
       "runnethTrigger": "User asks to create, set up, schedule, monitor, remind, notify, post later, repeat, keep something updated, or run background upkeep.",
       "runnethGuidance": "Lead with the constructive boundary, offer a future routine plan, and avoid saying anything is scheduled until creation actually succeeds.",
       "supportGuidance": "Capture cadence, trigger, task, workspace scope, and delivery destination so the plan can be turned on later."
@@ -132,16 +132,16 @@
       "surfaces": [
         "slack"
       ],
-      "updatedAt": "2026-06-18T19:40:09.000Z",
-      "summary": "Slack can show an 'internal formatting error' line instead of a real reply, and it is recurring after the June 11 fix.",
+      "updatedAt": "2026-06-20T14:54:14.000Z",
+      "summary": "The recurring Slack 'internal formatting error' reply is fixed.",
       "impact": "The June 11 fix (PDEC-8088) knocked down a large spike but did not fully kill this. It came back: June 15 saw 5 errors, and June 16 saw 14 errors across 2 orgs, mostly landing in Motion's internal org plus one external customer org once. In these recurrences the error line is delivered as the Slack message in place of a real reply, which is worse than a harmless skipped reply.",
       "workaround": "If you get the error line instead of a reply, re-send your message. If you told Runneth to stop, it has already stopped.",
       "resolution": {
-        "type": "working_toward_next_release",
-        "label": "Fix in review",
-        "note": "A follow-up fix (PDEC-8168, PR #2313) is in review and is a must-have targeted for tonight's release (Thursday, June 18, 2026, around 7pm ET). Timing can still move, and it has not been fully confirmed as riding in that deploy."
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Resolved. The follow-up fix (PDEC-8168, PR #2313) shipped in r41 (June 19, 2026). Watching for any further recurrence, since it came back once after the June 11 fix."
       },
-      "statusPageGuidance": "Active recurrence of a previously-resolved issue. Show under active notices, not Resolved.",
+      "statusPageGuidance": "Resolved in r41. If the error line recurs, reopen this notice.",
       "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
       "runnethGuidance": "If someone reports an 'internal formatting error' in Slack, acknowledge it is a known recurring issue: the June 11 fix reduced it but it is still firing, and it can land as the delivered message instead of a real reply. A follow-up fix is in review and on the plan for the June 17 release, though not yet confirmed for that deploy. Suggest re-sending the message. Do not proactively mention this for normal Slack requests.",
       "supportGuidance": "Capture the Slack thread link and whether Runneth had started responding before the error appeared.",
