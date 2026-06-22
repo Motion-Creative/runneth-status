@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-22T23:23:45.000Z",
+  "updatedAt": "2026-06-22T23:31:17.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-22T21:53:54.000Z",
     "summary": "Tonight (Monday, June 22, 2026) ships the next release (r42): deploy and app-auth reliability fixes, a Google OAuth token retry, new Motion workspace ID flags for the Meta and TikTok CLIs, and Builder release notes now posting to Slack. After tonight, Runneth goes into a code freeze: starting tomorrow (Tuesday, June 23) through Thursday (June 25), no releases will go out while a billing release is prepared. The next release is expected Thursday night (June 25), or possibly Friday night (June 26).",
@@ -80,22 +80,22 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-22T23:02:21.000Z",
+      "updatedAt": "2026-06-22T23:31:17.000Z",
       "summary": "Routines are back and working.",
-      "impact": "Scheduled, recurring, monitored, reminder, post-later, and background-upkeep routines can be created and run normally again.",
+      "impact": "Routines are live again, confirmed as of Friday, June 19. Old routines have been migrated to the new routine system, and any that failed to migrate for a customer are being finished off. Heads up for CSMs: some customers have a \"planned routines\" doc that Runneth kept adding to while routines were down. If you're their CSM, it's worth helping them set those routines up from that doc, or doing it for them.",
       "workaround": "None needed. If a routine fails to create, capture the cadence, trigger, task, workspace scope, and delivery target and retry.",
       "resolution": {
         "type": "resolved",
         "label": "Resolved",
-        "note": "Routines are live again. They came back as first-class work in the June 19 release (the routines rebuild plus persisted routine timezones). New scheduled, recurring, monitored, and reminder work can be set up normally. The deeper routines refactor (PDEC-7708) continues as background engine work but does not block routine setup."
+        "note": "Routines are live again, confirmed live as of Friday, June 19 (the routines rebuild plus persisted routine timezones). Old routines have been migrated to the new routine system, with any failed customer migrations being finished off. New scheduled, recurring, monitored, and reminder work can be set up normally. The deeper routines refactor (PDEC-7708) continues as background engine work but does not block routine setup."
       },
       "examples": [],
       "statusPageGuidance": "Resolved. Routines are live again as of the June 19 release. Show under Resolved.",
       "runnethTrigger": "User asks to create, set up, schedule, monitor, remind, notify, post later, repeat, keep something updated, or run background upkeep.",
       "runnethGuidance": "Routines are live again as of the June 19 release. Set up scheduled, recurring, monitored, reminder, post-later, or background work normally through the routine flow, and confirm creation succeeded before telling the user it is scheduled. Do not say routines are paused.",
-      "supportGuidance": "Routines are live again as of June 19. If a specific routine misbehaves, capture the cadence, trigger, task, workspace scope, and delivery destination.",
+      "supportGuidance": "Routines are live again as of June 19, with old routines migrated to the new system. Some customers have a \"planned routines\" doc built up while routines were down; CSMs can help them create those routines from it. If a specific routine misbehaves, capture the cadence, trigger, task, workspace scope, and delivery destination.",
       "resolvedAt": "2026-06-22T21:53:54.000Z",
-      "removeAfter": "2026-06-24T22:00:00.000Z"
+      "removeAfter": "2026-06-27T22:00:00.000Z"
     },
     {
       "id": "slack-internal-formatting-response-on-decline",
