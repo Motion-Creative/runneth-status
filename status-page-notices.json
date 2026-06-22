@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-22T23:02:21.000Z",
+  "updatedAt": "2026-06-22T23:08:53.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-22T21:53:54.000Z",
     "summary": "Tonight (Monday, June 22, 2026) ships the next release (r42): deploy and app-auth reliability fixes, a Google OAuth token retry, new Motion workspace ID flags for the Meta and TikTok CLIs, and Builder release notes now posting to Slack. After tonight, Runneth goes into a code freeze: starting tomorrow (Tuesday, June 23) through Thursday (June 25), no releases will go out while a billing release is prepared. The next release is expected Thursday night (June 25), or possibly Friday night (June 26).",
@@ -73,6 +73,32 @@
       "supportGuidance": "For scope questions, note the extra private-content search access was removed in the June 11 deploy and the scope is narrowed. For older installs that still show the wider scope, have the customer remove and reconnect Slack through Runneth rather than uninstalling from Slack directly.",
       "resolvedAt": "2026-06-12T13:27:44.000Z",
       "removeAfter": "2026-06-19T13:27:44.000Z"
+    },
+    {
+      "id": "multi-workspace-performance-workspace-id",
+      "runnethUse": "status_page_only",
+      "primitives": [
+        "data_access"
+      ],
+      "surfaces": [
+        "web",
+        "slack"
+      ],
+      "updatedAt": "2026-06-22T23:08:53.000Z",
+      "startedAt": "2026-06-22T13:00:00.000Z",
+      "summary": "Performance pulls can be unreliable in orgs with multiple workspaces.",
+      "impact": "The Meta and TikTok performance tools don't yet accept a workspace ID, so in an org with more than one workspace a performance pull can run against the wrong workspace or hit errors.",
+      "workaround": "If you're in a multi-workspace org and a performance pull looks off or returns errors, flag it. A fix that adds workspace ID support to the Meta and TikTok tools is shipping in tonight's release.",
+      "resolution": {
+        "type": "confirmed_next_release",
+        "label": "Fix shipping in the next release",
+        "note": "A fix adding Motion workspace ID support to the Meta and TikTok performance tools is part of tonight's release (r42, June 22, 2026). It is being tested in staging first."
+      },
+      "examples": [],
+      "statusPageGuidance": "Show under Data access. Affects only multi-workspace orgs pulling performance data. Fix is in tonight's planned release.",
+      "runnethTrigger": "User in a multi-workspace org reports a Meta or TikTok performance pull returning the wrong workspace's data or erroring.",
+      "runnethGuidance": "Acknowledge that the Meta and TikTok performance tools don't yet accept a workspace ID, so multi-workspace orgs can hit issues, and that a fix is in tonight's release. Do not raise this proactively for single-workspace orgs.",
+      "supportGuidance": "Capture the org, how many workspaces it has, which tool (Meta or TikTok), and what the pull returned versus expected."
     },
     {
       "id": "oauth-gated-apps-logged-out-ui",
