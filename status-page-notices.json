@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-22T21:53:54.000Z",
+  "updatedAt": "2026-06-22T23:02:21.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-22T21:53:54.000Z",
     "summary": "Tonight (Monday, June 22, 2026) ships the next release (r42): deploy and app-auth reliability fixes, a Google OAuth token retry, new Motion workspace ID flags for the Meta and TikTok CLIs, and Builder release notes now posting to Slack. After tonight, Runneth goes into a code freeze: starting tomorrow (Tuesday, June 23) through Thursday (June 25), no releases will go out while a billing release is prepared. The next release is expected Thursday night (June 25), or possibly Friday night (June 26).",
@@ -22,7 +22,7 @@
   "notices": [
     {
       "id": "neon-db-disconnected",
-      "runnethUse": "use_when_relevant",
+      "runnethUse": "status_page_only",
       "pinned": false,
       "customerBanner": false,
       "primitives": [],
@@ -30,7 +30,7 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-18T19:40:09.000Z",
+      "updatedAt": "2026-06-22T23:02:21.000Z",
       "summary": "Motion's internal access to the production database is restored.",
       "impact": "The Neon database URL was being used inside VMs for identity resolution (looking up the Motion web user by email against the prod agent_conversation table) and for deriving a workspace's projects.motionapp.com URL (organization and workspace IDs) from a conversation ID. It gave a VM the ability to query the production database directly, which is a security risk, so the connection has been turned off while a safer identity-resolution path is worked out. Two things are affected while it is off: Motion-web identity resolution that depended on the Neon email lookup, and deriving the full Motion app workspace URL from a Builder conversation ID. Update: access has been cut at the IP level as a precaution (because it was not certain where the Neon URL had been added), and the add-roles-permissions package that was injecting the Neon URL into VMs is being scanned across every org that ever installed it (dozens found) and removed. That package is being reworked so it no longer needs the production database. Update (June 16): the VM-side path stays off (do not re-add the Neon URL into any VM). Separately, Motion's internal team read-only access to prod data, used to investigate prod conversations and traces, has been restored through a secured path: a read-only prod replica with rotated keys and IP allow-listing, instead of the broad Neon URL. The add-roles-permissions cleanup across affected orgs is still in progress.",
       "workaround": "For identity, rely on conversation-level context (the conversation's userEmail) plus the workspace map and per-conversation overrides instead of a live Neon lookup. To build a projects.motionapp.com workspace link, ask for the organization and workspace IDs or the full URL rather than deriving them from a Builder conversation ID. Do not add the Neon database URL back into any VM as a secret.",
@@ -83,24 +83,24 @@
       "surfaces": [
         "web"
       ],
-      "updatedAt": "2026-06-22T21:53:54.000Z",
+      "updatedAt": "2026-06-22T23:02:21.000Z",
       "summary": "OAuth-gated apps can show a rough logged-out screen.",
       "impact": "When someone opens an app that requires OAuth while logged out, the gated screen may look unfinished instead of showing a polished sign-in or access prompt.",
       "workaround": "Log in to the right Motion/Runneth account, connect the required OAuth account if needed, then reopen or refresh the app link.",
       "resolution": {
-        "type": "working_toward_next_release",
-        "label": "Fix in review",
-        "note": "The access-denied page for OAuth-gated apps shipped. A follow-up to add org context to that page (PDEC-8238) is in review and targeted for an upcoming release."
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Resolved. The access-denied page for OAuth-gated apps shipped, so logged-out or blocked users now get a proper access prompt instead of a rough, unfinished screen. A small follow-up to add org context to that page (PDEC-8238) is still in review, but the logged-out screen itself is no longer an issue."
       },
       "examples": [],
-      "statusPageGuidance": "Show under Apps. This is a logged-out OAuth gate UI issue, not a general app outage. Use the in_progress resolution flag and do not imply it is confirmed for the next planned release.",
+      "statusPageGuidance": "Resolved. The access-denied page shipped; the logged-out OAuth gate screen is no longer an issue. A minor org-context follow-up remains in review but is not user-facing.",
       "runnethTrigger": "User asks about or reports an app, app link, dashboard, widget, or generated page looking broken, ugly, unfinished, or confusing while logged out or blocked by OAuth.",
-      "runnethGuidance": "Acknowledge that OAuth-gated apps can show a rough logged-out screen, that the underlying data is fine, and that the access-denied page shipped with a follow-up (adding org context) in review. Do not proactively mention this for normal requests.",
+      "runnethGuidance": "Resolved. The access-denied page for OAuth-gated apps shipped. Do not raise this as an active issue.",
       "supportGuidance": "Capture the app link, whether the person was logged out, which OAuth gate appeared, and whether the page still looks wrong after logging in and refreshing."
     },
     {
       "id": "routines-refactor-in-progress",
-      "runnethUse": "use_when_relevant",
+      "runnethUse": "status_page_only",
       "primitives": [
         "routines"
       ],
@@ -108,7 +108,7 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-22T21:53:54.000Z",
+      "updatedAt": "2026-06-22T23:02:21.000Z",
       "summary": "Routines are back and working.",
       "impact": "Scheduled, recurring, monitored, reminder, post-later, and background-upkeep routines can be created and run normally again.",
       "workaround": "None needed. If a routine fails to create, capture the cadence, trigger, task, workspace scope, and delivery target and retry.",
@@ -127,14 +127,14 @@
     },
     {
       "id": "slack-internal-formatting-response-on-decline",
-      "runnethUse": "use_when_relevant",
+      "runnethUse": "status_page_only",
       "primitives": [
         "slack"
       ],
       "surfaces": [
         "slack"
       ],
-      "updatedAt": "2026-06-22T21:53:54.000Z",
+      "updatedAt": "2026-06-22T23:02:21.000Z",
       "summary": "Slack 'internal formatting error' fixes shipped; a new related delivery edge case is tracked.",
       "impact": "The June 11 fix and the PDEC-8168 follow-up (shipped in the June 19 release) knocked this down. A new, related edge case is now tracked separately: a Slack turn can skip starting the response and drop the reply. It is not a wide spike, but it can land as no reply.",
       "workaround": "If you get the error line instead of a reply, re-send your message. If you told Runneth to stop, it has already stopped.",
