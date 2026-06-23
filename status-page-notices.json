@@ -1,14 +1,13 @@
 {
-  "updatedAt": "2026-06-22T23:31:17.000Z",
+  "updatedAt": "2026-06-23T17:07:50.000Z",
   "releaseNote": {
-    "updatedAt": "2026-06-22T21:53:54.000Z",
-    "summary": "Tonight (Monday, June 22, 2026) ships the next release (r42): deploy and app-auth reliability fixes, a Google OAuth token retry, new Motion workspace ID flags for the Meta and TikTok CLIs, and Builder release notes now posting to Slack. After tonight, Runneth goes into a code freeze: starting tomorrow (Tuesday, June 23) through Thursday (June 25), no releases will go out while a billing release is prepared. The next release is expected Thursday night (June 25), or possibly Friday night (June 26).",
-    "plannedWindow": "Tonight, Monday, June 22, 2026 (r42). Then a code freeze Tuesday, June 23 through Thursday, June 25 with no releases. Next release: Thursday night, June 25, or possibly Friday night, June 26.",
-    "details": "Tonight's release (Monday, June 22) is mostly stability and plumbing: deploy fixes after reused VM images, an app-catalog sandbox fix, a Google OAuth token-retry fix, new Motion workspace ID flags for the Meta and TikTok CLIs, and Builder release notes now posting to Slack. The prior release (r41, June 19) already shipped the big items: routines are back as first-class work, the v3 Meta migration, the app public/private auth toggle, enhanced creator search, and the Slack missing-response fix. Starting tomorrow (Tuesday, June 23), Runneth is in a code freeze through Thursday (June 25), so no releases go out while a billing release is prepared. The next release is expected Thursday night (June 25), or possibly Friday night (June 26).",
-    "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
+    "updatedAt": "2026-06-23T17:07:50.000Z",
+    "summary": "r42, r43, and r44 all shipped June 23. r42: workspace ID flags for Meta/TikTok CLIs, Slack reactions fix (PDEC-7387), app-auth reliability, Builder release notes to Slack. r43: Mondrian credentials 403 fix, Node version pin. r44: session bundle deterministic fix, Spawneth daemon token recovery.",
+    "plannedWindow": "r44 shipped June 23, 2026 (most recent). No next release window announced yet.",
+    "details": "Three releases shipped on June 23, 2026. r42 (1:43am): workspace ID flags for Meta and TikTok CLI tools, the Slack reactions fix (PDEC-7387, PR #2333), app-auth chmod and catalog sandbox fixes, Google OAuth token retry, Builder release notes now posting to Slack, Spawneth daemon image pruning, and title generation moved into runtime loop. r43 (6:35am): 403 returned for missing Mondrian credentials, Node image pinned to 24.16.0, Spawneth ACR throttle retry jitter. r44 (4:22pm): session bundle made deterministic, Spawneth daemon recovery now prefers VM daemon token (PDEC-8392). No next release window is announced yet."
   },
   "runnethUseOptions": {
-    "use_when_relevant": "Use this whenever the user's request touches this area.",
+    "use_when_relevant": "Use this whenever the user request touches this area.",
     "only_when_asked": "Use this only when the user asks about or reports this issue.",
     "status_page_only": "Visible to CSMs, product, and operators, but not injected into Runneth by default."
   },
@@ -30,21 +29,23 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-22T23:08:53.000Z",
+      "updatedAt": "2026-06-23T17:07:50.000Z",
       "startedAt": "2026-06-22T13:00:00.000Z",
-      "summary": "Performance pulls can be unreliable in orgs with multiple workspaces.",
-      "impact": "The Meta and TikTok performance tools don't yet accept a workspace ID, so in an org with more than one workspace a performance pull can run against the wrong workspace or hit errors.",
-      "workaround": "If you're in a multi-workspace org and a performance pull looks off or returns errors, flag it. A fix that adds workspace ID support to the Meta and TikTok tools is shipping in tonight's release.",
+      "summary": "Multi-workspace performance workspace ID fix shipped in r42.",
+      "impact": "The Meta and TikTok performance tools previously lacked workspace ID support, causing issues in orgs with multiple workspaces. The fix shipped in r42 (June 23).",
+      "workaround": "No workaround needed. The fix is live as of r42.",
       "resolution": {
-        "type": "confirmed_next_release",
-        "label": "Fix shipping in the next release",
-        "note": "A fix adding Motion workspace ID support to the Meta and TikTok performance tools is part of tonight's release (r42, June 22, 2026). It is being tested in staging first."
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Resolved. Motion workspace ID flag support for the Meta and TikTok CLI tools shipped in r42 on June 23, 2026 (PR #2367). Multi-workspace orgs can now direct performance pulls to the correct workspace."
       },
       "examples": [],
-      "statusPageGuidance": "Show under Data access. Affects only multi-workspace orgs pulling performance data. Fix is in tonight's planned release.",
-      "runnethTrigger": "User in a multi-workspace org reports a Meta or TikTok performance pull returning the wrong workspace's data or erroring.",
-      "runnethGuidance": "Acknowledge that the Meta and TikTok performance tools don't yet accept a workspace ID, so multi-workspace orgs can hit issues, and that a fix is in tonight's release. Do not raise this proactively for single-workspace orgs.",
-      "supportGuidance": "Capture the org, how many workspaces it has, which tool (Meta or TikTok), and what the pull returned versus expected."
+      "statusPageGuidance": "Resolved. Show briefly at the bottom then drop off after removeAfter.",
+      "runnethTrigger": "User in a multi-workspace org reports a Meta or TikTok performance pull returning the wrong workspace data or erroring.",
+      "runnethGuidance": "The workspace ID fix shipped in r42 (June 23). Multi-workspace performance pulls should now work correctly.",
+      "supportGuidance": "If issues persist after r42, capture the org, number of workspaces, which tool (Meta or TikTok), and what the pull returned.",
+      "resolvedAt": "2026-06-23T01:43:00.000Z",
+      "removeAfter": "2026-06-25T17:00:00.000Z"
     },
     {
       "id": "oauth-gated-apps-logged-out-ui",
@@ -82,7 +83,7 @@
       ],
       "updatedAt": "2026-06-22T23:31:17.000Z",
       "summary": "Routines are back and working.",
-      "impact": "Routines are live again, confirmed as of Friday, June 19. Old routines have been migrated to the new routine system, and any that failed to migrate for a customer are being finished off. Heads up for CSMs: some customers have a \"planned routines\" doc that Runneth kept adding to while routines were down. If you're their CSM, it's worth helping them set those routines up from that doc, or doing it for them.",
+      "impact": "Routines are live again, confirmed as of Friday, June 19. Old routines have been migrated to the new routine system, and any that failed to migrate for a customer are being finished off. Heads up for CSMs: some customers have a planned routines doc that Runneth kept adding to while routines were down. If you are their CSM, it is worth helping them set those routines up from that doc, or doing it for them.",
       "workaround": "None needed. If a routine fails to create, capture the cadence, trigger, task, workspace scope, and delivery target and retry.",
       "resolution": {
         "type": "resolved",
@@ -93,7 +94,7 @@
       "statusPageGuidance": "Resolved. Routines are live again as of the June 19 release. Show under Resolved.",
       "runnethTrigger": "User asks to create, set up, schedule, monitor, remind, notify, post later, repeat, keep something updated, or run background upkeep.",
       "runnethGuidance": "Routines are live again as of the June 19 release. Set up scheduled, recurring, monitored, reminder, post-later, or background work normally through the routine flow, and confirm creation succeeded before telling the user it is scheduled. Do not say routines are paused.",
-      "supportGuidance": "Routines are live again as of June 19, with old routines migrated to the new system. Some customers have a \"planned routines\" doc built up while routines were down; CSMs can help them create those routines from it. If a specific routine misbehaves, capture the cadence, trigger, task, workspace scope, and delivery destination.",
+      "supportGuidance": "Routines are live again as of June 19, with old routines migrated to the new system. Some customers have a planned routines doc built up while routines were down; CSMs can help them create those routines from it. If a specific routine misbehaves, capture the cadence, trigger, task, workspace scope, and delivery destination.",
       "resolvedAt": "2026-06-22T21:53:54.000Z",
       "removeAfter": "2026-06-27T22:00:00.000Z"
     },
