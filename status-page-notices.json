@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-06-22T23:31:17.000Z",
+  "updatedAt": "2026-06-23T12:03:07.000Z",
   "releaseNote": {
-    "updatedAt": "2026-06-22T21:53:54.000Z",
+    "updatedAt": "2026-06-23T12:03:07.000Z",
     "summary": "Tonight (Monday, June 22, 2026) ships the next release (r42): deploy and app-auth reliability fixes, a Google OAuth token retry, new Motion workspace ID flags for the Meta and TikTok CLIs, and Builder release notes now posting to Slack. After tonight, Runneth goes into a code freeze: starting tomorrow (Tuesday, June 23) through Thursday (June 25), no releases will go out while a billing release is prepared. The next release is expected Thursday night (June 25), or possibly Friday night (June 26).",
-    "plannedWindow": "Tonight, Monday, June 22, 2026 (r42). Then a code freeze Tuesday, June 23 through Thursday, June 25 with no releases. Next release: Thursday night, June 25, or possibly Friday night, June 26.",
+    "plannedWindow": "A code freeze runs Tuesday, June 23 through Thursday, June 25 with no releases while a billing release is prepared. Next release: Thursday night, June 25, or possibly Friday night, June 26.",
     "details": "Tonight's release (Monday, June 22) is mostly stability and plumbing: deploy fixes after reused VM images, an app-catalog sandbox fix, a Google OAuth token-retry fix, new Motion workspace ID flags for the Meta and TikTok CLIs, and Builder release notes now posting to Slack. The prior release (r41, June 19) already shipped the big items: routines are back as first-class work, the v3 Meta migration, the app public/private auth toggle, enhanced creator search, and the Slack missing-response fix. Starting tomorrow (Tuesday, June 23), Runneth is in a code freeze through Thursday (June 25), so no releases go out while a billing release is prepared. The next release is expected Thursday night (June 25), or possibly Friday night (June 26).",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
