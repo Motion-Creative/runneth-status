@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T13:53:49.000Z",
+  "updatedAt": "2026-06-24T17:07:05.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-24T13:53:49.000Z",
     "summary": "Releases r42 through r45 are all live (mostly Tuesday, June 23, 2026), and a small hotfix shipped early Wednesday, June 24. The planned mid-week code freeze did not hold as originally framed: r44 and r45 shipped Tuesday and a hotfix went out Wednesday. The next planned release window is not confirmed yet and will be posted once it is.",
@@ -8,7 +8,7 @@
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
-    "use_when_relevant": "Use this whenever the user's request touches this area.",
+    "use_when_relevant": "Use this whenever the user request touches this area.",
     "only_when_asked": "Use this only when the user asks about or reports this issue.",
     "status_page_only": "Visible to CSMs, product, and operators, but not injected into Runneth by default."
   },
@@ -30,21 +30,23 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-22T23:08:53.000Z",
+      "updatedAt": "2026-06-24T17:07:05.000Z",
       "startedAt": "2026-06-22T13:00:00.000Z",
-      "summary": "Performance pulls can be unreliable in orgs with multiple workspaces.",
-      "impact": "The Meta and TikTok performance tools don't yet accept a workspace ID, so in an org with more than one workspace a performance pull can run against the wrong workspace or hit errors.",
-      "workaround": "If you're in a multi-workspace org and a performance pull looks off or returns errors, flag it. A fix that adds workspace ID support to the Meta and TikTok tools is shipping in tonight's release.",
+      "summary": "Multi-workspace performance workspace ID fix shipped in r42.",
+      "impact": "The Meta and TikTok performance tools previously lacked workspace ID support, causing issues in orgs with multiple workspaces. The fix shipped in r42 (June 23).",
+      "workaround": "No workaround needed. The fix is live as of r42.",
       "resolution": {
-        "type": "confirmed_next_release",
-        "label": "Fix shipping in the next release",
-        "note": "A fix adding Motion workspace ID support to the Meta and TikTok performance tools is part of tonight's release (r42, June 22, 2026). It is being tested in staging first."
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Resolved. Motion workspace ID flag support for the Meta and TikTok CLI tools shipped in r42 on June 23, 2026 (PR #2367). Multi-workspace orgs can now direct performance pulls to the correct workspace."
       },
       "examples": [],
-      "statusPageGuidance": "Show under Data access. Affects only multi-workspace orgs pulling performance data. Fix is in tonight's planned release.",
-      "runnethTrigger": "User in a multi-workspace org reports a Meta or TikTok performance pull returning the wrong workspace's data or erroring.",
-      "runnethGuidance": "Acknowledge that the Meta and TikTok performance tools don't yet accept a workspace ID, so multi-workspace orgs can hit issues, and that a fix is in tonight's release. Do not raise this proactively for single-workspace orgs.",
-      "supportGuidance": "Capture the org, how many workspaces it has, which tool (Meta or TikTok), and what the pull returned versus expected."
+      "statusPageGuidance": "Resolved. Show briefly at the bottom then drop off after removeAfter.",
+      "runnethTrigger": "User in a multi-workspace org reports a Meta or TikTok performance pull returning the wrong workspace data or erroring.",
+      "runnethGuidance": "The workspace ID fix shipped in r42 (June 23). Multi-workspace performance pulls should now work correctly. Pass --workspace-id to target a specific workspace.",
+      "supportGuidance": "If issues persist after r42, capture the org, number of workspaces, which tool (Meta or TikTok), and what the pull returned.",
+      "resolvedAt": "2026-06-23T01:43:00.000Z",
+      "removeAfter": "2026-06-26T17:00:00.000Z"
     },
     {
       "id": "oauth-gated-apps-logged-out-ui",
@@ -82,7 +84,7 @@
       ],
       "updatedAt": "2026-06-22T23:31:17.000Z",
       "summary": "Routines are back and working.",
-      "impact": "Routines are live again, confirmed as of Friday, June 19. Old routines have been migrated to the new routine system, and any that failed to migrate for a customer are being finished off. Heads up for CSMs: some customers have a \"planned routines\" doc that Runneth kept adding to while routines were down. If you're their CSM, it's worth helping them set those routines up from that doc, or doing it for them.",
+      "impact": "Routines are live again, confirmed as of Friday, June 19. Old routines have been migrated to the new routine system, and any that failed to migrate for a customer are being finished off.",
       "workaround": "None needed. If a routine fails to create, capture the cadence, trigger, task, workspace scope, and delivery target and retry.",
       "resolution": {
         "type": "resolved",
@@ -93,7 +95,7 @@
       "statusPageGuidance": "Resolved. Routines are live again as of the June 19 release. Show under Resolved.",
       "runnethTrigger": "User asks to create, set up, schedule, monitor, remind, notify, post later, repeat, keep something updated, or run background upkeep.",
       "runnethGuidance": "Routines are live again as of the June 19 release. Set up scheduled, recurring, monitored, reminder, post-later, or background work normally through the routine flow, and confirm creation succeeded before telling the user it is scheduled. Do not say routines are paused.",
-      "supportGuidance": "Routines are live again as of June 19, with old routines migrated to the new system. Some customers have a \"planned routines\" doc built up while routines were down; CSMs can help them create those routines from it. If a specific routine misbehaves, capture the cadence, trigger, task, workspace scope, and delivery destination.",
+      "supportGuidance": "Routines are live again as of June 19, with old routines migrated to the new system. Some customers have a planned routines doc built up while routines were down; CSMs can help them create those routines from it. If a specific routine misbehaves, capture the cadence, trigger, task, workspace scope, and delivery destination.",
       "resolvedAt": "2026-06-22T21:53:54.000Z",
       "removeAfter": "2026-06-27T22:00:00.000Z"
     },
@@ -106,19 +108,19 @@
       "surfaces": [
         "slack"
       ],
-      "updatedAt": "2026-06-22T23:02:21.000Z",
-      "summary": "Slack 'internal formatting error' fixes shipped; a new related delivery edge case is tracked.",
-      "impact": "The June 11 fix and the PDEC-8168 follow-up (shipped in the June 19 release) knocked this down. A new, related edge case is now tracked separately: a Slack turn can skip starting the response and drop the reply. It is not a wide spike, but it can land as no reply.",
-      "workaround": "If you get the error line instead of a reply, re-send your message. If you told Runneth to stop, it has already stopped.",
+      "updatedAt": "2026-06-24T17:07:05.000Z",
+      "summary": "Slack delivery edge case (dropped reply) fix is in staging.",
+      "impact": "The original formatting error and PDEC-8168 fix (June 19 release) are both shipped. A related delivery edge case \u2014 a Slack turn skipping the response start and dropping the reply \u2014 was tracked as PDEC-8349 and the fix (PR #2393) merged today and is now in staging.",
+      "workaround": "If a Slack reply is dropped, re-send the message.",
       "resolution": {
-        "type": "in_progress",
-        "label": "Being worked on",
-        "note": "The earlier fixes shipped: the June 11 fix and the PDEC-8168 follow-up that went out in the June 19 release. A new, related delivery edge case where a Slack turn can skip the response start and drop the reply is now tracked (PDEC-8349), but it is not yet scheduled for a release."
+        "type": "working_toward_next_release",
+        "label": "Fix in staging",
+        "note": "The fix for the dropped-Slack-reply edge case (PDEC-8349, PR #2393 merged June 24) is now in staging. It is targeted for the next planned release."
       },
-      "statusPageGuidance": "Active follow-up. The original error is fixed; a new related delivery edge case is tracked.",
-      "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
-      "runnethGuidance": "If someone reports an 'internal formatting error' or a dropped Slack reply, acknowledge it is a known area: the June 11 and June 19 fixes addressed the original error, and a new related delivery edge case (a turn skipping the response start) is being tracked. Suggest re-sending the message. Do not raise this proactively for normal Slack requests.",
-      "supportGuidance": "Capture the Slack thread link and whether Runneth had started responding before the error appeared.",
+      "statusPageGuidance": "Fix in staging. The dropped-reply edge case fix (PDEC-8349) is in staging as of June 24, targeted for the next release.",
+      "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or a dropped Slack reply where Runneth did not respond.",
+      "runnethGuidance": "The original Slack formatting error is fixed. A related edge case (a Slack turn dropping the reply entirely) had a fix merge June 24 that is now in staging. If someone reports a dropped Slack reply, suggest re-sending. Do not raise this proactively for normal Slack requests.",
+      "supportGuidance": "Capture the Slack thread link and whether Runneth had started responding before the drop.",
       "examples": [
         {
           "label": "Reported thread",
