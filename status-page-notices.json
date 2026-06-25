@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-06-25T12:03:59.000Z",
+  "updatedAt": "2026-06-25T12:13:52.000Z",
   "releaseNote": {
-    "updatedAt": "2026-06-25T12:03:59.000Z",
-    "summary": "Runneth is in a code freeze right now. r42 shipped Monday night (June 22) as the planned pre-freeze release. The freeze started Tuesday (June 23) for the CSS summit and a billing release: only hotfixes go out until it re-opens Friday (June 26) at 00:00. A few summit-critical releases (r43, r44, r45) still went out Tuesday, June 23, and a v3 Meta video-URL hotfix shipped early Wednesday, June 24. Normal prod releases resume Friday, June 26.",
-    "plannedWindow": "Code freeze active. Started Tuesday, June 23, 2026; hotfixes only; re-opens Friday, June 26 at 00:00. Already shipped: r42 (Mon, June 22), r43 / r44 / r45 (Tue, June 23, summit-critical), and a v3 Meta hotfix (Wed, June 24). Next normal release: Friday, June 26.",
-    "details": "r42 (Monday night, June 22) was the planned pre-freeze release: new Motion workspace ID flags for the Meta and TikTok tools (fixing multi-workspace performance pulls), Builder release notes now posting to Slack, plus deploy and app-auth reliability fixes and a Google OAuth token retry. The code freeze then started Tuesday, June 23, for the CSS summit (Thursday, June 25) and a billing release, with only hotfixes allowed until it re-opens Friday, June 26 at 00:00. A few summit-critical releases were cherry-picked through during Tuesday: r43 (clearer error on missing credentials, prod Node pin, image-registry retry jitter), r44 (deterministic sessions, steadier VM recovery), and r45 (bulk VM creation by org, higher provider proxy rate limit). Early Wednesday, June 24, a hotfix fixed v3 Meta video ad URLs that were returning preview-only links. Normal prod releases resume Friday, June 26.",
+    "updatedAt": "2026-06-25T12:13:52.000Z",
+    "summary": "Runneth is in a code freeze right now. It re-opens Thursday night (June 25), and the next normal release goes out Thursday night too. r42 shipped Monday night (June 22) as the planned pre-freeze release. A few summit-critical releases (r43, r44, r45) went out Tuesday, June 23, and a Meta video link hotfix shipped Wednesday, June 24.",
+    "plannedWindow": "Code freeze active. Re-opens Thursday night, June 25; next normal release goes out Thursday night, June 25. Already shipped: r42 (Mon, June 22), r43 / r44 / r45 (Tue, June 23, summit-critical), and a Meta hotfix (Wed, June 24).",
+    "details": "r42 (Monday night, June 22) was the planned pre-freeze release: new Motion workspace ID flags for the Meta and TikTok tools (fixing multi-workspace performance pulls), Builder release notes now posting to Slack, plus deploy and app-auth reliability fixes and a Google OAuth token retry. The code freeze then started Tuesday, June 23, for the CSS summit (Thursday, June 25) and a billing release, with only hotfixes allowed until it re-opens Thursday night, June 25. A few summit-critical releases were cherry-picked through during Tuesday: r43 (clearer error on missing credentials, prod Node pin, image-registry retry jitter), r44 (deterministic sessions, steadier VM recovery), and r45 (bulk VM creation by org, higher provider proxy rate limit). Early Wednesday, June 24, a hotfix fixed v3 Meta video ad URLs that were returning preview-only links. Normal prod releases resume Thursday night, June 25.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
@@ -74,33 +74,6 @@
       "removeAfter": "2026-06-24T23:02:00.000Z"
     },
     {
-      "id": "routines-refactor-in-progress",
-      "runnethUse": "status_page_only",
-      "primitives": [
-        "routines"
-      ],
-      "surfaces": [
-        "web",
-        "slack"
-      ],
-      "updatedAt": "2026-06-22T23:31:17.000Z",
-      "summary": "Routines are back and working.",
-      "impact": "Routines are live again, confirmed as of Friday, June 19. Old routines have been migrated to the new routine system, and any that failed to migrate for a customer are being finished off. Heads up for CSMs: some customers have a \"planned routines\" doc that Runneth kept adding to while routines were down. If you're their CSM, it's worth helping them set those routines up from that doc, or doing it for them.",
-      "workaround": "None needed. If a routine fails to create, capture the cadence, trigger, task, workspace scope, and delivery target and retry.",
-      "resolution": {
-        "type": "resolved",
-        "label": "Resolved",
-        "note": "Routines are live again, confirmed live as of Friday, June 19 (the routines rebuild plus persisted routine timezones). Old routines have been migrated to the new routine system, with any failed customer migrations being finished off. New scheduled, recurring, monitored, and reminder work can be set up normally. The deeper routines refactor (PDEC-7708) continues as background engine work but does not block routine setup."
-      },
-      "examples": [],
-      "statusPageGuidance": "Resolved. Routines are live again as of the June 19 release. Show under Resolved.",
-      "runnethTrigger": "User asks to create, set up, schedule, monitor, remind, notify, post later, repeat, keep something updated, or run background upkeep.",
-      "runnethGuidance": "Routines are live again as of the June 19 release. Set up scheduled, recurring, monitored, reminder, post-later, or background work normally through the routine flow, and confirm creation succeeded before telling the user it is scheduled. Do not say routines are paused.",
-      "supportGuidance": "Routines are live again as of June 19, with old routines migrated to the new system. Some customers have a \"planned routines\" doc built up while routines were down; CSMs can help them create those routines from it. If a specific routine misbehaves, capture the cadence, trigger, task, workspace scope, and delivery destination.",
-      "resolvedAt": "2026-06-22T21:53:54.000Z",
-      "removeAfter": "2026-06-27T22:00:00.000Z"
-    },
-    {
       "id": "slack-internal-formatting-response-on-decline",
       "runnethUse": "status_page_only",
       "primitives": [
@@ -109,16 +82,16 @@
       "surfaces": [
         "slack"
       ],
-      "updatedAt": "2026-06-25T12:03:59.000Z",
-      "summary": "Slack delivery edge case (dropped reply) fix is in staging.",
-      "impact": "The original formatting error and PDEC-8168 fix (June 19 release) are both shipped. A related delivery edge case, a Slack turn skipping the response start and dropping the reply, was tracked as PDEC-8349 and the fix (PR #2393) merged June 24 and is now in staging.",
-      "workaround": "If a Slack reply is dropped, re-send the message.",
+      "updatedAt": "2026-06-25T12:13:52.000Z",
+      "summary": "Sometimes a Slack reply can get dropped.",
+      "impact": "Once in a while, Runneth can skip its reply to a Slack message, so nothing comes back. The earlier cause of this is already fixed. This last edge case is fixed too and is going out in the next release (Thursday night).",
+      "workaround": "If a reply doesn't come through, just send the message again.",
       "resolution": {
         "type": "working_toward_next_release",
-        "label": "Fix in staging",
-        "note": "The fix for the dropped-Slack-reply edge case (PDEC-8349, PR #2393 merged June 24) is now in staging. It is targeted for the next planned release."
+        "label": "Fix coming next release",
+        "note": "Fixed and going out in the next release (Thursday night). If a reply is ever dropped before then, just re-send the message."
       },
-      "statusPageGuidance": "Active follow-up. The original error is fixed; a new related delivery edge case is tracked.",
+      "statusPageGuidance": "An occasional dropped Slack reply. The earlier cause is already fixed; this last edge case is going out in the next release, Thursday night.",
       "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
       "runnethGuidance": "If someone reports an 'internal formatting error' or a dropped Slack reply, acknowledge it is a known area: the June 11 and June 19 fixes addressed the original error, and a new related delivery edge case (a turn skipping the response start) is being tracked. Suggest re-sending the message. Do not raise this proactively for normal Slack requests.",
       "supportGuidance": "Capture the Slack thread link and whether Runneth had started responding before the error appeared.",
