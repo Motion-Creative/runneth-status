@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-06-24T13:53:49.000Z",
+  "updatedAt": "2026-06-25T12:03:59.000Z",
   "releaseNote": {
-    "updatedAt": "2026-06-24T13:53:49.000Z",
-    "summary": "Releases r42 through r45 are all live (mostly Tuesday, June 23, 2026), and a small hotfix shipped early Wednesday, June 24. The planned mid-week code freeze did not hold as originally framed: r44 and r45 shipped Tuesday and a hotfix went out Wednesday. The next planned release window is not confirmed yet and will be posted once it is.",
-    "plannedWindow": "Not confirmed. r42 through r45 shipped (mostly Tuesday, June 23, 2026), plus a small hotfix Wednesday, June 24. The next planned window will be posted once confirmed.",
-    "details": "Recent releases: r42 (June 23) brought new Motion workspace ID flags for the Meta and TikTok tools (fixing multi-workspace performance pulls), Builder release notes now posting to Slack, plus deploy and app-auth reliability fixes and a Google OAuth token retry. r43 (June 23) returns a clearer error when an org is missing credentials, pins the production Node image, and softens image-registry retry throttling. r44 (June 23) made sessions deterministic and steadied VM recovery. r45 (June 23) added bulk VM creation by org and raised the provider proxy rate limit. A small direct hotfix shipped early June 24 off r45. The earlier plan was a code freeze Tuesday June 23 through Thursday June 25 for a billing release, but releases continued through Tuesday and Wednesday, so that window no longer reflects reality.",
+    "updatedAt": "2026-06-25T12:03:59.000Z",
+    "summary": "Runneth is in a code freeze right now. r42 shipped Monday night (June 22) as the planned pre-freeze release. The freeze started Tuesday (June 23) for the CSS summit and a billing release: only hotfixes go out until it re-opens Friday (June 26) at 00:00. A few summit-critical releases (r43, r44, r45) still went out Tuesday, June 23, and a v3 Meta video-URL hotfix shipped early Wednesday, June 24. Normal prod releases resume Friday, June 26.",
+    "plannedWindow": "Code freeze active. Started Tuesday, June 23, 2026; hotfixes only; re-opens Friday, June 26 at 00:00. Already shipped: r42 (Mon, June 22), r43 / r44 / r45 (Tue, June 23, summit-critical), and a v3 Meta hotfix (Wed, June 24). Next normal release: Friday, June 26.",
+    "details": "r42 (Monday night, June 22) was the planned pre-freeze release: new Motion workspace ID flags for the Meta and TikTok tools (fixing multi-workspace performance pulls), Builder release notes now posting to Slack, plus deploy and app-auth reliability fixes and a Google OAuth token retry. The code freeze then started Tuesday, June 23, for the CSS summit (Thursday, June 25) and a billing release, with only hotfixes allowed until it re-opens Friday, June 26 at 00:00. A few summit-critical releases were cherry-picked through during Tuesday: r43 (clearer error on missing credentials, prod Node pin, image-registry retry jitter), r44 (deterministic sessions, steadier VM recovery), and r45 (bulk VM creation by org, higher provider proxy rate limit). Early Wednesday, June 24, a hotfix fixed v3 Meta video ad URLs that were returning preview-only links. Normal prod releases resume Friday, June 26.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
@@ -30,21 +30,23 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-06-22T23:08:53.000Z",
+      "updatedAt": "2026-06-25T12:03:59.000Z",
       "startedAt": "2026-06-22T13:00:00.000Z",
-      "summary": "Performance pulls can be unreliable in orgs with multiple workspaces.",
-      "impact": "The Meta and TikTok performance tools don't yet accept a workspace ID, so in an org with more than one workspace a performance pull can run against the wrong workspace or hit errors.",
-      "workaround": "If you're in a multi-workspace org and a performance pull looks off or returns errors, flag it. A fix that adds workspace ID support to the Meta and TikTok tools is shipping in tonight's release.",
+      "summary": "Multi-workspace performance workspace ID fix shipped in r42.",
+      "impact": "The Meta and TikTok performance tools previously lacked workspace ID support, causing issues in orgs with multiple workspaces. The fix shipped in r42.",
+      "workaround": "No workaround needed. The fix is live as of r42.",
       "resolution": {
-        "type": "confirmed_next_release",
-        "label": "Fix shipping in the next release",
-        "note": "A fix adding Motion workspace ID support to the Meta and TikTok performance tools is part of tonight's release (r42, June 22, 2026). It is being tested in staging first."
+        "type": "resolved",
+        "label": "Resolved",
+        "note": "Resolved. Motion workspace ID flag support for the Meta and TikTok CLI tools shipped in r42 (PR #2367). Multi-workspace orgs can now direct performance pulls to the correct workspace."
       },
       "examples": [],
       "statusPageGuidance": "Show under Data access. Affects only multi-workspace orgs pulling performance data. Fix is in tonight's planned release.",
       "runnethTrigger": "User in a multi-workspace org reports a Meta or TikTok performance pull returning the wrong workspace's data or erroring.",
       "runnethGuidance": "Acknowledge that the Meta and TikTok performance tools don't yet accept a workspace ID, so multi-workspace orgs can hit issues, and that a fix is in tonight's release. Do not raise this proactively for single-workspace orgs.",
-      "supportGuidance": "Capture the org, how many workspaces it has, which tool (Meta or TikTok), and what the pull returned versus expected."
+      "supportGuidance": "Capture the org, how many workspaces it has, which tool (Meta or TikTok), and what the pull returned versus expected.",
+      "resolvedAt": "2026-06-25T12:03:59.000Z",
+      "removeAfter": "2026-06-26T17:00:00.000Z"
     },
     {
       "id": "oauth-gated-apps-logged-out-ui",
@@ -68,7 +70,8 @@
       "statusPageGuidance": "Resolved. The access-denied page shipped; the logged-out OAuth gate screen is no longer an issue. A minor org-context follow-up remains in review but is not user-facing.",
       "runnethTrigger": "User asks about or reports an app, app link, dashboard, widget, or generated page looking broken, ugly, unfinished, or confusing while logged out or blocked by OAuth.",
       "runnethGuidance": "Resolved. The access-denied page for OAuth-gated apps shipped. Do not raise this as an active issue.",
-      "supportGuidance": "Capture the app link, whether the person was logged out, which OAuth gate appeared, and whether the page still looks wrong after logging in and refreshing."
+      "supportGuidance": "Capture the app link, whether the person was logged out, which OAuth gate appeared, and whether the page still looks wrong after logging in and refreshing.",
+      "removeAfter": "2026-06-24T23:02:00.000Z"
     },
     {
       "id": "routines-refactor-in-progress",
@@ -106,14 +109,14 @@
       "surfaces": [
         "slack"
       ],
-      "updatedAt": "2026-06-22T23:02:21.000Z",
-      "summary": "Slack 'internal formatting error' fixes shipped; a new related delivery edge case is tracked.",
-      "impact": "The June 11 fix and the PDEC-8168 follow-up (shipped in the June 19 release) knocked this down. A new, related edge case is now tracked separately: a Slack turn can skip starting the response and drop the reply. It is not a wide spike, but it can land as no reply.",
-      "workaround": "If you get the error line instead of a reply, re-send your message. If you told Runneth to stop, it has already stopped.",
+      "updatedAt": "2026-06-25T12:03:59.000Z",
+      "summary": "Slack delivery edge case (dropped reply) fix is in staging.",
+      "impact": "The original formatting error and PDEC-8168 fix (June 19 release) are both shipped. A related delivery edge case, a Slack turn skipping the response start and dropping the reply, was tracked as PDEC-8349 and the fix (PR #2393) merged June 24 and is now in staging.",
+      "workaround": "If a Slack reply is dropped, re-send the message.",
       "resolution": {
-        "type": "in_progress",
-        "label": "Being worked on",
-        "note": "The earlier fixes shipped: the June 11 fix and the PDEC-8168 follow-up that went out in the June 19 release. A new, related delivery edge case where a Slack turn can skip the response start and drop the reply is now tracked (PDEC-8349), but it is not yet scheduled for a release."
+        "type": "working_toward_next_release",
+        "label": "Fix in staging",
+        "note": "The fix for the dropped-Slack-reply edge case (PDEC-8349, PR #2393 merged June 24) is now in staging. It is targeted for the next planned release."
       },
       "statusPageGuidance": "Active follow-up. The original error is fixed; a new related delivery edge case is tracked.",
       "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
