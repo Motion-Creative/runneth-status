@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-25T12:13:52.000Z",
+  "updatedAt": "2026-06-25T12:23:47.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-25T12:13:52.000Z",
     "summary": "Runneth is in a code freeze right now. It re-opens Thursday night (June 25), and the next normal release goes out Thursday night too. r42 shipped Monday night (June 22) as the planned pre-freeze release. A few summit-critical releases (r43, r44, r45) went out Tuesday, June 23, and a Meta video link hotfix shipped Wednesday, June 24.",
@@ -105,6 +105,39 @@
       "customerBanner": false,
       "pinned": false,
       "startedAt": "2026-06-11T13:18:00.000Z"
+    },
+    {
+      "id": "slack-connect-customer-admin-setting",
+      "runnethUse": "status_page_only",
+      "primitives": [
+        "slack"
+      ],
+      "surfaces": [
+        "slack",
+        "web"
+      ],
+      "updatedAt": "2026-06-25T12:23:47.000Z",
+      "summary": "Some customers can't connect Slack until their Slack admin changes a setting.",
+      "impact": "If a customer's Slack workspace requires admin approval to add apps, connecting Runneth to Slack can fail. It looks like a Runneth bug, but it's a permission setting on the customer's own Slack workspace.",
+      "workaround": "Before filing a Slack connection bug, have the customer's Slack workspace admin open their Slack admin settings and confirm the relevant permission checkbox is turned off, then try connecting again.",
+      "resolution": {
+        "type": "notice_only",
+        "label": "Customer-side Slack setting",
+        "note": "This is a setting in the customer's own Slack workspace, not a Runneth bug. Their Slack admin needs to turn the relevant permission checkbox off before connecting."
+      },
+      "statusPageGuidance": "Slack connection failures are often caused by a customer-side Slack admin setting. Have the customer's Slack admin turn off the relevant permission checkbox before reporting it as a bug.",
+      "runnethTrigger": "User reports that a customer cannot connect Slack, that Slack connection is failing, or asks about Slack connect errors during onboarding.",
+      "runnethGuidance": "If someone reports a customer cannot connect Slack, point to the customer-side Slack admin setting first: their Slack workspace admin should confirm the relevant permission checkbox is turned off in Slack admin settings, then retry. Treat this as a likely cause before filing a Runneth bug. Do not raise proactively for normal Slack requests.",
+      "supportGuidance": "Capture the customer's Slack workspace, whether their Slack admin checked the permission setting, and the exact connect error before filing a bug.",
+      "examples": [
+        {
+          "label": "Posted in #runneth-updates",
+          "url": "https://motion-7pz5426.slack.com/archives/C0B70JCRK1U/p1782328823989289"
+        }
+      ],
+      "customerBanner": false,
+      "pinned": false,
+      "startedAt": "2026-06-25T00:00:00.000Z"
     }
   ]
 }
