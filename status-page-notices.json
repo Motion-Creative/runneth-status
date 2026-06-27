@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-06-26T12:31:34.000Z",
+  "updatedAt": "2026-06-27T17:06:51.000Z",
   "releaseNote": {
-    "updatedAt": "2026-06-26T12:31:34.000Z",
-    "summary": "The CSS summit code freeze has lifted. The next prod release goes out tonight, Friday, June 26. Recently shipped: r42 (Mon, June 22), r43 / r44 / r45 (Tue, June 23, summit-critical), and a Meta video link hotfix (Wed, June 24).",
-    "plannedWindow": "Next release: tonight, Friday, June 26. The summit code freeze (June 23 through 25) has lifted and normal releases have resumed. Already shipped since: r42 (Mon, June 22), r43 / r44 / r45 (Tue, June 23), and a Meta hotfix (Wed, June 24).",
-    "details": "The CSS summit code freeze ran Tuesday, June 23 through Thursday, June 25 and has now lifted, so normal prod releases have resumed. The next release goes out tonight, Friday, June 26. Recent history: r42 (Monday night, June 22) was the planned pre-freeze release (new Motion workspace ID flags for the Meta and TikTok tools fixing multi-workspace performance pulls, Builder release notes posting to Slack, plus deploy and app-auth reliability fixes and a Google OAuth token retry). During the freeze a few summit-critical releases were cherry-picked through on Tuesday, June 23: r43 (clearer error on missing credentials, prod Node pin, image-registry retry jitter), r44 (deterministic sessions, steadier VM recovery), and r45 (bulk VM creation by org, higher provider proxy rate limit). Early Wednesday, June 24, a hotfix fixed v3 Meta video ad URLs that were returning preview-only links.",
+    "updatedAt": "2026-06-27T17:06:51.000Z",
+    "summary": "r46 is in draft. The Friday June 26 planned release window slipped. No new window is confirmed yet \u2014 the next release date will be posted once it is set.",
+    "plannedWindow": "Not confirmed. The Friday June 26 window slipped; r46 is still in draft as of Saturday June 27. Next window will be posted once confirmed.",
+    "details": "The planned Friday June 26 release did not go out. r46 is in draft and the window is not yet confirmed. Recently shipped: r42 (June 23) added Meta/TikTok workspace ID flags and the Slack reactions fix. r43/r44/r45 (June 23) covered Mondrian credential errors, session determinism, daemon recovery, bulk VM creation, provider proxy rate limit, Meta launch-date sorting, contextual integration nudges, and Meta ad rows and rollups. A direct hotfix also shipped June 24. The Slack dropped-reply fix (PDEC-8349) is in staging and will ride in r46 when it ships.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
-    "use_when_relevant": "Use this whenever the user's request touches this area.",
+    "use_when_relevant": "Use this whenever the user request touches this area.",
     "only_when_asked": "Use this only when the user asks about or reports this issue.",
     "status_page_only": "Visible to CSMs, product, and operators, but not injected into Runneth by default."
   },
@@ -21,59 +21,6 @@
   },
   "notices": [
     {
-      "id": "multi-workspace-performance-workspace-id",
-      "runnethUse": "status_page_only",
-      "primitives": [
-        "data_access"
-      ],
-      "surfaces": [
-        "web",
-        "slack"
-      ],
-      "updatedAt": "2026-06-25T12:03:59.000Z",
-      "startedAt": "2026-06-22T13:00:00.000Z",
-      "summary": "Multi-workspace performance workspace ID fix shipped in r42.",
-      "impact": "The Meta and TikTok performance tools previously lacked workspace ID support, causing issues in orgs with multiple workspaces. The fix shipped in r42.",
-      "workaround": "No workaround needed. The fix is live as of r42.",
-      "resolution": {
-        "type": "resolved",
-        "label": "Resolved",
-        "note": "Resolved. Motion workspace ID flag support for the Meta and TikTok CLI tools shipped in r42 (PR #2367). Multi-workspace orgs can now direct performance pulls to the correct workspace."
-      },
-      "examples": [],
-      "statusPageGuidance": "Show under Data access. Affects only multi-workspace orgs pulling performance data. Fix is in tonight's planned release.",
-      "runnethTrigger": "User in a multi-workspace org reports a Meta or TikTok performance pull returning the wrong workspace's data or erroring.",
-      "runnethGuidance": "Acknowledge that the Meta and TikTok performance tools don't yet accept a workspace ID, so multi-workspace orgs can hit issues, and that a fix is in tonight's release. Do not raise this proactively for single-workspace orgs.",
-      "supportGuidance": "Capture the org, how many workspaces it has, which tool (Meta or TikTok), and what the pull returned versus expected.",
-      "resolvedAt": "2026-06-25T12:03:59.000Z",
-      "removeAfter": "2026-06-26T17:00:00.000Z"
-    },
-    {
-      "id": "oauth-gated-apps-logged-out-ui",
-      "runnethUse": "status_page_only",
-      "primitives": [
-        "apps"
-      ],
-      "surfaces": [
-        "web"
-      ],
-      "updatedAt": "2026-06-22T23:02:21.000Z",
-      "summary": "OAuth-gated apps can show a rough logged-out screen.",
-      "impact": "When someone opens an app that requires OAuth while logged out, the gated screen may look unfinished instead of showing a polished sign-in or access prompt.",
-      "workaround": "Log in to the right Motion/Runneth account, connect the required OAuth account if needed, then reopen or refresh the app link.",
-      "resolution": {
-        "type": "resolved",
-        "label": "Resolved",
-        "note": "Resolved. The access-denied page for OAuth-gated apps shipped, so logged-out or blocked users now get a proper access prompt instead of a rough, unfinished screen. A small follow-up to add org context to that page (PDEC-8238) is still in review, but the logged-out screen itself is no longer an issue."
-      },
-      "examples": [],
-      "statusPageGuidance": "Resolved. The access-denied page shipped; the logged-out OAuth gate screen is no longer an issue. A minor org-context follow-up remains in review but is not user-facing.",
-      "runnethTrigger": "User asks about or reports an app, app link, dashboard, widget, or generated page looking broken, ugly, unfinished, or confusing while logged out or blocked by OAuth.",
-      "runnethGuidance": "Resolved. The access-denied page for OAuth-gated apps shipped. Do not raise this as an active issue.",
-      "supportGuidance": "Capture the app link, whether the person was logged out, which OAuth gate appeared, and whether the page still looks wrong after logging in and refreshing.",
-      "removeAfter": "2026-06-24T23:02:00.000Z"
-    },
-    {
       "id": "slack-internal-formatting-response-on-decline",
       "runnethUse": "status_page_only",
       "primitives": [
@@ -82,18 +29,18 @@
       "surfaces": [
         "slack"
       ],
-      "updatedAt": "2026-06-25T12:13:52.000Z",
+      "updatedAt": "2026-06-27T17:06:51.000Z",
       "summary": "Sometimes a Slack reply can get dropped.",
-      "impact": "Once in a while, Runneth can skip its reply to a Slack message, so nothing comes back. The earlier cause of this is already fixed. This last edge case is fixed too and is going out in the next release (Thursday night).",
-      "workaround": "If a reply doesn't come through, just send the message again.",
+      "impact": "Once in a while, Runneth can skip its reply to a Slack message, so nothing comes back. The earlier cause of this is already fixed. A last edge case fix (PDEC-8349) is in staging and will ship in the next release.",
+      "workaround": "If a reply does not come through, just send the message again.",
       "resolution": {
         "type": "working_toward_next_release",
         "label": "Fix coming next release",
-        "note": "Fixed and going out in the next release (Thursday night). If a reply is ever dropped before then, just re-send the message."
+        "note": "The fix (PDEC-8349) is in staging and targeted for the next release (r46). The Friday June 26 window slipped; the new release date is not confirmed yet. If a reply is ever dropped before it ships, just re-send the message."
       },
-      "statusPageGuidance": "An occasional dropped Slack reply. The earlier cause is already fixed; this last edge case is going out in the next release, Thursday night.",
+      "statusPageGuidance": "An occasional dropped Slack reply. The fix is in staging (PDEC-8349) and will ship in r46 once the release window is set.",
       "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
-      "runnethGuidance": "If someone reports an 'internal formatting error' or a dropped Slack reply, acknowledge it is a known area: the June 11 and June 19 fixes addressed the original error, and a new related delivery edge case (a turn skipping the response start) is being tracked. Suggest re-sending the message. Do not raise this proactively for normal Slack requests.",
+      "runnethGuidance": "If someone reports an 'internal formatting error' or a dropped Slack reply, acknowledge it is a known area: the June 11 and June 19 fixes addressed the original error, and a remaining edge case fix is in staging and ships in the next release. Suggest re-sending the message. Do not raise this proactively for normal Slack requests.",
       "supportGuidance": "Capture the Slack thread link and whether Runneth had started responding before the error appeared.",
       "examples": [
         {
@@ -118,7 +65,7 @@
       ],
       "updatedAt": "2026-06-25T12:41:56.000Z",
       "summary": "Some customers can't connect Slack until their Slack admin changes a setting.",
-      "impact": "If a customer's Slack workspace only allows apps from the Slack Marketplace, connecting Runneth to Slack will fail. It looks like a Runneth bug, but it's a setting on the customer's own Slack workspace.",
+      "impact": "If a customer's Slack workspace only allows apps from the Slack Marketplace, connecting Runneth to Slack will fail. It looks like a Runneth bug, but it is a setting on the customer's own Slack workspace.",
       "workaround": "Before filing a Slack connection bug, have the customer's Slack admin open their Slack settings, go to Manage apps, then App Management Settings. Under 'Require apps from Slack Marketplace', click Edit and make sure 'Only Slack Marketplace apps can be installed' is unchecked. Then try connecting again.",
       "resolution": {
         "type": "notice_only",
