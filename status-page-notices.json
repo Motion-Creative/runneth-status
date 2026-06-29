@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-29T16:28:14.000Z",
+  "updatedAt": "2026-06-29T17:06:52.000Z",
   "releaseNote": {
     "updatedAt": "2026-06-29T16:28:14.000Z",
     "summary": "The June 29 hotfix is live (priority Slack and stability fixes). Next: a bigger feature release Tuesday night (June 30), then the next planned release Thursday night (July 2).",
@@ -29,7 +29,7 @@
       "surfaces": [
         "slack"
       ],
-      "updatedAt": "2026-06-29T16:08:59.000Z",
+      "updatedAt": "2026-06-29T17:06:52.000Z",
       "summary": "Fixed: the occasional dropped Slack reply (internal formatting error).",
       "impact": "Runneth would sometimes skip its Slack reply and, in some cases, post \"I hit an internal formatting error while preparing this Slack response. Please try again.\" instead of answering. This is now fixed and live.",
       "workaround": "None needed. If you saw a dropped reply or that error before, it should no longer happen.",
@@ -51,7 +51,9 @@
       "errorQuote": "I hit an internal formatting error while preparing this Slack response. Please try again.",
       "customerBanner": false,
       "pinned": false,
-      "startedAt": "2026-06-11T13:18:00.000Z"
+      "startedAt": "2026-06-11T13:18:00.000Z",
+      "resolvedAt": "2026-06-29T13:57:57.000Z",
+      "removeAfter": "2026-07-01T17:00:00.000Z"
     },
     {
       "id": "slack-connect-customer-admin-setting",
