@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-06-27T17:06:51.000Z",
+  "updatedAt": "2026-06-29T16:08:59.000Z",
   "releaseNote": {
-    "updatedAt": "2026-06-27T17:06:51.000Z",
-    "summary": "r46 is in draft. The Friday June 26 planned release window slipped. No new window is confirmed yet \u2014 the next release date will be posted once it is set.",
-    "plannedWindow": "Not confirmed. The Friday June 26 window slipped; r46 is still in draft as of Saturday June 27. Next window will be posted once confirmed.",
-    "details": "The planned Friday June 26 release did not go out. r46 is in draft and the window is not yet confirmed. Recently shipped: r42 (June 23) added Meta/TikTok workspace ID flags and the Slack reactions fix. r43/r44/r45 (June 23) covered Mondrian credential errors, session determinism, daemon recovery, bulk VM creation, provider proxy rate limit, Meta launch-date sorting, contextual integration nudges, and Meta ad rows and rollups. A direct hotfix also shipped June 24. The Slack dropped-reply fix (PDEC-8349) is in staging and will ride in r46 when it ships.",
+    "updatedAt": "2026-06-29T16:08:59.000Z",
+    "summary": "A June 29 hotfix shipped the priority Slack and stability fixes to prod, including the dropped-reply / internal-formatting-error fix. The full r46 release is still in draft; its remaining items will follow when it ships.",
+    "plannedWindow": "The priority subset is live (June 29 hotfix). The full r46 release is still in draft; its window is not confirmed yet and will be posted once set.",
+    "details": "Shipped June 29 (direct hotfix): the occasional dropped Slack reply / internal formatting error is fixed, Slack permissions are narrowed (Runneth only reads channels it is added to and no longer self-joins, existing installs should reinstall), Slack channel setup prompts are aligned, automatic channel discovery is stopped, a missing video transcript no longer errors a Meta or TikTok pull, large conversations no longer choke on big event files, and VM creation recovers on its own when a token callback fails. The broader r46 release (package manager, GLM 5.2 model, Runneth CLI chat mode, Hims custom conversions, Northbeam routing, and more) is still in draft and will ship separately.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
@@ -29,18 +29,18 @@
       "surfaces": [
         "slack"
       ],
-      "updatedAt": "2026-06-27T17:06:51.000Z",
-      "summary": "Sometimes a Slack reply can get dropped.",
-      "impact": "Once in a while, Runneth can skip its reply to a Slack message, so nothing comes back. The earlier cause of this is already fixed. A last edge case fix (PDEC-8349) is in staging and will ship in the next release.",
-      "workaround": "If a reply does not come through, just send the message again.",
+      "updatedAt": "2026-06-29T16:08:59.000Z",
+      "summary": "Fixed: the occasional dropped Slack reply (internal formatting error).",
+      "impact": "Runneth would sometimes skip its Slack reply and, in some cases, post \"I hit an internal formatting error while preparing this Slack response. Please try again.\" instead of answering. This is now fixed and live.",
+      "workaround": "None needed. If you saw a dropped reply or that error before, it should no longer happen.",
       "resolution": {
-        "type": "working_toward_next_release",
-        "label": "Fix coming next release",
-        "note": "The fix (PDEC-8349) is in staging and targeted for the next release (r46). The Friday June 26 window slipped; the new release date is not confirmed yet. If a reply is ever dropped before it ships, just re-send the message."
+        "type": "resolved",
+        "label": "Fixed and live",
+        "note": "The remaining edge case (PDEC-8349) shipped in the June 29 hotfix, so the dropped-reply / internal-formatting-error issue is fully resolved. Earlier fixes shipped June 11 (r38) and June 19 (r41)."
       },
-      "statusPageGuidance": "An occasional dropped Slack reply. The fix is in staging (PDEC-8349) and will ship in r46 once the release window is set.",
+      "statusPageGuidance": "Resolved. The occasional dropped Slack reply and the \"internal formatting error\" message are fixed as of the June 29 hotfix.",
       "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
-      "runnethGuidance": "If someone reports an 'internal formatting error' or a dropped Slack reply, acknowledge it is a known area: the June 11 and June 19 fixes addressed the original error, and a remaining edge case fix is in staging and ships in the next release. Suggest re-sending the message. Do not raise this proactively for normal Slack requests.",
+      "runnethGuidance": "The dropped Slack reply and the \"internal formatting error\" message are resolved as of the June 29 hotfix (PDEC-8349), following earlier fixes on June 11 and June 19. If someone reports seeing it before that, the fix is now live. Do not raise this proactively.",
       "supportGuidance": "Capture the Slack thread link and whether Runneth had started responding before the error appeared.",
       "examples": [
         {
