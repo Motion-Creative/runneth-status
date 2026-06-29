@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-06-29T16:08:59.000Z",
+  "updatedAt": "2026-06-29T16:28:14.000Z",
   "releaseNote": {
-    "updatedAt": "2026-06-29T16:08:59.000Z",
-    "summary": "A June 29 hotfix shipped the priority Slack and stability fixes to prod, including the dropped-reply / internal-formatting-error fix. The full r46 release is still in draft; its remaining items will follow when it ships.",
-    "plannedWindow": "The priority subset is live (June 29 hotfix). The full r46 release is still in draft; its window is not confirmed yet and will be posted once set.",
-    "details": "Shipped June 29 (direct hotfix): the occasional dropped Slack reply / internal formatting error is fixed, Slack permissions are narrowed (Runneth only reads channels it is added to and no longer self-joins, existing installs should reinstall), Slack channel setup prompts are aligned, automatic channel discovery is stopped, a missing video transcript no longer errors a Meta or TikTok pull, large conversations no longer choke on big event files, and VM creation recovers on its own when a token callback fails. The broader r46 release (package manager, GLM 5.2 model, Runneth CLI chat mode, Hims custom conversions, Northbeam routing, and more) is still in draft and will ship separately.",
+    "updatedAt": "2026-06-29T16:28:14.000Z",
+    "summary": "The June 29 hotfix is live (priority Slack and stability fixes). Next: a bigger feature release Tuesday night (June 30), then the next planned release Thursday night (July 2).",
+    "plannedWindow": "Live now: June 29 hotfix. Next release: Tuesday night, June 30 (bigger features). Following planned release: Thursday night, July 2.",
+    "details": "Live as of the June 29 hotfix: the occasional dropped Slack reply / internal formatting error is fixed, Slack permissions are narrowed (Runneth only reads channels it is added to and no longer self-joins, existing installs should reinstall), Slack channel setup prompts are aligned, automatic channel discovery is stopped, removing or replacing a saved API key works again, a missing video transcript no longer errors a Meta or TikTok pull, large conversations no longer choke on big event files, and VM creation recovers on its own when a token callback fails. Coming with the Tuesday June 30 night release: text-based custom conversions (e.g. Hims) reporting their real numbers, Meta Northbeam routing, and additional bigger features. The next planned release after that is Thursday night, July 2.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
