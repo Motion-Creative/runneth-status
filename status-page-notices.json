@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-06-29T20:30:31.000Z",
+  "updatedAt": "2026-07-01T17:06:56.000Z",
   "releaseNote": {
-    "updatedAt": "2026-06-29T20:30:31.000Z",
-    "summary": "The next planned release is Tuesday night (June 30), bringing the bigger features: text-based custom conversions (e.g. Hims) reporting real numbers, Meta Northbeam routing, the Runneth package manager, and more.",
-    "plannedWindow": "Tuesday night, June 30. (The release after that is planned for Thursday night, July 2.)",
-    "details": "Coming in the Tuesday June 30 night release: text-based custom conversions (e.g. Hims) reporting their real numbers, Meta Northbeam requests routing correctly again, the Runneth package manager, and additional larger features. The next planned release after that is Thursday night, July 2.",
+    "updatedAt": "2026-07-01T17:06:56.000Z",
+    "summary": "r46 shipped June 30: Runneth package manager, Meta age-gender commands, VM user authorization, Meta Northbeam routing, Slack Hims custom conversion fix, Slack routing fixes, and many more. r47 is in draft. Next planned release: Thursday night, July 2.",
+    "plannedWindow": "r46 live (June 30, 2026). Next: Thursday night, July 2.",
+    "details": "r46 (June 30, 2026) is a large release: Runneth package manager, Meta age-gender scoped commands, VM user authorization, Meta Northbeam routing, Hims text-based custom conversion metrics fix, GLM 5.2 model harness, Slack routing and channel discovery fixes, Slack bot-scoped search tokens, Motion creative link host fix, Meta creative asset URLs, analyze-media raw text preservation, available workspace rendering, Counteth local metrics, harness-aware Mondrian model assignment, mobile chat origin, broad find/grep rejection, Astro session bundle determinism, daemon health, Cacheth sync retries, integration management catalog API, Meta fatigue/diversity endpoints (PDEC-6650), Slack Hims custom conversion routing, Northbeam metric reference, Teameth prompts, sandbox org preservation, renderable thumbnails, app handoff URL verification, and Motion CLI smoke path stability \u2014 plus security hardening and many backend fixes. r47 is in draft. Next planned release: Thursday night, July 2.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
@@ -20,41 +20,6 @@
     "resolved": "Fixed and shipped. Stays at the bottom of the board for about a day (through removeAfter) so it is visible and gets pulled into the next summary, then drops off."
   },
   "notices": [
-    {
-      "id": "slack-internal-formatting-response-on-decline",
-      "runnethUse": "status_page_only",
-      "primitives": [
-        "slack"
-      ],
-      "surfaces": [
-        "slack"
-      ],
-      "updatedAt": "2026-06-29T17:06:52.000Z",
-      "summary": "Fixed: the occasional dropped Slack reply (internal formatting error).",
-      "impact": "Runneth would sometimes skip its Slack reply and, in some cases, post \"I hit an internal formatting error while preparing this Slack response. Please try again.\" instead of answering. This is now fixed and live.",
-      "workaround": "None needed. If you saw a dropped reply or that error before, it should no longer happen.",
-      "resolution": {
-        "type": "resolved",
-        "label": "Fixed and live",
-        "note": "The remaining edge case (PDEC-8349) shipped in the June 29 hotfix, so the dropped-reply / internal-formatting-error issue is fully resolved. Earlier fixes shipped June 11 (r38) and June 19 (r41)."
-      },
-      "statusPageGuidance": "Resolved. The occasional dropped Slack reply and the \"internal formatting error\" message are fixed as of the June 29 hotfix.",
-      "runnethTrigger": "User asks about or reports an 'internal formatting response' error in Slack, or Runneth posting an error line after being told to stop.",
-      "runnethGuidance": "The dropped Slack reply and the \"internal formatting error\" message are resolved as of the June 29 hotfix (PDEC-8349), following earlier fixes on June 11 and June 19. If someone reports seeing it before that, the fix is now live. Do not raise this proactively.",
-      "supportGuidance": "Capture the Slack thread link and whether Runneth had started responding before the error appeared.",
-      "examples": [
-        {
-          "label": "Reported thread",
-          "url": "https://motion-7pz5426.slack.com/archives/C08LZ0A511U/p1781141803087129?thread_ts=1781141803.087129&cid=C08LZ0A511U"
-        }
-      ],
-      "errorQuote": "I hit an internal formatting error while preparing this Slack response. Please try again.",
-      "customerBanner": false,
-      "pinned": false,
-      "startedAt": "2026-06-11T13:18:00.000Z",
-      "resolvedAt": "2026-06-29T13:57:57.000Z",
-      "removeAfter": "2026-07-01T17:00:00.000Z"
-    },
     {
       "id": "slack-connect-customer-admin-setting",
       "runnethUse": "status_page_only",
