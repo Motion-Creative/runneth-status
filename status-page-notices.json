@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-07-01T17:06:56.000Z",
+  "updatedAt": "2026-07-02T17:07:07.000Z",
   "releaseNote": {
-    "updatedAt": "2026-07-01T17:06:56.000Z",
-    "summary": "r46 shipped June 30: Runneth package manager, Meta age-gender commands, VM user authorization, Meta Northbeam routing, Slack Hims custom conversion fix, Slack routing fixes, and many more. r47 is in draft. Next planned release: Thursday night, July 2.",
-    "plannedWindow": "r46 live (June 30, 2026). Next: Thursday night, July 2.",
-    "details": "r46 (June 30, 2026) is a large release: Runneth package manager, Meta age-gender scoped commands, VM user authorization, Meta Northbeam routing, Hims text-based custom conversion metrics fix, GLM 5.2 model harness, Slack routing and channel discovery fixes, Slack bot-scoped search tokens, Motion creative link host fix, Meta creative asset URLs, analyze-media raw text preservation, available workspace rendering, Counteth local metrics, harness-aware Mondrian model assignment, mobile chat origin, broad find/grep rejection, Astro session bundle determinism, daemon health, Cacheth sync retries, integration management catalog API, Meta fatigue/diversity endpoints (PDEC-6650), Slack Hims custom conversion routing, Northbeam metric reference, Teameth prompts, sandbox org preservation, renderable thumbnails, app handoff URL verification, and Motion CLI smoke path stability \u2014 plus security hardening and many backend fixes. r47 is in draft. Next planned release: Thursday night, July 2.",
+    "updatedAt": "2026-07-02T17:07:07.000Z",
+    "summary": "r47 shipped July 1: package manager hardening (atomic lock, install/update split, update checks, daemon readiness). Two hotfixes shipped July 2: stability fixes. r48 is in draft. Next planned release: Thursday night, July 2 (tonight).",
+    "plannedWindow": "r47 live (July 1, 2026). Two hotfixes live (July 2, 2026). Next: Thursday night, July 2 (tonight) as r48.",
+    "details": "r47 (July 1, 2026): package lock atomicity fix, daemon readiness stability, package install and update policy split, package update checks. Two direct hotfixes shipped July 2 (morning): stability fixes off r47. r48 is in draft and is the next planned release, expected tonight (Thursday, July 2). r46 (June 30) was the large feature release: Runneth package manager, Meta age-gender commands, VM user authorization, Meta Northbeam routing, Hims custom conversion metrics, GLM 5.2, Slack fixes, and many more.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
