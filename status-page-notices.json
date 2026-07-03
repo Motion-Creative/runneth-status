@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-07-02T17:07:07.000Z",
+  "updatedAt": "2026-07-03T12:01:45.000Z",
   "releaseNote": {
-    "updatedAt": "2026-07-02T17:07:07.000Z",
+    "updatedAt": "2026-07-03T12:01:45.000Z",
     "summary": "r47 shipped July 1: package manager hardening (atomic lock, install/update split, update checks, daemon readiness). Two hotfixes shipped July 2: stability fixes. r48 is in draft. Next planned release: Thursday night, July 2 (tonight).",
-    "plannedWindow": "r47 live (July 1, 2026). Two hotfixes live (July 2, 2026). Next: Thursday night, July 2 (tonight) as r48.",
+    "plannedWindow": "r47 and two July 2 hotfixes are live. The next release window has not been posted yet.",
     "details": "r47 (July 1, 2026): package lock atomicity fix, daemon readiness stability, package install and update policy split, package update checks. Two direct hotfixes shipped July 2 (morning): stability fixes off r47. r48 is in draft and is the next planned release, expected tonight (Thursday, July 2). r46 (June 30) was the large feature release: Runneth package manager, Meta age-gender commands, VM user authorization, Meta Northbeam routing, Hims custom conversion metrics, GLM 5.2, Slack fixes, and many more.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
