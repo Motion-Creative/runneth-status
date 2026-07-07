@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-03T17:06:28.000Z",
+  "updatedAt": "2026-07-07T00:49:55.000Z",
   "releaseNote": {
-    "updatedAt": "2026-07-03T17:06:28.000Z",
+    "updatedAt": "2026-07-07T00:49:55.000Z",
     "summary": "r47 shipped July 1, two hotfixes July 2. r48 is in draft \u2014 the Thursday July 2 planned window slipped. No confirmed next release window yet.",
     "plannedWindow": "Not confirmed. r47 and two July 2 hotfixes are the latest. r48 is in draft; window will be posted once confirmed.",
     "details": "r47 (July 1): package manager hardening (atomic lock, install/update split, update checks, daemon readiness). Two July 2 hotfixes: stability fixes off r47. The Thursday July 2 planned release (r48) did not ship. r48 is still in draft; next release window is not confirmed yet. For historical context: r46 (June 30) was the large feature release \u2014 Runneth package manager, Meta age-gender commands, VM user authorization, Meta Northbeam routing, Hims custom conversion metrics, Slack fixes, and many more.",
@@ -20,6 +20,60 @@
     "resolved": "Fixed and shipped. Stays at the bottom of the board for about a day (through removeAfter) so it is visible and gets pulled into the next summary, then drops off."
   },
   "notices": [
+    {
+      "id": "meta-insights-requires-creative-asset",
+      "runnethUse": "use_when_relevant",
+      "primitives": [
+        "data_access"
+      ],
+      "surfaces": [
+        "web",
+        "slack"
+      ],
+      "updatedAt": "2026-07-03T20:00:40.000Z",
+      "summary": "Some Meta ad types don't return performance metrics in Runneth yet.",
+      "impact": "Runneth's Meta insights currently requires a creative asset in the returned data. Flex ads, dynamic ads, catalogue ads, and any ad in a product set will not return performance metrics in Runneth, even though those ads do show data in a Motion report. This can cause a discrepancy between the numbers in Motion and in Runneth for those ad types.",
+      "workaround": "For flex, dynamic, catalogue, or product-set ads, use the Motion report for now. A fix is prioritized and expected next week.",
+      "resolution": {
+        "type": "working_toward_next_release",
+        "label": "Fix in progress",
+        "note": "A fix so these Meta ad types (flex, dynamic, catalogue, and product-set ads) return performance metrics in Runneth is prioritized and expected next week. Until then, numbers for those ad types can differ between Motion and Runneth; use the Motion report for them."
+      },
+      "statusPageGuidance": "Show as an active limitation on Meta performance. Flex, dynamic, catalogue, and product-set ads don't return metrics in Runneth yet because the Meta insights data comes back without a creative asset; a fix is expected next week.",
+      "runnethTrigger": "User asks about Meta performance for flex ads, dynamic ads, catalogue ads, or product-set ads, or reports that Meta numbers differ between a Motion report and Runneth, or that some Meta ads return no performance metrics in Runneth.",
+      "runnethGuidance": "If someone asks about Meta performance for flex, dynamic, catalogue, or product-set ads, or reports a Motion-vs-Runneth discrepancy on Meta metrics, explain that Runneth's Meta insights currently requires a creative asset, so those ad types don't return performance metrics in Runneth yet even though they show in a Motion report. This can cause the discrepancy. A fix is expected next week; suggest using the Motion report for those ad types in the meantime. Do not raise proactively for normal Meta requests.",
+      "supportGuidance": "If a customer reports missing Meta metrics or a Motion-vs-Runneth discrepancy, check whether the ads are flex, dynamic, catalogue, or product-set ads. Those don't return metrics in Runneth yet because the Meta insights response has no creative asset; a fix is expected next week.",
+      "examples": [
+        {
+          "label": "Posted in #runneth-updates",
+          "url": "https://motion-7pz5426.slack.com/archives/C0B70JCRK1U/p1783091415883599"
+        }
+      ],
+      "customerBanner": false,
+      "pinned": false,
+      "startedAt": "2026-07-03T15:10:15.000Z"
+    },
+    {
+      "id": "slack-sharing-thinking-in-conversations",
+      "runnethUse": "status_page_only",
+      "pinned": false,
+      "primitives": [
+        "slack"
+      ],
+      "surfaces": [
+        "slack"
+      ],
+      "updatedAt": "2026-07-07T00:49:55.000Z",
+      "summary": "Runneth is showing its internal thinking in Slack replies.",
+      "impact": "In Slack conversations, Runneth can surface its internal thinking in the reply. It does not affect the underlying work, but the reply can look messy or confusing.",
+      "workaround": "No action needed. The actual answer still comes through; the extra thinking text can be ignored while the fix ships.",
+      "resolution": {
+        "type": "working_toward_next_release",
+        "label": "Fix in progress",
+        "note": "A fix so Runneth stops surfacing its internal thinking in Slack conversations is planned for the next release."
+      },
+      "startedAt": "2026-07-07T00:49:55.000Z"
+    },
     {
       "id": "slack-connect-customer-admin-setting",
       "runnethUse": "status_page_only",
