@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-07-07T00:49:55.000Z",
+  "updatedAt": "2026-07-07T12:02:11.000Z",
   "releaseNote": {
-    "updatedAt": "2026-07-07T00:49:55.000Z",
-    "summary": "r47 shipped July 1, two hotfixes July 2. r48 is in draft \u2014 the Thursday July 2 planned window slipped. No confirmed next release window yet.",
-    "plannedWindow": "Not confirmed. r47 and two July 2 hotfixes are the latest. r48 is in draft; window will be posted once confirmed.",
-    "details": "r47 (July 1): package manager hardening (atomic lock, install/update split, update checks, daemon readiness). Two July 2 hotfixes: stability fixes off r47. The Thursday July 2 planned release (r48) did not ship. r48 is still in draft; next release window is not confirmed yet. For historical context: r46 (June 30) was the large feature release \u2014 Runneth package manager, Meta age-gender commands, VM user authorization, Meta Northbeam routing, Hims custom conversion metrics, Slack fixes, and many more.",
+    "updatedAt": "2026-07-07T12:02:11.000Z",
+    "summary": "r48 shipped July 6: Azure region support, MCP brain tools, custom app favicons, binary-safe file reads, VM OS disk sizing, Machineth region selection, JSON rendering refactor, package manager improvements, and more. A hotfix followed same day. r49 is in draft.",
+    "plannedWindow": "r48 live (July 6, 2026). Hotfix live (July 6, 2026). r49 is in draft; next release window not yet confirmed.",
+    "details": "r48 (July 6, 2026, 30 PRs): Azure region targets for Spawneth, Runneth MCP brain document tools, custom favicon for created apps, binary-safe filesystem reads, VM OS disk sizing, Machineth deployment region selection, JSON rendering refactor, app auth cookie partitioning for embedded previews, integration guide canonical path gating, manual package selection tracking, brain skills in harness roots, sandbox-to-organization copy rename, adaptive thinking for Sonnet, security audit fixes, feed ads without creative assets now surfaced, and more. A direct hotfix shipped later that day (July 6). r49 is in draft.",
     "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
   },
   "runnethUseOptions": {
@@ -30,7 +30,7 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-07-03T20:00:40.000Z",
+      "updatedAt": "2026-07-07T12:02:11.000Z",
       "summary": "Some Meta ad types don't return performance metrics in Runneth yet.",
       "impact": "Runneth's Meta insights currently requires a creative asset in the returned data. Flex ads, dynamic ads, catalogue ads, and any ad in a product set will not return performance metrics in Runneth, even though those ads do show data in a Motion report. This can cause a discrepancy between the numbers in Motion and in Runneth for those ad types.",
       "workaround": "For flex, dynamic, catalogue, or product-set ads, use the Motion report for now. A fix is prioritized and expected next week.",
@@ -63,7 +63,7 @@
       "surfaces": [
         "slack"
       ],
-      "updatedAt": "2026-07-07T00:49:55.000Z",
+      "updatedAt": "2026-07-07T12:02:11.000Z",
       "summary": "Runneth is showing its internal thinking in Slack replies.",
       "impact": "In Slack conversations, Runneth can surface its internal thinking in the reply. It does not affect the underlying work, but the reply can look messy or confusing.",
       "workaround": "No action needed. The actual answer still comes through; the extra thinking text can be ignored while the fix ships.",
