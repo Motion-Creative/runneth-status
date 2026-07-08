@@ -1,11 +1,10 @@
 {
-  "updatedAt": "2026-07-07T12:02:11.000Z",
+  "updatedAt": "2026-07-08T12:02:15.000Z",
   "releaseNote": {
-    "updatedAt": "2026-07-07T12:02:11.000Z",
-    "summary": "r48 shipped July 6: Azure region support, MCP brain tools, custom app favicons, binary-safe file reads, VM OS disk sizing, Machineth region selection, JSON rendering refactor, package manager improvements, and more. A hotfix followed same day. r49 is in draft.",
-    "plannedWindow": "r48 live (July 6, 2026). Hotfix live (July 6, 2026). r49 is in draft; next release window not yet confirmed.",
-    "details": "r48 (July 6, 2026, 30 PRs): Azure region targets for Spawneth, Runneth MCP brain document tools, custom favicon for created apps, binary-safe filesystem reads, VM OS disk sizing, Machineth deployment region selection, JSON rendering refactor, app auth cookie partitioning for embedded previews, integration guide canonical path gating, manual package selection tracking, brain skills in harness roots, sandbox-to-organization copy rename, adaptive thinking for Sonnet, security audit fixes, feed ads without creative assets now surfaced, and more. A direct hotfix shipped later that day (July 6). r49 is in draft.",
-    "statusPagePlacement": "Show the next planned release with Recent Releases, alongside the upcoming release entry."
+    "updatedAt": "2026-07-08T12:02:15.000Z",
+    "summary": "r49 shipped July 7: a fleet-wide fix for the health-probe flood that was slowing conversations, Slack replies no longer clipped on older runtime images, empty Meta pulls no longer misread as a disconnected account, plus VM disk-size and Azure bootstrap fixes. r48 shipped July 6.",
+    "plannedWindow": "r49 live (July 7, 2026 at 9:12 AM ET). r48 live (July 6, 2026). Next release window not yet confirmed.",
+    "details": "r49 (July 7, 2026, 6 fixes): stopped the daemon health-probe flood that made slow conversations pile up retries across the fleet; Slack replies no longer get clipped to a short intro line on sandboxes still on the older runtime image; empty Meta insights results are treated as connected-but-empty instead of prompting to connect Meta; VM disk size shows correctly after a failed update; Azure VM bootstrap no longer deadlocks on attach-ready recovery; usage-counting retries resume after a restart or image update."
   },
   "runnethUseOptions": {
     "use_when_relevant": "Use this whenever the user request touches this area.",
@@ -30,7 +29,7 @@
         "web",
         "slack"
       ],
-      "updatedAt": "2026-07-07T12:02:11.000Z",
+      "updatedAt": "2026-07-08T12:02:15.000Z",
       "summary": "Some Meta ad types don't return performance metrics in Runneth yet.",
       "impact": "Runneth's Meta insights currently requires a creative asset in the returned data. Flex ads, dynamic ads, catalogue ads, and any ad in a product set will not return performance metrics in Runneth, even though those ads do show data in a Motion report. This can cause a discrepancy between the numbers in Motion and in Runneth for those ad types.",
       "workaround": "For flex, dynamic, catalogue, or product-set ads, use the Motion report for now. A fix is prioritized and expected next week.",
@@ -63,16 +62,16 @@
       "surfaces": [
         "slack"
       ],
-      "updatedAt": "2026-07-07T12:02:11.000Z",
-      "summary": "Runneth is showing its internal thinking in Slack replies.",
-      "impact": "In Slack conversations, Runneth can surface its internal thinking in the reply. It does not affect the underlying work, but the reply can look messy or confusing.",
-      "workaround": "No action needed. The actual answer still comes through; the extra thinking text can be ignored while the fix ships.",
+      "updatedAt": "2026-07-08T12:02:15.000Z",
+      "summary": "After the inner-thinking fix, Slack replies can sometimes go missing.",
+      "impact": "The July 7 release stopped Runneth from leaking its internal thinking into Slack replies. That fix over-corrected: Runneth now sometimes stays silent when it should reply. A followup fix is in progress.",
+      "workaround": "If a Slack reply doesn't come through, re-send the message.",
       "resolution": {
         "type": "working_toward_next_release",
-        "label": "Fix in progress",
-        "note": "A fix so Runneth stops surfacing its internal thinking in Slack conversations is planned for the next release."
+        "label": "Followup fix in progress",
+        "note": "The internal-thinking leak was fixed in the July 7 release. It introduced a followup issue where Runneth can skip replying in Slack. A followup fix is being worked on and is not yet in a confirmed release."
       },
-      "startedAt": "2026-07-07T00:49:55.000Z"
+      "startedAt": "2026-07-08T12:02:15.000Z"
     },
     {
       "id": "slack-connect-customer-admin-setting",
