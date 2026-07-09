@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-07-08T17:06:56.000Z",
+  "updatedAt": "2026-07-09T17:06:43.000Z",
   "releaseNote": {
-    "updatedAt": "2026-07-08T17:06:56.000Z",
-    "summary": "r50 shipped July 7: Slack replies now opt-in to visible output (stopped the triage chatter on watched threads). A hotfix followed early July 8. r49 and r48 also shipped July 7 and July 6. r51 is in draft.",
-    "plannedWindow": "r50 live (July 7, 2026 at 4:08 PM ET). Hotfix live (July 8, 2026 early morning ET). r51 is in draft; next release window not yet confirmed.",
-    "details": "r50 (July 7, 2026): one fix \u2014 Slack visible output is now gated behind opt-in, stopping the unwanted triage chatter appearing in watched Slack threads. A direct hotfix (hotfix-14f7fe073a12) shipped early July 8. Earlier same day: r49 (6 fixes) stopped the daemon health-probe flood, fixed Slack reply clipping on older images, fixed empty Meta results being misread as disconnected, and fixed VM disk-size and Azure bootstrap issues. r48 (July 6, 30 PRs) was the large feature release."
+    "updatedAt": "2026-07-09T17:06:43.000Z",
+    "summary": "r51 shipped July 8 (evening): integration source types, user-scoped lane config, Meta creative comments, live stream socket fix, Slack silent turns, and more. r50 and a hotfix also shipped July 7-8. r52 is in draft.",
+    "plannedWindow": "r51 live (July 8, 2026 at 3:30 PM ET). r52 is in draft; next release window not yet confirmed.",
+    "details": "r51 (July 8, 2026, 13 PRs): surfaces integration source types and honest connect requirements with Wrike/YouTube/Adobe in Pipedream, restores runtime auth for preserved routines, upgrades idle Slack conversations to chat v5, adds user-scoped lane config (Knoweth), closes live stream sockets on disconnect, stops steady-state backend health probes fleet-wide, ships Meta creative comments, routes Runneth MCP brain search through agentd, rebases agent config updates onto disk config, delivers typed text as visible Slack output without a start_response, stops retrying Meta insights when no data source exists, hides internal Spawneth I/O errors, and keeps no-response Slack turns silent. Earlier: r50 (July 7) gated Slack visible output behind opt-in; a direct hotfix shipped early July 8. r48 (July 6, 30 PRs) was the large feature release."
   },
   "runnethUseOptions": {
     "use_when_relevant": "Use this whenever the user request touches this area.",
