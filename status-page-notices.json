@@ -1,56 +1,56 @@
 {
-  "updatedAt": "2026-07-11T17:04:40.000Z",
-  "releaseNote": {
-    "updatedAt": "2026-07-11T17:04:40.000Z",
-    "summary": "r52 shipped July 10 (24 PRs): script routines, Google Slides deck generation, runneth-ds init, Meta attribution rules named in results, Slack ceremony cleanup, confidential OAuth, and more. r53 is in draft.",
-    "plannedWindow": "r52 live (July 10, 2026 at 6:43 PM ET). r53 is in draft; next release window not yet confirmed.",
-    "details": "r52 (July 10, 2026, 24 PRs): script routines (agent), Google Slides designed deck generation and read/extract, runneth-ds initialized, Meta v3 None attribution window support, relay sequence conflict self-healing, agent stream protocol version, secure-fetch response cap raised to 10MB with workdir file output, Meta attribution rule named in answers, Azure gallery image region resolution, Slack response ceremony removed, script routines feature, routine completions finalized and nudged, working narration kept out of Slack replies, concise routine lookup, daemon journal compaction, Slack silent turn fix, relay replay safety hardening, and more. r51 (July 8, 13 PRs) and earlier releases still live."
-  },
-  "runnethUseOptions": {
-    "use_when_relevant": "Use this whenever the user request touches this area.",
-    "only_when_asked": "Use this only when the user asks about or reports this issue.",
-    "status_page_only": "Visible to CSMs, product, and operators, but not injected into Runneth by default."
-  },
-  "resolutionOptions": {
-    "confirmed_next_release": "Confirmed for the next planned release.",
-    "working_toward_next_release": "Working toward the next planned release, but not marked ready yet.",
-    "in_progress": "Being worked on, but not tied to the next planned release.",
-    "notice_only": "Guidance or status visibility; no release fix is implied.",
-    "resolved": "Fixed and shipped. Stays at the bottom of the board for about a day (through removeAfter) so it is visible and gets pulled into the next summary, then drops off."
-  },
-  "notices": [
+ "updatedAt": "2026-07-24T16:31:49.000Z",
+ "releaseNote": {
+  "updatedAt": "2026-07-24T16:31:49.000Z",
+  "summary": "r53 is planned next, aiming for tonight or over the weekend. It brings a new way for Runneth to create and run its own durable jobs, sign-in for tools and automations, faster restarts, pause and resume conversations, firewall groundwork, GPT-5.6 and Claude Sonnet 5, inline charts, more reliable Meta benchmarks, and cleaner Slack replies. It is riding a couple of risky PRs being worked through in staging first, so timing depends on those clearing.",
+  "plannedWindow": "r53 planned, aiming for tonight or over the weekend (timing depends on clearing a couple of risky PRs in staging). r52 shipped July 10, 2026.",
+  "details": "r53 (planned): new durable job primitives (tasks and workflows) so Runneth can create, run, and manage long jobs that pause, resume, retry, and survive restarts; service-credential sign-in so tools and automations can authenticate, not just a logged-in person; faster restarts after the daemon event journal was removed; pause and resume conversations by removing and restoring a sandbox with files intact; internal traffic moved to a firewall-safe path ahead of the firewall rollout; GPT-5.6 and Claude Sonnet 5 selectable; charts rendered inline in answers; benchmark comparison sourced from reliable v3 data with new ad-copy and landing-page report views and a NorthBeam fix; cleaner Slack replies that hold up on long tasks, keep formatting, and read blocks and attachments; mark chats as unread; ad names on creative cards; direct integration connect and disconnect; read any Google Sheet tab; Dropbox team folders. Still in review: routines UI in Motion chat, Google Ads MCC accounts, Meta counts matching Ads Manager, integrations page reorg, and Runneth as a tab in Motion with runneth.com sign-in. r52 shipped July 10, 2026 and earlier releases remain live."
+ },
+ "runnethUseOptions": {
+  "use_when_relevant": "Use this whenever the user request touches this area.",
+  "only_when_asked": "Use this only when the user asks about or reports this issue.",
+  "status_page_only": "Visible to CSMs, product, and operators, but not injected into Runneth by default."
+ },
+ "resolutionOptions": {
+  "confirmed_next_release": "Confirmed for the next planned release.",
+  "working_toward_next_release": "Working toward the next planned release, but not marked ready yet.",
+  "in_progress": "Being worked on, but not tied to the next planned release.",
+  "notice_only": "Guidance or status visibility; no release fix is implied.",
+  "resolved": "Fixed and shipped. Stays at the bottom of the board for about a day (through removeAfter) so it is visible and gets pulled into the next summary, then drops off."
+ },
+ "notices": [
+  {
+   "id": "slack-connect-customer-admin-setting",
+   "runnethUse": "status_page_only",
+   "primitives": [
+    "slack"
+   ],
+   "surfaces": [
+    "slack",
+    "web"
+   ],
+   "updatedAt": "2026-06-25T12:41:56.000Z",
+   "summary": "Some customers can't connect Slack until their Slack admin changes a setting.",
+   "impact": "If a customer's Slack workspace only allows apps from the Slack Marketplace, connecting Runneth to Slack will fail. It looks like a Runneth bug, but it is a setting on the customer's own Slack workspace.",
+   "workaround": "Before filing a Slack connection bug, have the customer's Slack admin open their Slack settings, go to Manage apps, then App Management Settings. Under 'Require apps from Slack Marketplace', click Edit and make sure 'Only Slack Marketplace apps can be installed' is unchecked. Then try connecting again.",
+   "resolution": {
+    "type": "notice_only",
+    "label": "Customer-side Slack setting",
+    "note": "This is a setting in the customer's own Slack workspace, not a Runneth bug. Once their Slack admin allows apps from outside the Slack Marketplace, the connection works."
+   },
+   "statusPageGuidance": "Slack connection failures are often a customer-side Slack setting. Have the customer's Slack admin go to Manage apps, then App Management Settings, and uncheck 'Only Slack Marketplace apps can be installed' under 'Require apps from Slack Marketplace' before reporting a bug.",
+   "runnethTrigger": "User reports that a customer cannot connect Slack, that Slack connection is failing, or asks about Slack connect errors during onboarding.",
+   "runnethGuidance": "If someone reports a customer cannot connect Slack, point to the customer-side Slack setting first: their Slack admin should go to Slack settings, Manage apps, App Management Settings, and under 'Require apps from Slack Marketplace' uncheck 'Only Slack Marketplace apps can be installed', then retry. Treat this as a likely cause before filing a Runneth bug. Do not raise proactively for normal Slack requests.",
+   "supportGuidance": "Capture the customer's Slack workspace and the exact connect error. Confirm whether their Slack admin has 'Require apps from Slack Marketplace' enabled; they must disable it (uncheck 'Only Slack Marketplace apps can be installed') under App Management Settings, then retry.",
+   "examples": [
     {
-      "id": "slack-connect-customer-admin-setting",
-      "runnethUse": "status_page_only",
-      "primitives": [
-        "slack"
-      ],
-      "surfaces": [
-        "slack",
-        "web"
-      ],
-      "updatedAt": "2026-06-25T12:41:56.000Z",
-      "summary": "Some customers can't connect Slack until their Slack admin changes a setting.",
-      "impact": "If a customer's Slack workspace only allows apps from the Slack Marketplace, connecting Runneth to Slack will fail. It looks like a Runneth bug, but it is a setting on the customer's own Slack workspace.",
-      "workaround": "Before filing a Slack connection bug, have the customer's Slack admin open their Slack settings, go to Manage apps, then App Management Settings. Under 'Require apps from Slack Marketplace', click Edit and make sure 'Only Slack Marketplace apps can be installed' is unchecked. Then try connecting again.",
-      "resolution": {
-        "type": "notice_only",
-        "label": "Customer-side Slack setting",
-        "note": "This is a setting in the customer's own Slack workspace, not a Runneth bug. Once their Slack admin allows apps from outside the Slack Marketplace, the connection works."
-      },
-      "statusPageGuidance": "Slack connection failures are often a customer-side Slack setting. Have the customer's Slack admin go to Manage apps, then App Management Settings, and uncheck 'Only Slack Marketplace apps can be installed' under 'Require apps from Slack Marketplace' before reporting a bug.",
-      "runnethTrigger": "User reports that a customer cannot connect Slack, that Slack connection is failing, or asks about Slack connect errors during onboarding.",
-      "runnethGuidance": "If someone reports a customer cannot connect Slack, point to the customer-side Slack setting first: their Slack admin should go to Slack settings, Manage apps, App Management Settings, and under 'Require apps from Slack Marketplace' uncheck 'Only Slack Marketplace apps can be installed', then retry. Treat this as a likely cause before filing a Runneth bug. Do not raise proactively for normal Slack requests.",
-      "supportGuidance": "Capture the customer's Slack workspace and the exact connect error. Confirm whether their Slack admin has 'Require apps from Slack Marketplace' enabled; they must disable it (uncheck 'Only Slack Marketplace apps can be installed') under App Management Settings, then retry.",
-      "examples": [
-        {
-          "label": "Posted in #runneth-updates",
-          "url": "https://motion-7pz5426.slack.com/archives/C0B70JCRK1U/p1782328823989289"
-        }
-      ],
-      "customerBanner": false,
-      "pinned": false,
-      "startedAt": "2026-06-25T00:00:00.000Z"
+     "label": "Posted in #runneth-updates",
+     "url": "https://motion-7pz5426.slack.com/archives/C0B70JCRK1U/p1782328823989289"
     }
-  ]
+   ],
+   "customerBanner": false,
+   "pinned": false,
+   "startedAt": "2026-06-25T00:00:00.000Z"
+  }
+ ]
 }
