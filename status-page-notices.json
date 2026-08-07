@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-07-27T12:02:19.000Z",
+  "updatedAt": "2026-08-07T12:02:38.000Z",
   "releaseNote": {
-    "updatedAt": "2026-07-27T12:02:19.000Z",
+    "updatedAt": "2026-08-07T12:02:38.000Z",
     "summary": "r53 is planned next, aiming for tonight or over the weekend. It brings a new way for Runneth to create and run its own durable jobs, sign-in for tools and automations, faster restarts, pause and resume conversations, firewall groundwork, GPT-5.6 and Claude Sonnet 5, inline charts, more reliable Meta benchmarks, and cleaner Slack replies. It is riding a couple of risky PRs being worked through in staging first, so timing depends on those clearing.",
-    "plannedWindow": "r53 is still planned; its weekend target slipped and a new release window has not been confirmed yet. r52 shipped July 10, 2026.",
+    "plannedWindow": "A release shipped Aug 2, 2026 (the stacked-up r53 work). The next release is on preprod as of Aug 6 and is expected to ship to prod today (Aug 7), bringing a generated-app design system, subagents, a new Fable 5 model, and Meta reporting fixes.",
     "details": "r53 (planned): new durable job primitives (tasks and workflows) so Runneth can create, run, and manage long jobs that pause, resume, retry, and survive restarts; service-credential sign-in so tools and automations can authenticate, not just a logged-in person; faster restarts after the daemon event journal was removed; pause and resume conversations by removing and restoring a sandbox with files intact; internal traffic moved to a firewall-safe path ahead of the firewall rollout; GPT-5.6 and Claude Sonnet 5 selectable; charts rendered inline in answers; benchmark comparison sourced from reliable v3 data with new ad-copy and landing-page report views and a NorthBeam fix; cleaner Slack replies that hold up on long tasks, keep formatting, and read blocks and attachments; mark chats as unread; ad names on creative cards; direct integration connect and disconnect; read any Google Sheet tab; Dropbox team folders. Still in review: routines UI in Motion chat, Google Ads MCC accounts, Meta counts matching Ads Manager, integrations page reorg, and Runneth as a tab in Motion with runneth.com sign-in. r52 shipped July 10, 2026 and earlier releases remain live."
   },
   "runnethUseOptions": {
